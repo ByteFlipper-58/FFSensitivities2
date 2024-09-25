@@ -45,6 +45,31 @@ fun NavigationHost(
     }
 }
 
+/*@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NavigationHost(
+    navController: NavHostController,
+    modifier: Modifier,
+    onTitleChange: (String) -> Unit,
+    scrollBehavior: TopAppBarDefaults // Добавляем параметр
+) {
+    NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
+        composable(NavigationItem.Home.route) {
+            onTitleChange("Домашний экран")
+            HomeScreen(modifier = modifier, scrollBehavior = scrollBehavior) // Передаём scrollBehavior
+        }
+        composable(NavigationItem.About.route) {
+            onTitleChange("О приложении")
+            AboutScreen(modifier = modifier)
+        }
+        composable(NavigationItem.Settings.route) {
+            onTitleChange("Настройки")
+            SettingsScreen(modifier = modifier)
+        }
+    }
+}*/
+
+
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     val items = listOf(

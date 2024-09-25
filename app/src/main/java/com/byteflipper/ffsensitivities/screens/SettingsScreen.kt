@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities.screens
 
 import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -8,29 +9,43 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import com.byteflipper.ffsensitivities.getDynamicColorPreference
 import com.byteflipper.ffsensitivities.getThemePreference
 import com.byteflipper.ffsensitivities.saveDynamicColorPreference
 import com.byteflipper.ffsensitivities.saveThemePreference
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
+import me.zhanghai.compose.preference.SwitchPreference
 import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
 import me.zhanghai.compose.preference.twoTargetSwitchPreference
 
 @Composable
-fun SettingsScreen(modifier: Modifier = Modifier) {
+@Preview(showBackground = true)
+fun SettingsScreen(
+    modifier: Modifier = Modifier
+) {
     val context = LocalContext.current
     val savedTheme = getThemePreference(context)
     val dynamicColorEnabled = getDynamicColorPreference(context)
 
     var switchChecked by remember { mutableStateOf(dynamicColorEnabled) }
     var selectedTheme by remember { mutableStateOf(savedTheme) }
+
+    val switchState = remember { mutableStateOf(true) }
+
+    LaunchedEffect(switchState) {
+        saveDynamicColorPreference(context, switchChecked)
+        Toast.makeText(context, "Dynamic colors are enabled." + switchChecked.toString(), Toast.LENGTH_SHORT).show()
+    }
 
     ProvidePreferenceLocals {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -53,6 +68,7 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
                 onClick = { isChecked ->
                     switchChecked = isChecked
                     saveDynamicColorPreference(context, isChecked)
+                    handleDynamicColorChange(context, isChecked)
                 }
             )
 
@@ -95,4 +111,13 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
             )
         }
     }
+}
+
+fun handleDynamicColorChange(context: Context, isEnabled: Boolean) {
+    val message = if (isEnabled) {
+        "Dynamic colors are enabled."
+    } else {
+        "Dynamic colors are disabled."
+    }
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

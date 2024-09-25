@@ -14,6 +14,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -44,7 +45,7 @@ class MainActivity : ComponentActivity() {
 fun MainActivityContent() {
     val context = LocalContext.current
     val themePreference = getThemePreference(context)
-    val dynamicColorPreference = getDynamicColorPreference(context)
+    val dynamicColorPreference = true
 
     var currentTheme by remember { mutableStateOf(themePreference) }
     var currentDynamicColor by remember { mutableStateOf(dynamicColorPreference) }
@@ -60,6 +61,8 @@ fun MainActivityContent() {
         val navController = rememberNavController()
         var toolbarTitle by remember { mutableStateOf("Главный экран") }
 
+        val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             topBar = {
@@ -71,7 +74,8 @@ fun MainActivityContent() {
                         }) {
                             Icon(Icons.Default.Settings, contentDescription = "Настройки")
                         }
-                    }
+                    },
+                    scrollBehavior = scrollBehavior
                 )
             },
             bottomBar = {
@@ -81,15 +85,16 @@ fun MainActivityContent() {
             NavigationHost(
                 navController = navController,
                 modifier = Modifier.padding(innerPadding),
-                onTitleChange = { newTitle -> toolbarTitle = newTitle }
+                onTitleChange = { newTitle -> toolbarTitle = newTitle },
+                //scrollBehavior = scrollBehavior
             )
         }
     }
 }
 
-@Preview(showBackground = true)
 @PreviewDynamicColors
 @Composable
+@Preview(showBackground = true)
 fun MainActivityPreview() {
     MainActivityContent()
 }
