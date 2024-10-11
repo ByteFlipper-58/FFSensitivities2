@@ -1,6 +1,14 @@
 package com.byteflipper.ffsensitivities.navigation
 
-import androidx.compose.material3.*
+import HomeScreen
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -9,13 +17,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.byteflipper.ffsensitivities.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.ui.screens.AboutScreen
+import com.byteflipper.ffsensitivities.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.ui.screens.SettingsScreen
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Settings
 
 sealed class NavigationItem(val route: String, val label: String, val icon: ImageVector) {
     object Home : NavigationItem("home", "Home", Icons.Default.Home)
@@ -32,7 +36,7 @@ fun NavigationHost(
     NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
         composable(NavigationItem.Home.route) {
             onTitleChange("Домашний экран")
-            HomeScreen(modifier = modifier)
+            HomeScreen(modifier = modifier, navController = navController)
         }
         composable(NavigationItem.About.route) {
             onTitleChange("О приложении")
@@ -41,6 +45,11 @@ fun NavigationHost(
         composable(NavigationItem.Settings.route) {
             onTitleChange("Настройки")
             SettingsScreen(modifier = modifier)
+        }
+        composable("devices/{model}") {
+            val model = it.arguments?.getString("model")
+            onTitleChange("Устройства $model")
+            DevicesScreen(modifier = modifier, model = model)
         }
     }
 }
