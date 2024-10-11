@@ -1,4 +1,4 @@
-package com.byteflipper.ffsensitivities.screens
+package com.byteflipper.ffsensitivities.ui.screens
 
 import android.content.Context
 import android.widget.Toast

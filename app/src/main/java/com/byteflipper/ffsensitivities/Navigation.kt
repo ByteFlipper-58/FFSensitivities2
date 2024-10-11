@@ -9,9 +9,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.byteflipper.ffsensitivities.screens.HomeScreen
-import com.byteflipper.ffsensitivities.screens.AboutScreen
-import com.byteflipper.ffsensitivities.screens.SettingsScreen
+import com.byteflipper.ffsensitivities.ui.screens.HomeScreen
+import com.byteflipper.ffsensitivities.ui.screens.AboutScreen
+import com.byteflipper.ffsensitivities.ui.screens.SettingsScreen
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
@@ -44,31 +44,6 @@ fun NavigationHost(
         }
     }
 }
-
-/*@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun NavigationHost(
-    navController: NavHostController,
-    modifier: Modifier,
-    onTitleChange: (String) -> Unit,
-    scrollBehavior: TopAppBarDefaults // Добавляем параметр
-) {
-    NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
-        composable(NavigationItem.Home.route) {
-            onTitleChange("Домашний экран")
-            HomeScreen(modifier = modifier, scrollBehavior = scrollBehavior) // Передаём scrollBehavior
-        }
-        composable(NavigationItem.About.route) {
-            onTitleChange("О приложении")
-            AboutScreen(modifier = modifier)
-        }
-        composable(NavigationItem.Settings.route) {
-            onTitleChange("Настройки")
-            SettingsScreen(modifier = modifier)
-        }
-    }
-}*/
-
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {

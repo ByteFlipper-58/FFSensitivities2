@@ -1,4 +1,4 @@
-package com.byteflipper.ffsensitivities.screens
+package com.byteflipper.ffsensitivities.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
