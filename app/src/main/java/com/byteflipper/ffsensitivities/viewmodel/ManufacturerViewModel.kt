@@ -7,12 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.State
 import com.byteflipper.ffsensitivities.data.Manufacturer
 import com.byteflipper.ffsensitivities.service.RetrofitInstance
-
-sealed class UiState<out T> {
-    data object Loading : UiState<Nothing>()
-    data class Success<out T>(val data: T) : UiState<T>()
-    data class Error(val message: String) : UiState<Nothing>()
-}
+import com.byteflipper.ffsensitivities.ui.UiState
 
 class ManufacturerViewModel : ViewModel() {
     private val _uiState = mutableStateOf<UiState<List<Manufacturer>>>(UiState.Loading)

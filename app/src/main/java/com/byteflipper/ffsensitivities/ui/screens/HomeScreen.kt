@@ -29,8 +29,8 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
+import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.viewmodel.ManufacturerViewModel
-import com.byteflipper.ffsensitivities.viewmodel.UiState
 
 @Composable
 fun HomeScreen(

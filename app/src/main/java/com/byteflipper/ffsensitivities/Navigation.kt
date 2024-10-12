@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.byteflipper.ffsensitivities.ui.screens.AboutScreen
 import com.byteflipper.ffsensitivities.ui.screens.DevicesScreen
+import com.byteflipper.ffsensitivities.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.ui.screens.SettingsScreen
 
 sealed class NavigationItem(val route: String, val label: String, val icon: ImageVector) {
@@ -49,7 +50,12 @@ fun NavigationHost(
         composable("devices/{model}") {
             val model = it.arguments?.getString("model")
             onTitleChange("Устройства $model")
-            DevicesScreen(modifier = modifier, model = model)
+            DevicesScreen(modifier = modifier, navController = navController, model = model)
+        }
+        composable("sensitivities/{model}") {
+            val model = it.arguments?.getString("model")
+            onTitleChange("Чувства $model")
+            SensitivitiesScreen(modifier = modifier, model = model)
         }
     }
 }
