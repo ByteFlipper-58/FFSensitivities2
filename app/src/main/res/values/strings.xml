@@ -1,3 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FF Sensitivities</string>
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+
+    <string name="welcome_screen_title">Welcome to our application!</string>
+    <string name="welcome_screen_message">Hello Fighter! Everyone will find a setting for themselves here; otherwise, you can request them</string>
+    <string name="privacy_policy_message" translatable="false">Continuing, you accept our Terms of Service and acknowledge that you have read our Privacy Policy.</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="continue_button">Continue</string>
+
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+
+    <string name="review">General</string>
+    <string name="collimator">Red Dot</string>
+    <string name="x2_scope">x2 Scope</string>
+    <string name="x4_scope">x4 Scope</string>
+    <string name="sniper_scope">Sniper Scope</string>
+    <string name="free_review">Free Look</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Fire Button</string>
+    <string name="source">Source</string>
+    <string name="it_works">It Works?</string>
+    <string name="thank_for_review">Thank you for your review!</string>
+
+    <string name="dont_have_your_phone_model">Don\'t have your phone model? Make a request!</string>
+    <string name="request_sensitivities_settings_title">Request sensitivities settings</string>
+    <string name="request_sensitivities_settings_message">Information that will be sent to the developer</string>
+    <string name="request_sensitivities_settings_message_two">Click the Request button to submit a settings request, this action cannot be undone.</string>
+    <string name="request_sensitivities_settings_button">Request</string>
+
+    <string name="improve_translation">Improve Translation</string>
+    <string name="copy">Copy</string>
+    <string name="copied">Copied</string>
+    <string name="link">Link</string>
+    <string name="copy_link">Copy Link</string>
+    <string name="open_link">Open Link</string>
+    <string name="error">Error</string>
+
+    <!--- About -->
+
+    <string name="about_app">About App</string>
+    <string name="home">Home</string>
+    <string name="version">Version</string>
+
+    <string name="source_code_title">Source Code</string>
+    <string name="source_code_subtitle">Source code of the application on GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <string name="bug_report_title">Bug Report</string>
+    <string name="bug_report_subtitle">Please describe the problem and send it to us</string>
+
+    <string name="not_installed_email_client">E-mail client not installed</string>
+    <string name="rate_the_app_title">Rate the app</string>
+    <string name="rate_the_app_subtitle">Rate the app on Google Play</string>
+
+    <string name="website_title">ByteFlipper Website</string>
+    <string name="website_subtitle">Our Website</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Our Github Repository</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Our community on VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Our Telegram Channel</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Our YouTube Channel</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Our Discord Server</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+
+    <string name="other_apps_title">Other Apps</string>
+    <string name="other_apps_subtitle">Our Other Apps</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+
+    <!--- Settings -->
+    <string name="settings">Settings</string>
+    <string name="app_theme">App Theme</string>
+    <string name="auto_theme">Auto theme</string>
+    <string name="system_theme">System theme</string>
+    <string name="light_theme">Light theme</string>
+    <string name="night_theme">Night theme</string>
+    <string name="auto_theme_description">The appearance of the application will change automatically depending on the time of sunrise and sunset</string>
+    <string name="auto_level_of_charge_theme_description">The appearance of the application will change automatically depending on the level of charge of the phone</string>
+    <string name="light_theme_description">Light theme selected</string>
+    <string name="night_theme_description">Night theme selected</string>
+    <string name="system_theme_description">The appearance of the application will change depending on the Android theme</string>
+
+    <string name="switch_use_dynamic_colors_title">Use dynamic colors</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Dynamic colors are enabled</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Dynamic colors are disabled</string>
+    <string name="switch_dynamic_colors_are_not_supported">Dynamic colors are not supported</string>
+
+    <string name="change_language">Change language</string>
+
+    <string name="devices_list">Devices list</string>
+    <string name="sensitivity">Sensitivity</string>
 </resources>

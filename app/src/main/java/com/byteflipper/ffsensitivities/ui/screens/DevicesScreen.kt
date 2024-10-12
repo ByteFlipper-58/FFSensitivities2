@@ -24,6 +24,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.ui.UiState
+import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.DeviceViewModel
 
 @Composable
@@ -41,11 +42,14 @@ fun DevicesScreen(
 
     when (uiState) {
         is UiState.Loading -> {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(1),
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(8.dp)
             ) {
-                CircularProgressIndicator()
+                items(10) {
+                    ShimmerLazyItem()
+                }
             }
         }
         is UiState.Success -> {

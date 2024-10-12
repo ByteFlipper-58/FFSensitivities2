@@ -259,23 +259,17 @@ val unspecified_scheme = ColorFamily(
 
 @Composable
 fun FFSensitivitiesTheme(
-    themePreference: String,
-    dynamicColor: Boolean,
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val isDarkTheme = when (themePreference) {
-        "dark" -> true
-        "light" -> false
-        "system" -> isSystemInDarkTheme()
-        else -> isSystemInDarkTheme()
-    }
-
+    val context = LocalContext.current
     val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
+            if (darkTheme) dynamicDarkColorScheme(context)
+            else dynamicLightColorScheme(context)
         }
-        isDarkTheme -> darkScheme
+        darkTheme -> darkScheme
         else -> lightScheme
     }
 

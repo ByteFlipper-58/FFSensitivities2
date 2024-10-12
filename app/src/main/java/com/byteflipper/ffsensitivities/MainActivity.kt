@@ -60,9 +60,7 @@ fun MainActivityContent() {
         currentDynamicColor = dynamicColorPreference
     }
 
-    FFSensitivitiesTheme(
-        themePreference = themePreference,
-        dynamicColor = dynamicColorPreference) {
+    FFSensitivitiesTheme {
 
         val navController = rememberNavController()
         var toolbarTitle by remember { mutableStateOf("Главный экран") }

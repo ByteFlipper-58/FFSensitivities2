@@ -1,4 +1,5 @@
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -30,6 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
 import com.byteflipper.ffsensitivities.ui.UiState
+import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.ManufacturerViewModel
 
 @Composable
@@ -55,8 +57,14 @@ fun HomeScreen(
 
         when (uiState) {
             is UiState.Loading -> {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    CircularProgressIndicator()
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    modifier = Modifier.fillMaxWidth(),
+                    contentPadding = PaddingValues(8.dp)
+                ) {
+                    items(16) {
+                        ShimmerLazyItem()
+                    }
                 }
             }
             is UiState.Success -> {
