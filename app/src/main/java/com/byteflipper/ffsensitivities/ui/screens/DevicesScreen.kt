@@ -26,6 +26,7 @@ import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.DeviceViewModel
+import com.google.gson.Gson
 
 @Composable
 fun DevicesScreen(
@@ -83,7 +84,7 @@ fun DevicesCard(devices: DeviceModel, navController: NavController) {
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            navController.navigate("sensitivities/${devices.name}")
+            navController.navigate("sensitivities/${devices.manufacturer}/${devices.name}/${Gson().toJson(devices)}")
         }
     ) {
         Column(

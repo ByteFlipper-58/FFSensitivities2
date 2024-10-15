@@ -9,7 +9,6 @@ import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,13 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewDynamicColors
-import com.byteflipper.ffsensitivities.getDynamicColorPreference
-import com.byteflipper.ffsensitivities.getThemePreference
-import com.byteflipper.ffsensitivities.saveDynamicColorPreference
-import com.byteflipper.ffsensitivities.saveThemePreference
+import com.byteflipper.ffsensitivities.PreferencesManager
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
-import me.zhanghai.compose.preference.SwitchPreference
 import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
 import me.zhanghai.compose.preference.twoTargetSwitchPreference
@@ -34,18 +28,11 @@ fun SettingsScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val savedTheme = getThemePreference(context)
-    val dynamicColorEnabled = getDynamicColorPreference(context)
+    val preferencesManager = PreferencesManager(context)
 
-    var switchChecked by remember { mutableStateOf(dynamicColorEnabled) }
-    var selectedTheme by remember { mutableStateOf(savedTheme) }
 
     val switchState = remember { mutableStateOf(true) }
-
-    LaunchedEffect(switchState) {
-        saveDynamicColorPreference(context, switchChecked)
-        Toast.makeText(context, "Dynamic colors are enabled." + switchChecked.toString(), Toast.LENGTH_SHORT).show()
-    }
+    var selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
 
     ProvidePreferenceLocals {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -66,8 +53,7 @@ fun SettingsScreen(
                     Text(if (isChecked) "Dynamic colors are currently enabled." else "Dynamic colors are currently disabled.")
                 },
                 onClick = { isChecked ->
-                    switchChecked = isChecked
-                    saveDynamicColorPreference(context, isChecked)
+                    preferencesManager.putBoolean("dynamic_colors", isChecked)
                     handleDynamicColorChange(context, isChecked)
                 }
             )
@@ -84,7 +70,7 @@ fun SettingsScreen(
                 summary = { Text(text = "Use system default theme.") },
                 onClick = {
                     selectedTheme = "system"
-                    saveThemePreference(context, "system")
+                    preferencesManager.putString("theme", "system")
                 }
             )
 
@@ -95,7 +81,7 @@ fun SettingsScreen(
                 summary = { Text(text = "Use light theme.") },
                 onClick = {
                     selectedTheme = "light"
-                    saveThemePreference(context, "light")
+                    preferencesManager.putString("theme", "light")
                 }
             )
 
@@ -106,7 +92,7 @@ fun SettingsScreen(
                 summary = { Text(text = "Use dark theme.") },
                 onClick = {
                     selectedTheme = "dark"
-                    saveThemePreference(context, "dark")
+                    preferencesManager.putString("theme", "dark")
                 }
             )
         }

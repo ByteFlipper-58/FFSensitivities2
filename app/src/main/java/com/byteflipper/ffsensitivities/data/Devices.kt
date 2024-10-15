@@ -1,10 +1,14 @@
 package com.byteflipper.ffsensitivities.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class ManufacturerWithModels(
     val manufacturer: String,
     val models: List<DeviceModel>
 )
 
+@Parcelize
 data class DeviceModel(
     val manufacturer: String,
     val name: String,
@@ -12,8 +16,9 @@ data class DeviceModel(
     val dpi: Int,
     val fire_button: Int,
     val sensitivities: Sensitivities
-)
+) : Parcelable
 
+@Parcelize
 data class Sensitivities(
     val review: Int,
     val collimator: Int,
@@ -21,4 +26,4 @@ data class Sensitivities(
     val x4_scope: Int,
     val sniper_scope: Int,
     val free_review: Int
-)
+) : Parcelable

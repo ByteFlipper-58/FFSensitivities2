@@ -96,7 +96,8 @@ fun ManufacturerCard(manufacturer: Manufacturer, navController: NavController) {
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            navController.navigate("devices/${manufacturer.model}")
+            navController
+                .navigate("devices/${manufacturer.model}")
         }
     ) {
         Column(

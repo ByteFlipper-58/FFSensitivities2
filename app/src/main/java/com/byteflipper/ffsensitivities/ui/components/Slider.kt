@@ -20,7 +20,8 @@ import androidx.compose.ui.res.stringResource
 fun SliderView(
     label: Any,
     initialValue: Float = 0f,
-    onValueChange: (Float) -> Unit
+    onValueChange: (Float) -> Unit,
+    enabled: Boolean = true
 ) {
     var sliderPosition by remember { mutableFloatStateOf(initialValue) }
 
@@ -58,7 +59,8 @@ fun SliderView(
                 activeTrackColor = MaterialTheme.colorScheme.secondary,
                 inactiveTrackColor = MaterialTheme.colorScheme.secondaryContainer,
             ),
-            valueRange = 0f..200f
+            valueRange = 0f..200f,
+            enabled = enabled
         )
     }
 }

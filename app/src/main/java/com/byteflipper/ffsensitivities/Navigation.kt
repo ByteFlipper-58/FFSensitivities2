@@ -13,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavDestination.Companion.hierarchy
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -37,7 +39,7 @@ fun NavigationHost(
     NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
         composable(NavigationItem.Home.route) {
             onTitleChange("Домашний экран")
-            HomeScreen(modifier = modifier, navController = navController)
+            HomeScreen(modifier = modifier, navController)
         }
         composable(NavigationItem.About.route) {
             onTitleChange("О приложении")
@@ -47,15 +49,17 @@ fun NavigationHost(
             onTitleChange("Настройки")
             SettingsScreen(modifier = modifier)
         }
-        composable("devices/{model}") {
-            val model = it.arguments?.getString("model")
+        composable("devices/{model}") { backStackEntry ->
+            val model = backStackEntry.arguments?.getString("model")
             onTitleChange("Устройства $model")
-            DevicesScreen(modifier = modifier, navController = navController, model = model)
+            DevicesScreen(modifier = modifier, navController, model = model ?: "")
         }
-        composable("sensitivities/{model}") {
-            val model = it.arguments?.getString("model")
-            onTitleChange("Чувства $model")
-            SensitivitiesScreen(modifier = modifier, model = model)
+        composable("sensitivities/{manufacturer}/{model}/{device}") { backStackEntry ->
+            val manufacturer = backStackEntry.arguments?.getString("manufacturer")
+            val model = backStackEntry.arguments?.getString("model")
+            val device = backStackEntry.arguments?.getString("device")
+            onTitleChange("$manufacturer" + " " + "$model")
+            SensitivitiesScreen(navController, device)
         }
     }
 }
@@ -68,21 +72,24 @@ fun BottomNavigationBar(navController: NavHostController) {
     )
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
-    val currentRoute = navBackStackEntry?.destination?.route
+    val currentDestination = navBackStackEntry?.destination
 
     NavigationBar {
         items.forEach { item ->
             NavigationBarItem(
                 icon = { Icon(item.icon, contentDescription = item.label) },
                 label = { Text(item.label) },
-                selected = currentRoute == item.route,
+                selected = currentDestination?.hierarchy?.any { it.route == item.route } == true,
                 onClick = {
                     navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) {
-                            saveState = true
-                        }
                         launchSingleTop = true
                         restoreState = true
+
+                        if (currentDestination?.route != item.route) {
+                            popUpTo(navController.graph.findStartDestination().id) {
+                                saveState = true
+                            }
+                        }
                     }
                 }
             )

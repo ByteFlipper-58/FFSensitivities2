@@ -4,6 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -49,16 +54,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityContent() {
     val context = LocalContext.current
-    val themePreference = getThemePreference(context)
-    val dynamicColorPreference = true
-
-    var currentTheme by remember { mutableStateOf(themePreference) }
-    var currentDynamicColor by remember { mutableStateOf(dynamicColorPreference) }
-
-    LaunchedEffect(themePreference, dynamicColorPreference) {
-        currentTheme = themePreference
-        currentDynamicColor = dynamicColorPreference
-    }
 
     FFSensitivitiesTheme {
 
@@ -69,6 +64,8 @@ fun MainActivityContent() {
 
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
+
+        val hiddenRoutes = listOf("settings"/*, "devices/{model}", "sensitivities/{model}"*/)
 
         Scaffold(
             modifier = Modifier
@@ -101,7 +98,11 @@ fun MainActivityContent() {
                 )
             },
             bottomBar = {
-                if (currentRoute != "settings") {
+                AnimatedVisibility(
+                    visible = currentRoute !in hiddenRoutes,
+                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                ) {
                     BottomNavigationBar(
                         navController = navController,
                     )
