@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 
 // Модель данных для карточки
@@ -109,7 +110,6 @@ fun NestedCardsRow(nestedItems: List<CardData>) {
     }
 }
 
-// Вложенная карточка (картинка + заголовок)
 @Composable
 fun NestedCard(cardData: CardData) {
     Card(
@@ -124,7 +124,7 @@ fun NestedCard(cardData: CardData) {
             verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = rememberImagePainter(cardData.imageUrl),
+                painter = rememberAsyncImagePainter(cardData.imageUrl),
                 contentDescription = "Nested Image",
                 modifier = Modifier
                     .fillMaxWidth()

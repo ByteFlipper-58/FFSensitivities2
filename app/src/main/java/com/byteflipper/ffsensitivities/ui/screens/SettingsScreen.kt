@@ -2,11 +2,17 @@ package com.byteflipper.ffsensitivities.ui.screens
 
 import android.content.Context
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -16,10 +22,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.PreferencesManager
+import com.byteflipper.ffsensitivities.ui.theme.ContrastLevel
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
+import me.zhanghai.compose.preference.rememberPreferenceState
 import me.zhanghai.compose.preference.twoTargetSwitchPreference
 
 @Composable
@@ -32,6 +41,7 @@ fun SettingsScreen(
 
 
     val switchState = remember { mutableStateOf(true) }
+    var dynamicColorState by rememberPreferenceState("dynamic_colors", false)
     var selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
 
     ProvidePreferenceLocals {
@@ -55,7 +65,8 @@ fun SettingsScreen(
                 onClick = { isChecked ->
                     preferencesManager.putBoolean("dynamic_colors", isChecked)
                     handleDynamicColorChange(context, isChecked)
-                }
+                    dynamicColorState = isChecked
+                },
             )
 
             preferenceCategory(
@@ -106,4 +117,25 @@ fun handleDynamicColorChange(context: Context, isEnabled: Boolean) {
         "Dynamic colors are disabled."
     }
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}
+
+@Composable
+fun ContrastThemeSwitcher(
+    contrastLevel: ContrastLevel,
+    onContrastLevelChange: (ContrastLevel) -> Unit
+) {
+    Column {
+        Text(text = "Select Contrast Level:")
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ContrastLevel.values().forEach { level ->
+                Text(text = level.name)
+                RadioButton(
+                    selected = contrastLevel == level,
+                    onClick = { onContrastLevelChange(level) }
+                )
+            }
+        }
+    }
 }

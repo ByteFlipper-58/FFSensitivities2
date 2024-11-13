@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -78,7 +79,7 @@ fun DevicesScreen(
 
 @Composable
 fun DevicesCard(devices: DeviceModel, navController: NavController) {
-    ElevatedCard(
+    OutlinedCard (
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),

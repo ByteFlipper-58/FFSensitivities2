@@ -39,7 +39,10 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
+import com.byteflipper.ffsensitivities.ui.theme.ContrastLevel
 import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
+import me.zhanghai.compose.preference.ProvidePreferenceLocals
+import me.zhanghai.compose.preference.rememberPreferenceState
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,66 +59,73 @@ class MainActivity : ComponentActivity() {
 fun MainActivityContent() {
     val context = LocalContext.current
 
-    FFSensitivitiesTheme {
+    ProvidePreferenceLocals {
+        val dynamicColorState by rememberPreferenceState("dynamic_colors", false)
 
-        val navController = rememberNavController()
-        var toolbarTitle by remember { mutableStateOf("Главный экран") }
+        FFSensitivitiesTheme (
+            dynamicColor = dynamicColorState,
+            contrastLevel = ContrastLevel.Medium
+        ) {
 
-        val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+            val navController = rememberNavController()
+            var toolbarTitle by remember { mutableStateOf("Главный экран") }
 
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+            val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
-        val hiddenRoutes = listOf("settings", "devices/{name}/{model}", "sensitivities/{manufacturer}/{model}/{device}")
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentRoute = navBackStackEntry?.destination?.route
 
-        Scaffold(
-            modifier = Modifier
-                .fillMaxSize()
-                .nestedScroll(scrollBehavior.nestedScrollConnection),
+            val hiddenRoutes = listOf("settings", "devices/{name}/{model}", "sensitivities/{manufacturer}/{model}/{device}")
 
-            topBar = {
-                TopAppBar(
-                    title = { Text(toolbarTitle) },
-                    navigationIcon = {
-                        if (currentRoute == "settings") {
-                            IconButton(onClick = { navController.popBackStack() }) {
-                                Icon(
-                                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "Назад"
-                                )
+            Scaffold(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+
+                topBar = {
+                    TopAppBar(
+                        title = { Text(toolbarTitle) },
+                        navigationIcon = {
+                            if (currentRoute == "settings") {
+                                IconButton(onClick = { navController.popBackStack() }) {
+                                    Icon(
+                                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                        contentDescription = "Назад"
+                                    )
+                                }
                             }
-                        }
-                    },
-                    actions = {
-                        if (currentRoute != "settings") {
-                            IconButton(onClick = {
-                                navController.navigate("settings")
-                            }) {
-                                Icon(Icons.Default.Settings, contentDescription = "Настройки")
+                        },
+                        actions = {
+                            if (currentRoute != "settings") {
+                                IconButton(onClick = {
+                                    navController.navigate("settings")
+                                }) {
+                                    Icon(Icons.Default.Settings, contentDescription = "Настройки")
+                                }
                             }
-                        }
-                    },
-                    scrollBehavior = scrollBehavior
-                )
-            },
-            bottomBar = {
-                AnimatedVisibility(
-                    visible = currentRoute !in hiddenRoutes,
-                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
-                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
-                ) {
-                    BottomNavigationBar(
-                        modifier = Modifier,
-                        navController = navController,
+                        },
+                        scrollBehavior = scrollBehavior
                     )
+                },
+                bottomBar = {
+                    AnimatedVisibility(
+                        visible = currentRoute !in hiddenRoutes,
+                        enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
+                        exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
+                    ) {
+                        BottomNavigationBar(
+                            modifier = Modifier,
+                            navController = navController,
+                        )
+                    }
                 }
+            ) { innerPadding ->
+                NavigationHost(
+                    navController = navController,
+                    modifier = Modifier.padding(innerPadding),
+                    onTitleChange = { newTitle -> toolbarTitle = newTitle }
+                )
             }
-        ) { innerPadding ->
-            NavigationHost(
-                navController = navController,
-                modifier = Modifier.padding(innerPadding),
-                onTitleChange = { newTitle -> toolbarTitle = newTitle }
-            )
         }
     }
 }

@@ -1,10 +1,25 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun AboutScreen(modifier: Modifier = Modifier) {
-    Text(text = "Это экран About", modifier = modifier)
+fun AboutScreen(
+    modifier: Modifier = Modifier
+) {
+    Column (
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        
+    }
+}
+
+@Preview
+@Composable
+fun AboutScreenPreview() {
+    AboutScreen()
 }
