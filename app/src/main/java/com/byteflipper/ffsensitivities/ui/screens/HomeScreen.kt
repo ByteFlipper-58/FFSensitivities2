@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -90,23 +91,26 @@ fun HomeScreen(
 
 @Composable
 fun ManufacturerCard(manufacturer: Manufacturer, navController: NavController) {
-    ElevatedCard(
+    OutlinedCard (
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
             navController
-                .navigate("devices/${manufacturer.model}")
+                .navigate("devices/${manufacturer.name}/${manufacturer.model}")
         }
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(14.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = manufacturer.name, textAlign = TextAlign.Center)
+            Text(
+                text = manufacturer.name,
+                textAlign = TextAlign.Center
+            )
         }
     }
 }

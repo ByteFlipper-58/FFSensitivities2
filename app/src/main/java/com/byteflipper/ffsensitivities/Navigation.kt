@@ -1,6 +1,11 @@
 package com.byteflipper.ffsensitivities.navigation
 
 import HomeScreen
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
@@ -37,35 +42,166 @@ fun NavigationHost(
     onTitleChange: (String) -> Unit
 ) {
     NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
-        composable(NavigationItem.Home.route) {
+        composable(
+            NavigationItem.Home.route,
+            enterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            },
+            popEnterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            popExitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            }
+        ) {
             onTitleChange("Домашний экран")
             HomeScreen(modifier = modifier, navController)
         }
-        composable(NavigationItem.About.route) {
+        composable(
+            NavigationItem.About.route,
+            enterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            popEnterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            },
+            popExitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            }
+        ) {
             onTitleChange("О приложении")
             AboutScreen(modifier = modifier)
         }
-        composable(NavigationItem.Settings.route) {
+        composable(
+            NavigationItem.Settings.route,
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Up,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Up,
+                    animationSpec = tween(500)
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                    animationSpec = tween(500)
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                    animationSpec = tween(500)
+                )
+            }
+        ) {
             onTitleChange("Настройки")
             SettingsScreen(modifier = modifier)
         }
-        composable("devices/{model}") { backStackEntry ->
+        composable(
+            "devices/{name}/{model}",
+            enterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            popEnterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            },
+            popExitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            }
+        ) { backStackEntry ->
             val model = backStackEntry.arguments?.getString("model")
-            onTitleChange("Устройства $model")
+            val name = backStackEntry.arguments?.getString("name")
+            onTitleChange("Устройства $name")
             DevicesScreen(modifier = modifier, navController, model = model ?: "")
         }
-        composable("sensitivities/{manufacturer}/{model}/{device}") { backStackEntry ->
+        composable(
+            "sensitivities/{manufacturer}/{model}/{device}",
+            enterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            exitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(500)
+                )
+            },
+            popEnterTransition = {
+                fadeIn(animationSpec = tween(500)) + slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            },
+            popExitTransition = {
+                fadeOut(animationSpec = tween(500)) + slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(500)
+                )
+            }
+        ) { backStackEntry ->
             val manufacturer = backStackEntry.arguments?.getString("manufacturer")
             val model = backStackEntry.arguments?.getString("model")
             val device = backStackEntry.arguments?.getString("device")
-            onTitleChange("$manufacturer" + " " + "$model")
+            onTitleChange("$manufacturer $model")
             SensitivitiesScreen(navController, device)
         }
     }
 }
 
 @Composable
-fun BottomNavigationBar(navController: NavHostController) {
+fun BottomNavigationBar(modifier: Modifier, navController: NavHostController) {
     val items = listOf(
         NavigationItem.Home,
         NavigationItem.About

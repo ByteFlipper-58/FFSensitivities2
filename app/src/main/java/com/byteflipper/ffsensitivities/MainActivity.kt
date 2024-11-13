@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
@@ -65,7 +66,7 @@ fun MainActivityContent() {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
 
-        val hiddenRoutes = listOf("settings"/*, "devices/{model}", "sensitivities/{model}"*/)
+        val hiddenRoutes = listOf("settings", "devices/{name}/{model}", "sensitivities/{manufacturer}/{model}/{device}")
 
         Scaffold(
             modifier = Modifier
@@ -100,10 +101,11 @@ fun MainActivityContent() {
             bottomBar = {
                 AnimatedVisibility(
                     visible = currentRoute !in hiddenRoutes,
-                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
+                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
                 ) {
                     BottomNavigationBar(
+                        modifier = Modifier,
                         navController = navController,
                     )
                 }

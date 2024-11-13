@@ -1,5 +1,6 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
+import android.provider.Settings.Global.getString
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,7 +31,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -40,7 +43,6 @@ import com.byteflipper.ffsensitivities.ui.components.SliderView
 import com.google.gson.Gson
 
 //@Preview(showBackground = true)
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SensitivitiesScreen(
     navController: NavController,
@@ -177,10 +179,24 @@ fun SensitivitiesScreen(
                     thickness = 1.dp
                 )
 
+                val clipboardManager = LocalClipboardManager.current
+
+                val settingsText = buildString {
+                    append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi.toInt()}\n")
+                    append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities.review.toInt()}\n")
+                    append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities.collimator.toInt()}\n")
+                    append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities.x2_scope.toInt()}\n")
+                    append("${stringResource(id = R.string.x4_scope)}: ${deviceModel.sensitivities.x4_scope.toInt()}\n")
+                    append("${stringResource(id = R.string.sniper_scope)}: ${deviceModel.sensitivities.sniper_scope.toInt()}\n")
+                    append("${stringResource(id = R.string.free_review)}: ${deviceModel.sensitivities.free_review.toInt()}\n")
+                    append("${stringResource(id = R.string.source)} ${deviceModel.settings_source_url}")
+                }
+
                 FilledTonalButton(
-                    onClick = { },
-                    modifier = Modifier
-                        .fillMaxWidth()
+                    onClick = {
+                        clipboardManager.setText(AnnotatedString(settingsText))
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
                         text = stringResource(id = R.string.copy),
