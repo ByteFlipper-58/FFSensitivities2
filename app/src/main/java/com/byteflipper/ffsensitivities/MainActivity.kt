@@ -10,6 +10,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -58,13 +59,22 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainActivityContent() {
     val context = LocalContext.current
+    val preferencesManager = PreferencesManager(context)
 
     ProvidePreferenceLocals {
         val dynamicColorState by rememberPreferenceState("dynamic_colors", false)
+        val contrastThemeState by rememberPreferenceState("contrast_theme", false)
+        val selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
 
+        val darkTheme = when (selectedTheme) {
+            "dark" -> true
+            "light" -> false
+            else -> isSystemInDarkTheme()
+        }
         FFSensitivitiesTheme (
+            darkTheme = darkTheme,
             dynamicColor = dynamicColorState,
-            contrastLevel = ContrastLevel.Medium
+            contrastTheme = contrastThemeState
         ) {
 
             val navController = rememberNavController()

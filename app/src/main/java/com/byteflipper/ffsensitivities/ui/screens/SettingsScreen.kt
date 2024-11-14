@@ -1,18 +1,11 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
-import android.content.Context
-import android.widget.Toast
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,9 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.PreferencesManager
-import com.byteflipper.ffsensitivities.ui.theme.ContrastLevel
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
@@ -38,18 +29,22 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val preferencesManager = PreferencesManager(context)
-
-
-    val switchState = remember { mutableStateOf(true) }
-    var dynamicColorState by rememberPreferenceState("dynamic_colors", false)
     var selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
 
     ProvidePreferenceLocals {
+        var dynamicColorState by rememberPreferenceState("dynamic_colors", false)
+        var contrastThemeState by rememberPreferenceState("contrast_level", false)
+
         LazyColumn(modifier = Modifier.fillMaxSize()) {
 
             preferenceCategory(
                 key = "general_settings_category",
                 title = { Text(text = "General Settings") }
+            )
+
+            preferenceCategory(
+                key = "theme_settings_category",
+                title = { Text(text = "Theme Settings") }
             )
 
             twoTargetSwitchPreference(
@@ -63,16 +58,14 @@ fun SettingsScreen(
                     Text(if (isChecked) "Dynamic colors are currently enabled." else "Dynamic colors are currently disabled.")
                 },
                 onClick = { isChecked ->
-                    preferencesManager.putBoolean("dynamic_colors", isChecked)
-                    handleDynamicColorChange(context, isChecked)
+                    //preferencesManager.putBoolean("dynamic_colors", isChecked)
                     dynamicColorState = isChecked
                 },
             )
 
-            preferenceCategory(
-                key = "theme_settings_category",
-                title = { Text(text = "Theme Settings") }
-            )
+            item {
+                HorizontalDivider()
+            }
 
             radioButtonPreference(
                 key = "theme_system",
@@ -106,36 +99,20 @@ fun SettingsScreen(
                     preferencesManager.putString("theme", "dark")
                 }
             )
-        }
-    }
-}
 
-fun handleDynamicColorChange(context: Context, isEnabled: Boolean) {
-    val message = if (isEnabled) {
-        "Dynamic colors are enabled."
-    } else {
-        "Dynamic colors are disabled."
-    }
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-}
-
-@Composable
-fun ContrastThemeSwitcher(
-    contrastLevel: ContrastLevel,
-    onContrastLevelChange: (ContrastLevel) -> Unit
-) {
-    Column {
-        Text(text = "Select Contrast Level:")
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ContrastLevel.values().forEach { level ->
-                Text(text = level.name)
-                RadioButton(
-                    selected = contrastLevel == level,
-                    onClick = { onContrastLevelChange(level) }
-                )
-            }
+            /*twoTargetSwitchPreference(
+                key = "contrast_theme",
+                defaultValue = false,
+                title = { Text("Contrast Theme") },
+                icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
+                summary = { isChecked ->
+                    Text(if (isChecked) "Contrast theme is currently enabled." else "Contrast theme is currently disabled.")
+                },
+                onClick = { isChecked ->
+                    //preferencesManager.putBoolean("dynamic_colors", isChecked)
+                    contrastThemeState = isChecked
+                },
+            )*/
         }
     }
 }

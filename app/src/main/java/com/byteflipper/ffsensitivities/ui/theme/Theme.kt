@@ -261,6 +261,7 @@ val unspecified_scheme = ColorFamily(
 fun FFSensitivitiesTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = false,
+    contrastTheme: Boolean = false,
     contrastLevel: ContrastLevel = ContrastLevel.None,
     content: @Composable () -> Unit
 ) {
@@ -271,18 +272,26 @@ fun FFSensitivitiesTheme(
             else dynamicLightColorScheme(context)
         }
         darkTheme -> {
-            when (contrastLevel) {
+            when (contrastTheme) {
+                true -> highContrastDarkColorScheme
+                false -> darkScheme
+            }
+            /*when (contrastLevel) {
                 ContrastLevel.None -> darkScheme
                 ContrastLevel.Medium -> mediumContrastDarkColorScheme
                 ContrastLevel.High -> highContrastDarkColorScheme
-            }
+            }*/
         }
         else -> {
-            when (contrastLevel) {
+            when (contrastTheme) {
+                true -> highContrastLightColorScheme
+                false -> lightScheme
+            }
+            /*when (contrastLevel) {
                 ContrastLevel.None -> lightScheme
                 ContrastLevel.Medium -> mediumContrastLightColorScheme
                 ContrastLevel.High -> highContrastLightColorScheme
-            }
+            }*/
         }
     }
 
