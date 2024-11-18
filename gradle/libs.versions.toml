@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.1"
+agp = "8.7.2"
 browser = "1.8.0"
 coilCompose = "2.2.2"
 firebaseBom = "33.4.0"

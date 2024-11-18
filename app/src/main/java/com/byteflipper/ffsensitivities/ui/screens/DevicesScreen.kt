@@ -1,14 +1,19 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.OutlinedCard
@@ -19,10 +24,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
@@ -53,8 +61,7 @@ fun DevicesScreen(
                     ShimmerLazyItem()
                 }
             }
-        }
-        is UiState.Success -> {
+        } is UiState.Success -> {
             val devices = (uiState as UiState.Success<List<DeviceModel>>).data
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
@@ -65,13 +72,50 @@ fun DevicesScreen(
                     DevicesCard(device, navController)
                 }
             }
-        }
-        is UiState.Error -> {
+        } is UiState.NoInternet -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(text = "Отсутствует интернет-соединение")
+            }
+        } is UiState.Error -> {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(text = (uiState as UiState.Error).message)
+            }
+        }
+    }
+}
+
+@Composable
+fun NoInternetScreen(viewModel: DeviceViewModel = viewModel()) {
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(14.dp, 8.dp, 14.dp, 8.dp),
+        shape = ShapeDefaults.Large,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            val icon: Painter = painterResource(id = R.drawable.no_internet)
+
+            Image(
+                painter = icon,
+                contentDescription = "App Icon",
+                modifier = Modifier.size(192.dp)
+            )
+            Spacer(modifier = Modifier.padding(8.dp))
+            Text(text = "Отсутствует интернет-соединение")
+            Spacer(modifier = Modifier.padding(8.dp))
+            Button(
+                onClick = { viewModel.retry() },
+            ) {
+                Text(text = "Повторить")
             }
         }
     }

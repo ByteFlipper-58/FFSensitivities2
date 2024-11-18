@@ -35,7 +35,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewDynamicColors
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
@@ -71,7 +70,8 @@ fun MainActivityContent() {
             "light" -> false
             else -> isSystemInDarkTheme()
         }
-        FFSensitivitiesTheme (
+
+        FFSensitivitiesTheme(
             darkTheme = darkTheme,
             dynamicColor = dynamicColorState,
             contrastTheme = contrastThemeState
@@ -86,6 +86,7 @@ fun MainActivityContent() {
             val currentRoute = navBackStackEntry?.destination?.route
 
             val hiddenRoutes = listOf("settings", "devices/{name}/{model}", "sensitivities/{manufacturer}/{model}/{device}")
+            val isBottomBarVisible = currentRoute !in hiddenRoutes
 
             Scaffold(
                 modifier = Modifier
@@ -96,7 +97,7 @@ fun MainActivityContent() {
                     TopAppBar(
                         title = { Text(toolbarTitle) },
                         navigationIcon = {
-                            if (currentRoute == "settings") {
+                            if (navController.previousBackStackEntry != null) {
                                 IconButton(onClick = { navController.popBackStack() }) {
                                     Icon(
                                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -119,12 +120,11 @@ fun MainActivityContent() {
                 },
                 bottomBar = {
                     AnimatedVisibility(
-                        visible = currentRoute !in hiddenRoutes,
+                        visible = true,
                         enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
                         exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
                     ) {
                         BottomNavigationBar(
-                            modifier = Modifier,
                             navController = navController,
                         )
                     }
@@ -140,7 +140,6 @@ fun MainActivityContent() {
     }
 }
 
-@PreviewDynamicColors
 @Composable
 @Preview(showBackground = true)
 fun MainActivityPreview() {

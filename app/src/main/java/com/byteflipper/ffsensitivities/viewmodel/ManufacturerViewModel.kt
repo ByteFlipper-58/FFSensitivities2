@@ -8,6 +8,7 @@ import androidx.compose.runtime.State
 import com.byteflipper.ffsensitivities.data.Manufacturer
 import com.byteflipper.ffsensitivities.service.RetrofitInstance
 import com.byteflipper.ffsensitivities.ui.UiState
+import java.net.UnknownHostException
 
 class ManufacturerViewModel : ViewModel() {
     private val _uiState = mutableStateOf<UiState<List<Manufacturer>>>(UiState.Loading)
@@ -23,9 +24,15 @@ class ManufacturerViewModel : ViewModel() {
             try {
                 val response = RetrofitInstance.api.getManufacturers()
                 _uiState.value = UiState.Success(response.manufacturers)
+            } catch (e: UnknownHostException) {
+                _uiState.value = UiState.NoInternet
             } catch (e: Exception) {
                 _uiState.value = UiState.Error("Ошибка загрузки данных: ${e.message}")
             }
         }
+    }
+
+    fun retry() {
+        fetchManufacturers()
     }
 }
