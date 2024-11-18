@@ -103,6 +103,11 @@
 
     <string name="change_language">Change language</string>
 
+    <!--- ErrorScreen -->
+    <string name="try_again">Try again</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="report_bug">Report bug</string>
+
     <string name="devices_list">Devices list</string>
     <string name="sensitivity">Sensitivity</string>
 </resources>

@@ -87,43 +87,12 @@ fun HomeScreen(
                 NoInternetScreen(viewModel)
             }
             is UiState.Error -> {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = uiState.message)
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun NoInternetScreen(viewModel: ManufacturerViewModel = viewModel()) {
-    ElevatedCard(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(14.dp, 8.dp, 14.dp, 8.dp),
-        shape = ShapeDefaults.Large,
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            val icon: Painter = painterResource(id = R.drawable.no_internet)
-
-            Image(
-                painter = icon,
-                contentDescription = "App Icon",
-                modifier = Modifier.size(192.dp)
-            )
-            Spacer(modifier = Modifier.padding(8.dp))
-            Text(text = "Отсутствует интернет-соединение")
-            Spacer(modifier = Modifier.padding(8.dp))
-            Button(
-                onClick = { viewModel.retry() },
-            ) {
-                Text(text = "Повторить")
+                ErrorScreen(
+                    errorMessage = uiState.message,
+                    onRetry = { viewModel.retry() },
+                    onCheckForUpdates = {  },
+                    onReportBug = {  }
+                )
             }
         }
     }
