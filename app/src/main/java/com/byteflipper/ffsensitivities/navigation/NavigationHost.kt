@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 import com.byteflipper.ffsensitivities.ui.screens.AboutScreen
 import com.byteflipper.ffsensitivities.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.ui.screens.SettingsScreen
+import kotlinx.serialization.Serializable
 
 @Composable
 fun NavigationHost(

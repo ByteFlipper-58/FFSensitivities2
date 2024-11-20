@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
@@ -41,7 +42,7 @@ import com.byteflipper.ffsensitivities.viewmodel.ManufacturerViewModel
 
 @Composable
 fun HomeScreen(
-    navController: NavController,
+    navController: NavHostController,
     viewModel: ManufacturerViewModel = viewModel(),
 ) {
     val uiState = viewModel.uiState.value
@@ -99,14 +100,15 @@ fun HomeScreen(
 }
 
 @Composable
-fun ManufacturerCard(manufacturer: Manufacturer, navController: NavController) {
+fun ManufacturerCard(manufacturer: Manufacturer, navController: NavHostController) {
     OutlinedCard (
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            navController.navigate("devices/${manufacturer.name}/${manufacturer.model}") {
+            navController.navigate(route = "devices/${manufacturer.name}/${manufacturer.model}",
+                ) {
                 launchSingleTop = true
                 restoreState = true
                 popUpTo(navController.graph.findStartDestination().id) {
