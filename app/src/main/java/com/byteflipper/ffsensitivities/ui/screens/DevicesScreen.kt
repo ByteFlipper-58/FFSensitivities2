@@ -96,7 +96,9 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
         onClick = {
             navController.navigate(
                 "sensitivities/${devices.manufacturer}/${devices.name}/${Gson().toJson(devices)}"
-            )
+            ) {
+                launchSingleTop = true
+            }
         }
     ) {
         Column(

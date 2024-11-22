@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
 
+    <!-- Welcome Screen -->
     <string name="welcome_screen_title">Welcome to our application!</string>
     <string name="welcome_screen_message">Hello Fighter! Everyone will find a setting for themselves here; otherwise, you can request them</string>
     <string name="privacy_policy_message" translatable="false">Continuing, you accept our Terms of Service and acknowledge that you have read our Privacy Policy.</string>
@@ -9,9 +11,11 @@
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Continue</string>
 
+    <!-- Links & Contacts -->
     <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
 
+    <!-- Review Settings -->
     <string name="review">General</string>
     <string name="collimator">Red Dot</string>
     <string name="x2_scope">x2 Scope</string>
@@ -24,12 +28,14 @@
     <string name="it_works">It Works?</string>
     <string name="thank_for_review">Thank you for your review!</string>
 
+    <!-- Request Sensitivity Settings -->
     <string name="dont_have_your_phone_model">Don\'t have your phone model? Make a request!</string>
     <string name="request_sensitivities_settings_title">Request sensitivities settings</string>
     <string name="request_sensitivities_settings_message">Information that will be sent to the developer</string>
     <string name="request_sensitivities_settings_message_two">Click the Request button to submit a settings request, this action cannot be undone.</string>
     <string name="request_sensitivities_settings_button">Request</string>
 
+    <!-- Utility Actions -->
     <string name="improve_translation">Improve Translation</string>
     <string name="copy">Copy</string>
     <string name="copied">Copied</string>
@@ -37,24 +43,28 @@
     <string name="copy_link">Copy Link</string>
     <string name="open_link">Open Link</string>
     <string name="error">Error</string>
+    <string name="back">Back</string>
+    <string name="app_icon">App icon</string>
 
-    <!--- About -->
-
+    <!-- About Section -->
     <string name="about_app">About App</string>
     <string name="home">Home</string>
     <string name="version">Version</string>
 
+    <!-- Source Code -->
     <string name="source_code_title">Source Code</string>
     <string name="source_code_subtitle">Source code of the application on GitHub</string>
     <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
 
+    <!-- Bug Report -->
     <string name="bug_report_title">Bug Report</string>
     <string name="bug_report_subtitle">Please describe the problem and send it to us</string>
 
-    <string name="not_installed_email_client">E-mail client not installed</string>
+    <!-- Rate the App -->
     <string name="rate_the_app_title">Rate the app</string>
     <string name="rate_the_app_subtitle">Rate the app on Google Play</string>
 
+    <!-- External Links -->
     <string name="website_title">ByteFlipper Website</string>
     <string name="website_subtitle">Our Website</string>
     <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
@@ -83,7 +93,7 @@
     <string name="other_apps_subtitle">Our Other Apps</string>
     <string name="other_apps_url" translatable="false">https://www.google.com/</string>
 
-    <!--- Settings -->
+    <!-- Settings -->
     <string name="settings">Settings</string>
     <string name="app_theme">App Theme</string>
     <string name="auto_theme">Auto theme</string>
@@ -103,11 +113,13 @@
 
     <string name="change_language">Change language</string>
 
-    <!--- ErrorScreen -->
+    <!-- Error Screen -->
     <string name="try_again">Try again</string>
     <string name="check_for_updates">Check for updates</string>
     <string name="report_bug">Report bug</string>
 
+    <!-- Devices List -->
+    <string name="devices">Devices</string>
     <string name="devices_list">Devices list</string>
     <string name="sensitivity">Sensitivity</string>
 </resources>

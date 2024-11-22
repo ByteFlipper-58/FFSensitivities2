@@ -34,6 +34,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -111,7 +112,7 @@ fun MainActivityContent() {
                                 IconButton(onClick = {
                                     navController.navigate("settings")
                                 }) {
-                                    Icon(Icons.Default.Settings, contentDescription = "Настройки")
+                                    Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
                                 }
                             }
                         },

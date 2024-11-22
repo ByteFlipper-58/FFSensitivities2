@@ -1,8 +1,6 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,8 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
@@ -26,16 +22,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
+import com.byteflipper.ffsensitivities.navigation.NavigationItem
 import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.ManufacturerViewModel
@@ -107,13 +104,10 @@ fun ManufacturerCard(manufacturer: Manufacturer, navController: NavHostControlle
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            navController.navigate(route = "devices/${manufacturer.name}/${manufacturer.model}",
-                ) {
+            navController.navigate(
+                "devices/${manufacturer.name}/${manufacturer.model}"
+            ) {
                 launchSingleTop = true
-                restoreState = true
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
             }
         }
     ) {
@@ -148,7 +142,7 @@ fun IconWithTextRow() {
         Spacer(modifier = Modifier.width(16.dp))
 
         Text(
-            text = "App Title",
+            text = stringResource(R.string.app_name),
             textAlign = TextAlign.Center,
         )
     }
