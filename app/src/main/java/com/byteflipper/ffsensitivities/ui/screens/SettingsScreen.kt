@@ -25,7 +25,8 @@ import me.zhanghai.compose.preference.twoTargetSwitchPreference
 @Composable
 @Preview(showBackground = true)
 fun SettingsScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onThemeChange: (String) -> Unit = {},
 ) {
     val context = LocalContext.current
     val preferencesManager = PreferencesManager(context)
@@ -75,6 +76,7 @@ fun SettingsScreen(
                 onClick = {
                     selectedTheme = "system"
                     preferencesManager.putString("theme", "system")
+                    onThemeChange(selectedTheme)
                 }
             )
 
@@ -86,6 +88,7 @@ fun SettingsScreen(
                 onClick = {
                     selectedTheme = "light"
                     preferencesManager.putString("theme", "light")
+                    onThemeChange(selectedTheme)
                 }
             )
 
@@ -97,6 +100,7 @@ fun SettingsScreen(
                 onClick = {
                     selectedTheme = "dark"
                     preferencesManager.putString("theme", "dark")
+                    onThemeChange(selectedTheme)
                 }
             )
 

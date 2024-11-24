@@ -22,8 +22,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.byteflipper.ffsensitivities.debug" />
-                  <option name="mobileSdkAppId" value="1:577931377282:android:8f6e8eb0b64d2c536c929b" />
+                  <option name="appId" value="com.byteflipper.ffsensitivities" />
+                  <option name="mobileSdkAppId" value="1:577931377282:android:fe8aaca76f8b5df06c929b" />
                   <option name="projectId" value="ffsensitivities" />
                   <option name="projectNumber" value="577931377282" />
                 </ConnectionSetting>

@@ -64,7 +64,7 @@ fun MainActivityContent() {
     ProvidePreferenceLocals {
         val dynamicColorState by rememberPreferenceState("dynamic_colors", false)
         val contrastThemeState by rememberPreferenceState("contrast_theme", false)
-        val selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
+        var selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
 
         val darkTheme = when (selectedTheme) {
             "dark" -> true
@@ -86,7 +86,7 @@ fun MainActivityContent() {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
 
-            val hiddenRoutes = listOf("settings", "devices/{name}/{model}", "sensitivities/{manufacturer}/{model}/{device}")
+            val hiddenRoutes = listOf("settings")
             val isBottomBarVisible = currentRoute !in hiddenRoutes
 
             Scaffold(
@@ -121,7 +121,7 @@ fun MainActivityContent() {
                 },
                 bottomBar = {
                     AnimatedVisibility(
-                        visible = true,
+                        visible = isBottomBarVisible,
                         enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
                         exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
                     ) {
@@ -134,7 +134,11 @@ fun MainActivityContent() {
                 NavigationHost(
                     navController = navController,
                     modifier = Modifier.padding(innerPadding),
-                    onTitleChange = { newTitle -> toolbarTitle = newTitle }
+                    onTitleChange = { newTitle -> toolbarTitle = newTitle },
+                    onThemeChange = { newTheme ->
+                        selectedTheme = newTheme
+                        preferencesManager.putString("theme", newTheme)
+                    }
                 )
             }
         }

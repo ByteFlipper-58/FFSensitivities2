@@ -1,38 +1,50 @@
 package com.byteflipper.ffsensitivities.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.State
 import com.byteflipper.ffsensitivities.data.Manufacturer
-import com.byteflipper.ffsensitivities.service.RetrofitInstance
+import com.byteflipper.ffsensitivities.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.ui.UiState
-import java.net.UnknownHostException
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
-class ManufacturerViewModel : ViewModel() {
-    private val _uiState = mutableStateOf<UiState<List<Manufacturer>>>(UiState.Loading)
-    val uiState: State<UiState<List<Manufacturer>>> = _uiState
+class ManufacturerViewModel(
+    private val repository: ManufacturerRepository
+) : ViewModel() {
+
+    private val _uiState = MutableStateFlow<UiState<List<Manufacturer>>>(UiState.Loading)
+    val uiState: StateFlow<UiState<List<Manufacturer>>> = _uiState
 
     init {
-        fetchManufacturers()
+        loadManufacturers()
     }
 
-    private fun fetchManufacturers() {
+    private fun loadManufacturers() {
         viewModelScope.launch {
-            _uiState.value = UiState.Loading
             try {
-                val response = RetrofitInstance.api.getManufacturers()
-                _uiState.value = UiState.Success(response.manufacturers)
-            } catch (e: UnknownHostException) {
-                _uiState.value = UiState.NoInternet
+                val manufacturersState = repository.fetchManufacturers()
+                _uiState.value = manufacturersState
             } catch (e: Exception) {
-                _uiState.value = UiState.Error("Ошибка загрузки данных: ${e.message}")
+                _uiState.value = UiState.NoInternet
             }
         }
     }
 
     fun retry() {
-        fetchManufacturers()
+        _uiState.value = UiState.Loading
+        loadManufacturers()
+    }
+
+    class Factory(private val repository: ManufacturerRepository) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(ManufacturerViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return ManufacturerViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
     }
 }

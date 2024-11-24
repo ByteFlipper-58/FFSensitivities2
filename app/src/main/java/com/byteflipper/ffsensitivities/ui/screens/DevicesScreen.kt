@@ -21,6 +21,7 @@ import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,25 +34,32 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.DeviceModel
+import com.byteflipper.ffsensitivities.repository.DeviceRepository
 import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.DeviceViewModel
 import com.google.gson.Gson
+import io.ktor.client.HttpClient
 
 @Composable
 fun DevicesScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     model: String?,
-    viewModel: DeviceViewModel = viewModel()
+    repository: DeviceRepository = DeviceRepository(HttpClient()),
 ) {
-    val uiState by viewModel.uiState
+    val viewModel: DeviceViewModel = viewModel(
+        factory = DeviceViewModel.DeviceViewModelFactory(repository)
+    )
+    val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(model) {
-        model?.let { viewModel.fetchDevices(it) }
+        model?.let {
+            viewModel.fetchDevices(it)
+        }
     }
 
-    when (uiState) {
+    when (val uiState = uiState) {
         is UiState.Loading -> {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),
@@ -62,7 +70,7 @@ fun DevicesScreen(
                     ShimmerLazyItem()
                 }
             }
-        } is UiState.Success -> {
+        } is UiState.Success<*> -> {
             val devices = (uiState as UiState.Success<List<DeviceModel>>).data
             LazyVerticalGrid(
                 columns = GridCells.Fixed(1),

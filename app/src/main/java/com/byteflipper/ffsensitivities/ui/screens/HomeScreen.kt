@@ -18,6 +18,7 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -33,16 +34,22 @@ import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
 import com.byteflipper.ffsensitivities.navigation.NavigationItem
+import com.byteflipper.ffsensitivities.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.ui.UiState
 import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.ManufacturerViewModel
+import io.ktor.client.HttpClient
 
 @Composable
 fun HomeScreen(
     navController: NavHostController,
-    viewModel: ManufacturerViewModel = viewModel(),
+    repository: ManufacturerRepository = ManufacturerRepository(HttpClient()),
 ) {
-    val uiState = viewModel.uiState.value
+    val viewModel: ManufacturerViewModel = viewModel(
+        factory = ManufacturerViewModel.Factory(repository)
+    )
+
+    val uiState = viewModel.uiState.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize()
@@ -57,7 +64,7 @@ fun HomeScreen(
             IconWithTextRow()
         }
 
-        when (uiState) {
+        when (val state = uiState.value) {
             is UiState.Loading -> {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
@@ -69,8 +76,8 @@ fun HomeScreen(
                     }
                 }
             }
-            is UiState.Success -> {
-                val manufacturers = uiState.data
+            is UiState.Success<*> -> {
+                val manufacturers = state.data as? List<Manufacturer> ?: emptyList()
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     modifier = Modifier.fillMaxWidth(),
@@ -86,7 +93,7 @@ fun HomeScreen(
             }
             is UiState.Error -> {
                 ErrorScreen(
-                    errorMessage = uiState.message,
+                    errorMessage = state.message,
                     onRetry = { viewModel.retry() },
                     onCheckForUpdates = {  },
                     onReportBug = {  }

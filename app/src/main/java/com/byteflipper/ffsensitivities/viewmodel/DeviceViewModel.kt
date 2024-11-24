@@ -1,37 +1,42 @@
 package com.byteflipper.ffsensitivities.viewmodel
 
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.data.DeviceModel
-import com.byteflipper.ffsensitivities.service.DevicesRetrofitInstance
+import com.byteflipper.ffsensitivities.repository.DeviceRepository
 import com.byteflipper.ffsensitivities.ui.UiState
+import com.byteflipper.ffsensitivities.data.DeviceModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.net.UnknownHostException
 
-class DeviceViewModel : ViewModel() {
-    private val _uiState = mutableStateOf<UiState<List<DeviceModel>>>(UiState.Loading)
-    val uiState: State<UiState<List<DeviceModel>>> = _uiState
+class DeviceViewModel(private val repository: DeviceRepository) : ViewModel() {
+
+    private val _uiState = MutableStateFlow<UiState<List<DeviceModel>>>(UiState.Loading)
+    val uiState: StateFlow<UiState<List<DeviceModel>>> = _uiState
 
     private var lastModel: String? = null
 
     fun fetchDevices(model: String) {
-        lastModel = model
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            try {
-                val response = DevicesRetrofitInstance.api.getDevicesForModel(model)
-                _uiState.value = UiState.Success(response.models)
-            } catch (e: UnknownHostException) {
-                _uiState.value = UiState.NoInternet
-            } catch (e: Exception) {
-                _uiState.value = UiState.Error("Ошибка загрузки данных: ${e.message}")
-            }
+            _uiState.value = repository.fetchDevices(model)
         }
     }
 
     fun retry() {
+        _uiState.value = UiState.Loading
         lastModel?.let { fetchDevices(it) }
+    }
+
+    class DeviceViewModelFactory(private val repository: DeviceRepository) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(DeviceViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return DeviceViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown ViewModel class")
+        }
     }
 }

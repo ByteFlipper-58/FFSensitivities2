@@ -34,7 +34,8 @@ import kotlinx.serialization.Serializable
 fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    onTitleChange: (String) -> Unit
+    onTitleChange: (String) -> Unit,
+    onThemeChange: (String) -> Unit,
 ) {
     NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
         composable(
@@ -59,7 +60,7 @@ fun NavigationHost(
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Down, tween(500)) }
         ) {
             onTitleChange(stringResource(R.string.settings))
-            SettingsScreen(modifier)
+            SettingsScreen(modifier, onThemeChange)
         }
         composable(
             "devices/{name}/{model}",

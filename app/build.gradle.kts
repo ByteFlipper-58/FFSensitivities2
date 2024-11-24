@@ -26,6 +26,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -44,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -74,9 +76,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("io.ktor:ktor-client-core:2.3.4")
+    implementation("io.ktor:ktor-client-cio:2.3.4")
 
 
     implementation(libs.coil.compose)
@@ -93,5 +97,4 @@ dependencies {
 
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
-
 }
