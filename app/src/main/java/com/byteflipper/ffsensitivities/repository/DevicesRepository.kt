@@ -1,5 +1,6 @@
 package com.byteflipper.ffsensitivities.repository
 
+import android.util.Log
 import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.data.ManufacturerWithModels
 import com.byteflipper.ffsensitivities.ui.UiState
@@ -17,7 +18,6 @@ class DeviceRepository(private val client: HttpClient) {
     suspend fun fetchDevices(model: String): UiState<List<DeviceModel>> {
         val url = "$baseUrl$model.json"
         return try {
-            // Получаем данные о устройствах для переданной модели
             val response: String = client.get(url) {
                 contentType(ContentType.Application.Json)
             }.body()
@@ -28,12 +28,13 @@ class DeviceRepository(private val client: HttpClient) {
             }.decodeFromString(ManufacturerWithModels.serializer(), response)
 
 
-            // Фильтруем и возвращаем только устройства
             UiState.Success(deviceData.models)
         } catch (e: IOException) {
             UiState.NoInternet
+            Log.e("DeviceRepository", "No internet connection", e)
         } catch (e: Exception) {
             UiState.Error(e.localizedMessage ?: "Неизвестная ошибка")
-        }
+            Log.e("DeviceRepository", "Error fetching devices", e)
+        } as UiState<List<DeviceModel>>
     }
 }

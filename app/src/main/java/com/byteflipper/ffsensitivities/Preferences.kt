@@ -50,3 +50,15 @@ class PreferencesManager(context: Context) {
         sharedPreferences.edit().clear().apply()
     }
 }
+
+fun saveRequestSentStatus(context: Context, status: Boolean) {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    val editor = sharedPreferences.edit()
+    editor.putBoolean("isRequestSent", status)
+    editor.apply()
+}
+
+fun getRequestSentStatus(context: Context): Boolean {
+    val sharedPreferences: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return sharedPreferences.getBoolean("isRequestSent", false)
+}
