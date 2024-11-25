@@ -62,3 +62,15 @@ fun getRequestSentStatus(context: Context): Boolean {
     val sharedPreferences: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
     return sharedPreferences.getBoolean("isRequestSent", false)
 }
+
+fun isFirstLaunch(context: Context): Boolean {
+    val sharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return sharedPreferences.getBoolean("is_first_launch", true)
+}
+
+fun setFirstLaunchCompleted(context: Context) {
+    val sharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    sharedPreferences.edit()
+        .putBoolean("is_first_launch", false)
+        .apply()
+}

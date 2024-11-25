@@ -1,0 +1,125 @@
+{
+    "manufacturer": "Tecno",
+    "models": [
+      {
+        "manufacturer": "Tecno",
+        "name": "Spark 8",
+        "settings_source_url": "",
+        "dpi": 550,
+        "fire_button": 50,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 95,
+          "x2_scope": 100,
+          "x4_scope": 42,
+          "sniper_scope": 96,
+          "free_review": 100
+        }
+      },
+      {
+        "manufacturer": "Tecno",
+        "name": "Spark 7 Pro",
+        "settings_source_url": "",
+        "dpi": 700,
+        "fire_button": 44,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 100,
+          "x2_scope": 95,
+          "x4_scope": 85,
+          "sniper_scope": 60,
+          "free_review": 100
+        }
+      },
+      {
+        "manufacturer": "Tecno",
+        "name": "Spark 7",
+        "settings_source_url": "",
+        "dpi": 490,
+        "fire_button": 49,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 55,
+          "x2_scope": 90,
+          "x4_scope": 50,
+          "sniper_scope": 14,
+          "free_review": 57
+        }
+      },
+      {
+        "manufacturer": "Tecno",
+        "name": "Spark 6 GO",
+        "settings_source_url": "",
+        "dpi": 540,
+        "fire_button": 42,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 85,
+          "x2_scope": 32,
+          "x4_scope": 100,
+          "sniper_scope": 100,
+          "free_review": 100
+        }
+      },
+        {
+        "manufacturer": "Tecno",
+        "name": "Pova 6 Neo",
+        "settings_source_url": "",
+        "dpi": 480,
+        "fire_button": 54,
+        "sensitivities": {
+          "review": 185,
+          "collimator": 170,
+          "x2_scope": 190,
+          "x4_scope": 190,
+          "sniper_scope": 156,
+          "free_review": 200
+        }
+        },
+      {
+        "manufacturer": "Tecno",
+        "name": "Pova 5 Pro",
+        "settings_source_url": "",
+        "dpi": 390,
+        "fire_button": 54,
+        "sensitivities": {
+          "review": 173,
+          "collimator": 81,
+          "x2_scope": 144,
+          "x4_scope": 144,
+          "sniper_scope": 120,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Tecno",
+        "name": "Pova 5",
+        "settings_source_url": "",
+        "dpi": 392,
+        "fire_button": 40,
+        "sensitivities": {
+          "review": 200,
+          "collimator": 184,
+          "x2_scope": 175,
+          "x4_scope": 181,
+          "sniper_scope": 149,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Tecno",
+        "name": "Pova Neo 2",
+        "settings_source_url": "",
+        "dpi": 440,
+        "fire_button": 64,
+        "sensitivities": {
+          "review": 100,
+          "collimator": 100,
+          "x2_scope": 100,
+          "x4_scope": 100,
+          "sniper_scope": 100,
+          "free_review": 100
+        }
+      }
+    ]
+}

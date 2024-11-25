@@ -1,0 +1,533 @@
+{
+    "manufacturer": "Motorola",
+    "models": [
+    {
+        "__id__": "5FZJ4JQZLJz7tbZ3w2ak",
+        "manufacturer": "Motorola",
+        "name": "G8 Power",
+        "settings_source_url": "",
+        "dpi": 640,
+        "fire_button": 43,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 88,
+            "x2_scope": 95,
+            "x4_scope": 90,
+            "sniper_scope": 54,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "7HBmPd5iiQYEhugQHlmd",
+        "manufacturer": "Motorola",
+        "name": "E5 Play",
+        "settings_source_url": "",
+        "dpi": 574,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 88,
+            "x2_scope": 94,
+            "x4_scope": 97,
+            "sniper_scope": 44,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "8vrl4ApGGLx5oV0oEq0q",
+        "manufacturer": "Motorola",
+        "name": "E4",
+        "settings_source_url": "",
+        "dpi": 550,
+        "fire_button": 43,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 91,
+            "x2_scope": 95,
+            "x4_scope": 92,
+            "sniper_scope": 44,
+            "free_review": 43
+        }
+    },
+    {
+        "__id__": "9yLS4yYgO1bq3env3wvR",
+        "manufacturer": "Motorola",
+        "name": "G5 Play",
+        "settings_source_url": "",
+        "dpi": 501,
+        "fire_button": 52,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 89,
+            "x2_scope": 99,
+            "x4_scope": 90,
+            "sniper_scope": 55,
+            "free_review": 41
+        }
+    },
+    {
+        "__id__": "BdzT0Qbq5zB6JvDLkh7F",
+        "manufacturer": "Motorola",
+        "name": "Z3 Play",
+        "settings_source_url": "",
+        "dpi": 512,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 91,
+            "x2_scope": 97,
+            "x4_scope": 96,
+            "sniper_scope": 46,
+            "free_review": 50
+        }
+    },
+    {
+        "__id__": "CBpLNRT3x8PlXNcBIMV2",
+        "manufacturer": "Motorola",
+        "name": "G8 Play",
+        "settings_source_url": "",
+        "dpi": 478,
+        "fire_button": 46,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 95,
+            "x2_scope": 100,
+            "x4_scope": 99,
+            "sniper_scope": 18,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "EpGIftEhgvqgRglcjOQL",
+        "manufacturer": "Motorola",
+        "name": "G7 Power",
+        "settings_source_url": "",
+        "dpi": 620,
+        "fire_button": 43,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 97,
+            "x2_scope": 96,
+            "x4_scope": 90,
+            "sniper_scope": 31,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "FBhIGvtzWLq9Nj45Mrjt",
+        "manufacturer": "Motorola",
+        "name": "X",
+        "settings_source_url": "",
+        "dpi": 509,
+        "fire_button": 53,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 92,
+            "x2_scope": 91,
+            "x4_scope": 100,
+            "sniper_scope": 56,
+            "free_review": 46
+        }
+    },
+    {
+        "__id__": "GCpSykt30XYUq1tMOc37",
+        "manufacturer": "Motorola",
+        "name": "One Action",
+        "settings_source_url": "",
+        "dpi": 527,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 94,
+            "x2_scope": 94,
+            "x4_scope": 96,
+            "sniper_scope": 23,
+            "free_review": 45
+        }
+    },
+    {
+        "__id__": "GjvDHs0WPsc7Ss2GFRab",
+        "manufacturer": "Motorola",
+        "name": "G5",
+        "settings_source_url": "",
+        "dpi": 663,
+        "fire_button": 52,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 98,
+            "x2_scope": 94,
+            "x4_scope": 95,
+            "sniper_scope": 55,
+            "free_review": 34
+        }
+    },
+    {
+        "__id__": "HzzVB7mDY3cDLHnnamaB",
+        "manufacturer": "Motorola",
+        "name": "E4 Plus",
+        "settings_source_url": "",
+        "dpi": 580,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 89,
+            "x2_scope": 97,
+            "x4_scope": 94,
+            "sniper_scope": 57,
+            "free_review": 49
+        }
+    },
+    {
+        "__id__": "JgCuWlmMq2eENeIjpWMM",
+        "manufacturer": "Motorola",
+        "name": "G30",
+        "settings_source_url": "",
+        "dpi": 626,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 91,
+            "x2_scope": 98,
+            "x4_scope": 93,
+            "sniper_scope": 36,
+            "free_review": 48
+        }
+    },
+    {
+        "__id__": "Kp9a05uJcUCUaSdTWj95",
+        "manufacturer": "Motorola",
+        "name": "E6 Play",
+        "settings_source_url": "",
+        "dpi": 476,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 88,
+            "x2_scope": 96,
+            "x4_scope": 96,
+            "sniper_scope": 28,
+            "free_review": 51
+        }
+    },
+    {
+        "__id__": "Spe4cjpgRwWus4FUBvvt",
+        "manufacturer": "Motorola",
+        "name": "G4",
+        "settings_source_url": "",
+        "dpi": 668,
+        "fire_button": 41,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 96,
+            "x2_scope": 91,
+            "x4_scope": 90,
+            "sniper_scope": 49,
+            "free_review": 42
+        }
+    },
+    {
+        "__id__": "TS0dGw1wQJjdfKD7hbkR",
+        "manufacturer": "Motorola",
+        "name": "G8 Normal",
+        "settings_source_url": "",
+        "dpi": 595,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 94,
+            "x2_scope": 94,
+            "x4_scope": 96,
+            "sniper_scope": 19,
+            "free_review": 43
+        }
+    },
+    {
+        "__id__": "U0rPI2Zbi0umjOPyyXDD",
+        "manufacturer": "Motorola",
+        "name": "G8 Plus",
+        "settings_source_url": "",
+        "dpi": 670,
+        "fire_button": 49,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 91,
+            "x2_scope": 92,
+            "x4_scope": 97,
+            "sniper_scope": 26,
+            "free_review": 47
+        }
+    },
+    {
+        "__id__": "UiqQiwQL7JUYfTJsYDfK",
+        "manufacturer": "Motorola",
+        "name": "G5 Plus",
+        "settings_source_url": "",
+        "dpi": 571,
+        "fire_button": 43,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 89,
+            "x2_scope": 96,
+            "x4_scope": 96,
+            "sniper_scope": 47,
+            "free_review": 41
+        }
+    },
+    {
+        "__id__": "UmAPftr74YhscoFHHyTV",
+        "manufacturer": "Motorola",
+        "name": "E5 Plus",
+        "settings_source_url": "",
+        "dpi": 671,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 93,
+            "x2_scope": 97,
+            "x4_scope": 91,
+            "sniper_scope": 46,
+            "free_review": 30
+        }
+    },
+    {
+        "__id__": "UokABGssz6Exn3wRkAeu",
+        "manufacturer": "Motorola",
+        "name": "G6 Play",
+        "settings_source_url": "",
+        "dpi": 558,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 97,
+            "x2_scope": 90,
+            "x4_scope": 93,
+            "sniper_scope": 21,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "W3vjnDmzdALNOtjDwlO2",
+        "manufacturer": "Motorola",
+        "name": "3",
+        "settings_source_url": "",
+        "dpi": 526,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 96,
+            "x2_scope": 96,
+            "x4_scope": 98,
+            "sniper_scope": 48,
+            "free_review": 35
+        }
+    },
+    {
+        "__id__": "XURxhIGkyr5evLMYhgNh",
+        "manufacturer": "Motorola",
+        "name": "G7 Play",
+        "settings_source_url": "",
+        "dpi": 589,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 96,
+            "x2_scope": 97,
+            "x4_scope": 98,
+            "sniper_scope": 57,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "XotSYDjSriciClDiP04S",
+        "manufacturer": "Motorola",
+        "name": "G9 Plus",
+        "settings_source_url": "",
+        "dpi": 461,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 90,
+            "x2_scope": 91,
+            "x4_scope": 94,
+            "sniper_scope": 42,
+            "free_review": 33
+        }
+    },
+    {
+        "__id__": "d7p7miAGi7gyBWcS7Bde",
+        "manufacturer": "Motorola",
+        "name": "G5s",
+        "settings_source_url": "",
+        "dpi": 679,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 96,
+            "x2_scope": 98,
+            "x4_scope": 92,
+            "sniper_scope": 31,
+            "free_review": 54
+        }
+    },
+    {
+        "__id__": "dNexRasNecTAiPfi5C4s",
+        "manufacturer": "Motorola",
+        "name": "G4 Plus",
+        "settings_source_url": "",
+        "dpi": 624,
+        "fire_button": 45,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 97,
+            "x2_scope": 90,
+            "x4_scope": 100,
+            "sniper_scope": 32,
+            "free_review": 42
+        }
+    },
+    {
+        "__id__": "fjvtrFNWPHLGeUJOOjsw",
+        "manufacturer": "Motorola",
+        "name": "E5",
+        "settings_source_url": "",
+        "dpi": 560,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 96,
+            "x2_scope": 100,
+            "x4_scope": 97,
+            "sniper_scope": 37,
+            "free_review": 45
+        }
+    },
+    {
+        "__id__": "iWn1e4cfvjaGWmhMKnJr",
+        "manufacturer": "Motorola",
+        "name": "G7",
+        "settings_source_url": "",
+        "dpi": 519,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 97,
+            "x2_scope": 90,
+            "x4_scope": 91,
+            "sniper_scope": 32,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "jEw3iLXd5Fkz0q627oq3",
+        "manufacturer": "Motorola",
+        "name": "G31",
+        "settings_source_url": "",
+        "dpi": 627,
+        "fire_button": 49,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 90,
+            "x2_scope": 99,
+            "x4_scope": 97,
+            "sniper_scope": 23,
+            "free_review": 54
+        }
+    },
+    {
+        "__id__": "lkXVpTd1ywLSp793Wxfr",
+        "manufacturer": "Motorola",
+        "name": "E6 Plus",
+        "settings_source_url": "",
+        "dpi": 511,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 90,
+            "x2_scope": 96,
+            "x4_scope": 93,
+            "sniper_scope": 28,
+            "free_review": 51
+        }
+    },
+    {
+        "__id__": "mToel7z7Yrk8JmOYVAjH",
+        "manufacturer": "Motorola",
+        "name": "G8 Power Lite",
+        "settings_source_url": "",
+        "dpi": 506,
+        "fire_button": 39,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 92,
+            "x2_scope": 93,
+            "x4_scope": 90,
+            "sniper_scope": 52,
+            "free_review": 45
+        }
+    },
+    {
+        "__id__": "qAzPAOACP2wH6XsgXHtT",
+        "manufacturer": "Motorola",
+        "name": "G6",
+        "settings_source_url": "",
+        "dpi": 647,
+        "fire_button": 43,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 95,
+            "x2_scope": 99,
+            "x4_scope": 94,
+            "sniper_scope": 18,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "uWDpdJhaaoVMRcFDVL9Q",
+        "manufacturer": "Motorola",
+        "name": "One Fusion",
+        "settings_source_url": "",
+        "dpi": 590,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 89,
+            "x2_scope": 95,
+            "x4_scope": 95,
+            "sniper_scope": 39,
+            "free_review": 54
+        }
+    },
+    {
+        "__id__": "wKmSbZYJEb4bBKEdVZwF",
+        "manufacturer": "Motorola",
+        "name": "One Macro",
+        "settings_source_url": "",
+        "dpi": 582,
+        "fire_button": 46,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 89,
+            "x2_scope": 95,
+            "x4_scope": 96,
+            "sniper_scope": 20,
+            "free_review": 50
+        }
+    },
+    {
+        "__id__": "yD1YrJ0T6xA0jKpjVYfU",
+        "manufacturer": "Motorola",
+        "name": "G7 Plus",
+        "settings_source_url": "",
+        "dpi": 548,
+        "fire_button": 52,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 90,
+            "x2_scope": 92,
+            "x4_scope": 98,
+            "sniper_scope": 31,
+            "free_review": 48
+        }
+    }
+]
+}

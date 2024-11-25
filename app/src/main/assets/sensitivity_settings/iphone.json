@@ -1,0 +1,396 @@
+{
+  "manufacturer": "iPhone",
+  "models": [
+    {
+      "manufacturer": "iPhone",
+      "name": "14 Pro Max",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 53,
+      "sensitivities": {
+          "review": 181,
+          "collimator": 127,
+          "x2_scope": 125,
+          "x4_scope": 184,
+          "sniper_scope": 200,
+          "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "14 Pro",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 51,
+      "sensitivities": {
+          "review": 151,
+          "collimator": 120,
+          "x2_scope": 121,
+          "x4_scope": 180,
+          "sniper_scope": 200,
+          "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "13 Pro Max",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 58,
+      "sensitivities": {
+        "review": 193,
+        "collimator": 64,
+        "x2_scope": 169,
+        "x4_scope": 198,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "13 Pro",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 40,
+      "sensitivities": {
+        "review": 199,
+        "collimator": 118,
+        "x2_scope": 100,
+        "x4_scope": 146,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "13 Mini",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 56,
+      "sensitivities": {
+        "review": 159,
+        "collimator": 133,
+        "x2_scope": 197,
+        "x4_scope": 185,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "13",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 58,
+      "sensitivities": {
+        "review": 157,
+        "collimator": 194,
+        "x2_scope": 149,
+        "x4_scope": 156,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "12 Pro Max",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 37,
+      "sensitivities": {
+        "review": 177,
+        "collimator": 120,
+        "x2_scope": 133,
+        "x4_scope": 138,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "12 Pro",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 59,
+      "sensitivities": {
+        "review": 153,
+        "collimator": 169,
+        "x2_scope": 105,
+        "x4_scope": 156,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "12 Mini",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 58,
+      "sensitivities": {
+        "review": 175,
+        "collimator": 142,
+        "x2_scope": 100,
+        "x4_scope": 188,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "12",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 61,
+      "sensitivities": {
+        "review": 191,
+        "collimator": 94,
+        "x2_scope": 152,
+        "x4_scope": 137,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "11 Pro Max",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 57,
+      "sensitivities": {
+        "review": 175,
+        "collimator": 200,
+        "x2_scope": 142,
+        "x4_scope": 142,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "11 Pro",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 50,
+      "sensitivities": {
+        "review": 178,
+        "collimator": 140,
+        "x2_scope": 101,
+        "x4_scope": 162,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "11",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 57,
+      "sensitivities": {
+        "review": 151,
+        "collimator": 126,
+        "x2_scope": 190,
+        "x4_scope": 165,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "XS Max",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 57,
+      "sensitivities": {
+        "review": 160,
+        "collimator": 141,
+        "x2_scope": 164,
+        "x4_scope": 157,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "XS",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 62,
+      "sensitivities": {
+        "review": 185,
+        "collimator": 123,
+        "x2_scope": 115,
+        "x4_scope": 151,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "XR",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 47,
+      "sensitivities": {
+        "review": 157,
+        "collimator": 147,
+        "x2_scope": 185,
+        "x4_scope": 159,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "X",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 51,
+      "sensitivities": {
+        "review": 190,
+        "collimator": 94,
+        "x2_scope": 142,
+        "x4_scope": 137,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "8 Plus",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 43,
+      "sensitivities": {
+        "review": 180,
+        "collimator": 199,
+        "x2_scope": 174,
+        "x4_scope": 194,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "8",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 53,
+      "sensitivities": {
+        "review": 159,
+        "collimator": 139,
+        "x2_scope": 159,
+        "x4_scope": 176,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "7 Plus",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 54,
+      "sensitivities": {
+        "review": 195,
+        "collimator": 194,
+        "x2_scope": 149,
+        "x4_scope": 186,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "7",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 55,
+      "sensitivities": {
+        "review": 151,
+        "collimator": 158,
+        "x2_scope": 187,
+        "x4_scope": 143,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "6s Plus",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 64,
+      "sensitivities": {
+        "review": 194,
+        "collimator": 90,
+        "x2_scope": 150,
+        "x4_scope": 152,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "6s",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 45,
+      "sensitivities": {
+        "review": 190,
+        "collimator": 165,
+        "x2_scope": 172,
+        "x4_scope": 9132,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "6",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 52,
+      "sensitivities": {
+        "review": 199,
+        "collimator": 121,
+        "x2_scope": 105,
+        "x4_scope": 175,
+        "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "iPhone",
+      "name": "5c",
+      "settings_source_url": null,
+      "dpi": 0,
+      "fire_button": 50,
+      "sensitivities": {
+        "review": 95,
+        "collimator": 90,
+        "x2_scope": 93,
+        "x4_scope": 90,
+        "sniper_scope": 26,
+        "free_review": 31
+      }
+    },
+    {
+      "__id__": "RNmpj2JgCdEvHARLlgkK",
+      "manufacturer": "iPhone",
+      "name": "5c",
+      "settings_source_url": "",
+      "dpi": 0,
+      "fire_button": 50,
+      "sensitivities": {
+        "review": 95,
+        "collimator": 90,
+        "x2_scope": 93,
+        "x4_scope": 90,
+        "sniper_scope": 26,
+        "free_review": 31
+      }
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+    "manufacturer": "Realme",
+    "models": [
+        {
+            "manufacturer": "Realme",
+            "name": "C53",
+            "settings_source_url": "",
+            "dpi": 0,
+            "fire_button": 48,
+            "sensitivities": {
+                "review": 155,
+                "collimator": 130,
+                "x2_scope": 145,
+                "x4_scope": 140,
+                "sniper_scope": 180,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Realme",
+            "name": "C35",
+            "settings_source_url": "",
+            "dpi": 0,
+            "fire_button": 56,
+            "sensitivities": {
+                "review": 152,
+                "collimator": 133,
+                "x2_scope": 200,
+                "x4_scope": 200,
+                "sniper_scope": 200,
+                "free_review": 0
+            }
+        },
+        {
+            "manufacturer": "Realme",
+            "name": "C25",
+            "settings_source_url": "",
+            "dpi": 644,
+            "fire_button": 46,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 180,
+                "x2_scope": 189,
+                "x4_scope": 182,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Realme",
+            "name": "C15",
+            "settings_source_url": "",
+            "dpi": 644,
+            "fire_button": 53,
+            "sensitivities": {
+                "review": 95,
+                "collimator": 90,
+                "x2_scope": 90,
+                "x4_scope": 93,
+                "sniper_scope": 51,
+                "free_review": 32
+            }
+        },
+    {
+        "__id__": "DMGIAnrrTbbdmPQjOREn",
+        "manufacturer": "Realme",
+        "name": "7i",
+        "settings_source_url": "",
+        "dpi": 624,
+        "fire_button": 41,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 94,
+            "x2_scope": 97,
+            "x4_scope": 98,
+            "sniper_scope": 20,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "NXufpNIY4zZuP4n3AZ0E",
+        "manufacturer": "Realme",
+        "name": "C11",
+        "settings_source_url": "",
+        "dpi": 480,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 90,
+            "x2_scope": 96,
+            "x4_scope": 90,
+            "sniper_scope": 59,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "P4LxiHjbSD1KFXKXQspa",
+        "manufacturer": "Realme",
+        "name": "6 Pro",
+        "settings_source_url": "",
+        "dpi": 601,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 93,
+            "x2_scope": 90,
+            "x4_scope": 99,
+            "sniper_scope": 42,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "PbIiwLx2MLHBtwHX5ztg",
+        "manufacturer": "Realme",
+        "name": "C11 2021",
+        "settings_source_url": "",
+        "dpi": 661,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 88,
+            "x2_scope": 92,
+            "x4_scope": 90,
+            "sniper_scope": 41,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "aHJ3Kdr1FbcJ5bQAU6vh",
+        "manufacturer": "Realme",
+        "name": "5i",
+        "settings_source_url": "",
+        "dpi": 629,
+        "fire_button": 39,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 92,
+            "x2_scope": 98,
+            "x4_scope": 98,
+            "sniper_scope": 51,
+            "free_review": 54
+        }
+    },
+        {
+            "__id__": "aHJ3Kdr1FbcJ5bQAU6vh",
+            "manufacturer": "Realme",
+            "name": "3i",
+            "settings_source_url": "",
+            "dpi": 528,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 190,
+                "collimator": 191,
+                "x2_scope": 185,
+                "x4_scope": 182,
+                "sniper_scope": 173,
+                "free_review": 139
+            }
+        },
+    {
+        "__id__": "aRI5RORQ4mYjrXLDiOGL",
+        "manufacturer": "Realme",
+        "name": "8",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 58,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 34,
+            "sniper_scope": 50,
+            "free_review": 50
+        }
+    },
+    {
+        "__id__": "hFLVzLSXYSRqiX2cgGgq",
+        "manufacturer": "Realme",
+        "name": "C3",
+        "settings_source_url": "",
+        "dpi": 575,
+        "fire_button": 52,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 88,
+            "x2_scope": 95,
+            "x4_scope": 90,
+            "sniper_scope": 46,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "lXqoNbfp9YzH6eTq8ncC",
+        "manufacturer": "Realme",
+        "name": "C21",
+        "settings_source_url": "",
+        "dpi": 636,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 92,
+            "x2_scope": 93,
+            "x4_scope": 98,
+            "sniper_scope": 41,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "vRRAhmiSOpQO0XQRKZPd",
+        "manufacturer": "Realme",
+        "name": "Narzo 50A",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 63,
+        "sensitivities": {
+            "review": 100,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 100,
+            "free_review": 100
+        }
+    }
+]
+}

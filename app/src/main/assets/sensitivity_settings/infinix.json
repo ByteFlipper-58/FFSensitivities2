@@ -1,0 +1,500 @@
+{
+    "manufacturer": "Infinix",
+    "models": [
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 20I",
+        "settings_source_url": "",
+        "dpi": 420,
+        "fire_button": 53,
+        "sensitivities": {
+          "review": 198,
+          "collimator": 161,
+          "x2_scope": 155,
+          "x4_scope": 150,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 12 Pro",
+        "settings_source_url": "",
+        "dpi": 431,
+        "fire_button": 42,
+        "sensitivities": {
+          "review": 192,
+          "collimator": 152,
+          "x2_scope": 174,
+          "x4_scope": 121,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 12",
+        "settings_source_url": "",
+        "dpi": 520,
+        "fire_button": 57,
+        "sensitivities": {
+          "review": 193,
+          "collimator": 173,
+          "x2_scope": 193,
+          "x4_scope": 197,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 11 Play",
+        "settings_source_url": "",
+        "dpi": 637,
+        "fire_button": 70,
+        "sensitivities": {
+          "review": 177,
+          "collimator": 165,
+          "x2_scope": 179,
+          "x4_scope": 176,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 11S",
+        "settings_source_url": "",
+        "dpi": 627,
+        "fire_button": 48,
+        "sensitivities": {
+          "review": 177,
+          "collimator": 154,
+          "x2_scope": 170,
+          "x4_scope": 152,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 11",
+        "settings_source_url": "",
+        "dpi": 740,
+        "fire_button": 63,
+        "sensitivities": {
+          "review": 177,
+          "collimator": 153,
+          "x2_scope": 189,
+          "x4_scope": 170,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 10T",
+        "settings_source_url": "",
+        "dpi": 775,
+        "fire_button": 43,
+        "sensitivities": {
+          "review": 191,
+          "collimator": 141,
+          "x2_scope": 147,
+          "x4_scope": 172,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 10i",
+        "settings_source_url": "",
+        "dpi": 827,
+        "fire_button": 50,
+        "sensitivities": {
+          "review": 197,
+          "collimator": 162,
+          "x2_scope": 164,
+          "x4_scope": 172,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 10S",
+        "settings_source_url": "",
+        "dpi": 663,
+        "fire_button": 41,
+        "sensitivities": {
+          "review": 177,
+          "collimator": 140,
+          "x2_scope": 180,
+          "x4_scope": 191,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 10 Lite",
+        "settings_source_url": "",
+        "dpi": 586,
+        "fire_button": 65,
+        "sensitivities": {
+          "review": 184,
+          "collimator": 196,
+          "x2_scope": 165,
+          "x4_scope": 180,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 10",
+        "settings_source_url": "",
+        "dpi": 647,
+        "fire_button": 43,
+        "sensitivities": {
+          "review": 195,
+          "collimator": 146,
+          "x2_scope": 145,
+          "x4_scope": 160,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 9 Pro",
+        "settings_source_url": "",
+        "dpi": 611,
+        "fire_button": 60,
+        "sensitivities": {
+          "review": 173,
+          "collimator": 133,
+          "x2_scope": 192,
+          "x4_scope": 192,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 9 Play",
+        "settings_source_url": "",
+        "dpi": 839,
+        "fire_button": 61,
+        "sensitivities": {
+          "review": 193,
+          "collimator": 162,
+          "x2_scope": 153,
+          "x4_scope": 162,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 9",
+        "settings_source_url": "",
+        "dpi": 503,
+        "fire_button": 47,
+        "sensitivities": {
+          "review": 197,
+          "collimator": 140,
+          "x2_scope": 143,
+          "x4_scope": 185,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 8 Lite",
+        "settings_source_url": "",
+        "dpi": 576,
+        "fire_button": 46,
+        "sensitivities": {
+          "review": 191,
+          "collimator": 131,
+          "x2_scope": 181,
+          "x4_scope": 192,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 7 Pro",
+        "settings_source_url": "",
+        "dpi": 547,
+        "fire_button": 49,
+        "sensitivities": {
+          "review": 178,
+          "collimator": 153,
+          "x2_scope": 135,
+          "x4_scope": 185,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 7",
+        "settings_source_url": "",
+        "dpi": 702,
+        "fire_button": 70,
+        "sensitivities": {
+          "review": 193,
+          "collimator": 190,
+          "x2_scope": 185,
+          "x4_scope": 168,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 6 Pro",
+        "settings_source_url": "",
+        "dpi": 684,
+        "fire_button": 32,
+        "sensitivities": {
+          "review": 200,
+          "collimator": 128,
+          "x2_scope": 177,
+          "x4_scope": 166,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 6X",
+        "settings_source_url": "",
+        "dpi": 704,
+        "fire_button": 49,
+        "sensitivities": {
+          "review": 185,
+          "collimator": 130,
+          "x2_scope": 134,
+          "x4_scope": 169,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 6",
+        "settings_source_url": "",
+        "dpi": 502,
+        "fire_button": 53,
+        "sensitivities": {
+          "review": 196,
+          "collimator": 183,
+          "x2_scope": 158,
+          "x4_scope": 194,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 5 Lite",
+        "settings_source_url": "",
+        "dpi": 496,
+        "fire_button": 67,
+        "sensitivities": {
+          "review": 191,
+          "collimator": 135,
+          "x2_scope": 173,
+          "x4_scope": 175,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Hot 5",
+        "settings_source_url": "",
+        "dpi": 509,
+        "fire_button": 56,
+        "sensitivities": {
+          "review": 189,
+          "collimator": 136,
+          "x2_scope": 175,
+          "x4_scope": 197,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Note 30 Pro",
+        "settings_source_url": "",
+        "dpi": 768,
+        "fire_button": 32,
+        "sensitivities": {
+          "review": 198,
+          "collimator": 177,
+          "x2_scope": 160,
+          "x4_scope": 191,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Note 30",
+        "settings_source_url": "",
+        "dpi": 748,
+        "fire_button": 36,
+        "sensitivities": {
+          "review": 192,
+          "collimator": 175,
+          "x2_scope": 161,
+          "x4_scope": 191,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Note 12",
+        "settings_source_url": "",
+        "dpi": 692,
+        "fire_button": 45,
+        "sensitivities": {
+          "review": 196,
+          "collimator": 192,
+          "x2_scope": 177,
+          "x4_scope": 162,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 7",
+        "settings_source_url": "",
+        "dpi": 521,
+        "fire_button": 57,
+        "sensitivities": {
+          "review": 195,
+          "collimator": 126,
+          "x2_scope": 200,
+          "x4_scope": 154,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 6",
+        "settings_source_url": "",
+        "dpi": 480,
+        "fire_button": 43,
+        "sensitivities": {
+          "review": 198,
+          "collimator": 160,
+          "x2_scope": 194,
+          "x4_scope": 161,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 5 Pro",
+        "settings_source_url": "",
+        "dpi": 604,
+        "fire_button": 58,
+        "sensitivities": {
+          "review": 199,
+          "collimator": 144,
+          "x2_scope": 157,
+          "x4_scope": 159,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 5",
+        "settings_source_url": "",
+        "dpi": 581,
+        "fire_button": 69,
+        "sensitivities": {
+          "review": 184,
+          "collimator": 147,
+          "x2_scope": 189,
+          "x4_scope": 152,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 4",
+        "settings_source_url": "",
+        "dpi": 580,
+        "fire_button": 63,
+        "sensitivities": {
+          "review": 186,
+          "collimator": 184,
+          "x2_scope": 185,
+          "x4_scope": 172,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 2 Pro",
+        "settings_source_url": "",
+        "dpi": 822,
+        "fire_button": 70,
+        "sensitivities": {
+          "review": 197,
+          "collimator": 142,
+          "x2_scope": 155,
+          "x4_scope": 168,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 2 HD",
+        "settings_source_url": "",
+        "dpi": 791,
+        "fire_button": 41,
+        "sensitivities": {
+          "review": 183,
+          "collimator": 151,
+          "x2_scope": 145,
+          "x4_scope": 160,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      },
+      {
+        "manufacturer": "Infinix",
+        "name": "Smart 2",
+        "settings_source_url": "",
+        "dpi": 641,
+        "fire_button": 39,
+        "sensitivities": {
+          "review": 189,
+          "collimator": 191,
+          "x2_scope": 139,
+          "x4_scope": 167,
+          "sniper_scope": 200,
+          "free_review": 200
+        }
+      }
+    ]
+}

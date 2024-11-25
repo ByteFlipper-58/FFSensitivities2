@@ -1,0 +1,100 @@
+{
+  "manufacturers": [
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Samsung",
+      "model": "samsung"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "iPhone",
+      "model": "iphone"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Xiaomi",
+      "model": "xiaomi"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Redmi",
+      "model": "redmi"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Huawei",
+      "model": "huawei"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Honor",
+      "model": "honor"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Oppo",
+      "model": "oppo"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Poco",
+      "model": "poco"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "LG",
+      "model": "lg"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "ZTE",
+      "model": "zte"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Vivo",
+      "model": "vivo"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Motorola",
+      "model": "motorola"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Realme",
+      "model": "realme"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "OnePlus",
+      "model": "oneplus"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Tecno",
+      "model": "tecno"
+    },
+    {
+      "showInProductionApp": true,
+      "isAvailable": false,
+      "name": "Infinix",
+      "model": "infinix"
+    }
+  ]
+}

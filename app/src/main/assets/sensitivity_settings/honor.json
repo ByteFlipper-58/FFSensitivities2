@@ -1,0 +1,134 @@
+{
+    "manufacturer": "Honor",
+    "models": [
+    {
+        "__id__": "6PnwsqTa22y536AacIIX",
+        "manufacturer": "Honor",
+        "name": "Play",
+        "settings_source_url": "",
+        "dpi": 611,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 97,
+            "x2_scope": 91,
+            "x4_scope": 91,
+            "sniper_scope": 55,
+            "free_review": 45
+        }
+    },
+    {
+        "__id__": "KhZ8zAJTVqUg8t72viG9",
+        "manufacturer": "Honor",
+        "name": "9A",
+        "settings_source_url": "",
+        "dpi": 637,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 90,
+            "x2_scope": 92,
+            "x4_scope": 90,
+            "sniper_scope": 30,
+            "free_review": 48
+        }
+    },
+    {
+        "__id__": "OjyJncuNtba94Os9diJ4",
+        "manufacturer": "Honor",
+        "name": "9X Lite",
+        "settings_source_url": "",
+        "dpi": 558,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 91,
+            "sniper_scope": 34,
+            "x2_scope": 91,
+            "x4_scope": 95,
+            "sniper_scope": 34,
+            "free_review": 50
+        }
+    },
+    {
+        "__id__": "WAdwDUPAAxRyGDjOWVIm",
+        "manufacturer": "Honor",
+        "name": "8A",
+        "settings_source_url": "",
+        "dpi": 678,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 96,
+            "x2_scope": 99,
+            "x4_scope": 98,
+            "sniper_scope": 28,
+            "free_review": 53
+        }
+    },
+    {
+        "__id__": "XlZMcLG0qSU46liVpZtp",
+        "manufacturer": "Honor",
+        "name": "9 Lite",
+        "settings_source_url": "",
+        "dpi": 497,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 94,
+            "x2_scope": 92,
+            "x4_scope": 100,
+            "sniper_scope": 23,
+            "free_review": 48
+        }
+    },
+    {
+        "__id__": "CQvfxOm7ybc3BHehQrVQ",
+        "manufacturer": "Honor",
+        "name": "8X",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 39,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 92,
+            "x2_scope": 100,
+            "x4_scope": 99,
+            "sniper_scope": 39,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "bgk7eiTuSNczwUSg0DMS",
+        "manufacturer": "Honor",
+        "name": "7X",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 98,
+            "x2_scope": 98,
+            "x4_scope": 96,
+            "sniper_scope": 29,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "wU6ug8cnRmVr4ly6Ng3d",
+        "manufacturer": "Honor",
+        "name": "10 Lite",
+        "settings_source_url": "",
+        "dpi": 420,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 100,
+            "x2_scope": 86,
+            "x4_scope": 90,
+            "sniper_scope": 65,
+            "free_review": 60
+        }
+    }
+]
+}

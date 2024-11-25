@@ -1,0 +1,275 @@
+{
+    "manufacturer": "Oppo",
+    "models": [
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X3 Pro",
+            "settings_source_url": "",
+            "dpi": 735,
+            "fire_button": 56,
+            "sensitivities": {
+                "review": 176,
+                "collimator": 148,
+                "x2_scope": 136,
+                "x4_scope": 185,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X3 Neo",
+            "settings_source_url": "",
+            "dpi": 668,
+            "fire_button": 49,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 191,
+                "x2_scope": 180,
+                "x4_scope": 178,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X2 Pro",
+            "settings_source_url": "",
+            "dpi": 772,
+            "fire_button": 56,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 175,
+                "x2_scope": 169,
+                "x4_scope": 186,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X2 Neo",
+            "settings_source_url": "",
+            "dpi": 629,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 176,
+                "x2_scope": 162,
+                "x4_scope": 194,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X2 Lite",
+            "settings_source_url": "",
+            "dpi": 464,
+            "fire_button": 57,
+            "sensitivities": {
+                "review": 173,
+                "collimator": 168,
+                "x2_scope": 183,
+                "x4_scope": 154,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X2",
+            "settings_source_url": "",
+            "dpi": 607,
+            "fire_button": 34,
+            "sensitivities": {
+                "review": 198,
+                "collimator": 174,
+                "x2_scope": 146,
+                "x4_scope": 173,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Find X",
+            "settings_source_url": "",
+            "dpi": 538,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 163,
+                "x2_scope": 146,
+                "x4_scope": 168,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "Reno 7",
+            "settings_source_url": "",
+            "dpi": 0,
+            "fire_button": 54,
+            "sensitivities": {
+                "review": 101,
+                "collimator": 115,
+                "x2_scope": 115,
+                "x4_scope": 100,
+                "sniper_scope": 55,
+                "free_review": 55
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A54",
+            "settings_source_url": "",
+            "dpi": 818,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 157,
+                "x2_scope": 164,
+                "x4_scope": 157,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A93",
+            "settings_source_url": "",
+            "dpi": 655,
+            "fire_button": 57,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 167,
+                "x2_scope": 183,
+                "x4_scope": 165,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A83",
+            "settings_source_url": "",
+            "dpi": 472,
+            "fire_button": 43,
+            "sensitivities": {
+                "review": 190,
+                "collimator": 137,
+                "x2_scope": 155,
+                "x4_scope": 153,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A73",
+            "settings_source_url": "",
+            "dpi": 496,
+            "fire_button": 31,
+            "sensitivities": {
+                "review": 185,
+                "collimator": 142,
+                "x2_scope": 166,
+                "x4_scope": 174,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A53",
+            "settings_source_url": "",
+            "dpi": 587,
+            "fire_button": 58,
+            "sensitivities": {
+                "review": 190,
+                "collimator": 154,
+                "x2_scope": 165,
+                "x4_scope": 160,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A92",
+            "settings_source_url": "",
+            "dpi": 474,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 184,
+                "collimator": 195,
+                "x2_scope": 143,
+                "x4_scope": 171,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A72",
+            "settings_source_url": "",
+            "dpi": 754,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 187,
+                "collimator": 171,
+                "x2_scope": 142,
+                "x4_scope": 180,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A52",
+            "settings_source_url": "",
+            "dpi": 507,
+            "fire_button": 68,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 142,
+                "x2_scope": 189,
+                "x4_scope": 155,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A91",
+            "settings_source_url": "",
+            "dpi": 490,
+            "fire_button": 57,
+            "sensitivities": {
+                "review": 175,
+                "collimator": 192,
+                "x2_scope": 180,
+                "x4_scope": 192,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Oppo",
+            "name": "A71",
+            "settings_source_url": "",
+            "dpi": 587,
+            "fire_button": 58,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 159,
+                "x2_scope": 133,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        }
+    ]
+}

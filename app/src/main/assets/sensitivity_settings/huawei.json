@@ -1,0 +1,421 @@
+{
+    "manufacturer": "Huawei",
+    "models": [
+    {
+        "__id__": "0lCKHl7PpRNJjo8NHbbI",
+        "manufacturer": "Huawei",
+        "name": "Nova 7",
+        "settings_source_url": "",
+        "dpi": 619,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 89,
+            "x2_scope": 97,
+            "x4_scope": 91,
+            "sniper_scope": 20,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "8A4zbRGQpaJpFfe1WzBI",
+        "manufacturer": "Huawei",
+        "name": "Y5",
+        "settings_source_url": "",
+        "dpi": 585,
+        "fire_button": 45,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 98,
+            "x2_scope": 90,
+            "x4_scope": 90,
+            "sniper_scope": 45,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "9m9jGskMEFQ3EMB2AsTy",
+        "manufacturer": "Huawei",
+        "name": "P40 Lite",
+        "settings_source_url": "",
+        "dpi": 579,
+        "fire_button": 45,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 97,
+            "x2_scope": 94,
+            "x4_scope": 96,
+            "sniper_scope": 57,
+            "free_review": 55
+        }
+    },
+    {
+        "__id__": "9qGcIHnO1cTVLc1aRxtc",
+        "manufacturer": "Huawei",
+        "name": "Y6p",
+        "settings_source_url": "",
+        "dpi": 679,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 90,
+            "x2_scope": 90,
+            "x4_scope": 96,
+            "sniper_scope": 47,
+            "free_review": 47
+        }
+    },
+    {
+        "__id__": "AgbOINdpUIgaZCPDvRBF",
+        "manufacturer": "Huawei",
+        "name": "Y7 2019",
+        "settings_source_url": "",
+        "dpi": 635,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 98,
+            "x2_scope": 93,
+            "x4_scope": 93,
+            "sniper_scope": 60,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "HshCsgzBx5IM8i5U7UvQ",
+        "manufacturer": "Huawei",
+        "name": "Y7 2018",
+        "settings_source_url": "",
+        "dpi": 458,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 93,
+            "x2_scope": 96,
+            "x4_scope": 95,
+            "sniper_scope": 54,
+            "free_review": 46
+        }
+    },
+    {
+        "__id__": "JTJLL5rgY5p8CgXyID8y",
+        "manufacturer": "Huawei",
+        "name": "Mate 20 Lite",
+        "settings_source_url": "",
+        "dpi": 561,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 88,
+            "x2_scope": 99,
+            "x4_scope": 90,
+            "sniper_scope": 34,
+            "free_review": 31
+        }
+    },
+    {
+        "__id__": "KmEjeIFRNARI1N5SF5LB",
+        "manufacturer": "Huawei",
+        "name": "P Smart 2018",
+        "settings_source_url": "",
+        "dpi": 633,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 94,
+            "x2_scope": 96,
+            "x4_scope": 93,
+            "sniper_scope": 19,
+            "free_review": 42
+        }
+    },
+    {
+        "__id__": "KzTU6SiWlOHipSyArpkX",
+        "manufacturer": "Huawei",
+        "name": "P30 Pro",
+        "settings_source_url": "",
+        "dpi": 648,
+        "fire_button": 46,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 91,
+            "x2_scope": 93,
+            "x4_scope": 91,
+            "sniper_scope": 27,
+            "free_review": 39
+        }
+    },
+    {
+        "__id__": "NTOjfiTNfGu8gHxGJvc4",
+        "manufacturer": "Huawei",
+        "name": "Nova 7i",
+        "settings_source_url": "",
+        "dpi": 663,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 90,
+            "x2_scope": 100,
+            "x4_scope": 96,
+            "sniper_scope": 30,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "QQ6cyVVcz1iI9Hj3ssJz",
+        "manufacturer": "Huawei",
+        "name": "P20 Pro",
+        "settings_source_url": "",
+        "dpi": 489,
+        "fire_button": 46,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 97,
+            "x2_scope": 90,
+            "x4_scope": 94,
+            "sniper_scope": 47,
+            "free_review": 45
+        }
+    },
+    {
+        "__id__": "QlhBt7KfMP4cvzIlP0wf",
+        "manufacturer": "Huawei",
+        "name": "Nova Y60",
+        "settings_source_url": "",
+        "dpi": 669,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 91,
+            "x2_scope": 95,
+            "x4_scope": 92,
+            "sniper_scope": 47,
+            "free_review": 46
+        }
+    },
+    {
+        "__id__": "VDUMtS98tdwPnYqOg3oG",
+        "manufacturer": "Huawei",
+        "name": "Y9s",
+        "settings_source_url": "",
+        "dpi": 580,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 91,
+            "x2_scope": 91,
+            "x4_scope": 99,
+            "sniper_scope": 35,
+            "free_review": 53
+        }
+    },
+    {
+        "__id__": "XtxEyzkjprYwFAsb5rWx",
+        "manufacturer": "Huawei",
+        "name": "Mate 10",
+        "settings_source_url": "",
+        "dpi": 566,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 88,
+            "x2_scope": 96,
+            "x4_scope": 96,
+            "sniper_scope": 37,
+            "free_review": 43
+        }
+    },
+    {
+        "__id__": "YIaorYSXP1ZfCZSO9eAR",
+        "manufacturer": "Huawei",
+        "name": "Smart 2019",
+        "settings_source_url": "",
+        "dpi": 642,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 96,
+            "x2_scope": 97,
+            "x4_scope": 95,
+            "sniper_scope": 54,
+            "free_review": 53
+        }
+    },
+    {
+        "__id__": "ZchVEWS0x9d92JpCZehf",
+        "manufacturer": "Huawei",
+        "name": "Y5 2019",
+        "settings_source_url": "",
+        "dpi": 523,
+        "fire_button": 52,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 96,
+            "x2_scope": 96,
+            "x4_scope": 100,
+            "sniper_scope": 57,
+            "free_review": 39
+        }
+    },
+    {
+        "__id__": "bfmQeB9eTeFvFtqaXpS3",
+        "manufacturer": "Huawei",
+        "name": "Mate 10 Lite",
+        "settings_source_url": "",
+        "dpi": 572,
+        "fire_button": 44,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 95,
+            "x2_scope": 96,
+            "x4_scope": 96,
+            "sniper_scope": 23,
+            "free_review": 52
+        }
+    },
+    {
+        "__id__": "coSbj2cN1Y37ZabNxYrm",
+        "manufacturer": "Huawei",
+        "name": "Y9 Prime",
+        "settings_source_url": "",
+        "dpi": 500,
+        "fire_button": 42,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 97,
+            "x2_scope": 94,
+            "x4_scope": 93,
+            "sniper_scope": 23,
+            "free_review": 32
+        }
+    },
+    {
+        "__id__": "eONSpo6PBruGKzh7OQOG",
+        "manufacturer": "Huawei",
+        "name": "Y9 2019",
+        "settings_source_url": "",
+        "dpi": 493,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 90,
+            "x2_scope": 90,
+            "x4_scope": 99,
+            "sniper_scope": 21,
+            "free_review": 36
+        }
+    },
+    {
+        "__id__": "ePwnNdqfANQlTxrTHnQP",
+        "manufacturer": "Huawei",
+        "name": "P20 Lite",
+        "settings_source_url": "",
+        "dpi": 471,
+        "fire_button": 53,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 94,
+            "x2_scope": 91,
+            "x4_scope": 93,
+            "sniper_scope": 20,
+            "free_review": 35
+        }
+    },
+    {
+        "__id__": "eVlt2VO1Ce7ZOZbBKhsv",
+        "manufacturer": "Huawei",
+        "name": "Nova 3",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 97,
+            "x2_scope": 92,
+            "x4_scope": 99,
+            "sniper_scope": 25,
+            "free_review": 38
+        }
+    },
+    {
+        "__id__": "fQjVubP5r9rSfGS7E8BR",
+        "manufacturer": "Huawei",
+        "name": "Y8s",
+        "settings_source_url": "",
+        "dpi": 457,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 98,
+            "x2_scope": 93,
+            "x4_scope": 93,
+            "sniper_scope": 30,
+            "free_review": 54
+        }
+    },
+    {
+        "__id__": "ghcihpMEFpi4fFJaz4Os",
+        "manufacturer": "Huawei",
+        "name": "P10 Plus",
+        "settings_source_url": "",
+        "dpi": 599,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 96,
+            "collimator": 97,
+            "x2_scope": 90,
+            "x4_scope": 98,
+            "sniper_scope": 41,
+            "free_review": 43
+        }
+    },
+    {
+        "__id__": "kZXO3LI7w0Nuv6MJsuAb",
+        "manufacturer": "Huawei",
+        "name": "Nova 3i",
+        "settings_source_url": "",
+        "dpi": 463,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 88,
+            "x2_scope": 98,
+            "x4_scope": 91,
+            "sniper_scope": 26,
+            "free_review": 40
+        }
+    },
+    {
+        "__id__": "w0LyaNewTjrTscgTn5ss",
+        "manufacturer": "Huawei",
+        "name": "Nova 3i",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 50,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 88,
+            "x2_scope": 98,
+            "x4_scope": 91,
+            "sniper_scope": 26,
+            "free_review": 40
+        }
+    },
+    {
+        "__id__": "ytYdmk8JvSB9yQsrUNiR",
+        "manufacturer": "Huawei",
+        "name": "Y6 2019",
+        "settings_source_url": "",
+        "dpi": 468,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 97,
+            "collimator": 98,
+            "x2_scope": 91,
+            "x4_scope": 94,
+            "sniper_scope": 41,
+            "free_review": 35
+        }
+    }
+]
+}

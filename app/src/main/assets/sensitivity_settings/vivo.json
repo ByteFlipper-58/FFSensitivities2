@@ -1,0 +1,133 @@
+{
+    "manufacturer": "Vivo",
+    "models": [
+    {
+        "__id__": "FlOkJPxf5Cpa0xKe3R8u",
+        "manufacturer": "Vivo",
+        "name": "Y33s",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 40,
+        "sensitivities": {
+            "review": 98,
+            "collimator": 88,
+            "x2_scope": 98,
+            "x4_scope": 91,
+            "sniper_scope": 28,
+            "free_review": 34
+        }
+    },
+    {
+        "__id__": "LV26SsMvRLCqLYW1HrCa",
+        "manufacturer": "Vivo",
+        "name": "Y91c",
+        "settings_source_url": "",
+        "dpi": 672,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 95,
+            "x2_scope": 95,
+            "x4_scope": 91,
+            "sniper_scope": 38,
+            "free_review": 55
+        }
+    },
+    {
+        "__id__": "N3Wd9JVYrd1AmkWqNqTi",
+        "manufacturer": "Vivo",
+        "name": "Y20",
+        "settings_source_url": "",
+        "dpi": 663,
+        "fire_button": 51,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 90,
+            "x2_scope": 91,
+            "x4_scope": 90,
+            "sniper_scope": 20,
+            "free_review": 37
+        }
+    },
+    {
+        "__id__": "dwWlgYzbT97HBaPxcfxV",
+        "manufacturer": "Vivo",
+        "name": "Y11s",
+        "settings_source_url": "",
+        "dpi": 510,
+        "fire_button": 47,
+        "sensitivities": {
+            "review": 95,
+            "collimator": 95,
+            "x2_scope": 96,
+            "x4_scope": 90,
+            "sniper_scope": 41,
+            "free_review": 36
+        }
+    },
+    {
+        "__id__": "gioyBO6RYPufH0lIKsqH",
+        "manufacturer": "Vivo",
+        "name": "V9",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 48,
+        "sensitivities": {
+            "review": 100,
+            "collimator": 100,
+            "x2_scope": 100,
+            "x4_scope": 100,
+            "sniper_scope": 100,
+            "free_review": 100
+        }
+    },
+    {
+        "__id__": "iCO2g6QWQ09jrBQ3HS7b",
+        "manufacturer": "Vivo",
+        "name": "V21e",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 45,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 91,
+            "x2_scope": 94,
+            "x4_scope": 98,
+            "free_review": 52,
+            "sniper_scope": 24
+        }
+    },
+    {
+        "__id__": "j8T3CBZ6Teo1skJSbxfg",
+        "manufacturer": "Vivo",
+        "name": "Y15s",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 45,
+        "sensitivities": {
+            "review": 94,
+            "collimator": 92,
+            "x2_scope": 91,
+            "x4_scope": 93,
+            "sniper_scope": 53,
+            "free_review": 35
+        }
+    },
+    {
+        "__id__": "zEZ66ijiZuYH6xibUJo8",
+        "manufacturer": "Vivo",
+        "name": "Y12s",
+        "settings_source_url": "",
+        "dpi": 0,
+        "fire_button": 39,
+        "sensitivities": {
+            "review": 93,
+            "collimator": 92,
+            "x2_scope": 93,
+            "x4_scope": 96,
+            "sniper_scope": 38,
+            "free_review": 37
+        }
+    }
+]
+}
