@@ -13,8 +13,8 @@ class SendSensitivitiesRequestMessageToBot {
 
     private val TAG = "SendMessageToGroupTask"
 
-    private val BOT_TOKEN = "sosijopu"
-    private val GROUP_CHAT_ID = "-585858585858"
+    private val BOT_TOKEN = BuildConfig.TELEGRAM_BOT_TOKEN
+    private val GROUP_CHAT_ID = BuildConfig.BYTEFLIPPER_CHANNEL_ID
 
     suspend fun sendMessageToGroup(message: String, onSuccess: () -> Unit): String {
         return withContext(Dispatchers.IO) {

@@ -4,6 +4,7 @@ plugins {
     id("kotlinx-serialization")
     id("kotlin-parcelize")
     id("com.google.gms.google-services")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -54,6 +55,20 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+
+    secrets {
+        // Change the properties file from the default "local.properties" in your root project
+        // to another properties file in your root project.
+        propertiesFileName = "secrets.properties"
+
+        // A properties file containing default secret values. This file can be checked in version
+        // control.
+        defaultPropertiesFileName = "local.defaults.properties"
+
+        // Configure which keys should be ignored by the plugin by providing regular expressions.
+        // "sdk.dir" is ignored by default.
+        ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
     }
 }
 
