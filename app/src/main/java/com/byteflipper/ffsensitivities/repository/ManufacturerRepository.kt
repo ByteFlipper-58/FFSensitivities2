@@ -12,7 +12,7 @@ import kotlinx.serialization.json.Json
 import java.io.IOException
 
 class ManufacturerRepository(private val client: HttpClient) {
-    private val url = "https://raw.githubusercontent.com/ByteFlipper-58/FFSensitivities/refs/heads/master/app/src/main/assets/sensitivity_settings/manufacturers.json"
+    private val url = "https://raw.githubusercontent.com/ByteFlipper-58/database/refs/heads/main/FFSensitivities/manufacturers.json"
 
     suspend fun fetchManufacturers(): UiState<List<Manufacturer>> {
         return try {

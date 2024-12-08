@@ -121,7 +121,7 @@
     <string name="report_bug">Report bug</string>
 
     <!-- Devices List -->
-    <string name="devices">Devices</string>
+    <string name="devices">Devices: </string>
     <string name="devices_list">Devices list</string>
     <string name="sensitivity">Sensitivity</string>
 </resources>

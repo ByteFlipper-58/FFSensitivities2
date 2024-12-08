@@ -1,6 +1,5 @@
 package com.byteflipper.ffsensitivities.ui.dialogs
 
-import android.content.Context
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
@@ -10,10 +9,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import com.byteflipper.ffsensitivities.PreferencesManager
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.SendSensitivitiesRequestMessageToBot
-import com.google.android.gms.common.util.SharedPreferencesUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

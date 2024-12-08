@@ -10,14 +10,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.toRoute
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ui.screens.AboutScreen
 import com.byteflipper.ffsensitivities.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.ui.screens.SettingsScreen
-import kotlinx.serialization.Serializable
 
 /**
  * Composable function that sets up the navigation graph for the application.
@@ -69,7 +67,7 @@ fun NavigationHost(
         ) { backStackEntry ->
             val name = backStackEntry.arguments?.getString("name").orEmpty()
             val model = backStackEntry.arguments?.getString("model").orEmpty()
-            onTitleChange(stringResource(R.string.devices_list) + " $name")
+            onTitleChange(stringResource(R.string.devices) + " $name")
             DevicesScreen(modifier, navController, model)
         }
         composable(

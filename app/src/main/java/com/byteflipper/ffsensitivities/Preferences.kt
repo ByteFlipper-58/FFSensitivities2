@@ -2,6 +2,7 @@ package com.byteflipper.ffsensitivities
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.byteflipper.ffsensitivities.ui.theme.ContrastLevel
 
 class PreferencesManager(context: Context) {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -73,4 +74,29 @@ fun setFirstLaunchCompleted(context: Context) {
     sharedPreferences.edit()
         .putBoolean("is_first_launch", false)
         .apply()
+}
+
+class ThemePreferences(context: Context) {
+    private val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+
+    fun saveDarkMode(isDarkMode: Boolean) {
+        prefs.edit().putBoolean("isDarkMode", isDarkMode).apply()
+    }
+
+    fun saveDynamicColor(isDynamicColor: Boolean) {
+        prefs.edit().putBoolean("isDynamicColor", isDynamicColor).apply()
+    }
+
+    fun saveContrastLevel(level: ContrastLevel) {
+        prefs.edit().putString("contrastLevel", level.name).apply()
+    }
+
+    fun getDarkMode(): Boolean =
+        prefs.getBoolean("isDarkMode", false)
+
+    fun getDynamicColor(): Boolean =
+        prefs.getBoolean("isDynamicColor", false)
+
+    fun getContrastLevel(): ContrastLevel =
+        ContrastLevel.valueOf(prefs.getString("contrastLevel", ContrastLevel.None.name) ?: ContrastLevel.None.name)
 }

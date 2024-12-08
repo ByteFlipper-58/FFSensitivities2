@@ -13,7 +13,7 @@ import kotlinx.serialization.json.Json
 import java.io.IOException
 
 class DeviceRepository(private val client: HttpClient) {
-    private val baseUrl = "https://raw.githubusercontent.com/ByteFlipper-58/FFSensitivities/refs/heads/master/app/src/main/assets/sensitivity_settings/"
+    private val baseUrl = "https://raw.githubusercontent.com/ByteFlipper-58/database/refs/heads/main/FFSensitivities/"
 
     suspend fun fetchDevices(model: String): UiState<List<DeviceModel>> {
         val url = "$baseUrl$model.json"
