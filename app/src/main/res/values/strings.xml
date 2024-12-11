@@ -117,11 +117,29 @@
 
     <!-- Error Screen -->
     <string name="try_again">Try again</string>
-    <string name="check_for_updates">Check for updates</string>
     <string name="report_bug">Report bug</string>
 
     <!-- Devices List -->
     <string name="devices">Devices: </string>
     <string name="devices_list">Devices list</string>
     <string name="sensitivity">Sensitivity</string>
+
+    <!-- Updates -->
+    <string name="update_available">An update is available</string>
+    <string name="update_now">Update now</string>
+    <string name="update_required">This update is required to use the app</string>
+    <string name="update_failed">Failed to download update</string>
+    <string name="update_later">Update later</string>
+    <string name="update_restart">Please restart the app to complete the update</string>
+    <string name="update_no_connection">No internet connection. Please try again later.</string>
+    <string name="update_checking">Checking for updates…</string>
+    <string name="update_downloading">Downloading update…</string>
+    <string name="update_installing">Installing update…</string>
+    <string name="update_error_occurred">An error occurred while updating. Please try again later.</string>
+    <string name="update_now_available">An update is available for download!</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="no_update_available">No updates available</string>
+    <string name="update_download_started">Update download started</string>
+    <string name="update_download_complete">Update download complete. Installation starting…</string>
+    <string name="update_not_needed">Your app is up to date</string>
 </resources>

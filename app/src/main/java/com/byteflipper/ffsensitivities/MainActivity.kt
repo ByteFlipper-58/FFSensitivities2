@@ -1,12 +1,9 @@
 package com.byteflipper.ffsensitivities
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -14,7 +11,10 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -22,80 +22,76 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
+import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
+import com.byteflipper.ffsensitivities.playcore.UpdateState
 import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory
-import com.google.android.play.core.appupdate.AppUpdateOptions
-import com.google.android.play.core.install.model.AppUpdateType
-import com.google.android.play.core.install.model.UpdateAvailability
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.launch
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.rememberPreferenceState
 
 class MainActivity : ComponentActivity() {
-
-    private val activityResultLauncher
-    = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult())
-    { result: ActivityResult ->
-        {
-            if (result.resultCode != RESULT_OK) {
-                Toast.makeText(this, "Update failed", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
+    private lateinit var appUpdateManager: AppUpdateManagerWrapper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        appUpdateManager = AppUpdateManagerWrapper(this)
+
         setContent {
-            val appUpdateManager = AppUpdateManagerFactory.create(applicationContext)
-            val appUpdateInfoTask = appUpdateManager.appUpdateInfo
-
-            appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
-                        appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)
-                    ) {
-                        appUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo,
-                            activityResultLauncher,
-                            AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build()
-                        )
-                    } else {
-                        Toast.makeText(this, "No update available", Toast.LENGTH_SHORT).show()
-                    }
-            }
-
-            MainActivityContent()
+            MainActivityContent(appUpdateManager)
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalCoroutinesApi::class)
 @Composable
-fun MainActivityContent() {
+fun MainActivityContent(
+    appUpdateManager: AppUpdateManagerWrapper
+) {
     val context = LocalContext.current
     val preferencesManager = PreferencesManager(context)
+    val coroutineScope = rememberCoroutineScope()
+
+    val updateState by appUpdateManager.updateState
+
+    // Проверка обновлений при старте
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            appUpdateManager.checkForUpdate()
+        }
+    }
 
     ProvidePreferenceLocals {
         val dynamicColorState by rememberPreferenceState("dynamic_colors", false)
         val contrastThemeState by rememberPreferenceState("contrast_theme", false)
-        var selectedTheme by remember { mutableStateOf(preferencesManager.readString("theme", "system") ?: "system") }
+        var selectedTheme by remember {
+            mutableStateOf(preferencesManager.readString("theme", "system") ?: "system")
+        }
 
         val darkTheme = when (selectedTheme) {
             "dark" -> true
@@ -108,9 +104,9 @@ fun MainActivityContent() {
             dynamicColor = dynamicColorState,
             contrastTheme = contrastThemeState
         ) {
-
             val navController = rememberNavController()
             var toolbarTitle by remember { mutableStateOf("Главный экран") }
+            var toolbarSubtitle by remember { mutableStateOf("") }
 
             val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
@@ -120,35 +116,78 @@ fun MainActivityContent() {
             val hiddenRoutes = listOf("settings")
             val isBottomBarVisible = currentRoute !in hiddenRoutes
 
+            LaunchedEffect(updateState) {
+                toolbarSubtitle = when (updateState) {
+                    UpdateState.CHECKING -> context.getString(R.string.update_checking)
+                    UpdateState.AVAILABLE -> context.getString(R.string.update_now_available)
+                    UpdateState.DOWNLOADING -> context.getString(R.string.update_downloading)
+                    UpdateState.DOWNLOADED -> context.getString(R.string.update_download_complete)
+                    UpdateState.INSTALLING -> context.getString(R.string.update_installing)
+                    UpdateState.INSTALLED -> ""
+                    UpdateState.FAILED -> context.getString(R.string.update_error_occurred)
+                }
+
+                when (updateState) {
+                    UpdateState.AVAILABLE -> {
+                        appUpdateManager.startUpdate()
+                    }
+                    else -> {}
+                }
+            }
+
             Scaffold(
                 modifier = Modifier
                     .fillMaxSize()
                     .nestedScroll(scrollBehavior.nestedScrollConnection),
 
                 topBar = {
-                    TopAppBar(
-                        title = { Text(toolbarTitle) },
-                        navigationIcon = {
-                            if (navController.previousBackStackEntry != null) {
-                                IconButton(onClick = { navController.popBackStack() }) {
-                                    Icon(
-                                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                        contentDescription = "Назад"
-                                    )
+                    Column {
+                        TopAppBar(
+                            title = {
+                                Column {
+                                    Text(toolbarTitle)
+                                    if (toolbarSubtitle.isNotEmpty()) {
+                                        Text(
+                                            text = toolbarSubtitle,
+                                            style = MaterialTheme.typography.bodySmall
+                                        )
+                                    }
                                 }
-                            }
-                        },
-                        actions = {
-                            if (currentRoute != "settings") {
-                                IconButton(onClick = {
-                                    navController.navigate("settings")
-                                }) {
-                                    Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
+                            },
+                            navigationIcon = {
+                                if (navController.previousBackStackEntry != null) {
+                                    IconButton(onClick = { navController.popBackStack() }) {
+                                        Icon(
+                                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                            contentDescription = "Назад"
+                                        )
+                                    }
                                 }
-                            }
-                        },
-                        scrollBehavior = scrollBehavior
-                    )
+                            },
+                            actions = {
+                                if (currentRoute != "settings") {
+                                    IconButton(onClick = {
+                                        navController.navigate("settings")
+                                    }) {
+                                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
+                                    }
+                                }
+                            },
+                            scrollBehavior = scrollBehavior
+                        )
+
+                        if (updateState in listOf(
+                                UpdateState.CHECKING,
+                                UpdateState.DOWNLOADING,
+                                UpdateState.INSTALLING
+                            )) {
+                            LinearProgressIndicator(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(4.dp)
+                            )
+                        }
+                    }
                 },
                 bottomBar = {
                     AnimatedVisibility(
@@ -179,5 +218,7 @@ fun MainActivityContent() {
 @Composable
 @Preview(showBackground = true)
 fun MainActivityPreview() {
-    MainActivityContent()
+    MainActivityContent(
+        appUpdateManager = AppUpdateManagerWrapper(ComponentActivity())
+    )
 }

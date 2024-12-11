@@ -1,134 +1,171 @@
 package com.byteflipper.ffsensitivities.playcore
 
-import android.content.Context
-import android.content.pm.PackageManager
-import android.util.Log
+import android.app.Activity
+import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import com.byteflipper.ffsensitivities.BuildConfig
+import com.google.android.play.core.appupdate.AppUpdateInfo
+import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.InstallStateUpdatedListener
 import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
 import com.google.android.play.core.install.model.UpdateAvailability
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-class InAppUpdateManager(
-    private val context: Context,
-    private val updateStrategy: UpdateStrategy = UpdateStrategy.AUTO,
-    private val updateResultLauncher: ActivityResultLauncher<IntentSenderRequest>
-) {
-    private val appUpdateManager = AppUpdateManagerFactory.create(context)
-    private val currentVersionCode = getCurrentVersionCode(context)
-    val updateState: MutableState<UpdateState> = mutableStateOf(UpdateState.Idle)
+enum class UpdateState {
+    CHECKING, AVAILABLE, DOWNLOADING, DOWNLOADED, INSTALLING, INSTALLED, FAILED
+}
 
-    enum class UpdateStrategy {
-        AUTO, FLEXIBLE, IMMEDIATE
-    }
+class AppUpdateManagerWrapper(private val activity: ComponentActivity) : DefaultLifecycleObserver {
 
-    sealed class UpdateState {
-        object Idle : UpdateState()
-        object Checking : UpdateState()
-        object Downloading : UpdateState()
-        object Downloaded : UpdateState()
-        data class Error(val message: String) : UpdateState()
-    }
+    private val appUpdateManager: AppUpdateManager = AppUpdateManagerFactory.create(activity)
+    private var updateInfo: AppUpdateInfo? = null
+    private var updateType: Int = AppUpdateType.FLEXIBLE
+    val updateState = mutableStateOf(UpdateState.CHECKING)
+    private var updateDialogLauncher: ActivityResultLauncher<Intent>? = null
+    private val installStateUpdatedListener = InstallStateUpdatedListener { installState ->
+        when (installState.installStatus()) {
+            InstallStatus.DOWNLOADING -> {
+                updateState.value = UpdateState.DOWNLOADING
+            }
 
-    private fun getCurrentVersionCode(context: Context): Long {
-        return try {
-            val packageInfo = context.packageManager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
-            packageInfo.longVersionCode
-        } catch (e: PackageManager.NameNotFoundException) {
-            Log.e(TAG, "Не удалось получить версию приложения", e)
-            0L
+            InstallStatus.DOWNLOADED -> {
+                updateState.value = UpdateState.DOWNLOADED
+                promptToCompleteUpdate()
+            }
+
+            InstallStatus.INSTALLING -> {
+                updateState.value = UpdateState.INSTALLING
+            }
+
+            InstallStatus.INSTALLED -> {
+                updateState.value = UpdateState.INSTALLED
+            }
+
+            InstallStatus.CANCELED, InstallStatus.FAILED -> {
+                updateState.value = UpdateState.FAILED
+            }
+            else -> {}
         }
     }
 
-    private suspend fun fetchAppUpdateInfo() = try {
-        appUpdateManager.appUpdateInfo.await()
-    } catch (e: Exception) {
-        Log.e(TAG, "Ошибка получения информации об обновлении", e)
-        null
+    init {
+        activity.lifecycle.addObserver(this)
     }
 
-    private fun shouldStartUpdate(
-        appUpdateInfo: com.google.android.play.core.appupdate.AppUpdateInfo,
-        updateType: Int
-    ) = appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE &&
-            appUpdateInfo.isUpdateTypeAllowed(updateType)
-
-    private fun determineUpdateType(availableVersionCode: Long): Int {
-        return when (updateStrategy) {
-            UpdateStrategy.FLEXIBLE -> AppUpdateType.FLEXIBLE
-            UpdateStrategy.IMMEDIATE -> AppUpdateType.IMMEDIATE
-            UpdateStrategy.AUTO -> {
-                val versionDifference = availableVersionCode - currentVersionCode
-                when {
-                    versionDifference > 3 -> AppUpdateType.IMMEDIATE
-                    else -> AppUpdateType.FLEXIBLE
-                }
+    override fun onCreate(owner: LifecycleOwner) {
+        super.onCreate(owner)
+        updateDialogLauncher = activity.registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode != Activity.RESULT_OK) {
+                updateState.value = UpdateState.FAILED
             }
         }
+        appUpdateManager.registerListener(installStateUpdatedListener)
     }
 
-    @Composable
-    fun CheckForUpdates() {
-        LaunchedEffect(Unit) {
-            updateState.value = UpdateState.Checking
-            val appUpdateInfo = fetchAppUpdateInfo()
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+        if (updateState.value == UpdateState.DOWNLOADED) {
+            promptToCompleteUpdate()
+        }
+    }
 
-            when {
-                appUpdateInfo != null -> {
-                    val updateType = determineUpdateType(appUpdateInfo.availableVersionCode().toLong())
-                    if (shouldStartUpdate(appUpdateInfo, updateType)) {
-                        startUpdate(appUpdateInfo, updateType)
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+        appUpdateManager.unregisterListener(installStateUpdatedListener)
+        updateDialogLauncher?.unregister()
+    }
+
+    suspend fun checkForUpdate() {
+        val currentVersionCode = BuildConfig.VERSION_CODE
+
+        withContext(Dispatchers.IO) {
+            updateState.value = UpdateState.CHECKING
+
+            updateInfo = suspendCoroutine { cont ->
+                appUpdateManager.appUpdateInfo.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        cont.resume(task.result)
                     } else {
-                        updateState.value = UpdateState.Idle
+                        updateState.value = UpdateState.FAILED
+                        cont.resume(null)
                     }
                 }
-                else -> {
-                    updateState.value = UpdateState.Error("Не удалось получить информацию об обновлении")
+            }
+        }.also {
+            updateInfo?.let { info ->
+                val latestVersionCode = info.availableVersionCode()
+
+                updateType = if (latestVersionCode - currentVersionCode > 3) {
+                    AppUpdateType.IMMEDIATE
+                } else {
+                    AppUpdateType.FLEXIBLE
                 }
+
+                when (info.updateAvailability()) {
+                    UpdateAvailability.UPDATE_AVAILABLE -> {
+                        if (info.isUpdateTypeAllowed(updateType)) {
+                            updateState.value = UpdateState.AVAILABLE
+                            startUpdate()
+                        } else {
+                            updateState.value = UpdateState.FAILED
+                        }
+                    }
+                    UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS -> {
+                        updateState.value = UpdateState.DOWNLOADING
+                    }
+                    else -> {
+                        updateState.value = UpdateState.INSTALLED
+                    }
+                }
+            } ?: run {
+                updateState.value = UpdateState.FAILED
             }
         }
     }
 
-    private fun startUpdate(
-        appUpdateInfo: com.google.android.play.core.appupdate.AppUpdateInfo,
-        updateType: Int
-    ) {
-        try {
-            val updateOptions = AppUpdateOptions.newBuilder(updateType).build()
-            val activity = context as? androidx.activity.ComponentActivity
-                ?: throw IllegalStateException("Context must be an Activity")
+     fun startUpdate() {
+        updateInfo?.let { info ->
+            try {
+                val updateOptions = AppUpdateOptions.newBuilder(updateType).build()
+                val updateStarted = appUpdateManager.startUpdateFlowForResult(
+                    info,
+                    activity,
+                    updateOptions,
+                    REQUEST_CODE
+                )
+                if (!updateStarted) {
+                    updateState.value = UpdateState.FAILED
+                }
+            } catch (e: Exception) {
+                updateState.value = UpdateState.FAILED
+            }
+        }
+    }
 
-            val updateStarted = appUpdateManager.startUpdateFlowForResult(
-                appUpdateInfo,
-                activity,
-                updateOptions,
-                UPDATE_REQUEST_CODE
-            )
-
-            if (updateStarted) {
-                updateState.value = UpdateState.Downloading
+    private fun promptToCompleteUpdate() {
+        appUpdateManager.completeUpdate().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                updateState.value = UpdateState.INSTALLED
             } else {
-                updateState.value = UpdateState.Error("Update flow could not be started")
+                updateState.value = UpdateState.FAILED
             }
-        } catch (e: Exception) {
-            Log.e(TAG, "Ошибка при запуске обновления", e)
-            updateState.value = UpdateState.Error(e.message ?: "Неизвестная ошибка")
         }
-    }
-
-    fun completeUpdate() {
-        appUpdateManager.completeUpdate()
-        updateState.value = UpdateState.Downloaded
     }
 
     companion object {
-        private const val TAG = "InAppUpdateManager"
-        const val UPDATE_REQUEST_CODE = 100
+        private const val REQUEST_CODE = 100
     }
 }

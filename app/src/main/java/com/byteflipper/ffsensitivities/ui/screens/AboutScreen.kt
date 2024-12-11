@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
 import com.byteflipper.ffsensitivities.utils.FeedbackHelper
@@ -160,7 +161,7 @@ fun AboutScreen(
                     HorizontalDivider(Modifier.padding(16.dp, 0.dp, 16.dp, 0.dp))
                     ListItem(
                         title = stringResource(R.string.version),
-                        subtitle = "v2.0.0",
+                        subtitle = BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")",
                         icon = painterResource(id = R.drawable.update_24px)
                     )
                 }
