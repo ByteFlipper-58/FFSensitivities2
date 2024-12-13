@@ -1,6 +1,5 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -35,13 +34,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.Manufacturer
 import com.byteflipper.ffsensitivities.getRequestSentStatus
-import com.byteflipper.ffsensitivities.navigation.NavigationItem
 import com.byteflipper.ffsensitivities.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.saveRequestSentStatus
 import com.byteflipper.ffsensitivities.ui.UiState
@@ -126,7 +123,6 @@ fun HomeScreen(
                 ErrorScreen(
                     errorMessage = state.message,
                     onRetry = { viewModel.retry() },
-                    onCheckForUpdates = { },
                     onReportBug = { }
                 )
             }

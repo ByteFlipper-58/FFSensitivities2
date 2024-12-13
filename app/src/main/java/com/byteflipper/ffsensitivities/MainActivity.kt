@@ -43,24 +43,34 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.byteflipper.ffsensitivities.ads.AdsHelper
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
 import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.rememberPreferenceState
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var appUpdateManager: AppUpdateManagerWrapper
+
+    @Inject lateinit var adsHelper: AdsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         appUpdateManager = AppUpdateManagerWrapper(this)
+
+        adsHelper.showLaunchAd {
+            // Действия после закрытия рекламы
+        }
 
         setContent {
             MainActivityContent(appUpdateManager)

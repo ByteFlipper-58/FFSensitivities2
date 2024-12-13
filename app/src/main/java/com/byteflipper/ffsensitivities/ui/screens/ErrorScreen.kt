@@ -6,8 +6,6 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -32,12 +30,11 @@ import com.byteflipper.ffsensitivities.R
 fun ErrorScreen(
     errorMessage: String,
     onRetry: () -> Unit,
-    onCheckForUpdates: () -> Unit,
     onReportBug: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     ElevatedCard(
-        modifier = Modifier
+        modifier
             .fillMaxWidth()
             .padding(14.dp, 8.dp, 14.dp, 8.dp),
         shape = ShapeDefaults.Large,
@@ -106,7 +103,6 @@ fun ErrorScreenPreview() {
     ErrorScreen(
         errorMessage = "Произошла ошибка. Попробуйте снова.",
         onRetry = {},
-        onCheckForUpdates = {},
         onReportBug = {}
     )
 }

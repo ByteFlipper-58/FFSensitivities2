@@ -7,6 +7,8 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.firebase.crashlytics")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -17,7 +19,7 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 28
         targetSdk = 35
-        versionCode = 1010
+        versionCode = 55
         versionName = "2.0.0 Beta"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -36,7 +38,7 @@ android {
             )
         }
         debug {
-            applicationIdSuffix = ".debug"
+            //applicationIdSuffix = ".debug"
         }
     }
     compileOptions {
@@ -84,11 +86,18 @@ dependencies {
     implementation(libs.firebase.messaging.ktx)
     implementation(libs.firebase.inappmessaging.display)
 
-    implementation("com.google.android.gms:play-services-ads:23.5.0")
+    implementation("com.google.android.gms:play-services-ads:23.6.0")
     implementation("com.google.android.ump:user-messaging-platform:3.1.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
+
+    implementation("com.yandex.ads.adapter:admob-mobileads:7.6.0.0")
+    implementation("com.unity3d.ads:unity-ads:4.12.4")
+    implementation("com.google.ads.mediation:unity:4.12.5.0")
+
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.51.1")
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity)
@@ -101,6 +110,7 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("com.google.code.gson:gson:2.11.0")
@@ -108,7 +118,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     implementation("io.ktor:ktor-client-core:2.3.4")
     implementation("io.ktor:ktor-client-cio:2.3.4")
-
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.serialization.json)
