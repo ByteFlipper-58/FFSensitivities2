@@ -2,9 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.google.gms.google.services)
     id("kotlinx-serialization")
     id("kotlin-parcelize")
-    id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.firebase.crashlytics")
     id("kotlin-kapt")
@@ -90,7 +90,6 @@ dependencies {
     implementation("com.google.android.ump:user-messaging-platform:3.1.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.9.0")
 
     implementation("com.yandex.ads.adapter:admob-mobileads:7.6.0.0")
     implementation("com.unity3d.ads:unity-ads:4.12.4")

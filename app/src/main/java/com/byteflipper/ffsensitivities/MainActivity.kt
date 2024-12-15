@@ -41,6 +41,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.ads.AdsHelper
@@ -63,14 +64,13 @@ class MainActivity : ComponentActivity() {
     @Inject lateinit var adsHelper: AdsHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         appUpdateManager = AppUpdateManagerWrapper(this)
 
-        adsHelper.showLaunchAd {
-            // Действия после закрытия рекламы
-        }
+        adsHelper.initialize()
 
         setContent {
             MainActivityContent(appUpdateManager)
@@ -89,7 +89,6 @@ fun MainActivityContent(
 
     val updateState by appUpdateManager.updateState
 
-    // Проверка обновлений при старте
     LaunchedEffect(Unit) {
         coroutineScope.launch {
             appUpdateManager.checkForUpdate()

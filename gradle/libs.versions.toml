@@ -17,6 +17,7 @@ composeBom = "2024.12.01"
 navigationRuntimeKtx = "2.8.5"
 navigationCompose = "2.8.5"
 firebaseInappmessagingDisplay = "21.0.1"
+googleGmsGoogleServices = "4.4.2"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -50,3 +51,4 @@ firebase-inappmessaging-display = { group = "com.google.firebase", name = "fireb
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
