@@ -21,6 +21,10 @@
         android:name=".MyApplication">
 
         <meta-data
+            android:name="com.yandex.mobile.ads.AUTOMATIC_SDK_INITIALIZATION"
+            android:value="false" />
+
+        <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4346225518624754~7987012984" />
 

@@ -86,12 +86,12 @@ dependencies {
     implementation(libs.firebase.messaging.ktx)
     implementation(libs.firebase.inappmessaging.display)
 
-    implementation("com.google.android.gms:play-services-ads:23.6.0")
     implementation("com.google.android.ump:user-messaging-platform:3.1.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
-    implementation("com.yandex.ads.adapter:admob-mobileads:7.6.0.0")
+    implementation("com.yandex.android:mobileads:7.8.0")
+    implementation("com.yandex.ads.mediation:mobileads-google:23.5.0.0")
     implementation("com.unity3d.ads:unity-ads:4.12.4")
     implementation("com.google.ads.mediation:unity:4.12.5.0")
 

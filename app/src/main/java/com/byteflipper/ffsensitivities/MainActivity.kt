@@ -50,6 +50,7 @@ import com.byteflipper.ffsensitivities.navigation.NavigationHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
 import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
+import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -67,10 +68,12 @@ class MainActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         appUpdateManager = AppUpdateManagerWrapper(this)
-
-        adsHelper.initialize()
+        MobileAds.initialize(this) {
+        }
+        MobileAds.setAgeRestrictedUser(false)
+        MobileAds.setLocationConsent(true)
+        MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
 
         setContent {
             MainActivityContent(appUpdateManager)
@@ -148,7 +151,6 @@ fun MainActivityContent(
                 modifier = Modifier
                     .fillMaxSize()
                     .nestedScroll(scrollBehavior.nestedScrollConnection),
-
                 topBar = {
                     Column {
                         TopAppBar(

@@ -10,6 +10,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeLogging()
+        Timber.plant(FileLoggingTree(this))
     }
 
     private fun initializeLogging() {

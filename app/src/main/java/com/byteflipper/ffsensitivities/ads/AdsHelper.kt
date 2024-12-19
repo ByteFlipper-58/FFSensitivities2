@@ -78,23 +78,46 @@ class AdsHelper @Inject constructor(
 
     private fun handleConsentUpdateSuccess() {
         Timber.d("Consent information updated successfully")
-        UserMessagingPlatform.loadAndShowConsentFormIfRequired(activity) { loadAndShowError ->
-            if (loadAndShowError != null) {
-                Timber.e(
-                    "Consent Form Error - Code: %d, Message: %s",
-                    loadAndShowError.errorCode,
-                    loadAndShowError.message
-                )
-            }
 
-            if (canRequestAd) {
+        val consentStatus = consentInformation?.consentStatus ?: ConsentInformation.ConsentStatus.UNKNOWN
+        when (consentStatus) {
+            ConsentInformation.ConsentStatus.REQUIRED -> {
+                if (consentInformation?.isConsentFormAvailable == true) {
+                    UserMessagingPlatform.loadAndShowConsentFormIfRequired(activity) { loadAndShowError ->
+                        if (loadAndShowError != null) {
+                            Timber.e(
+                                "Consent Form Error - Code: %d, Message: %s",
+                                loadAndShowError.errorCode,
+                                loadAndShowError.message
+                            )
+                        } else {
+                            Timber.d("Consent form displayed successfully")
+                        }
+                    }
+                } else {
+                    Timber.w("Consent form is not available")
+                }
+            }
+            ConsentInformation.ConsentStatus.OBTAINED -> {
+                Timber.d("Consent obtained - Ads can be requested")
                 initializeMobileAds()
                 preloadInterstitialAd()
                 preloadAppOpenAd()
-            } else {
-                Timber.w("Cannot request ads - no consent")
+            }
+            ConsentInformation.ConsentStatus.NOT_REQUIRED -> {
+                Timber.d("Consent is not required - Ads can be requested")
+                initializeMobileAds()
+                preloadInterstitialAd()
+                preloadAppOpenAd()
+            }
+            else -> {
+                Timber.w("Consent status unknown")
             }
         }
+    }
+
+    fun isUserConsentGiven(): Boolean {
+        return consentInformation?.consentStatus == ConsentInformation.ConsentStatus.OBTAINED
     }
 
     private fun initializeMobileAds() {
@@ -180,7 +203,7 @@ class AdsHelper @Inject constructor(
         val adRequest = AdRequest.Builder().build()
         AppOpenAd.load(
             context,
-            BuildConfig.APP_OPEN_AD_ID,
+            BuildConfig.APP_OPEN_TEST_AD_ID,
             adRequest,
             AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
             object : AppOpenAd.AppOpenAdLoadCallback() {
