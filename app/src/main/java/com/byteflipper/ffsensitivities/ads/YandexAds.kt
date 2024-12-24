@@ -35,7 +35,8 @@ import com.yandex.mobile.ads.rewarded.RewardedAdLoader
 @Composable
 fun YandexBannerAd(
     adUnitId: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onAdLoaded: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
@@ -61,7 +62,7 @@ fun YandexBannerAd(
                 setAdUnitId(adUnitId)
                 setAdSize(BannerAdSize.fixedSize(context, 320, 50))
                 setBannerAdEventListener(object : BannerAdEventListener {
-                    override fun onAdLoaded() {}
+                    override fun onAdLoaded() {onAdLoaded()}
                     override fun onAdFailedToLoad(error: AdRequestError) {}
                     override fun onAdClicked() {}
                     override fun onLeftApplication() {}

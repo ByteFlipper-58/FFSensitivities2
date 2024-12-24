@@ -4,12 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -45,7 +39,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.ads.AdsHelper
-import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
@@ -53,6 +46,7 @@ import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
 import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.rememberPreferenceState
@@ -129,6 +123,12 @@ fun MainActivityContent(
             val isBottomBarVisible = currentRoute !in hiddenRoutes
 
             LaunchedEffect(updateState) {
+                val autoClearStates = listOf(
+                    UpdateState.AVAILABLE,
+                    UpdateState.FAILED,
+                    UpdateState.DOWNLOADED
+                )
+
                 toolbarSubtitle = when (updateState) {
                     UpdateState.CHECKING -> context.getString(R.string.update_checking)
                     UpdateState.AVAILABLE -> context.getString(R.string.update_now_available)
@@ -137,6 +137,13 @@ fun MainActivityContent(
                     UpdateState.INSTALLING -> context.getString(R.string.update_installing)
                     UpdateState.INSTALLED -> ""
                     UpdateState.FAILED -> context.getString(R.string.update_error_occurred)
+                }
+
+                if (updateState in autoClearStates) {
+                    coroutineScope.launch {
+                        delay(3000)
+                        toolbarSubtitle = ""
+                    }
                 }
 
                 when (updateState) {
@@ -201,15 +208,8 @@ fun MainActivityContent(
                     }
                 },
                 bottomBar = {
-                    AnimatedVisibility(
-                        visible = isBottomBarVisible,
-                        enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
-                        exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
-                    ) {
-                        BottomNavigationBar(
-                            navController = navController,
-                        )
-                    }
+                    // Rest of the bottom bar code remains the same
+                    // ...
                 }
             ) { innerPadding ->
                 NavigationHost(

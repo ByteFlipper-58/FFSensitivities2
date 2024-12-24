@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_screen_title">Добро пожаловать в наше приложение!</string>
+    <string name="welcome_screen_message">Привет, Боец! Каждый найдет здесь настройку для себя; в противном случае вы можете запросить их</string>
+    <string name="privacy_policy_message" translatable="false">Продолжая, вы принимаете наши Условия обслуживания и подтверждаете, что ознакомились с нашей Политикой конфиденциальности.</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="continue_button">Продолжить</string>
+
+    <!-- Links & Contacts -->
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+
+    <!-- Review Settings -->
+    <string name="review">Общее</string>
+    <string name="collimator">Красная точка</string>
+    <string name="x2_scope">x2 Прицел</string>
+    <string name="x4_scope">x4 Прицел</string>
+    <string name="sniper_scope">Снайперский прицел</string>
+    <string name="free_review">Свободный обзор</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Кнопка огня</string>
+    <string name="source">Источник</string>
+    <string name="it_works">Работает?</string>
+    <string name="thank_for_review">Спасибо за ваш отзыв!</string>
+
+    <!-- Request Sensitivity Settings -->
+    <string name="dont_have_your_phone_model">Нет вашей модели телефона? Сделайте запрос!</string>
+
+    <string name="request_sensitivities_settings_title">Запросить настройки чувствительности</string>
+    <string name="request_sensitivities_settings_message">Информация, которая будет отправлена разработчику</string>
+    <string name="request_sensitivities_settings_message_two">Нажмите кнопку "Запрос", чтобы отправить запрос настроек, это действие нельзя отменить.</string>
+    <string name="request_sensitivities_settings_button">Запросить</string>
+    <string name="request_sensitivities_settings_success">Запрос успешно отправлен!\nМы скоро добавим новую настройку.</string>
+
+    <!-- Utility Actions -->
+    <string name="improve_translation">Улучшить перевод</string>
+    <string name="copy">Копировать</string>
+    <string name="copied">Скопировано</string>
+    <string name="link">Ссылка</string>
+    <string name="copy_link">Копировать ссылку</string>
+    <string name="open_link">Открыть ссылку</string>
+    <string name="error">Ошибка</string>
+    <string name="back">Назад</string>
+    <string name="app_icon">Иконка приложения</string>
+
+    <!-- About Section -->
+    <string name="about_app">О приложении</string>
+    <string name="home">Главная</string>
+    <string name="version">Версия</string>
+
+    <!-- Source Code -->
+    <string name="source_code_title">Исходный код</string>
+    <string name="source_code_subtitle">Исходный код приложения на GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report -->
+    <string name="bug_report_title">Сообщить об ошибке</string>
+    <string name="bug_report_subtitle">Пожалуйста, опишите проблему и отправьте её нам</string>
+
+    <!-- Rate the App -->
+    <string name="rate_the_app_title">Оценить приложение</string>
+    <string name="rate_the_app_subtitle">Оценить приложение в Google Play</string>
+
+    <!-- External Links -->
+    <string name="website_title">Веб-сайт ByteFlipper</string>
+    <string name="website_subtitle">Наш веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Наш репозиторий Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наше сообщество в VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Наш Telegram-канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Наш YouTube-канал</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Наш Discord-сервер</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+
+    <string name="other_apps_title">Другие приложения</string>
+    <string name="other_apps_subtitle">Наши другие приложения</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="app_theme">Тема приложения</string>
+    <string name="auto_theme">Авто тема</string>
+    <string name="system_theme">Системная тема</string>
+    <string name="light_theme">Светлая тема</string>
+    <string name="night_theme">Темная тема</string>
+    <string name="auto_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от времени восхода и захода солнца</string>
+    <string name="auto_level_of_charge_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от уровня заряда телефона</string>
+    <string name="light_theme_description">Выбрана светлая тема</string>
+    <string name="night_theme_description">Выбрана темная тема</string>
+    <string name="system_theme_description">Внешний вид приложения будет меняться в зависимости от темы Android</string>
+
+    <string name="switch_use_dynamic_colors_title">Использовать динамические цвета</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Динамические цвета включены</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Динамические цвета выключены</string>
+    <string name="switch_dynamic_colors_are_not_supported">Динамические цвета не поддерживаются</string>
+
+    <string name="change_language">Изменить язык</string>
+
+    <!-- Error Screen -->
+    <string name="try_again">Попробовать снова</string>
+    <string name="report_bug">Сообщить об ошибке</string>
+
+    <!-- Devices List -->
+    <string name="devices">Устройства: </string>
+    <string name="devices_list">Список устройств</string>
+    <string name="sensitivity">Чувствительность</string>
+
+    <!-- Updates -->
+    <string name="update_available">Доступно обновление</string>
+    <string name="update_now">Обновить сейчас</string>
+    <string name="update_required">Это обновление необходимо для использования приложения</string>
+    <string name="update_failed">Не удалось загрузить обновление</string>
+    <string name="update_later">Обновить позже</string>
+    <string name="update_restart">Перезапустите приложение, чтобы завершить обновление</string>
+    <string name="update_no_connection">Нет подключения к интернету. Пожалуйста, попробуйте позже.</string>
+    <string name="update_checking">Проверка обновлений…</string>
+    <string name="update_downloading">Загрузка обновления…</string>
+    <string name="update_installing">Установка обновления…</string>
+    <string name="update_error_occurred">Во время обновления произошла ошибка. Пожалуйста, попробуйте позже.</string>
+    <string name="update_now_available">Обновление доступно для загрузки!</string>
+    <string name="check_for_updates">Проверить обновления</string>
+    <string name="no_update_available">Нет доступных обновлений</string>
+    <string name="update_download_started">Загрузка обновления началась</string>
+    <string name="update_download_complete">Загрузка обновления завершена. Начинается установка…</string>
+    <string name="update_not_needed">Ваше приложение обновлено</string>
+</resources>

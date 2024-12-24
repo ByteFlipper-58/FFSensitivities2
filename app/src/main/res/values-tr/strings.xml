@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_screen_title">Uygulamamıza Hoş Geldiniz!</string>
+    <string name="welcome_screen_message">Merhaba Savaşçı! Herkes kendine uygun bir ayar bulacak; aksi takdirde onları talep edebilirsiniz</string>
+    <string name="privacy_policy_message" translatable="false">Devam ederek, Hizmet Şartlarımızı kabul ediyor ve Gizlilik Politikamızı okuduğunuzu onaylıyorsunuz.</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="continue_button">Devam</string>
+
+    <!-- Links & Contacts -->
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+
+    <!-- Review Settings -->
+    <string name="review">Genel</string>
+    <string name="collimator">Kırmızı Nokta</string>
+    <string name="x2_scope">x2 Dürbün</string>
+    <string name="x4_scope">x4 Dürbün</string>
+    <string name="sniper_scope">Keskin Nişancı Dürbünü</string>
+    <string name="free_review">Serbest Bakış</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Ateş Düğmesi</string>
+    <string name="source">Kaynak</string>
+    <string name="it_works">Çalışıyor mu?</string>
+    <string name="thank_for_review">İncelemeniz için teşekkür ederiz!</string>
+
+    <!-- Request Sensitivity Settings -->
+    <string name="dont_have_your_phone_model">Telefon modeliniz yok mu? İstek yapın!</string>
+
+    <string name="request_sensitivities_settings_title">Hassasiyet ayarları talep et</string>
+    <string name="request_sensitivities_settings_message">Geliştiriciye gönderilecek bilgiler</string>
+    <string name="request_sensitivities_settings_message_two">Ayarlar isteği göndermek için İstek düğmesine tıklayın, bu işlem geri alınamaz.</string>
+    <string name="request_sensitivities_settings_button">İstek</string>
+    <string name="request_sensitivities_settings_success">İstek başarıyla gönderildi!\nYakında yeni bir ayar ekleyeceğiz.</string>
+
+    <!-- Utility Actions -->
+    <string name="improve_translation">Çeviriyi İyileştir</string>
+    <string name="copy">Kopyala</string>
+    <string name="copied">Kopyalandı</string>
+    <string name="link">Bağlantı</string>
+    <string name="copy_link">Bağlantıyı Kopyala</string>
+    <string name="open_link">Bağlantıyı Aç</string>
+    <string name="error">Hata</string>
+    <string name="back">Geri</string>
+    <string name="app_icon">Uygulama simgesi</string>
+
+    <!-- About Section -->
+    <string name="about_app">Uygulama Hakkında</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="version">Sürüm</string>
+
+    <!-- Source Code -->
+    <string name="source_code_title">Kaynak Kodu</string>
+    <string name="source_code_subtitle">Uygulamanın GitHub'daki kaynak kodu</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report -->
+    <string name="bug_report_title">Hata Raporu</string>
+    <string name="bug_report_subtitle">Lütfen sorunu açıklayın ve bize gönderin</string>
+
+    <!-- Rate the App -->
+    <string name="rate_the_app_title">Uygulamayı Değerlendir</string>
+    <string name="rate_the_app_subtitle">Uygulamayı Google Play'de değerlendir</string>
+
+    <!-- External Links -->
+    <string name="website_title">ByteFlipper Web Sitesi</string>
+    <string name="website_subtitle">Web Sitemiz</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Github Depomuz</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">VK'daki topluluğumuz</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Telegram Kanalımız</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">YouTube Kanalımız</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Discord Sunucumuz</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+
+    <string name="other_apps_title">Diğer Uygulamalar</string>
+    <string name="other_apps_subtitle">Diğer Uygulamalarımız</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+
+    <!-- Settings -->
+    <string name="settings">Ayarlar</string>
+    <string name="app_theme">Uygulama Teması</string>
+    <string name="auto_theme">Otomatik tema</string>
+    <string name="system_theme">Sistem teması</string>
+    <string name="light_theme">Açık tema</string>
+    <string name="night_theme">Gece teması</string>
+    <string name="auto_theme_description">Uygulamanın görünümü, güneşin doğuş ve batış saatine bağlı olarak otomatik olarak değişecektir</string>
+    <string name="auto_level_of_charge_theme_description">Uygulamanın görünümü, telefonun şarj düzeyine bağlı olarak otomatik olarak değişecektir</string>
+    <string name="light_theme_description">Açık tema seçildi</string>
+    <string name="night_theme_description">Gece teması seçildi</string>
+    <string name="system_theme_description">Uygulamanın görünümü, Android temasına bağlı olarak değişecektir</string>
+
+    <string name="switch_use_dynamic_colors_title">Dinamik renkleri kullan</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Dinamik renkler etkin</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Dinamik renkler devre dışı</string>
+    <string name="switch_dynamic_colors_are_not_supported">Dinamik renkler desteklenmiyor</string>
+
+    <string name="change_language">Dili değiştir</string>
+
+    <!-- Error Screen -->
+    <string name="try_again">Tekrar dene</string>
+    <string name="report_bug">Hata bildir</string>
+
+    <!-- Devices List -->
+    <string name="devices">Cihazlar: </string>
+    <string name="devices_list">Cihaz listesi</string>
+    <string name="sensitivity">Hassasiyet</string>
+
+    <!-- Updates -->
+    <string name="update_available">Bir güncelleme mevcut</string>
+    <string name="update_now">Şimdi güncelle</string>
+    <string name="update_required">Bu güncelleme, uygulamayı kullanmak için gereklidir</string>
+    <string name="update_failed">Güncelleme indirilemedi</string>
+    <string name="update_later">Daha sonra güncelle</string>
+    <string name="update_restart">Güncellemeyi tamamlamak için lütfen uygulamayı yeniden başlatın</string>
+    <string name="update_no_connection">İnternet bağlantısı yok. Lütfen daha sonra tekrar deneyin.</string>
+    <string name="update_checking">Güncellemeler kontrol ediliyor…</string>
+    <string name="update_downloading">Güncelleme indiriliyor…</string>
+    <string name="update_installing">Güncelleme yükleniyor…</string>
+    <string name="update_error_occurred">Güncelleme sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.</string>
+    <string name="update_now_available">İndirmek için bir güncelleme mevcut!</string>
+    <string name="check_for_updates">Güncellemeleri kontrol et</string>
+    <string name="no_update_available">Kullanılabilir güncelleme yok</string>
+    <string name="update_download_started">Güncelleme indirme başlatıldı</string>
+    <string name="update_download_complete">Güncelleme indirme tamamlandı. Kurulum başlıyor…</string>
+    <string name="update_not_needed">Uygulamanız güncel</string>
+</resources>

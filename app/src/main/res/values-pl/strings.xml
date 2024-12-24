@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_screen_title">Witamy w naszej aplikacji!</string>
+    <string name="welcome_screen_message">Witaj, Wojowniku! Każdy znajdzie tu ustawienia dla siebie; w przeciwnym razie możesz o nie poprosić</string>
+    <string name="privacy_policy_message" translatable="false">Kontynuując, akceptujesz nasze Warunki korzystania z usługi i potwierdzasz, że zapoznałeś się z naszą Polityką prywatności.</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="continue_button">Kontynuuj</string>
+
+    <!-- Links & Contacts -->
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+
+    <!-- Review Settings -->
+    <string name="review">Ogólne</string>
+    <string name="collimator">Czerwona kropka</string>
+    <string name="x2_scope">Celownik x2</string>
+    <string name="x4_scope">Celownik x4</string>
+    <string name="sniper_scope">Celownik snajperski</string>
+    <string name="free_review">Swobodny widok</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Przycisk ognia</string>
+    <string name="source">Źródło</string>
+    <string name="it_works">Działa?</string>
+    <string name="thank_for_review">Dziękujemy za opinię!</string>
+
+    <!-- Request Sensitivity Settings -->
+    <string name="dont_have_your_phone_model">Nie masz swojego modelu telefonu? Złóż wniosek!</string>
+
+    <string name="request_sensitivities_settings_title">Zażądaj ustawień czułości</string>
+    <string name="request_sensitivities_settings_message">Informacje, które zostaną wysłane do dewelopera</string>
+    <string name="request_sensitivities_settings_message_two">Kliknij przycisk „Zażądaj”, aby przesłać wniosek o ustawienia. Tej czynności nie można cofnąć.</string>
+    <string name="request_sensitivities_settings_button">Zażądaj</string>
+    <string name="request_sensitivities_settings_success">Wniosek został pomyślnie wysłany!\nWkrótce dodamy nowe ustawienia.</string>
+
+    <!-- Utility Actions -->
+    <string name="improve_translation">Ulepsz tłumaczenie</string>
+    <string name="copy">Kopiuj</string>
+    <string name="copied">Skopiowano</string>
+    <string name="link">Link</string>
+    <string name="copy_link">Kopiuj link</string>
+    <string name="open_link">Otwórz link</string>
+    <string name="error">Błąd</string>
+    <string name="back">Wróć</string>
+    <string name="app_icon">Ikona aplikacji</string>
+
+    <!-- About Section -->
+    <string name="about_app">O aplikacji</string>
+    <string name="home">Strona główna</string>
+    <string name="version">Wersja</string>
+
+    <!-- Source Code -->
+    <string name="source_code_title">Kod źródłowy</string>
+    <string name="source_code_subtitle">Kod źródłowy aplikacji na GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report -->
+    <string name="bug_report_title">Zgłoszenie błędu</string>
+    <string name="bug_report_subtitle">Opisz problem i wyślij go do nas</string>
+
+    <!-- Rate the App -->
+    <string name="rate_the_app_title">Oceń aplikację</string>
+    <string name="rate_the_app_subtitle">Oceń aplikację w Google Play</string>
+
+    <!-- External Links -->
+    <string name="website_title">Strona internetowa ByteFlipper</string>
+    <string name="website_subtitle">Nasza strona internetowa</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Nasze repozytorium Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Nasza społeczność na VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Nasz kanał Telegram</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Nasz kanał YouTube</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Nasz serwer Discord</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+
+    <string name="other_apps_title">Inne aplikacje</string>
+    <string name="other_apps_subtitle">Nasze inne aplikacje</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+
+    <!-- Settings -->
+    <string name="settings">Ustawienia</string>
+    <string name="app_theme">Motyw aplikacji</string>
+    <string name="auto_theme">Motyw automatyczny</string>
+    <string name="system_theme">Motyw systemowy</string>
+    <string name="light_theme">Motyw jasny</string>
+    <string name="night_theme">Motyw ciemny</string>
+    <string name="auto_theme_description">Wygląd aplikacji zmieni się automatycznie w zależności od pory wschodu i zachodu słońca</string>
+    <string name="auto_level_of_charge_theme_description">Wygląd aplikacji zmieni się automatycznie w zależności od poziomu naładowania telefonu</string>
+    <string name="light_theme_description">Wybrano motyw jasny</string>
+    <string name="night_theme_description">Wybrano motyw ciemny</string>
+    <string name="system_theme_description">Wygląd aplikacji zmieni się w zależności od motywu systemu Android</string>
+
+    <string name="switch_use_dynamic_colors_title">Użyj dynamicznych kolorów</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Dynamiczne kolory są włączone</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Dynamiczne kolory są wyłączone</string>
+    <string name="switch_dynamic_colors_are_not_supported">Dynamiczne kolory nie są obsługiwane</string>
+
+    <string name="change_language">Zmień język</string>
+
+    <!-- Error Screen -->
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="report_bug">Zgłoś błąd</string>
+
+    <!-- Devices List -->
+    <string name="devices">Urządzenia: </string>
+    <string name="devices_list">Lista urządzeń</string>
+    <string name="sensitivity">Czułość</string>
+
+    <!-- Updates -->
+    <string name="update_available">Dostępna jest aktualizacja</string>
+    <string name="update_now">Zaktualizuj teraz</string>
+    <string name="update_required">Ta aktualizacja jest wymagana, aby korzystać z aplikacji</string>
+    <string name="update_failed">Nie udało się pobrać aktualizacji</string>
+    <string name="update_later">Zaktualizuj później</string>
+    <string name="update_restart">Uruchom ponownie aplikację, aby zakończyć aktualizację</string>
+    <string name="update_no_connection">Brak połączenia z internetem. Spróbuj ponownie później.</string>
+    <string name="update_checking">Sprawdzanie aktualizacji…</string>
+    <string name="update_downloading">Pobieranie aktualizacji…</string>
+    <string name="update_installing">Instalowanie aktualizacji…</string>
+    <string name="update_error_occurred">Podczas aktualizacji wystąpił błąd. Spróbuj ponownie później.</string>
+    <string name="update_now_available">Dostępna jest aktualizacja do pobrania!</string>
+    <string name="check_for_updates">Sprawdź aktualizacje</string>
+    <string name="no_update_available">Brak dostępnych aktualizacji</string>
+    <string name="update_download_started">Rozpoczęto pobieranie aktualizacji</string>
+    <string name="update_download_complete">Pobieranie aktualizacji zakończone. Rozpoczyna się instalacja…</string>
+    <string name="update_not_needed">Twoja aplikacja jest aktualna</string>
+</resources>

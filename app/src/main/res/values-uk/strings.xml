@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_screen_title">Ласкаво просимо до нашого додатку!</string>
+    <string name="welcome_screen_message">Привіт, Боєць! Кожен знайде тут налаштування для себе; в іншому випадку ви можете їх запросити</string>
+    <string name="privacy_policy_message" translatable="false">Продовжуючи, ви приймаєте наші Умови надання послуг і підтверджуєте, що прочитали нашу Політику конфіденційності.</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <string name="continue_button">Продовжити</string>
+
+    <!-- Links & Contacts -->
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+
+    <!-- Review Settings -->
+    <string name="review">Загальне</string>
+    <string name="collimator">Червона точка</string>
+    <string name="x2_scope">x2 Приціл</string>
+    <string name="x4_scope">x4 Приціл</string>
+    <string name="sniper_scope">Снайперський приціл</string>
+    <string name="free_review">Вільний огляд</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Кнопка вогню</string>
+    <string name="source">Джерело</string>
+    <string name="it_works">Працює?</string>
+    <string name="thank_for_review">Дякуємо за ваш відгук!</string>
+
+    <!-- Request Sensitivity Settings -->
+    <string name="dont_have_your_phone_model">Немає вашої моделі телефону? Зробіть запит!</string>
+
+    <string name="request_sensitivities_settings_title">Запит налаштувань чутливості</string>
+    <string name="request_sensitivities_settings_message">Інформація, яка буде надіслана розробнику</string>
+    <string name="request_sensitivities_settings_message_two">Натисніть кнопку "Запит", щоб надіслати запит налаштувань, цю дію не можна скасувати.</string>
+    <string name="request_sensitivities_settings_button">Запит</string>
+    <string name="request_sensitivities_settings_success">Запит надіслано успішно!\nМи скоро додамо нове налаштування.</string>
+
+    <!-- Utility Actions -->
+    <string name="improve_translation">Покращити переклад</string>
+    <string name="copy">Копіювати</string>
+    <string name="copied">Скопійовано</string>
+    <string name="link">Посилання</string>
+    <string name="copy_link">Копіювати посилання</string>
+    <string name="open_link">Відкрити посилання</string>
+    <string name="error">Помилка</string>
+    <string name="back">Назад</string>
+    <string name="app_icon">Іконка додатка</string>
+
+    <!-- About Section -->
+    <string name="about_app">Про додаток</string>
+    <string name="home">Головна</string>
+    <string name="version">Версія</string>
+
+    <!-- Source Code -->
+    <string name="source_code_title">Вихідний код</string>
+    <string name="source_code_subtitle">Вихідний код додатку на GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report -->
+    <string name="bug_report_title">Звіт про помилку</string>
+    <string name="bug_report_subtitle">Будь ласка, опишіть проблему та надішліть її нам</string>
+
+    <!-- Rate the App -->
+    <string name="rate_the_app_title">Оцінити додаток</string>
+    <string name="rate_the_app_subtitle">Оцінити додаток у Google Play</string>
+
+    <!-- External Links -->
+    <string name="website_title">Веб-сайт ByteFlipper</string>
+    <string name="website_subtitle">Наш веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Наш Github-репозиторій</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наша спільнота у VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Наш Telegram-канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Наш YouTube-канал</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Наш Discord-сервер</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+
+    <string name="other_apps_title">Інші додатки</string>
+    <string name="other_apps_subtitle">Наші інші додатки</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+
+    <!-- Settings -->
+    <string name="settings">Налаштування</string>
+    <string name="app_theme">Тема додатку</string>
+    <string name="auto_theme">Автоматична тема</string>
+    <string name="system_theme">Системна тема</string>
+    <string name="light_theme">Світла тема</string>
+    <string name="night_theme">Темна тема</string>
+    <string name="auto_theme_description">Вигляд програми автоматично змінюватиметься залежно від часу сходу та заходу сонця</string>
+    <string name="auto_level_of_charge_theme_description">Вигляд програми автоматично змінюватиметься залежно від рівня заряду телефону</string>
+    <string name="light_theme_description">Вибрано світлу тему</string>
+    <string name="night_theme_description">Вибрано темну тему</string>
+    <string name="system_theme_description">Вигляд програми змінюватиметься залежно від теми Android</string>
+
+    <string name="switch_use_dynamic_colors_title">Використовувати динамічні кольори</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Динамічні кольори увімкнено</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Динамічні кольори вимкнено</string>
+    <string name="switch_dynamic_colors_are_not_supported">Динамічні кольори не підтримуються</string>
+
+    <string name="change_language">Змінити мову</string>
+
+    <!-- Error Screen -->
+    <string name="try_again">Спробувати знову</string>
+    <string name="report_bug">Повідомити про помилку</string>
+
+    <!-- Devices List -->
+    <string name="devices">Пристрої: </string>
+    <string name="devices_list">Список пристроїв</string>
+    <string name="sensitivity">Чутливість</string>
+
+    <!-- Updates -->
+    <string name="update_available">Доступне оновлення</string>
+    <string name="update_now">Оновити зараз</string>
+    <string name="update_required">Це оновлення необхідне для використання програми</string>
+    <string name="update_failed">Не вдалося завантажити оновлення</string>
+    <string name="update_later">Оновити пізніше</string>
+    <string name="update_restart">Будь ласка, перезапустіть програму, щоб завершити оновлення</string>
+    <string name="update_no_connection">Немає підключення до інтернету. Будь ласка, спробуйте пізніше.</string>
+    <string name="update_checking">Перевірка оновлень…</string>
+    <string name="update_downloading">Завантаження оновлення…</string>
+    <string name="update_installing">Встановлення оновлення…</string>
+    <string name="update_error_occurred">Під час оновлення сталася помилка. Будь ласка, спробуйте пізніше.</string>
+    <string name="update_now_available">Оновлення доступне для завантаження!</string>
+    <string name="check_for_updates">Перевірити наявність оновлень</string>
+    <string name="no_update_available">Немає доступних оновлень</string>
+    <string name="update_download_started">Завантаження оновлення розпочато</string>
+    <string name="update_download_complete">Завантаження оновлення завершено. Починається встановлення…</string>
+    <string name="update_not_needed">Ваша програма оновлена</string>
+</resources>
