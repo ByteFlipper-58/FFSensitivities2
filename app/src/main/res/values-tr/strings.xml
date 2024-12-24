@@ -55,7 +55,7 @@
 
     <!-- Source Code -->
     <string name="source_code_title">Kaynak Kodu</string>
-    <string name="source_code_subtitle">Uygulamanın GitHub'daki kaynak kodu</string>
+    <string name="source_code_subtitle">Uygulamanın GitHub\'daki kaynak kodu</string>
     <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
 
     <!-- Bug Report -->
@@ -64,7 +64,7 @@
 
     <!-- Rate the App -->
     <string name="rate_the_app_title">Uygulamayı Değerlendir</string>
-    <string name="rate_the_app_subtitle">Uygulamayı Google Play'de değerlendir</string>
+    <string name="rate_the_app_subtitle">Uygulamayı Google Play\'de değerlendir</string>
 
     <!-- External Links -->
     <string name="website_title">ByteFlipper Web Sitesi</string>
@@ -76,7 +76,7 @@
     <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
 
     <string name="vk_title">VK</string>
-    <string name="vk_subtitle">VK'daki topluluğumuz</string>
+    <string name="vk_subtitle">VK\'daki topluluğumuz</string>
     <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
 
     <string name="telegram_title">Telegram</string>

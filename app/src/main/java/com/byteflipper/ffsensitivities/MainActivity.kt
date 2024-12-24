@@ -4,6 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +45,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.ads.AdsHelper
+import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
@@ -141,7 +148,7 @@ fun MainActivityContent(
 
                 if (updateState in autoClearStates) {
                     coroutineScope.launch {
-                        delay(3000)
+                        delay(5000)
                         toolbarSubtitle = ""
                     }
                 }
@@ -208,8 +215,15 @@ fun MainActivityContent(
                     }
                 },
                 bottomBar = {
-                    // Rest of the bottom bar code remains the same
-                    // ...
+                    AnimatedVisibility(
+                        visible = isBottomBarVisible,
+                        enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
+                        exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
+                    ) {
+                        BottomNavigationBar(
+                            navController = navController,
+                        )
+                    }
                 }
             ) { innerPadding ->
                 NavigationHost(
