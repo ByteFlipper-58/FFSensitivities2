@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
 import android.app.Activity
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -30,6 +31,7 @@ import com.byteflipper.ffsensitivities.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.viewmodel.DeviceViewModel
 import com.google.gson.Gson
 import io.ktor.client.HttpClient
+import java.net.URLEncoder
 
 @Composable
 fun DevicesScreen(
@@ -94,7 +96,7 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
         shape = ShapeDefaults.Large,
         onClick = {
             navController.navigate(
-                "sensitivities/${devices.manufacturer}/${devices.name}/${Gson().toJson(devices)}"
+                "sensitivities/${devices.manufacturer}/${Uri.encode(devices.name)}/${URLEncoder.encode(Gson().toJson(devices), "UTF-8")}"
             ) {
                 launchSingleTop = true
             }

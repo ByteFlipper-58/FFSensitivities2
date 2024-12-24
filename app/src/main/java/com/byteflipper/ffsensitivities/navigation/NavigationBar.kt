@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -38,36 +39,23 @@ fun BottomNavigationBar(
     // Build the bottom navigation bar UI
     NavigationBar {
         items.forEach { item ->
-            // Determine if the current navigation item is selected
             val isSelected = currentDestination?.hierarchy?.any {
                 isRouteSelected(it.route, item)
             } ?: false
 
-            // Define a single navigation bar item
             NavigationBarItem(
                 icon = {
-                    Icon(imageVector = item.icon, contentDescription = item.label)
+                    Icon(imageVector = item.icon, contentDescription = stringResource(item.resourceId))
                 },
-                label = { Text(item.label) },
+                label = { Text(stringResource(item.resourceId)) },
                 selected = isSelected,
                 onClick = {
-                    val isCurrentTab = currentDestination?.hierarchy?.any {
-                        isRouteSelected(it.route, item)
-                    } ?: false
-
-                    if (isCurrentTab) {
-                        // If the user is already on this tab, navigate to its root screen
-                        navController.popBackStack(
-                            route = item.route,
-                            inclusive = false
-                        )
+                    if (isSelected) {
+                        navController.popBackStack(item.route, inclusive = false)
                     } else {
-                        // If switching to a new tab, navigate to the new route
                         navController.navigate(item.route) {
-                            launchSingleTop = true // Avoid creating multiple instances of the same route
-                            restoreState = true   // Restore the state of the destination
-
-                            // Save the state of the navigation graph up to the start destination
+                            launchSingleTop = true
+                            restoreState = true
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
                             }

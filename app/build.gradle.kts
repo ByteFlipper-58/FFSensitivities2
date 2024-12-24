@@ -17,10 +17,10 @@ android {
 
     defaultConfig {
         applicationId = "com.byteflipper.ffsensitivities"
-        minSdk = 28
+        minSdk = 27
         targetSdk = 35
-        versionCode = 55
-        versionName = "2.0.0 Beta"
+        versionCode = 61
+        versionName = "2.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

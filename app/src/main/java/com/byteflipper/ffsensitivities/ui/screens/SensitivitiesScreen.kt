@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
 import android.app.Activity
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -62,22 +63,20 @@ fun SensitivitiesScreen(
             }
         }
         LaunchedEffect(Unit) {
-            interstitialAdManager.loadAd(
-                adUnitId = "R-M-11993742-3",
-                onLoaded = {
-                    interstitialAdManager.show()
-                    //Toast.makeText(context, "Ad loaded", Toast.LENGTH_SHORT).show()
-                           },
-                onError = {
-                    //Toast.makeText(context, "Ad failed to load", Toast.LENGTH_SHORT).show()
-                          },
-                onShown = {
-                    //Toast.makeText(context, "Ad shown", Toast.LENGTH_SHORT).show()
-                          },
-                onDismissed = {
-                    //Toast.makeText(context, "Ad dismissed", Toast.LENGTH_SHORT).show()
-                }
-            )
+            val visitCount = context.incrementVisitCount()
+            if (visitCount % 3 == 0) {
+                interstitialAdManager.loadAd(
+                    adUnitId = "R-M-11993742-3",
+                    onLoaded = {
+                        interstitialAdManager.show()
+                    },
+                    onError = {},
+                    onShown = {
+                        context.resetVisitCount()
+                    },
+                    onDismissed = {}
+                )
+            }
         }
 
         navController.currentBackStackEntry?.arguments?.getString("name") ?: ""
@@ -231,4 +230,21 @@ fun SensitivitiesScreen(
             }
         }
     }
+}
+
+fun Context.getVisitCount(): Int {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return preferences.getInt("visit_count", 0)
+}
+
+fun Context.incrementVisitCount(): Int {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    val newCount = getVisitCount() + 1
+    preferences.edit().putInt("visit_count", newCount).apply()
+    return newCount
+}
+
+fun Context.resetVisitCount() {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    preferences.edit().putInt("visit_count", 0).apply()
 }

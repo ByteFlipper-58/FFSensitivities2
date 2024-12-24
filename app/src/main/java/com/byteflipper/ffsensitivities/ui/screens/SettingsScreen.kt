@@ -14,8 +14,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.byteflipper.ffsensitivities.PreferencesManager
+import com.byteflipper.ffsensitivities.R
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
 import me.zhanghai.compose.preference.preferenceCategory
 import me.zhanghai.compose.preference.radioButtonPreference
@@ -52,11 +54,11 @@ fun SettingsScreen(
                 key = "dynamic_colors",
                 defaultValue = false,
                 title = { isChecked ->
-                    Text(if (isChecked) "Dynamic Colors" else "Dynamic Colors")
+                    Text(if (isChecked) stringResource(R.string.switch_use_dynamic_colors_title) else stringResource(R.string.switch_use_dynamic_colors_title))
                 },
                 icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
                 summary = { isChecked ->
-                    Text(if (isChecked) "Dynamic colors are currently enabled." else "Dynamic colors are currently disabled.")
+                    Text(if (isChecked) stringResource(R.string.switch_use_dynamic_colors_subtitle_on) else stringResource(R.string.switch_use_dynamic_colors_subtitle_off))
                 },
                 onClick = { isChecked ->
                     //preferencesManager.putBoolean("dynamic_colors", isChecked)
@@ -71,8 +73,8 @@ fun SettingsScreen(
             radioButtonPreference(
                 key = "theme_system",
                 selected = selectedTheme == "system",
-                title = { Text(text = "System Default") },
-                summary = { Text(text = "Use system default theme.") },
+                title = { Text(text = stringResource(R.string.system_theme)) },
+                summary = { Text(text = stringResource(R.string.system_theme_description)) },
                 onClick = {
                     selectedTheme = "system"
                     preferencesManager.putString("theme", "system")
@@ -83,8 +85,8 @@ fun SettingsScreen(
             radioButtonPreference(
                 key = "theme_light",
                 selected = selectedTheme == "light",
-                title = { Text(text = "Light Theme") },
-                summary = { Text(text = "Use light theme.") },
+                title = { Text(text = stringResource(R.string.light_theme)) },
+                summary = { Text(text = stringResource(R.string.light_theme_description)) },
                 onClick = {
                     selectedTheme = "light"
                     preferencesManager.putString("theme", "light")
@@ -95,8 +97,8 @@ fun SettingsScreen(
             radioButtonPreference(
                 key = "theme_dark",
                 selected = selectedTheme == "dark",
-                title = { Text(text = "Dark Theme") },
-                summary = { Text(text = "Use dark theme.") },
+                title = { Text(text = stringResource(R.string.night_theme)) },
+                summary = { Text(text = stringResource(R.string.night_theme_description)) },
                 onClick = {
                     selectedTheme = "dark"
                     preferencesManager.putString("theme", "dark")
