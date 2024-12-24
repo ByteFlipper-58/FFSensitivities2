@@ -1,5 +1,6 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
+import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
@@ -27,11 +30,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.ads.InterstitialAdManager
 import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.ui.components.SliderView
 import com.google.gson.Gson
@@ -47,6 +52,33 @@ fun SensitivitiesScreen(
             .fillMaxSize()
             .padding(16.dp, 0.dp, 16.dp, 0.dp)
     ) {
+
+        val context = LocalContext.current as Activity
+        val interstitialAdManager = remember { InterstitialAdManager(context) }
+
+        DisposableEffect(Unit) {
+            onDispose {
+                interstitialAdManager.destroy()
+            }
+        }
+        LaunchedEffect(Unit) {
+            interstitialAdManager.loadAd(
+                adUnitId = "R-M-11993742-3",
+                onLoaded = {
+                    interstitialAdManager.show()
+                    //Toast.makeText(context, "Ad loaded", Toast.LENGTH_SHORT).show()
+                           },
+                onError = {
+                    //Toast.makeText(context, "Ad failed to load", Toast.LENGTH_SHORT).show()
+                          },
+                onShown = {
+                    //Toast.makeText(context, "Ad shown", Toast.LENGTH_SHORT).show()
+                          },
+                onDismissed = {
+                    //Toast.makeText(context, "Ad dismissed", Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
 
         navController.currentBackStackEntry?.arguments?.getString("name") ?: ""
         val deviceModel = Gson().fromJson(device, DeviceModel::class.java)
