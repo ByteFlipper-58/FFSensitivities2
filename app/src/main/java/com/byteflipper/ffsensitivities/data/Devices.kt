@@ -13,9 +13,9 @@ data class DeviceModel(
     val manufacturer: String,
     val name: String,
     val settings_source_url: String = "",
-    val dpi: Int = 0,
+    val dpi: Int? = null,
     val fire_button: Int,
-    val sensitivities: Sensitivities
+    val sensitivities: Sensitivities?
 )
 
 @Serializable

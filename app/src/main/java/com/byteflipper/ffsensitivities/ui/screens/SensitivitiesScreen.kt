@@ -98,7 +98,7 @@ fun SensitivitiesScreen(
             ) {
                 SliderView(
                     label = R.string.review,
-                    initialValue = deviceModel.sensitivities.review.toFloat(),
+                    initialValue = deviceModel.sensitivities?.review?.toFloat() ?: 0f,
                     onValueChange = { slider1Value = it },
                     enabled = false
                 )
@@ -110,7 +110,7 @@ fun SensitivitiesScreen(
 
                 SliderView(
                     label = R.string.collimator,
-                    initialValue = deviceModel.sensitivities.collimator.toFloat(),
+                    initialValue = deviceModel.sensitivities?.collimator?.toFloat() ?: 0f,
                     onValueChange = { slider2Value = it },
                     enabled = false
                 )
@@ -122,7 +122,7 @@ fun SensitivitiesScreen(
 
                 SliderView(
                     label = R.string.x2_scope,
-                    initialValue = deviceModel.sensitivities.x2_scope.toFloat(),
+                    initialValue = deviceModel.sensitivities?.x2_scope?.toFloat() ?: 0f,
                     onValueChange = { slider3Value = it },
                     enabled = false
                 )
@@ -134,7 +134,7 @@ fun SensitivitiesScreen(
 
                 SliderView(
                     label = R.string.x4_scope,
-                    initialValue = deviceModel.sensitivities.x4_scope.toFloat(),
+                    initialValue = deviceModel.sensitivities?.x4_scope?.toFloat() ?: 0f,
                     onValueChange = { slider3Value = it },
                     enabled = false
                 )
@@ -145,7 +145,7 @@ fun SensitivitiesScreen(
                 )
 
                 Row {
-                    if (deviceModel.dpi == 0) {
+                    if (deviceModel.dpi == null || deviceModel.dpi == 0) {
                         Text(
                             text = stringResource(id = R.string.fire_button) + ": " + deviceModel.fire_button,
                             modifier = Modifier.weight(1f)
@@ -206,13 +206,13 @@ fun SensitivitiesScreen(
                 val clipboardManager = LocalClipboardManager.current
 
                 val settingsText = buildString {
-                    append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi.toInt()}\n")
-                    append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities.review.toInt()}\n")
-                    append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities.collimator.toInt()}\n")
-                    append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities.x2_scope.toInt()}\n")
-                    append("${stringResource(id = R.string.x4_scope)}: ${deviceModel.sensitivities.x4_scope.toInt()}\n")
-                    append("${stringResource(id = R.string.sniper_scope)}: ${deviceModel.sensitivities.sniper_scope.toInt()}\n")
-                    append("${stringResource(id = R.string.free_review)}: ${deviceModel.sensitivities.free_review.toInt()}\n")
+                    append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi}\n")
+                    append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities?.review}\n")
+                    append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities?.collimator}\n")
+                    append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities?.x2_scope}\n")
+                    append("${stringResource(id = R.string.x4_scope)}: ${deviceModel.sensitivities?.x4_scope}\n")
+                    append("${stringResource(id = R.string.sniper_scope)}: ${deviceModel.sensitivities?.sniper_scope}\n")
+                    append("${stringResource(id = R.string.free_review)}: ${deviceModel.sensitivities?.free_review}\n")
                     append("${stringResource(id = R.string.source)} ${deviceModel.settings_source_url}")
                 }
 
