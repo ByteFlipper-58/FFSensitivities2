@@ -23,14 +23,12 @@ class DeviceRepository(private val client: HttpClient) {
                 contentType(ContentType.Application.Json)
             }.body()
 
-            val deviceData = Json {
+            val manufacturerWithModels = Json {
                 ignoreUnknownKeys = true
                 coerceInputValues = true
             }.decodeFromString(ManufacturerWithModels.serializer(), response)
 
-
-
-            UiState.Success(deviceData.models)
+            UiState.Success(manufacturerWithModels.models)
         } catch (e: SerializationException) {
             Timber.tag("DeviceRepository").e(e, "Serialization error")
             UiState.Error("Ошибка десериализации данных: ${e.message}")

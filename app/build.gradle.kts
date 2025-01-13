@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 62
-        versionName = "2.0.2"
+        versionCode = 63
+        versionName = "2.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -94,13 +94,14 @@ dependencies {
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
-    implementation("com.yandex.android:mobileads:7.8.0")
+    implementation("com.yandex.android:mobileads:7.8.1")
     implementation("com.yandex.ads.mediation:mobileads-google:23.5.0.0")
     implementation("com.unity3d.ads:unity-ads:4.12.4")
     implementation("com.google.ads.mediation:unity:4.12.5.0")
 
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.54")
+    kapt("com.google.dagger:hilt-compiler:2.54")
+    kapt("com.google.dagger:hilt-android-compiler:2.54")
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity)
