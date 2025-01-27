@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 63
-        versionName = "2.0.3"
+        versionCode = 67
+        versionName = "2.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -94,14 +94,17 @@ dependencies {
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
-    implementation("com.yandex.android:mobileads:7.8.1")
-    implementation("com.yandex.ads.mediation:mobileads-google:23.5.0.0")
+    // Yandex Mobile Ads
+    implementation("com.yandex.android:mobileads:7.9.0")
+    implementation("com.yandex.android:mobileads-mediation:7.9.0.0")
     implementation("com.unity3d.ads:unity-ads:4.12.4")
     implementation("com.google.ads.mediation:unity:4.12.5.0")
 
     implementation("com.google.dagger:hilt-android:2.54")
     kapt("com.google.dagger:hilt-compiler:2.54")
     kapt("com.google.dagger:hilt-android-compiler:2.54")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.activity)
@@ -119,7 +122,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("com.google.code.gson:gson:2.11.0")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    implementation(libs.kotlinx.serialization.json)
     implementation("io.ktor:ktor-client-core:2.3.4")
     implementation("io.ktor:ktor-client-cio:2.3.4")
     implementation("com.jakewharton.timber:timber:5.0.1")

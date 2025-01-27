@@ -1,4 +1,4 @@
-package com.byteflipper.ffsensitivities
+package com.byteflipper.ffsensitivities.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -30,6 +30,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,8 +43,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.byteflipper.ffsensitivities.AppViewModel
+import com.byteflipper.ffsensitivities.MyApplication
+import com.byteflipper.ffsensitivities.PreferencesManager
+import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.AdsHelper
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
@@ -56,7 +62,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
-import me.zhanghai.compose.preference.rememberPreferenceState
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -77,7 +82,8 @@ class MainActivity : ComponentActivity() {
         MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
 
         setContent {
-            MainActivityContent(appUpdateManager)
+            val viewModel: AppViewModel = viewModel(factory = AppViewModel.AppViewModelFactory(application))
+            MainActivityContent(appUpdateManager, viewModel)
         }
     }
 }
@@ -85,7 +91,8 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoroutinesApi::class)
 @Composable
 fun MainActivityContent(
-    appUpdateManager: AppUpdateManagerWrapper
+    appUpdateManager: AppUpdateManagerWrapper,
+    appViewModel: AppViewModel
 ) {
     val context = LocalContext.current
     val preferencesManager = PreferencesManager(context)
@@ -100,11 +107,9 @@ fun MainActivityContent(
     }
 
     ProvidePreferenceLocals {
-        val dynamicColorState by rememberPreferenceState("dynamic_colors", false)
-        val contrastThemeState by rememberPreferenceState("contrast_theme", false)
-        var selectedTheme by remember {
-            mutableStateOf(preferencesManager.readString("theme", "system") ?: "system")
-        }
+        val dynamicColorState by appViewModel.dynamicColor.collectAsState()
+        val contrastThemeState by appViewModel.contrastTheme.collectAsState()
+        val selectedTheme by appViewModel.theme.collectAsState()
 
         val darkTheme = when (selectedTheme) {
             "dark" -> true
@@ -194,7 +199,8 @@ fun MainActivityContent(
                                     IconButton(onClick = {
                                         navController.navigate("settings")
                                     }) {
-                                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
+                                        Icon(Icons.Default.Settings, contentDescription = stringResource(
+                                            R.string.settings))
                                     }
                                 }
                             },
@@ -231,8 +237,7 @@ fun MainActivityContent(
                     modifier = Modifier.padding(innerPadding),
                     onTitleChange = { newTitle -> toolbarTitle = newTitle },
                     onThemeChange = { newTheme ->
-                        selectedTheme = newTheme
-                        preferencesManager.putString("theme", newTheme)
+                        appViewModel.setTheme(newTheme)
                     }
                 )
             }
@@ -243,7 +248,9 @@ fun MainActivityContent(
 @Composable
 @Preview(showBackground = true)
 fun MainActivityPreview() {
+    val application = MyApplication()
     MainActivityContent(
-        appUpdateManager = AppUpdateManagerWrapper(ComponentActivity())
+        appUpdateManager = AppUpdateManagerWrapper(ComponentActivity()),
+        appViewModel = AppViewModel(application)
     )
 }

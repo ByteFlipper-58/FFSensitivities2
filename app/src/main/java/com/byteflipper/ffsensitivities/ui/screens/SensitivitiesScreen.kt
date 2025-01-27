@@ -64,9 +64,9 @@ fun SensitivitiesScreen(
         }
         LaunchedEffect(Unit) {
             val visitCount = context.incrementVisitCount()
-            if (visitCount % 3 == 0) {
+            if (visitCount % 2 == 0) {
                 interstitialAdManager.loadAd(
-                    adUnitId = "R-M-11993742-3",
+                    adUnitId = "R-M-13549181-3",
                     onLoaded = {
                         interstitialAdManager.show()
                     },

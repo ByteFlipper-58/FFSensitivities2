@@ -1,10 +1,12 @@
-package com.byteflipper.ffsensitivities
+package com.byteflipper.ffsensitivities.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import com.byteflipper.ffsensitivities.isFirstLaunch
+import com.byteflipper.ffsensitivities.setFirstLaunchCompleted
 import com.byteflipper.ffsensitivities.ui.screens.WelcomeScreen
 import com.byteflipper.ffsensitivities.ui.theme.FFSensitivitiesTheme
 

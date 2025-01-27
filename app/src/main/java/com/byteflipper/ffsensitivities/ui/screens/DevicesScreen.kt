@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities.ui.screens
 
 import android.app.Activity
+import android.content.Context
 import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,9 +15,11 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -24,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.byteflipper.ffsensitivities.ads.InterstitialAdManager
 import com.byteflipper.ffsensitivities.data.DeviceModel
 import com.byteflipper.ffsensitivities.repository.DeviceRepository
 import com.byteflipper.ffsensitivities.ui.UiState
@@ -46,6 +50,29 @@ fun DevicesScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     val context = LocalContext.current as Activity
+    val interstitialAdManager = remember { InterstitialAdManager(context) }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            interstitialAdManager.destroy()
+        }
+    }
+    LaunchedEffect(Unit) {
+        val visitCountt = context.incrementVisitCount()
+        if (visitCountt % 5 == 0) {
+            interstitialAdManager.loadAd(
+                adUnitId = "R-M-13549181-3",
+                onLoaded = {
+                    interstitialAdManager.show()
+                },
+                onError = {},
+                onShown = {
+                    context.resetVisitCount()
+                },
+                onDismissed = {}
+            )
+        }
+    }
 
     LaunchedEffect(model) {
         model?.let {
@@ -111,4 +138,21 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
             Text(text = devices.manufacturer + " " + devices.name, textAlign = TextAlign.Center)
         }
     }
+}
+
+fun Context.getVisitCountt(): Int {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return preferences.getInt("visit_countt", 0)
+}
+
+fun Context.incrementVisitCountt(): Int {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    val newCount = getVisitCount() + 1
+    preferences.edit().putInt("visit_countt", newCount).apply()
+    return newCount
+}
+
+fun Context.resetVisitCountt() {
+    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    preferences.edit().putInt("visit_countt", 0).apply()
 }
