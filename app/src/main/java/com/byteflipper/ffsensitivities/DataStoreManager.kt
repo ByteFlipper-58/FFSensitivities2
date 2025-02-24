@@ -21,6 +21,7 @@ class DataStoreManager(private val context: Context) {
         val CONTRAST_THEME_KEY = booleanPreferencesKey("contrast_theme")
         val VISIT_COUNT_KEY = intPreferencesKey("visit_count")
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
+        val LANGUAGE_KEY = stringPreferencesKey("app_language")
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -64,5 +65,11 @@ class DataStoreManager(private val context: Context) {
     }
 
     fun getRequestSent() = read(PreferencesKeys.REQUEST_SENT_KEY, false)
+
+    suspend fun setLanguage(language: String) {
+        save(PreferencesKeys.LANGUAGE_KEY, language)
+    }
+
+    fun getLanguage() = read(PreferencesKeys.LANGUAGE_KEY, "en")
 
 }

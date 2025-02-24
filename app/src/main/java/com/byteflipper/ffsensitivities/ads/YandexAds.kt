@@ -3,6 +3,7 @@ package com.byteflipper.ffsensitivities.ads
 import android.app.Activity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -10,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
@@ -38,7 +40,6 @@ fun YandexBannerAd(
     modifier: Modifier = Modifier,
     onAdLoaded: () -> Unit = {}
 ) {
-    val context = LocalContext.current
     val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
     var bannerAd by remember { mutableStateOf<BannerAdView?>(null) }
 
@@ -56,7 +57,9 @@ fun YandexBannerAd(
     }
 
     AndroidView(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentWidth(Alignment.CenterHorizontally),
         factory = { context ->
             BannerAdView(context).apply {
                 setAdUnitId(adUnitId)
@@ -179,9 +182,9 @@ class RewardedAdManager(private val context: Activity) {
 
 @Composable
 fun ExampleScreen() {
-    val context = LocalContext.current as Activity
-    val interstitialAdManager = remember { InterstitialAdManager(context) }
-    val rewardedAdManager = remember { RewardedAdManager(context) }
+    val context = LocalContext.current
+    val interstitialAdManager = remember { InterstitialAdManager(context as Activity) }
+    val rewardedAdManager = remember { RewardedAdManager(context as Activity) }
 
     DisposableEffect(Unit) {
         onDispose {

@@ -1,9 +1,11 @@
 package com.byteflipper.ffsensitivities.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -42,6 +44,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -51,6 +54,7 @@ import com.byteflipper.ffsensitivities.MyApplication
 import com.byteflipper.ffsensitivities.PreferencesManager
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.AdsHelper
+import com.byteflipper.ffsensitivities.ads.YandexBannerAd
 import com.byteflipper.ffsensitivities.navigation.BottomNavigationBar
 import com.byteflipper.ffsensitivities.navigation.NavigationHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
@@ -62,11 +66,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import me.zhanghai.compose.preference.ProvidePreferenceLocals
+import java.util.Locale
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private lateinit var appUpdateManager: AppUpdateManagerWrapper
+    //private var appOpenAdManager: AppOpenAdManager? = null
 
     @Inject lateinit var adsHelper: AdsHelper
 
@@ -75,16 +81,51 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         appUpdateManager = AppUpdateManagerWrapper(this)
-        MobileAds.initialize(this) {
-        }
+
         MobileAds.setAgeRestrictedUser(false)
         MobileAds.setLocationConsent(true)
         MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
+        //appOpenAdManager = (application as MyApplication).appOpenAdManager
 
         setContent {
             val viewModel: AppViewModel = viewModel(factory = AppViewModel.AppViewModelFactory(application))
+
+            // Получаем текущий язык из AppViewModel
+            val language by viewModel.language.collectAsState()
+
+            // Устанавливаем язык через AppCompatDelegate при изменении
+            LaunchedEffect(language) {
+                val appLocale = LocaleListCompat.forLanguageTags(language)
+                AppCompatDelegate.setApplicationLocales(appLocale)
+            }
+
+            /*appOpenAdManager?.let { adManager ->
+                DisposableEffect(Unit) {
+                    val lifecycleObserver = LifecycleEventObserver { _, event ->
+                        when (event) {
+                            Lifecycle.Event.ON_RESUME -> adManager.onActivityResumed(this@MainActivity)
+                            Lifecycle.Event.ON_PAUSE -> adManager.onActivityPaused(this@MainActivity)
+                            else -> {}
+                        }
+                    }
+
+                    lifecycle.addObserver(lifecycleObserver)
+                    onDispose {
+                        lifecycle.removeObserver(lifecycleObserver)
+                    }
+                }
+            }*/
+
             MainActivityContent(appUpdateManager, viewModel)
         }
+    }
+
+    private fun updateLocale(language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = Configuration().apply { setLocale(locale) }
+        resources.updateConfiguration(config, resources.displayMetrics)
+        recreate()
     }
 }
 
@@ -221,14 +262,22 @@ fun MainActivityContent(
                     }
                 },
                 bottomBar = {
-                    AnimatedVisibility(
-                        visible = isBottomBarVisible,
-                        enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
-                        exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
-                    ) {
-                        BottomNavigationBar(
-                            navController = navController,
+                    Column {
+                        YandexBannerAd(
+                            adUnitId = "R-M-13549181-2",
+                            modifier = Modifier
                         )
+
+                        // Bottom Navigation
+                        AnimatedVisibility(
+                            visible = isBottomBarVisible,
+                            enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),
+                            exit = slideOutVertically(targetOffsetY = { it }) + fadeOut(animationSpec = tween(durationMillis = 300))
+                        ) {
+                            BottomNavigationBar(
+                                navController = navController,
+                            )
+                        }
                     }
                 }
             ) { innerPadding ->

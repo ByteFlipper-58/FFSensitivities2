@@ -1,28 +1,21 @@
 package com.byteflipper.ffsensitivities.ads
 
+//import com.google.android.gms.ads.AdError
+//import com.google.android.gms.ads.AdRequest
+//import com.google.android.gms.ads.AdSize
+//import com.google.android.gms.ads.AdView
+//import com.google.android.gms.ads.FullScreenContentCallback
+//import com.google.android.gms.ads.LoadAdError
+//import com.google.android.gms.ads.MobileAds
+//import com.google.android.gms.ads.appopen.AppOpenAd
+//import com.google.android.gms.ads.interstitial.InterstitialAd
+//import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalInspectionMode
-import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.getSystemService
-import com.byteflipper.ffsensitivities.BuildConfig
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.appopen.AppOpenAd
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.ump.ConsentInformation
 import com.google.android.ump.ConsentRequestParameters
 import com.google.android.ump.UserMessagingPlatform
@@ -45,11 +38,11 @@ class AdsHelper @Inject constructor(
     val isMobileAdsSdkInitialized = MutableStateFlow(false)
     val canShowAd get() = isMobileAdsSdkInitialized.value && canRequestAd
 
-    private val _interstitialAd = mutableStateOf<InterstitialAd?>(null)
-    val interstitialAd: State<InterstitialAd?> = _interstitialAd
+    //private val _interstitialAd = mutableStateOf<InterstitialAd?>(null)
+    //val interstitialAd: State<InterstitialAd?> = _interstitialAd
 
-    private val _appOpenAd = mutableStateOf<AppOpenAd?>(null)
-    val appOpenAd: State<AppOpenAd?> = _appOpenAd
+    //private val _appOpenAd = mutableStateOf<AppOpenAd?>(null)
+    //val appOpenAd: State<AppOpenAd?> = _appOpenAd
 
     init {
         initialize()
@@ -100,15 +93,15 @@ class AdsHelper @Inject constructor(
             }
             ConsentInformation.ConsentStatus.OBTAINED -> {
                 Timber.d("Consent obtained - Ads can be requested")
-                initializeMobileAds()
-                preloadInterstitialAd()
-                preloadAppOpenAd()
+                //initializeMobileAds()
+                //preloadInterstitialAd()
+                //preloadAppOpenAd()
             }
             ConsentInformation.ConsentStatus.NOT_REQUIRED -> {
                 Timber.d("Consent is not required - Ads can be requested")
-                initializeMobileAds()
-                preloadInterstitialAd()
-                preloadAppOpenAd()
+                //initializeMobileAds()
+                //preloadInterstitialAd()
+                //preloadAppOpenAd()
             }
             else -> {
                 Timber.w("Consent status unknown")
@@ -120,7 +113,7 @@ class AdsHelper @Inject constructor(
         return consentInformation?.consentStatus == ConsentInformation.ConsentStatus.OBTAINED
     }
 
-    private fun initializeMobileAds() {
+    /*private fun initializeMobileAds() {
         if (isMobileAdsInitializeCalled.getAndSet(true)) {
             Timber.d("MobileAds already initialized")
             return
@@ -267,18 +260,18 @@ class AdsHelper @Inject constructor(
             }
         )
     }
-}
+}*/
+    @Suppress("DEPRECATION")
+    private fun Context.isInternetConnected(): Boolean {
+        val connectivityManager = getSystemService<ConnectivityManager>() ?: return false
 
-@Suppress("DEPRECATION")
-private fun Context.isInternetConnected(): Boolean {
-    val connectivityManager = getSystemService<ConnectivityManager>() ?: return false
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val currentNetwork = connectivityManager.activeNetwork
+            val networkCapabilities = connectivityManager.getNetworkCapabilities(currentNetwork)
 
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-        val currentNetwork = connectivityManager.activeNetwork
-        val networkCapabilities = connectivityManager.getNetworkCapabilities(currentNetwork)
-
-        networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true
-    } else {
-        connectivityManager.activeNetworkInfo?.isConnected == true
+            networkCapabilities?.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED) == true
+        } else {
+            connectivityManager.activeNetworkInfo?.isConnected == true
+        }
     }
 }

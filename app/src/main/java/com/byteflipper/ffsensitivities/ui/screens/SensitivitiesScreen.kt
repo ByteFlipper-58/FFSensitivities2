@@ -54,8 +54,8 @@ fun SensitivitiesScreen(
             .padding(16.dp, 0.dp, 16.dp, 0.dp)
     ) {
 
-        val context = LocalContext.current as Activity
-        val interstitialAdManager = remember { InterstitialAdManager(context) }
+        val context = LocalContext.current
+        val interstitialAdManager = remember { InterstitialAdManager(context as Activity) }
 
         DisposableEffect(Unit) {
             onDispose {

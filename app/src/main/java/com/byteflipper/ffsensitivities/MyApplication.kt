@@ -2,16 +2,23 @@ package com.byteflipper.ffsensitivities
 
 import android.app.Application
 import android.util.Log
+import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
 class MyApplication : Application() {
+    //var appOpenAdManager: AppOpenAdManager? = null
 
     override fun onCreate() {
         super.onCreate()
         initializeLogging()
         Timber.plant(FileLoggingTree(this))
+
+        MobileAds.initialize(this) {
+           Log.d("AppOpenAd", "Mobile Ads initialized")
+        }
+       // appOpenAdManager = AppOpenAdManager(this)
     }
 
     private fun initializeLogging() {

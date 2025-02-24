@@ -34,7 +34,7 @@ fun SettingsScreen(
     val dynamicColorState by appViewModel.dynamicColor.collectAsState()
     val contrastThemeState by appViewModel.contrastTheme.collectAsState()
     val selectedTheme by appViewModel.theme.collectAsState()
-
+    val selectedLanguage by appViewModel.language.collectAsState()
 
     ProvidePreferenceLocals {
 
@@ -44,6 +44,43 @@ fun SettingsScreen(
                 key = "general_settings_category",
                 title = { Text(text = "General Settings") }
             )
+
+            preferenceCategory(
+                key = "language_settings_category",
+                title = { Text(text = "Language Settings") }
+            )
+
+            radioButtonPreference(
+                key = "language_english",
+                selected = selectedLanguage == "pl",
+                title = { Text(text = "English") },
+                summary = { Text(text = "Set app language to English") },
+                onClick = {
+                    appViewModel.setLanguage("en")
+                }
+            )
+
+            radioButtonPreference(
+                key = "language_russian",
+                selected = selectedLanguage == "fr",
+                title = { Text(text = "Francus") },
+                summary = { Text(text = "Установить francus язык для приложения") },
+                onClick = {
+                    appViewModel.setLanguage("ru")
+                }
+            )
+
+            radioButtonPreference(
+                key = "language_russian",
+                selected = selectedLanguage == "ru",
+                title = { Text(text = "Русский") },
+                summary = { Text(text = "Установить русский язык для приложения") },
+                onClick = {
+                    appViewModel.setLanguage("ru")
+                }
+            )
+
+            item { HorizontalDivider() }
 
             preferenceCategory(
                 key = "theme_settings_category",
@@ -66,9 +103,7 @@ fun SettingsScreen(
                 },
             )
 
-            item {
-                HorizontalDivider()
-            }
+            item { HorizontalDivider() }
 
             radioButtonPreference(
                 key = "theme_system",
@@ -102,6 +137,7 @@ fun SettingsScreen(
                     onThemeChange("dark")
                 }
             )
+
             twoTargetSwitchPreference(
                 key = "contrast_theme",
                 defaultValue = false,

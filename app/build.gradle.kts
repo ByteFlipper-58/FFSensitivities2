@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 67
-        versionName = "2.1.1"
+        versionCode = 70
+        versionName = "2.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -65,6 +65,10 @@ android {
         }
     }
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     secrets {
         // Change the properties file from the default "local.properties" in your root project
         // to another properties file in your root project.
@@ -81,7 +85,7 @@ android {
 }
 
 dependencies {
-
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(platform(libs.androidx.compose.bom))
 
     implementation(platform(libs.firebase.bom))
@@ -95,14 +99,12 @@ dependencies {
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     // Yandex Mobile Ads
-    implementation("com.yandex.android:mobileads:7.9.0")
+    implementation("com.yandex.android:mobileads:7.10.0")
     implementation("com.yandex.android:mobileads-mediation:7.9.0.0")
-    implementation("com.unity3d.ads:unity-ads:4.12.4")
-    implementation("com.google.ads.mediation:unity:4.12.5.0")
 
-    implementation("com.google.dagger:hilt-android:2.54")
-    kapt("com.google.dagger:hilt-compiler:2.54")
-    kapt("com.google.dagger:hilt-android-compiler:2.54")
+    implementation("com.google.dagger:hilt-android:2.55")
+    kapt("com.google.dagger:hilt-compiler:2.55")
+    kapt("com.google.dagger:hilt-android-compiler:2.55")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
@@ -119,6 +121,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation("androidx.core:core-splashscreen:1.0.1")
 
+    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("com.google.code.gson:gson:2.11.0")
 
