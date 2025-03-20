@@ -1,26 +1,28 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
-import me.zhanghai.compose.preference.ProvidePreferenceLocals
-import me.zhanghai.compose.preference.preferenceCategory
-import me.zhanghai.compose.preference.radioButtonPreference
-import me.zhanghai.compose.preference.twoTargetSwitchPreference
+import com.byteflipper.ffsensitivities.presentation.ui.components.PreferenceCategory
+import com.byteflipper.ffsensitivities.presentation.ui.components.RadioButtonGroup
+import com.byteflipper.ffsensitivities.presentation.ui.components.RadioOption
+import com.byteflipper.ffsensitivities.presentation.ui.components.SwitchPreference
 
 @Composable
 @Preview(showBackground = true)
@@ -36,85 +38,106 @@ fun SettingsScreen(
     val selectedTheme by appViewModel.theme.collectAsState()
     val selectedLanguage by appViewModel.language.collectAsState()
 
-    ProvidePreferenceLocals {
-
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-
-            preferenceCategory(
-                key = "general_settings_category",
-                title = { Text(text = "General Settings") }
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        /*item {
+            PreferenceCategory(
+                title = "General Settings",
+                icon = painterResource(id = R.drawable.settings_24px),
             )
+        }*/
 
-            preferenceCategory(
-                key = "theme_settings_category",
-                title = { Text(text = "Theme Settings") }
+        item {
+            PreferenceCategory(
+                title = "Theme Settings",
+                icon = painterResource(id = R.drawable.palette_24px),
             )
+        }
 
-            twoTargetSwitchPreference(
-                key = "dynamic_colors",
-                defaultValue = false,
-                title = { isChecked ->
-                    Text(if (isChecked) stringResource(R.string.switch_use_dynamic_colors_title) else stringResource(R.string.switch_use_dynamic_colors_title))
-                },
-                icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-                summary = { isChecked ->
-                    Text(if (isChecked) stringResource(R.string.switch_use_dynamic_colors_subtitle_on) else stringResource(R.string.switch_use_dynamic_colors_subtitle_off))
-                },
-                switchEnabled = { true },
-                onClick = { isChecked ->
+        item {
+            SwitchPreference(
+                title = stringResource(R.string.switch_use_dynamic_colors_title),
+                descriptionOn = stringResource(R.string.switch_use_dynamic_colors_subtitle_on),
+                descriptionOff = stringResource(R.string.switch_use_dynamic_colors_subtitle_off),
+                checked = dynamicColorState,
+                icon = painterResource(id = R.drawable.colors_24px),
+                activeIndicatorColor = MaterialTheme.colorScheme.primary,
+                inactiveIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                onCheckedChange = { isChecked ->
                     appViewModel.setDynamicColor(isChecked)
-                },
-            )
-
-            item { HorizontalDivider() }
-
-            radioButtonPreference(
-                key = "theme_system",
-                selected = selectedTheme == "system",
-                title = { Text(text = stringResource(R.string.system_theme)) },
-                summary = { Text(text = stringResource(R.string.system_theme_description)) },
-                onClick = {
-                    appViewModel.setTheme("system")
-                    onThemeChange("system")
                 }
             )
+        }
 
-            radioButtonPreference(
-                key = "theme_light",
-                selected = selectedTheme == "light",
-                title = { Text(text = stringResource(R.string.light_theme)) },
-                summary = { Text(text = stringResource(R.string.light_theme_description)) },
-                onClick = {
-                    appViewModel.setTheme("light")
-                    onThemeChange("light")
-                }
+        item { HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp)) }
+
+        item {
+            val themeOptions = listOf(
+                RadioOption(
+                    key = "theme_system",
+                    title = stringResource(R.string.system_theme),
+                    description = "Default system option", // Added description
+                    summary = stringResource(R.string.system_theme_description),
+                    icon = painterResource(id = R.drawable.night_sight_auto_24px),
+                    summaryIcon = Icons.Outlined.Info
+                ),
+                RadioOption(
+                    key = "theme_light",
+                    title = stringResource(R.string.light_theme),
+                    description = "Bright theme for better visibility", // Added description
+                    summary = stringResource(R.string.light_theme_description),
+                    icon = painterResource(id = R.drawable.light_mode_24px),
+                    summaryIcon = Icons.Outlined.Info
+                ),
+                RadioOption(
+                    key = "theme_dark",
+                    title = stringResource(R.string.night_theme),
+                    description = "Dark theme to reduce eye strain", // Added description
+                    summary = stringResource(R.string.night_theme_description),
+                    icon = painterResource(id = R.drawable.dark_mode_24px),
+                    summaryIcon = Icons.Outlined.Info
+                )
             )
 
-            radioButtonPreference(
-                key = "theme_dark",
-                selected = selectedTheme == "dark",
-                title = { Text(text = stringResource(R.string.night_theme)) },
-                summary = { Text(text = stringResource(R.string.night_theme_description)) },
-                onClick = {
-                    appViewModel.setTheme("dark")
-                    onThemeChange("dark")
+            RadioButtonGroup(
+                options = themeOptions,
+                selectedKey = when (selectedTheme) {
+                    "system" -> "theme_system"
+                    "light" -> "theme_light"
+                    "dark" -> "theme_dark"
+                    else -> "theme_system"
+                },
+                activeIndicatorColor = MaterialTheme.colorScheme.primary,
+                inactiveIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                onOptionSelected = { key ->
+                    val theme = when (key) {
+                        "theme_system" -> "system"
+                        "theme_light" -> "light"
+                        "theme_dark" -> "dark"
+                        else -> "system"
+                    }
+                    appViewModel.setTheme(theme)
+                    onThemeChange(theme)
                 }
             )
+        }
 
-            twoTargetSwitchPreference(
-                key = "contrast_theme",
-                defaultValue = false,
-                title = { isChecked ->
-                    Text(if (isChecked) "Contrast theme enabled" else "Contrast theme disabled")
-                },
-                icon = { Icon(imageVector = Icons.Outlined.Info, contentDescription = null) },
-                summary = { isChecked ->
-                    Text(if (isChecked) "Contrast theme is currently enabled." else "Contrast theme is currently disabled.")
-                },
-                switchEnabled = { true },
-                onClick = { isChecked ->
+        item { HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp)) }
+
+        item {
+            SwitchPreference(
+                title = "Contrast theme",
+                descriptionOn = "Contrast theme is currently enabled.",
+                descriptionOff = "Contrast theme is currently disabled.",
+                checked = contrastThemeState,
+                icon = painterResource(id = R.drawable.contrast_24px),
+                activeIndicatorColor = MaterialTheme.colorScheme.tertiary,
+                inactiveIndicatorColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f),
+                onCheckedChange = { isChecked ->
                     appViewModel.setContrastTheme(isChecked)
-                },
+                }
             )
         }
     }
