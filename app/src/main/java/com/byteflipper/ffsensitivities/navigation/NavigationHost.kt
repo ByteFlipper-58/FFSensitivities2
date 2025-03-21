@@ -11,11 +11,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.about.AboutScreen
 
 /**
  * Composable function that sets up the navigation graph for the application.
