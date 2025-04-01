@@ -1,5 +1,6 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
+// import androidx.lifecycle.viewmodel.compose.viewModel // Use hiltViewModel instead
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,12 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.presentation.ui.components.PreferenceCategory
@@ -25,13 +24,14 @@ import com.byteflipper.ffsensitivities.presentation.ui.components.RadioOption
 import com.byteflipper.ffsensitivities.presentation.ui.components.SwitchPreference
 
 @Composable
-@Preview(showBackground = true)
+// @Preview(showBackground = true) // Preview might fail without Hilt context
 fun SettingsScreen(
     modifier: Modifier = Modifier,
-    onThemeChange: (String) -> Unit = {},
+    // onThemeChange: (String) -> Unit = {}, // Removed parameter
+    appViewModel: AppViewModel = hiltViewModel() // Get ViewModel using Hilt
 ) {
-    val context = LocalContext.current
-    val appViewModel: AppViewModel = viewModel(factory = AppViewModel.AppViewModelFactory(context.applicationContext as android.app.Application))
+    // val context = LocalContext.current // No longer needed for factory
+    // val appViewModel: AppViewModel = viewModel(factory = AppViewModel.AppViewModelFactory(context.applicationContext as android.app.Application)) // Use hiltViewModel
 
     val dynamicColorState by appViewModel.dynamicColor.collectAsState()
     val contrastThemeState by appViewModel.contrastTheme.collectAsState()
@@ -119,7 +119,7 @@ fun SettingsScreen(
                         else -> "system"
                     }
                     appViewModel.setTheme(theme)
-                    onThemeChange(theme)
+                    // onThemeChange(theme) // Removed call
                 }
             )
         }

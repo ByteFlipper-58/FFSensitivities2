@@ -29,7 +29,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 
 @Composable
 fun AnimatedShimmer() {
@@ -65,10 +64,9 @@ fun AnimatedShimmer() {
 
 @Composable
 fun ShimmerGridItem(brush: Brush) {
-    FFSensitivitiesTheme() {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
                 .padding(all = 10.dp),
             verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
         ) {
@@ -110,7 +108,6 @@ fun ShimmerGridItem(brush: Brush) {
                         .fillMaxWidth(fraction = 0.35f)
                         .background(brush)
                 )
-            }
         }
     }
 }

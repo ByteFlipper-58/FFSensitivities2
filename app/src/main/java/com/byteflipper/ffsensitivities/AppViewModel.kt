@@ -1,27 +1,27 @@
 package com.byteflipper.ffsensitivities
 
-// Добавляем импорты для Play Core
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class AppViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class AppViewModel @Inject constructor(
+    application: Application,
+    private val dataStoreManager: DataStoreManager
+) : AndroidViewModel(application) {
 
-    private val dataStoreManager = DataStoreManager(application)
-
-    // --- Существующие StateFlow ---
     val theme: StateFlow<String> = dataStoreManager.getTheme()
         .stateIn(
             scope = viewModelScope,
@@ -33,8 +33,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
-            initialValue = false
-        )
+        initialValue = false
+    )
 
     val contrastTheme: StateFlow<Boolean> = dataStoreManager.getContrastTheme()
         .stateIn(
@@ -85,9 +85,9 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
                 AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(savedLanguage))
             }
         }
+
     }
 
-    // --- Существующие методы ---
     fun setTheme(theme: String) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreManager.setTheme(theme)
@@ -124,17 +124,6 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             launch(Dispatchers.Main) {
                 AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(language))
             }
-        }
-    }
-
-    // Фабрика остается без изменений
-    class AppViewModelFactory(private val application: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AppViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return AppViewModel(application) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }

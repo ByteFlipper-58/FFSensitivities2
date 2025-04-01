@@ -8,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import com.byteflipper.ffsensitivities.data.local.isFirstLaunch
 import com.byteflipper.ffsensitivities.data.local.setFirstLaunchCompleted
 import com.byteflipper.ffsensitivities.presentation.ui.screens.WelcomeScreen
-import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 
 class WelcomeActivity : ComponentActivity() {
 
@@ -23,20 +22,14 @@ class WelcomeActivity : ComponentActivity() {
             finish()
         } else {
             setContent {
-                FFSensitivitiesTheme(
-                    darkTheme = true,
-                    dynamicColor = false,
-                    contrastTheme = false
-                ){
-                    WelcomeScreen(
-                        onStartClick = {
-                            setFirstLaunchCompleted(context = this)
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                    )
-                }
+                WelcomeScreen(
+                    onStartClick = {
+                        setFirstLaunchCompleted(context = this)
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                )
             }
         }
     }

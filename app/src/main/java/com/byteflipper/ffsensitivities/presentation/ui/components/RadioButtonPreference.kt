@@ -115,7 +115,12 @@ fun RadioButtonPreference(
 @Preview(showBackground = true)
 @Composable
 fun PreviewRadioButtonPreference() {
-    FFSensitivitiesTheme {
+    // Update theme call for preview
+    FFSensitivitiesTheme(
+        themeSetting = "system",
+        dynamicColorSetting = false,
+        contrastThemeSetting = false
+    ) {
         Column(Modifier.padding(16.dp)) {
             RadioButtonPreference(
                 key = "theme_system",

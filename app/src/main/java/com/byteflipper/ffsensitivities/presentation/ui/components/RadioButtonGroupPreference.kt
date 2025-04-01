@@ -101,7 +101,12 @@ fun RadioButtonGroup(
 @Preview(showBackground = true)
 @Composable
 fun PreviewRadioButtonGroup() {
-    FFSensitivitiesTheme {
+    // Update theme call for preview
+    FFSensitivitiesTheme(
+        themeSetting = "system",
+        dynamicColorSetting = false,
+        contrastThemeSetting = false
+    ) {
         val themeOptions = listOf(
             RadioOption(
                 key = "theme_system",

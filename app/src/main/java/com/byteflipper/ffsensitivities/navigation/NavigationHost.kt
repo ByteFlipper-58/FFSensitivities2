@@ -33,7 +33,6 @@ fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
     onTitleChange: (String) -> Unit,
-    onThemeChange: (String) -> Unit,
 ) {
     NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
         composable(
@@ -58,7 +57,7 @@ fun NavigationHost(
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Down, tween(500)) }
         ) {
             onTitleChange(stringResource(R.string.settings))
-            SettingsScreen(modifier, onThemeChange)
+            SettingsScreen(modifier = modifier)
         }
         composable(
             "devices/{name}/{model}",

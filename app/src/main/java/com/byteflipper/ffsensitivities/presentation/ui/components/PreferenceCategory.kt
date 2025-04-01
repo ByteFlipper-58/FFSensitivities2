@@ -84,7 +84,11 @@ fun PreferenceCategory(
 @Preview(showBackground = true)
 @Composable
 fun PreferenceCategoryPreview() {
-    FFSensitivitiesTheme {
+    FFSensitivitiesTheme(
+        themeSetting = "system",
+        dynamicColorSetting = false,
+        contrastThemeSetting = false
+    ) {
         Column {
             PreferenceCategory(
                 title = "Theme Settings",

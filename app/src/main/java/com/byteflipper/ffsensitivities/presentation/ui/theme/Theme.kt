@@ -254,35 +254,48 @@ val unspecified_scheme = ColorFamily(
 
 @Composable
 fun FFSensitivitiesTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false,
-    contrastTheme: Boolean = false,
-    contrastLevel: ContrastLevel = ContrastLevel.None,
+    // Remove direct darkTheme, dynamicColor, contrastTheme parameters
+    // Add StateFlows or collected values for settings
+    themeSetting: String, // "light", "dark", "system"
+    dynamicColorSetting: Boolean,
+    contrastThemeSetting: Boolean,
+    // contrastLevel: ContrastLevel = ContrastLevel.None, // Keep if needed, otherwise remove
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
+
+    // Determine darkTheme based on themeSetting
+    val darkTheme = when (themeSetting) {
+        "dark" -> true
+        "light" -> false
+        else -> isSystemInDarkTheme() // "system" or default
+    }
+
+    // Determine color scheme based on settings and determined darkTheme
     val colorScheme = when {
-        (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
+        (dynamicColorSetting && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
             if (darkTheme) dynamicDarkColorScheme(context)
             else dynamicLightColorScheme(context)
         }
         darkTheme -> {
-            when (contrastTheme) {
+            // Use contrastThemeSetting here
+            when (contrastThemeSetting) {
                 true -> highContrastDarkColorScheme
                 false -> darkScheme
             }
-            /*when (contrastLevel) {
+            /* when (contrastLevel) { // Keep or remove contrastLevel logic as needed
                 ContrastLevel.None -> darkScheme
                 ContrastLevel.Medium -> mediumContrastDarkColorScheme
                 ContrastLevel.High -> highContrastDarkColorScheme
             }*/
         }
-        else -> {
-            when (contrastTheme) {
+        else -> { // Light theme case
+             // Use contrastThemeSetting here
+            when (contrastThemeSetting) {
                 true -> highContrastLightColorScheme
                 false -> lightScheme
             }
-            /*when (contrastLevel) {
+            /* when (contrastLevel) { // Keep or remove contrastLevel logic as needed
                 ContrastLevel.None -> lightScheme
                 ContrastLevel.Medium -> mediumContrastLightColorScheme
                 ContrastLevel.High -> highContrastLightColorScheme
