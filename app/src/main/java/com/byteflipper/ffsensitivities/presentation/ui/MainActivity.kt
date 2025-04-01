@@ -46,7 +46,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.ViewModelProvider // Импортируем ViewModelProvider
+// import androidx.lifecycle.viewmodel.compose.viewModel // Больше не нужен здесь
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.AppViewModel
@@ -87,11 +88,14 @@ class MainActivity : ComponentActivity() {
         MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
         //appOpenAdManager = (application as MyApplication).appOpenAdManager
 
-        setContent {
-            val viewModel: AppViewModel = viewModel(factory = AppViewModel.AppViewModelFactory(application))
+        // Получаем ViewModel до setContent
+        val viewModel: AppViewModel = ViewModelProvider(this, AppViewModel.AppViewModelFactory(application))[AppViewModel::class.java]
 
-            // Получаем текущий язык из AppViewModel
-            val language by viewModel.language.collectAsState()
+        // Удерживаем сплэш-скрин, пока isReady не станет true
+        splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }
+
+        setContent {
+            val language by viewModel.language.collectAsState() // Собираем StateFlow языка
 
             // Устанавливаем язык через AppCompatDelegate при изменении
             LaunchedEffect(language) {
@@ -268,7 +272,6 @@ fun MainActivityContent(
                             modifier = Modifier
                         )
 
-                        // Bottom Navigation
                         AnimatedVisibility(
                             visible = isBottomBarVisible,
                             enter = slideInVertically(initialOffsetY = { it }) + fadeIn(animationSpec = tween(durationMillis = 300)),

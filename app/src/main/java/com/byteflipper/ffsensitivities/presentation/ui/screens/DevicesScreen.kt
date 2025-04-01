@@ -57,7 +57,7 @@ fun DevicesScreen(
         }
     }
     LaunchedEffect(Unit) {
-        val visitCountt = context.incrementVisitCount()
+        val visitCountt = context.incrementVisitCountt()
         if (visitCountt % 5 == 0) {
             interstitialAdManager.loadAd(
                 adUnitId = "R-M-13549181-3",
@@ -66,7 +66,7 @@ fun DevicesScreen(
                 },
                 onError = {},
                 onShown = {
-                    context.resetVisitCount()
+                    context.resetVisitCountt()
                 },
                 onDismissed = {}
             )
@@ -146,7 +146,7 @@ fun Context.getVisitCountt(): Int {
 
 fun Context.incrementVisitCountt(): Int {
     val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    val newCount = getVisitCount() + 1
+    val newCount = getVisitCountt() + 1
     preferences.edit().putInt("visit_countt", newCount).apply()
     return newCount
 }

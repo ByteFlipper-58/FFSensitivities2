@@ -1,4 +1,4 @@
-package com.byteflipper.ffsensitivities.presentation.ui.screens.about
+package com.byteflipper.ffsensitivities.presentation.ui.screens
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Spring
@@ -22,9 +22,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -67,169 +68,152 @@ import com.byteflipper.ffsensitivities.utils.FeedbackHelper
 @Composable
 fun AboutScreen(
     modifier: Modifier = Modifier,
-    onNavigateBack: () -> Unit = {}
 ) {
     val context = LocalContext.current
+    val scrollState = rememberScrollState()
 
-    AboutScreenScaffold(
-        title = "About",
-        onNavigateBack = onNavigateBack
-    ) { paddingValues ->
-        LazyColumn(
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp)
-                .padding(top = 16.dp, bottom = paddingValues.calculateBottomPadding()),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+                .fillMaxWidth()
+                .verticalScroll(scrollState)
+                .padding(horizontal = 16.dp, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // App Logo and Info
-            item {
-                AppInfoHeader()
-            }
+            AppInfoHeader()
 
-            // Support Section
-            item {
-                ExpandableSection(
-                    title = "Support & Feedback",
-                    icon = painterResource(id = R.drawable.bug_report_24px)
+            ExpandableSection(
+                title = "Support & Feedback",
+                icon = painterResource(id = R.drawable.bug_report_24px)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        AnimatedActionItem(
-                            title = stringResource(R.string.bug_report_title),
-                            subtitle = stringResource(R.string.bug_report_subtitle),
-                            icon = painterResource(id = R.drawable.bug_report_24px),
-                            onClick = { FeedbackHelper.SendEmail(context) }
-                        )
+                    AnimatedActionItem(
+                        title = stringResource(R.string.bug_report_title),
+                        subtitle = stringResource(R.string.bug_report_subtitle),
+                        icon = painterResource(id = R.drawable.bug_report_24px),
+                        onClick = { FeedbackHelper.SendEmail(context) }
+                    )
 
-                        AnimatedActionItem(
-                            title = stringResource(R.string.rate_the_app_title),
-                            subtitle = stringResource(R.string.rate_the_app_subtitle),
-                            icon = painterResource(id = R.drawable.rate_review_24px),
-                            onClick = { /* TODO: Add rating action */ }
-                        )
+                    AnimatedActionItem(
+                        title = stringResource(R.string.rate_the_app_title),
+                        subtitle = stringResource(R.string.rate_the_app_subtitle),
+                        icon = painterResource(id = R.drawable.rate_review_24px),
+                        onClick = { /* TODO: Add rating action */ }
+                    )
 
-                        AnimatedActionItem(
-                            title = stringResource(R.string.other_apps_title),
-                            subtitle = stringResource(R.string.other_apps_subtitle),
-                            icon = painterResource(id = R.drawable.apps_24px),
-                            onClick = { /* TODO: Add other apps action */ }
-                        )
-                    }
+                    AnimatedActionItem(
+                        title = stringResource(R.string.other_apps_title),
+                        subtitle = stringResource(R.string.other_apps_subtitle),
+                        icon = painterResource(id = R.drawable.apps_24px),
+                        onClick = { /* TODO: Add other apps action */ }
+                    )
                 }
             }
 
-            // Social Media Section
-            item {
-                ExpandableSection(
-                    title = "Connect With Us",
-                    icon = painterResource(id = R.drawable.web_24px)
+            ExpandableSection(
+                title = "Connect With Us",
+                icon = painterResource(id = R.drawable.web_24px)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        AnimatedActionItem(
-                            title = stringResource(R.string.website_title),
-                            subtitle = stringResource(R.string.website_subtitle),
-                            icon = painterResource(id = R.drawable.web_24px),
-                            onClick = {
-                                ChromeCustomTabUtil.openUrl(
-                                    context = context,
-                                    url = "https://byteflipper.web.app",
-                                )
-                            }
-                        )
+                    AnimatedActionItem(
+                        title = stringResource(R.string.website_title),
+                        subtitle = stringResource(R.string.website_subtitle),
+                        icon = painterResource(id = R.drawable.web_24px),
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = "https://byteflipper.web.app",
+                            )
+                        }
+                    )
 
-                        AnimatedActionItem(
-                            title = stringResource(R.string.vk_title),
-                            subtitle = stringResource(R.string.vk_subtitle),
-                            icon = painterResource(id = R.drawable.vk_24),
-                            onClick = {
-                                ChromeCustomTabUtil.openUrl(
-                                    context = context,
-                                    url = "https://vk.com/byteflipper",
-                                )
-                            }
-                        )
+                    AnimatedActionItem(
+                        title = stringResource(R.string.vk_title),
+                        subtitle = stringResource(R.string.vk_subtitle),
+                        icon = painterResource(id = R.drawable.vk_24),
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = "https://vk.com/byteflipper",
+                            )
+                        }
+                    )
 
-                        AnimatedActionItem(
-                            title = stringResource(R.string.telegram_title),
-                            subtitle = stringResource(R.string.telegram_subtitle),
-                            icon = painterResource(id = R.drawable.telegram_24),
-                            onClick = {
-                                ChromeCustomTabUtil.openUrl(
-                                    context = context,
-                                    url = "https://t.me/byteflipper",
-                                )
-                            }
-                        )
-                    }
+                    AnimatedActionItem(
+                        title = stringResource(R.string.telegram_title),
+                        subtitle = stringResource(R.string.telegram_subtitle),
+                        icon = painterResource(id = R.drawable.telegram_24),
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = "https://t.me/byteflipper",
+                            )
+                        }
+                    )
                 }
             }
 
-            // Developer Section
-            item {
-                ExpandableSection(
-                    title = "Development",
-                    icon = painterResource(id = R.drawable.code_24px)
+            ExpandableSection(
+                title = "Development",
+                icon = painterResource(id = R.drawable.code_24px)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        AnimatedActionItem(
-                            title = stringResource(R.string.github_title),
-                            subtitle = stringResource(R.string.github_subtitle),
-                            icon = painterResource(id = R.drawable.github_24),
-                            onClick = {
-                                ChromeCustomTabUtil.openUrl(
-                                    context = context,
-                                    url = "https://github.com/ByteFlipper-58",
-                                )
-                            }
-                        )
+                    AnimatedActionItem(
+                        title = stringResource(R.string.github_title),
+                        subtitle = stringResource(R.string.github_subtitle),
+                        icon = painterResource(id = R.drawable.github_24),
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = "https://github.com/ByteFlipper-58",
+                            )
+                        }
+                    )
 
-                        AnimatedActionItem(
-                            title = stringResource(R.string.source_code_title),
-                            subtitle = stringResource(R.string.source_code_subtitle),
-                            icon = painterResource(id = R.drawable.code_24px),
-                            onClick = {
-                                ChromeCustomTabUtil.openUrl(
-                                    context = context,
-                                    url = "https://github.com/ByteFlipper-58/FFSensitivities2",
-                                )
-                            }
-                        )
-                    }
+                    AnimatedActionItem(
+                        title = stringResource(R.string.source_code_title),
+                        subtitle = stringResource(R.string.source_code_subtitle),
+                        icon = painterResource(id = R.drawable.code_24px),
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = "https://github.com/ByteFlipper-58/FFSensitivities2",
+                            )
+                        }
+                    )
                 }
             }
 
-            // Version info
-            item {
-                VersionInfoCard()
-            }
+            VersionInfoCard()
 
-            // Credits
-            item {
-                Card(
-                    modifier = Modifier.fillMaxWidth(),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f)
-                    ),
-                    shape = RoundedCornerShape(16.dp)
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f)
+                ),
+                shape = RoundedCornerShape(16.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = "Made with ❤️ by ByteFlipper",
-                            style = MaterialTheme.typography.bodyMedium,
-                            textAlign = TextAlign.Center
-                        )
-                    }
+                    Text(
+                        text = "Made with ❤️ by ByteFlipper",
+                        style = MaterialTheme.typography.bodyMedium,
+                        textAlign = TextAlign.Center
+                    )
                 }
             }
         }
@@ -277,7 +261,6 @@ fun AppInfoHeader() {
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                // App Name and Developer in a column
                 Column {
                     Text(
                         text = stringResource(R.string.app_name),
@@ -296,7 +279,6 @@ fun AppInfoHeader() {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Contact Us button
             Button(
                 onClick = { /* TODO: Add action */ },
                 modifier = Modifier

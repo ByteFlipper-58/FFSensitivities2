@@ -94,17 +94,18 @@ dependencies {
     implementation(libs.firebase.messaging.ktx)
     implementation(libs.firebase.inappmessaging.display)
 
-    implementation("com.google.android.ump:user-messaging-platform:3.1.0")
+    implementation("com.google.android.ump:user-messaging-platform:3.2.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     // Yandex Mobile Ads
-    implementation("com.yandex.android:mobileads:7.10.0")
+    implementation("com.yandex.android:mobileads:7.11.0")
     implementation("com.yandex.android:mobileads-mediation:7.9.0.0")
 
     implementation("com.google.dagger:hilt-android:2.55")
     kapt("com.google.dagger:hilt-compiler:2.55")
     kapt("com.google.dagger:hilt-android-compiler:2.55")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 

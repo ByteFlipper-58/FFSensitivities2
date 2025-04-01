@@ -1,7 +1,6 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
 import android.app.Activity
-import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
@@ -35,18 +35,20 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.InterstitialAdManager
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
 import com.google.gson.Gson
 
-//@Preview(showBackground = true)
 @Composable
 fun SensitivitiesScreen(
     navController: NavController,
-    device: String?
+    device: String?,
+    appViewModel: AppViewModel = hiltViewModel()
 ) {
     Column(
         modifier = Modifier
@@ -62,19 +64,30 @@ fun SensitivitiesScreen(
                 interstitialAdManager.destroy()
             }
         }
+
+        // Получаем StateFlow и собираем его как State
+        val visitCountState by appViewModel.visitCount.collectAsState()
+
         LaunchedEffect(Unit) {
-            val visitCount = context.incrementVisitCount()
-            if (visitCount % 2 == 0) {
+            val currentVisitCount = visitCountState
+            val newVisitCount = currentVisitCount + 1
+            appViewModel.setVisitCount(newVisitCount) // Инкрементируем через ViewModel
+
+            if (newVisitCount % 2 == 0) {
                 interstitialAdManager.loadAd(
-                    adUnitId = "R-M-13549181-3",
+                    adUnitId = "R-M-13549181-3", // TODO: Рассмотреть вынос ID в константы или конфиг
                     onLoaded = {
                         interstitialAdManager.show()
                     },
-                    onError = {},
-                    onShown = {
-                        context.resetVisitCount()
+                    onError = {
+                        // Можно добавить логирование ошибки
                     },
-                    onDismissed = {}
+                    onShown = {
+                        appViewModel.setVisitCount(0) // Сбрасываем через ViewModel
+                    },
+                    onDismissed = {
+                        // Можно добавить обработку закрытия рекламы
+                    }
                 )
             }
         }
@@ -230,21 +243,4 @@ fun SensitivitiesScreen(
             }
         }
     }
-}
-
-fun Context.getVisitCount(): Int {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    return preferences.getInt("visit_count", 0)
-}
-
-fun Context.incrementVisitCount(): Int {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    val newCount = getVisitCount() + 1
-    preferences.edit().putInt("visit_count", newCount).apply()
-    return newCount
-}
-
-fun Context.resetVisitCount() {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    preferences.edit().putInt("visit_count", 0).apply()
 }
