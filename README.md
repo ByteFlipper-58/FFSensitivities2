@@ -34,7 +34,7 @@
     <img src="https://play.google.com/intl/en_us/badges/static/images/badges/ru_badge_web_generic.png" alt="Скачать из Google Play" height="60" style="vertical-align:middle;">
   </a>
   <a href="https://apps.rustore.ru/app/com.byteflipper.ffsensitivities" target="_blank"> <!-- Замените на реальную ссылку, если она есть -->
-    <img src="https://www.rustore.ru/help/icons/logo-color-dark.svg" alt="Скачать из RuStore" height="40" style="vertical-align:middle; margin-left: 10px;">
+    <img src="https://www.rustore.ru/help/icons/logo-color-dark.svg" alt="Скачать из RuStore" height="47" style="vertical-align:middle; margin-left: 10px;">
   </a>
 </p>
 

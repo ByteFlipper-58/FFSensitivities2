@@ -117,16 +117,9 @@ fun HomeScreen(
                     }
                 }
             }
-            is UiState.NoInternet -> {
-                NoInternetScreen(viewModel)
-            }
-            is UiState.Error -> {
-                ErrorScreen(
-                    errorMessage = state.message,
-                    onRetry = { viewModel.retry() },
-                    onReportBug = { }
-                )
-            }
+            // TODO: Handle NoInternet and Error states appropriately, e.g., show a message or a retry button.
+            is UiState.NoInternet -> { }
+            is UiState.Error -> { }
         }
     }
 }

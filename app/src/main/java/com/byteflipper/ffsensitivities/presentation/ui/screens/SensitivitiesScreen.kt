@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
 import android.app.Activity
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,7 +58,8 @@ fun SensitivitiesScreen(
     ) {
 
         val context = LocalContext.current
-        val interstitialAdManager = remember { InterstitialAdManager(context as Activity) }
+        val interstitialAdManager = remember { InterstitialAdManager(context) }
+        val activity = context as Activity
 
         DisposableEffect(Unit) {
             onDispose {
@@ -65,7 +67,6 @@ fun SensitivitiesScreen(
             }
         }
 
-        // Получаем StateFlow и собираем его как State
         val visitCountState by appViewModel.visitCount.collectAsState()
 
         LaunchedEffect(Unit) {
@@ -73,14 +74,14 @@ fun SensitivitiesScreen(
             val newVisitCount = currentVisitCount + 1
             appViewModel.setVisitCount(newVisitCount) // Инкрементируем через ViewModel
 
-            if (newVisitCount % 2 == 0) {
+            if (newVisitCount % 3 == 0) {
                 interstitialAdManager.loadAd(
-                    adUnitId = "R-M-13549181-3", // TODO: Рассмотреть вынос ID в константы или конфиг
+                    adUnitId = "R-M-13549181-3", // TODO: Replace with your actual Ad Unit ID
                     onLoaded = {
-                        interstitialAdManager.show()
+                        interstitialAdManager.show(activity) // Pass activity context here
                     },
-                    onError = {
-                        // Можно добавить логирование ошибки
+                    onError = { error ->
+                        Log.e("SensitivitiesScreen", "Interstitial Ad failed to load: ${error.description}")
                     },
                     onShown = {
                         appViewModel.setVisitCount(0) // Сбрасываем через ViewModel

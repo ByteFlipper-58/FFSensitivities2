@@ -1,19 +1,18 @@
 package com.byteflipper.ffsensitivities.ads
 
 import android.app.Activity
-import androidx.compose.foundation.layout.Box
+import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -65,9 +64,16 @@ fun YandexBannerAd(
                 setAdUnitId(adUnitId)
                 setAdSize(BannerAdSize.fixedSize(context, 320, 50))
                 setBannerAdEventListener(object : BannerAdEventListener {
-                    override fun onAdLoaded() {onAdLoaded()}
-                    override fun onAdFailedToLoad(error: AdRequestError) {}
-                    override fun onAdClicked() {}
+                    override fun onAdLoaded() {
+                        Log.d("YandexBannerAd", "Banner ad loaded successfully for $adUnitId")
+                        onAdLoaded() // Call the external callback
+                    }
+                    override fun onAdFailedToLoad(error: AdRequestError) {
+                        Log.e("YandexBannerAd", "Banner ad failed to load for $adUnitId: ${error.code} - ${error.description}")
+                    }
+                    override fun onAdClicked() {
+                        Log.d("YandexBannerAd", "Banner ad clicked for $adUnitId")
+                    }
                     override fun onLeftApplication() {}
                     override fun onReturnedToApplication() {}
                     override fun onImpression(data: ImpressionData?) {}
@@ -79,144 +85,266 @@ fun YandexBannerAd(
     )
 }
 
-class InterstitialAdManager(private val context: Activity) {
-    private var interstitialAd: InterstitialAd? = null
-    private var interstitialAdLoader: InterstitialAdLoader? = null
+abstract class BaseAdManager<AdLoader, Ad, AdLoadListener, AdEventListener>(
+    protected val context: Context, // Changed from Activity to Context
+    private val adTypeTag: String
+) {
+    protected var ad: Ad? = null
+    protected var adLoader: AdLoader? = null
+    private var isLoading: Boolean = false
+    private var currentAdUnitId: String? = null // Store adUnitId for preloading
+
+    protected abstract fun createAdLoader(): AdLoader
+    protected abstract fun setAdLoadListener(loader: AdLoader, listener: AdLoadListener)
+    protected abstract fun clearAdLoadListener(loader: AdLoader?): Unit // Explicit Unit return type
+    protected abstract fun loadAdInternal(loader: AdLoader, adRequest: AdRequestConfiguration)
+    protected abstract fun setAdEventListener(ad: Ad, listener: AdEventListener?) // Allow null listener
+    protected abstract fun clearAdEventListener(ad: Ad?): Unit // Explicit Unit return type
+    protected abstract fun showAdInternal(ad: Ad, activity: Activity) // Keep Activity here for showing
+    protected abstract fun createAdLoadListener(
+        onLoaded: (Ad) -> Unit,
+        onError: (AdRequestError) -> Unit
+    ): AdLoadListener
+    protected abstract fun createAdEventListener(
+        onShown: () -> Unit = {},
+        onDismissed: () -> Unit = {},
+        onFailedToShow: (com.yandex.mobile.ads.common.AdError) -> Unit = {},
+        onClicked: () -> Unit = {},
+        onImpression: (ImpressionData?) -> Unit = {},
+        onRewarded: (Reward) -> Unit = {} // Specific to Rewarded
+    ): AdEventListener
+
+
+    // Store default callbacks used during load for preloading
+    private var defaultOnShown: () -> Unit = {}
+    private var defaultOnDismissed: () -> Unit = {}
+    private var defaultOnRewarded: (Reward) -> Unit = {} // Specific to Rewarded
 
     fun loadAd(
         adUnitId: String,
         onLoaded: () -> Unit = {},
         onError: (AdRequestError) -> Unit = {},
         onShown: () -> Unit = {},
-        onDismissed: () -> Unit = {}
+        onDismissed: () -> Unit = {},
+        onRewarded: (Reward) -> Unit = {} // Specific to Rewarded
     ) {
-        interstitialAdLoader = InterstitialAdLoader(context).apply {
-            setAdLoadListener(object : InterstitialAdLoadListener {
-                override fun onAdLoaded(ad: InterstitialAd) {
-                    interstitialAd = ad
-                    ad.setAdEventListener(object : InterstitialAdEventListener {
-                        override fun onAdShown() { onShown() }
-                        override fun onAdDismissed() {
-                            onDismissed()
-                            interstitialAd?.setAdEventListener(null)
-                            interstitialAd = null
-                        }
-                        override fun onAdClicked() {}
-                        override fun onAdImpression(data: ImpressionData?) {}
-                        override fun onAdFailedToShow(error: com.yandex.mobile.ads.common.AdError) {}
-                    })
-                    onLoaded()
-                }
-                override fun onAdFailedToLoad(error: AdRequestError) {
-                    onError(error)
-                }
-            })
+        // Store callbacks provided during load, primarily for preloading scenarios
+        defaultOnShown = onShown
+        defaultOnDismissed = onDismissed
+        defaultOnRewarded = onRewarded
+
+        // Prevent concurrent loading
+        if (isLoading || ad != null) {
+            Log.d(adTypeTag, "Ad is already loaded or loading.")
+            // If ad is loaded and the request is for the same unit, trigger onLoaded immediately?
+            if (ad != null && adUnitId == currentAdUnitId) {
+                 onLoaded() // Or maybe not, depends on desired behavior
+            }
+            return
+        }
+        isLoading = true
+        currentAdUnitId = adUnitId // Store for potential preload
+
+        if (adLoader == null) {
+            adLoader = createAdLoader()
+        }
+        val currentAdLoader = adLoader ?: run {
+            isLoading = false
+            return // Should not happen
         }
 
-        val adRequest = AdRequestConfiguration.Builder(adUnitId).build()
-        interstitialAdLoader?.loadAd(adRequest)
-    }
-
-    fun show() {
-        interstitialAd?.show(context)
-    }
-
-    fun destroy() {
-        interstitialAdLoader?.setAdLoadListener(null)
-        interstitialAdLoader = null
-        interstitialAd?.setAdEventListener(null)
-        interstitialAd = null
-    }
-}
-
-class RewardedAdManager(private val context: Activity) {
-    private var rewardedAd: RewardedAd? = null
-    private var rewardedAdLoader: RewardedAdLoader? = null
-
-    fun loadAd(
-        adUnitId: String,
-        onLoaded: () -> Unit = {},
-        onError: (AdRequestError) -> Unit = {},
-        onRewarded: (Reward) -> Unit = {},
-        onDismissed: () -> Unit = {}
-    ) {
-        rewardedAdLoader = RewardedAdLoader(context).apply {
-            setAdLoadListener(object : RewardedAdLoadListener {
-                override fun onAdLoaded(ad: RewardedAd) {
-                    rewardedAd = ad
-                    ad.setAdEventListener(object : RewardedAdEventListener {
-                        override fun onRewarded(reward: Reward) { onRewarded(reward) }
-                        override fun onAdDismissed() {
-                            onDismissed()
-                            rewardedAd?.setAdEventListener(null)
-                            rewardedAd = null
-                        }
-                        override fun onAdShown() {}
-                        override fun onAdClicked() {}
-                        override fun onAdImpression(data: ImpressionData?) {}
-                        override fun onAdFailedToShow(error: com.yandex.mobile.ads.common.AdError) {}
-                    })
-                    onLoaded()
-                }
-                override fun onAdFailedToLoad(error: AdRequestError) {
-                    onError(error)
-                }
-            })
-        }
-
-        val adRequest = AdRequestConfiguration.Builder(adUnitId).build()
-        rewardedAdLoader?.loadAd(adRequest)
-    }
-
-    fun show() {
-        rewardedAd?.show(context)
-    }
-
-    fun destroy() {
-        rewardedAdLoader?.setAdLoadListener(null)
-        rewardedAdLoader = null
-        rewardedAd?.setAdEventListener(null)
-        rewardedAd = null
-    }
-}
-
-@Composable
-fun ExampleScreen() {
-    val context = LocalContext.current
-    val interstitialAdManager = remember { InterstitialAdManager(context as Activity) }
-    val rewardedAdManager = remember { RewardedAdManager(context as Activity) }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            interstitialAdManager.destroy()
-            rewardedAdManager.destroy()
-        }
-    }
-
-    Box(modifier = Modifier.fillMaxWidth()) {
-        YandexBannerAd(
-            adUnitId = "your-banner-ad-unit-id",
-            modifier = Modifier.fillMaxWidth()
+        val loadListener = createAdLoadListener(
+            onLoaded = { loadedAd ->
+                isLoading = false
+                ad = loadedAd
+                val eventListener = createAdEventListener(
+                    onShown = onShown,
+                    onDismissed = {
+                        onDismissed()
+                        clearAdEventListener(ad)
+                        ad = null // Clear ad reference after dismissal
+                        // Attempt to preload next ad
+                        preloadNextAd()
+                    },
+                    onFailedToShow = { error ->
+                        Log.e(adTypeTag, "$adTypeTag ad failed to show: ${error.description}")
+                        clearAdEventListener(ad)
+                        ad = null
+                        // Attempt to preload next ad
+                        preloadNextAd()
+                    },
+                    onClicked = { /* Handle click if needed */ },
+                    onImpression = { /* Handle impression if needed */ },
+                    onRewarded = onRewarded // Pass rewarded callback
+                )
+                setAdEventListener(loadedAd, eventListener)
+                onLoaded() // Notify external listener
+            },
+            onError = { error ->
+                isLoading = false
+                Log.e(adTypeTag, "$adTypeTag ad failed to load: ${error.description}")
+                onError(error) // Notify external listener
+                // No automatic preload on load failure to avoid loops/spamming
+            }
         )
+        setAdLoadListener(currentAdLoader, loadListener)
 
-        LaunchedEffect(Unit) {
-            interstitialAdManager.loadAd(
-                adUnitId = "your-interstitial-ad-unit-id",
-                onLoaded = { /* Ad loaded successfully */ },
-                onError = { /* Handle error */ },
-                onShown = { /* Ad shown */ },
-                onDismissed = { /* Ad dismissed */ }
-            )
-        }
+        val adRequest = AdRequestConfiguration.Builder(adUnitId).build()
+        loadAdInternal(currentAdLoader, adRequest)
+    }
 
-        LaunchedEffect(Unit) {
-            rewardedAdManager.loadAd(
-                adUnitId = "your-rewarded-ad-unit-id",
-                onLoaded = { /* Ad loaded successfully */ },
-                onError = { /* Handle error */ },
-                onRewarded = { reward -> /* Handle reward */ },
-                onDismissed = { /* Ad dismissed */ }
+    /**
+     * Shows the ad using specific callbacks for this show instance.
+     * Falls back to default callbacks if none are provided.
+     */
+    fun show(
+        activity: Activity,
+        onShown: (() -> Unit)? = null,
+        onDismissed: (() -> Unit)? = null,
+        onRewarded: ((Reward) -> Unit)? = null // Specific to Rewarded
+    ) {
+        val currentAd = ad
+        if (currentAd != null) {
+            // Create a specific listener for this show call, using provided or default callbacks
+            val eventListener = createAdEventListener(
+                onShown = onShown ?: defaultOnShown,
+                onDismissed = {
+                    (onDismissed ?: defaultOnDismissed)() // Call provided or default dismiss
+                    clearAdEventListener(ad) // Clean up listener
+                    ad = null // Clear ad reference
+                    preloadNextAd() // Trigger preload for next ad
+                },
+                onFailedToShow = { error ->
+                    Log.e(adTypeTag, "$adTypeTag ad failed to show: ${error.description}")
+                    clearAdEventListener(ad)
+                    ad = null
+                    preloadNextAd() // Trigger preload for next ad
+                },
+                onRewarded = onRewarded ?: defaultOnRewarded // Use provided or default reward callback
             )
+            setAdEventListener(currentAd, eventListener) // Set the listener just before showing
+
+            showAdInternal(currentAd, activity) // Show the ad
+
+            // Clear the ad reference *after* initiating show,
+            // as the listener now handles cleanup on dismissal/failure.
+            // We keep 'ad' non-null until dismissal/failure ensures listener is called.
+            // ad = null // Moved clearing to onDismissed/onFailedToShow in the listener
+        } else {
+            Log.w(adTypeTag, "$adTypeTag ad is not loaded yet, cannot show.")
+            // Optionally, trigger a load here if needed
+            preloadNextAd() // Try preloading if show is called when ad is not ready
         }
+    } // End of show method
+
+    // --- Preloading Logic --- Ensure this is a member function of the class, correctly placed ---
+    private fun preloadNextAd() {
+        if (isLoading || ad != null) {
+            // Don't preload if already loading or an ad is ready
+            return
+        }
+        val adUnitIdToLoad = currentAdUnitId
+        if (adUnitIdToLoad != null) {
+            Log.d(adTypeTag, "Preloading next ad for $adUnitIdToLoad")
+            // Use empty callbacks for preload, errors will be logged internally
+            loadAd(adUnitId = adUnitIdToLoad, onLoaded = {
+                Log.d(adTypeTag, "Preloaded ad loaded successfully for $adUnitIdToLoad")
+            }, onError = {
+                Log.e(adTypeTag, "Preloaded ad failed to load for $adUnitIdToLoad")
+                // Optionally implement retry logic here
+            })
+        } else {
+            Log.w(adTypeTag, "Cannot preload ad, adUnitId is unknown.")
+        }
+    }
+    // --- End Preloading Logic ---
+
+
+    open fun destroy() {
+        isLoading = false
+        currentAdUnitId = null
+        clearAdLoadListener(adLoader)
+        adLoader = null
+        clearAdEventListener(ad)
+        ad = null
+    }
+}
+
+// --- Interstitial Ad Manager ---
+
+class InterstitialAdManager(context: Context) : BaseAdManager<InterstitialAdLoader, InterstitialAd, InterstitialAdLoadListener, InterstitialAdEventListener>(context, "InterstitialAdManager") {
+
+    override fun createAdLoader(): InterstitialAdLoader = InterstitialAdLoader(context)
+    override fun setAdLoadListener(loader: InterstitialAdLoader, listener: InterstitialAdLoadListener) { loader.setAdLoadListener(listener) }
+    // Ensure Unit return type explicitly for overridden methods
+    override fun clearAdLoadListener(loader: InterstitialAdLoader?): Unit { loader?.setAdLoadListener(null) }
+    override fun loadAdInternal(loader: InterstitialAdLoader, adRequest: AdRequestConfiguration) { loader.loadAd(adRequest) }
+    override fun setAdEventListener(ad: InterstitialAd, listener: InterstitialAdEventListener?) { ad.setAdEventListener(listener) }
+    // Ensure Unit return type explicitly for overridden methods
+    override fun clearAdEventListener(ad: InterstitialAd?): Unit { ad?.setAdEventListener(null) }
+    override fun showAdInternal(ad: InterstitialAd, activity: Activity) { ad.show(activity) }
+
+    override fun createAdLoadListener(
+        onLoaded: (InterstitialAd) -> Unit,
+        onError: (AdRequestError) -> Unit
+    ): InterstitialAdLoadListener = object : InterstitialAdLoadListener {
+        override fun onAdLoaded(loadedAd: InterstitialAd) = onLoaded(loadedAd)
+        override fun onAdFailedToLoad(error: AdRequestError) = onError(error)
+    }
+
+    override fun createAdEventListener(
+        onShown: () -> Unit,
+        onDismissed: () -> Unit,
+        onFailedToShow: (com.yandex.mobile.ads.common.AdError) -> Unit,
+        onClicked: () -> Unit,
+        onImpression: (ImpressionData?) -> Unit,
+        onRewarded: (Reward) -> Unit // Not used for Interstitial
+    ): InterstitialAdEventListener = object : InterstitialAdEventListener {
+        override fun onAdShown() = onShown()
+        override fun onAdDismissed() = onDismissed()
+        override fun onAdFailedToShow(error: com.yandex.mobile.ads.common.AdError) = onFailedToShow(error)
+        override fun onAdClicked() = onClicked()
+        override fun onAdImpression(data: ImpressionData?) = onImpression(data)
+    }
+}
+
+// --- Rewarded Ad Manager ---
+
+class RewardedAdManager(context: Context) : BaseAdManager<RewardedAdLoader, RewardedAd, RewardedAdLoadListener, RewardedAdEventListener>(context, "RewardedAdManager") {
+
+    override fun createAdLoader(): RewardedAdLoader = RewardedAdLoader(context)
+    override fun setAdLoadListener(loader: RewardedAdLoader, listener: RewardedAdLoadListener) { loader.setAdLoadListener(listener) }
+    // Ensure Unit return type explicitly for overridden methods
+    override fun clearAdLoadListener(loader: RewardedAdLoader?): Unit { loader?.setAdLoadListener(null) }
+    override fun loadAdInternal(loader: RewardedAdLoader, adRequest: AdRequestConfiguration) { loader.loadAd(adRequest) }
+    override fun setAdEventListener(ad: RewardedAd, listener: RewardedAdEventListener?) { ad.setAdEventListener(listener) }
+    // Ensure Unit return type explicitly for overridden methods
+    override fun clearAdEventListener(ad: RewardedAd?): Unit { ad?.setAdEventListener(null) }
+    override fun showAdInternal(ad: RewardedAd, activity: Activity) { ad.show(activity) }
+
+    override fun createAdLoadListener(
+        onLoaded: (RewardedAd) -> Unit,
+        onError: (AdRequestError) -> Unit
+    ): RewardedAdLoadListener = object : RewardedAdLoadListener {
+        override fun onAdLoaded(loadedAd: RewardedAd) = onLoaded(loadedAd)
+        override fun onAdFailedToLoad(error: AdRequestError) = onError(error)
+    }
+
+    override fun createAdEventListener(
+        onShown: () -> Unit,
+        onDismissed: () -> Unit,
+        onFailedToShow: (com.yandex.mobile.ads.common.AdError) -> Unit,
+        onClicked: () -> Unit,
+        onImpression: (ImpressionData?) -> Unit,
+        onRewarded: (Reward) -> Unit // Used for Rewarded
+    ): RewardedAdEventListener = object : RewardedAdEventListener {
+        override fun onAdShown() = onShown()
+        override fun onAdDismissed() = onDismissed()
+        override fun onAdFailedToShow(error: com.yandex.mobile.ads.common.AdError) =
+            onFailedToShow(error)
+
+        override fun onAdClicked() = onClicked()
+        override fun onAdImpression(data: ImpressionData?) = onImpression(data)
+        override fun onRewarded(reward: Reward) = onRewarded(reward)
     }
 }

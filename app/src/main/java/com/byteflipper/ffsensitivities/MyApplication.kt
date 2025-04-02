@@ -2,6 +2,7 @@ package com.byteflipper.ffsensitivities
 
 import android.app.Application
 import android.util.Log
+import com.byteflipper.ffsensitivities.ads.AdManagerHolder // Add import
 import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
@@ -16,10 +17,15 @@ class MyApplication : Application() {
         Timber.plant(FileLoggingTree(this))
 
         MobileAds.initialize(this) {
-           Log.d("AppOpenAd", "Mobile Ads initialized")
+           Log.d("MyApplication", "Yandex Mobile Ads initialized.")
+           // Initialize AdManagerHolder after Yandex SDK is initialized
+           AdManagerHolder.initialize(this)
         }
-       // appOpenAdManager = AppOpenAdManager(this)
+       // appOpenAdManager = AppOpenAdManager(this) // Remove or keep commented old manager
     }
+
+    // TODO: Consider calling AdManagerHolder.destroy() in onTerminate() if needed,
+    // although Application.onTerminate() is not guaranteed to be called on real devices.
 
     private fun initializeLogging() {
         if (BuildConfig.DEBUG) {

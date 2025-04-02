@@ -1,8 +1,10 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
+// import com.byteflipper.ffsensitivities.ads.InterstitialAdManager // Remove local manager import
 import android.app.Activity
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,11 +16,9 @@ import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -26,7 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.ads.InterstitialAdManager
+import com.byteflipper.ffsensitivities.ads.AdManagerHolder
 import com.byteflipper.ffsensitivities.data.repository.DeviceRepository
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
@@ -49,26 +49,20 @@ fun DevicesScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     val context = LocalContext.current
-    val interstitialAdManager = remember { InterstitialAdManager(context as Activity) }
+    val activity = context as Activity
 
-    DisposableEffect(Unit) {
-        onDispose {
-            interstitialAdManager.destroy()
-        }
-    }
     LaunchedEffect(Unit) {
         val visitCountt = context.incrementVisitCountt()
-        if (visitCountt % 5 == 0) {
-            interstitialAdManager.loadAd(
-                adUnitId = "R-M-13549181-3",
-                onLoaded = {
-                    interstitialAdManager.show()
-                },
-                onError = {},
+        if (visitCountt % 10 == 0) {
+            AdManagerHolder.showInterstitialAd(
+                activity = activity,
                 onShown = {
+                    Log.d("DevicesScreen", "Interstitial Ad shown via AdManagerHolder.")
                     context.resetVisitCountt()
                 },
-                onDismissed = {}
+                onDismissed = {
+                    Log.d("DevicesScreen", "Interstitial Ad dismissed via AdManagerHolder.")
+                }
             )
         }
     }
@@ -101,15 +95,10 @@ fun DevicesScreen(
                     DevicesCard(devices[index], navController)
                 }
             }
-        } is UiState.NoInternet -> {
-            NoInternetScreen(viewModel)
-        } is UiState.Error -> {
-            ErrorScreen(
-                errorMessage = (uiState as UiState.Error).message,
-                onRetry = { viewModel.retry() },
-                onReportBug = {  }
-            )
         }
+        // TODO: Handle NoInternet and Error states appropriately, e.g., show a message or a retry button.
+        is UiState.NoInternet -> { }
+        is UiState.Error -> { }
     }
 }
 

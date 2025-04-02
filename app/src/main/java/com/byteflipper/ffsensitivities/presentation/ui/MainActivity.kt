@@ -1,13 +1,10 @@
 package com.byteflipper.ffsensitivities.presentation.ui
 
-// import androidx.lifecycle.ViewModelProvider // No longer needed for Hilt VM
-// import com.byteflipper.ffsensitivities.playcore.AppUpdateHandler // Removed
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -45,7 +42,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -70,35 +66,24 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject lateinit var adsHelper: AdsHelper
-    // @Inject lateinit var appUpdateHandler: AppUpdateHandler // Removed injection
 
-    private lateinit var appUpdateManagerWrapper: AppUpdateManagerWrapper // Create instance here
-    private val viewModel: AppViewModel by viewModels() // Get ViewModel using Hilt delegate
+    private lateinit var appUpdateManagerWrapper: AppUpdateManagerWrapper
+    private val viewModel: AppViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Create the wrapper instance, it will observe lifecycle automatically via its init block
         appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
-        // lifecycle.addObserver(appUpdateHandler) // Removed
 
         MobileAds.setAgeRestrictedUser(false)
         MobileAds.setLocationConsent(true)
         MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
-        // val viewModel: AppViewModel = ViewModelProvider(this, AppViewModel.AppViewModelFactory(application))[AppViewModel::class.java] // Removed old way
 
-        splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value } // Use the delegated viewModel
+        splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }
 
         setContent {
-            // Use the delegated viewModel
-            val language by viewModel.language.collectAsState()
-
-            LaunchedEffect(language) {
-                val appLocale = LocaleListCompat.forLanguageTags(language)
-                AppCompatDelegate.setApplicationLocales(appLocale)
-            }
 
             // Collect update state here and pass it down
             val updateState by appUpdateManagerWrapper.updateState.collectAsState()
@@ -110,8 +95,6 @@ class MainActivity : ComponentActivity() {
             )
         }
     }
-    // Removed updateLocale as it seems unused now
-    // private fun updateLocale(language: String) { ... }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalCoroutinesApi::class)
@@ -271,10 +254,6 @@ fun MainActivityContent(
                 navController = navController,
                 modifier = Modifier.padding(innerPadding),
                 onTitleChange = { newTitle -> toolbarTitle = newTitle }
-                // Remove onThemeChange - it will be handled directly in settings screen
-                // onThemeChange = { newTheme ->
-                //     appViewModel.setTheme(newTheme)
-                // }
             )
         }
     }
