@@ -1,9 +1,10 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
+// import androidx.compose.ui.platform.LocalContext // Removed unused import
 import android.app.Activity
-import android.content.Context
 import android.net.Uri
 import android.util.Log
+import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,48 +28,46 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.AdManagerHolder
-import com.byteflipper.ffsensitivities.data.repository.DeviceRepository
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
-import com.google.gson.Gson
-import io.ktor.client.HttpClient
-import java.net.URLEncoder
+import com.byteflipper.ffsensitivities.utils.AdConstants
 
-@OptIn(ExperimentalMaterial3Api::class) // Add OptIn for TopAppBar
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DevicesScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
-    name: String?, // Add name parameter
+    name: String?,
     model: String?,
-    repository: DeviceRepository = DeviceRepository(HttpClient()),
+    appViewModel: AppViewModel = hiltViewModel()
 ) {
-    val viewModel: DeviceViewModel = viewModel(
-        factory = DeviceViewModel.DeviceViewModelFactory(repository)
-    )
+    val viewModel: DeviceViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
-    val context = LocalContext.current
-    val activity = context as Activity
+    val activity = LocalActivity.current as Activity
+    val visitCountState by appViewModel.visitCount.collectAsState()
 
     LaunchedEffect(Unit) {
-        val visitCountt = context.incrementVisitCountt()
-        if (visitCountt % 10 == 0) {
+        val currentVisitCount = visitCountState
+        val newVisitCount = currentVisitCount + 1
+        appViewModel.setVisitCount(newVisitCount)
+
+        if (newVisitCount % AdConstants.DEVICES_SCREEN_AD_FREQUENCY == 0) { // Use constant
             AdManagerHolder.showInterstitialAd(
                 activity = activity,
                 onShown = {
                     Log.d("DevicesScreen", "Interstitial Ad shown via AdManagerHolder.")
-                    context.resetVisitCountt()
+                    appViewModel.setVisitCount(0)
                 },
                 onDismissed = {
                     Log.d("DevicesScreen", "Interstitial Ad dismissed via AdManagerHolder.")
@@ -86,7 +85,7 @@ fun DevicesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(name ?: stringResource(R.string.devices)) }, // Use name for title
+                title = { Text(name ?: stringResource(R.string.devices)) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
@@ -110,7 +109,7 @@ fun DevicesScreen(
                 }
             }
             is UiState.Success<*> -> {
-                val devices = state.data as List<DeviceModel> // Явное приведение типа
+                val devices = state.data as List<DeviceModel>
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(1),
                     modifier = Modifier
@@ -139,8 +138,10 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
+            val encodedManufacturer = Uri.encode(devices.manufacturer)
+            val encodedDeviceName = Uri.encode(devices.name)
             navController.navigate(
-                "sensitivities/${devices.manufacturer}/${Uri.encode(devices.name)}/${URLEncoder.encode(Gson().toJson(devices), "UTF-8")}"
+                "sensitivities/$encodedManufacturer/$encodedDeviceName"
             ) {
                 launchSingleTop = true
             }
@@ -155,21 +156,4 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
             Text(text = devices.manufacturer + " " + devices.name, textAlign = TextAlign.Center)
         }
     }
-}
-
-fun Context.getVisitCountt(): Int {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    return preferences.getInt("visit_countt", 0)
-}
-
-fun Context.incrementVisitCountt(): Int {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    val newCount = getVisitCountt() + 1
-    preferences.edit().putInt("visit_countt", newCount).apply()
-    return newCount
-}
-
-fun Context.resetVisitCountt() {
-    val preferences = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-    preferences.edit().putInt("visit_countt", 0).apply()
 }

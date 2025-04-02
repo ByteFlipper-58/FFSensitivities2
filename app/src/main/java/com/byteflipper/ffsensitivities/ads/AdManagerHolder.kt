@@ -3,6 +3,7 @@ package com.byteflipper.ffsensitivities.ads
 import android.app.Activity
 import android.content.Context
 import android.util.Log
+import com.byteflipper.ffsensitivities.utils.AdConstants // Add import
 import com.yandex.mobile.ads.rewarded.Reward
 
 /**
@@ -15,9 +16,9 @@ object AdManagerHolder {
 
     private const val TAG = "AdManagerHolder"
 
-    // Ad Unit IDs - TODO: Replace with your actual IDs, consider moving to build config or remote config
-    private const val INTERSTITIAL_AD_UNIT_ID = "R-M-13549181-3" // Example ID from Screens
-    private const val REWARDED_AD_UNIT_ID = "YOUR_REWARDED_AD_UNIT_ID" // Replace with actual ID if used
+    // Use constants from AdConstants object
+    // private const val INTERSTITIAL_AD_UNIT_ID = "R-M-13549181-3" // Removed hardcoded ID
+    // private const val REWARDED_AD_UNIT_ID = "YOUR_REWARDED_AD_UNIT_ID" // Removed hardcoded ID
 
     /**
      * Initializes the ad managers and starts preloading.
@@ -43,7 +44,7 @@ object AdManagerHolder {
     fun preloadInterstitialAd() {
         Log.d(TAG, "Attempting to preload Interstitial Ad...")
         interstitialAdManager?.loadAd(
-            adUnitId = INTERSTITIAL_AD_UNIT_ID,
+            adUnitId = AdConstants.INTERSTITIAL_AD_UNIT_ID, // Use constant
             onLoaded = { Log.i(TAG, "Interstitial Ad preloaded successfully.") },
             onError = { error -> Log.e(TAG, "Failed to preload Interstitial Ad: ${error.description}") }
             // Other callbacks (onShown, onDismissed) are handled by the manager internally
@@ -82,7 +83,7 @@ object AdManagerHolder {
 
     // --- Rewarded Ad Methods (similar structure if needed) ---
     fun preloadRewardedAd() {
-        // rewardedAdManager?.loadAd(...)
+        // rewardedAdManager?.loadAd(adUnitId = AdConstants.REWARDED_AD_UNIT_ID, ...) // Use constant if implemented
     }
 
     fun showRewardedAd(activity: Activity, onRewarded: (Reward) -> Unit, onShown: () -> Unit = {}, onDismissed: () -> Unit = {}) {

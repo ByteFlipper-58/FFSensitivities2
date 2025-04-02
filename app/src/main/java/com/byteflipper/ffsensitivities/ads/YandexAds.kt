@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import com.byteflipper.ffsensitivities.utils.AdConstants // Add import
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.banner.BannerAdSize
 import com.yandex.mobile.ads.banner.BannerAdView
@@ -62,7 +63,7 @@ fun YandexBannerAd(
         factory = { context ->
             BannerAdView(context).apply {
                 setAdUnitId(adUnitId)
-                setAdSize(BannerAdSize.fixedSize(context, 320, 50))
+                setAdSize(BannerAdSize.fixedSize(context, AdConstants.BANNER_WIDTH, AdConstants.BANNER_HEIGHT)) // Use constants
                 setBannerAdEventListener(object : BannerAdEventListener {
                     override fun onAdLoaded() {
                         Log.d("YandexBannerAd", "Banner ad loaded successfully for $adUnitId")

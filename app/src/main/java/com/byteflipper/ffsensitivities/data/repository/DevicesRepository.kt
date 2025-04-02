@@ -12,8 +12,9 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import timber.log.Timber
 import java.io.IOException
+import javax.inject.Inject // Import Inject
 
-class DeviceRepository(private val client: HttpClient) {
+class DevicesRepository @Inject constructor(private val client: HttpClient) { // Add @Inject constructor
     private val baseUrl = "https://raw.githubusercontent.com/ByteFlipper-58/database/refs/heads/main/FFSensitivities/"
 
     suspend fun fetchDevices(model: String): UiState<List<DeviceModel>> {

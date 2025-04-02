@@ -84,17 +84,11 @@ fun MainActivityContent(
         contrastThemeSetting = contrastThemeSetting
     ) {
         val navController = rememberNavController()
-        // Removed toolbarTitle state
-        // Removed toolbarSubtitle state
-        // Removed scrollBehavior state
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-        val hiddenRoutes = listOf("settings") // Keep this for bottom bar visibility logic
+        val hiddenRoutes = listOf("settings")
         val isBottomBarVisible = currentRoute !in hiddenRoutes
-        // Removed isBannerAdLoaded state from here
 
-        // --- LaunchedEffects for Update Handling ---
-        // Keep update handling logic, but remove toolbarSubtitle updates
         LaunchedEffect(Unit) { coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() } }
         LaunchedEffect(updateState) {
             // Removed toolbarSubtitle updates, but keep the logic for potential future use (e.g., snackbar)
@@ -117,33 +111,26 @@ fun MainActivityContent(
                 else -> {}
             }
         }
-        // --- End LaunchedEffects ---
 
         Scaffold(
-            modifier = Modifier.fillMaxSize(), // Removed nestedScroll
-            // Removed topBar parameter entirely
+            modifier = Modifier.fillMaxSize(),
             bottomBar = {
-                // Column to hold Nav Bar
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    // Show BottomNavigationBar conditionally
-                    // Show BottomNavigationBar conditionally
+
                     if (isBottomBarVisible) {
                         BottomNavigationBar(navController = navController)
                     }
-                    // Banner Ad removed from here
-                } // End Column inside bottomBar
-            }, // End bottomBar lambda
+                }
+            },
             content = { innerPadding: PaddingValues ->
-                // Content only contains the NavigationHost, padding is handled by Scaffold
                 NavigationHost(
                     navController = navController,
-                    modifier = Modifier.fillMaxSize() // Let NavHost fill the content area provided by Scaffold
-                    // Removed onTitleChange parameter
+                    modifier = Modifier.fillMaxSize()
                 )
-            } // End content lambda
-        ) // End Scaffold
-    } // End FFSensitivitiesTheme
-} // End MainActivityContent
+            }
+        )
+    }
+}
 
 @Composable
 @Preview(showBackground = true)

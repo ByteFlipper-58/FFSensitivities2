@@ -67,15 +67,21 @@ fun NavigationHost(
             DevicesScreen(modifier = modifier, navController = navController, name = name, model = model)
         }
         composable(
-            "sensitivities/{manufacturer}/{model}/{device}",
+            // Updated route to accept manufacturer and modelName
+            "sensitivities/{manufacturer}/{modelName}",
             enterTransition = { fadeIn(animationSpec = tween(500)) },
             exitTransition = { fadeOut(animationSpec = tween(500)) }
         ) { backStackEntry ->
-            val manufacturer = backStackEntry.arguments?.getString("manufacturer").orEmpty()
-            val model = backStackEntry.arguments?.getString("model").orEmpty()
-            val device = backStackEntry.arguments?.getString("device").orEmpty()
+            // Retrieve arguments using the names defined in the route
+            val manufacturerArg = backStackEntry.arguments?.getString("manufacturer")
+            val modelNameArg = backStackEntry.arguments?.getString("modelName")
             // Removed onTitleChange call
-            SensitivitiesScreen(navController = navController, device = device)
+            // Pass the retrieved arguments to SensitivitiesScreen
+            SensitivitiesScreen(
+                navController = navController,
+                manufacturerArg = manufacturerArg,
+                modelNameArg = modelNameArg
+            )
         }
     }
 }
