@@ -14,10 +14,17 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -48,6 +55,7 @@ import com.byteflipper.ffsensitivities.presentation.ui.dialogs.SensitivitiesRequ
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
 import io.ktor.client.HttpClient
 
+@OptIn(ExperimentalMaterial3Api::class) // Add OptIn for TopAppBar
 @Composable
 fun HomeScreen(
     navController: NavHostController,
@@ -63,70 +71,88 @@ fun HomeScreen(
     var showDialog by remember { mutableStateOf(false) }
     var isRequestSent by remember { mutableStateOf(getRequestSentStatus(context)) }
 
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
-        ElevatedCard(
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.app_name)) },
+                actions = {
+                    IconButton(onClick = { navController.navigate("settings") }) {
+                        Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(14.dp, 8.dp, 14.dp, 0.dp)
-                .clickable(enabled = !isRequestSent) {
-                    showDialog = true
-                },
-            shape = ShapeDefaults.Large,
+                .fillMaxSize()
+                .padding(innerPadding) // Apply padding from Scaffold
         ) {
-            IconWithTextRow(
-                text = if (isRequestSent) stringResource(R.string.request_sensitivities_settings_success) else stringResource(R.string.dont_have_your_phone_model)
-            )
-        }
+            ElevatedCard(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(14.dp, 8.dp, 14.dp, 0.dp)
+                    .clickable(enabled = !isRequestSent) {
+                        showDialog = true
+                    },
+                shape = ShapeDefaults.Large,
+            ) {
+                IconWithTextRow(
+                    text = if (isRequestSent) stringResource(R.string.request_sensitivities_settings_success) else stringResource(
+                        R.string.dont_have_your_phone_model
+                    )
+                )
+            }
 
-        if (showDialog) {
-            SensitivitiesRequestDialog(
-                onDismiss = {
-                    showDialog = false
-                },
-                onRequestSent = {
-                    isRequestSent = true
-                    showDialog = false
-                    saveRequestSentStatus(context, true)
-                }
-            )
-        }
+            if (showDialog) {
+                SensitivitiesRequestDialog(
+                    onDismiss = {
+                        showDialog = false
+                    },
+                    onRequestSent = {
+                        isRequestSent = true
+                        showDialog = false
+                        saveRequestSentStatus(context, true)
+                    }
+                )
+            }
 
-        when (val state = uiState.value) {
-            is UiState.Loading -> {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    modifier = Modifier.fillMaxWidth(),
-                    contentPadding = PaddingValues(10.dp)
-                ) {
-                    items(14) {
-                        ShimmerLazyItem()
+            when (val state = uiState.value) {
+                is UiState.Loading -> {
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(10.dp)
+                    ) {
+                        items(14) {
+                            ShimmerLazyItem()
+                        }
                     }
                 }
-            }
-            is UiState.Success<*> -> {
-                val manufacturers = state.data as? List<Manufacturer> ?: emptyList()
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    modifier = Modifier.fillMaxWidth(),
-                    contentPadding = PaddingValues(10.dp)
-                ) {
-                    items(manufacturers) { manufacturer ->
-                        ManufacturerCard(manufacturer, navController)
+
+                is UiState.Success<*> -> {
+                    val manufacturers = state.data as? List<Manufacturer> ?: emptyList()
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        modifier = Modifier.fillMaxWidth(),
+                        contentPadding = PaddingValues(10.dp)
+                    ) {
+                        items(manufacturers) { manufacturer ->
+                            ManufacturerCard(manufacturer, navController)
+                        }
                     }
                 }
+                // TODO: Handle NoInternet and Error states appropriately, e.g., show a message or a retry button.
+                is UiState.NoInternet -> {}
+                is UiState.Error -> {}
             }
-            // TODO: Handle NoInternet and Error states appropriately, e.g., show a message or a retry button.
-            is UiState.NoInternet -> { }
-            is UiState.Error -> { }
         }
     }
 }
 
 @Composable
 fun ManufacturerCard(manufacturer: Manufacturer, navController: NavHostController) {
-    OutlinedCard (
+    OutlinedCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),

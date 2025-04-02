@@ -27,6 +27,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
@@ -34,11 +35,15 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -58,27 +63,38 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
 import com.byteflipper.ffsensitivities.utils.FeedbackHelper
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutScreen(
+    navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
 
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
-    ) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.about_app)) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
+                    }
+                }
+            )
+        }
+    ) { innerPadding ->
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = modifier
+                .fillMaxSize()
+                .padding(innerPadding)
                 .verticalScroll(scrollState)
                 .padding(horizontal = 16.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -131,7 +147,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://byteflipper.web.app",
-                            )
+                                )
                         }
                     )
 
@@ -143,7 +159,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://vk.com/byteflipper",
-                            )
+                                )
                         }
                     )
 
@@ -155,7 +171,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://t.me/byteflipper",
-                            )
+                                )
                         }
                     )
                 }
@@ -176,7 +192,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58",
-                            )
+                                )
                         }
                     )
 
@@ -188,7 +204,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58/FFSensitivities2",
-                            )
+                                )
                         }
                     )
                 }
@@ -494,24 +510,4 @@ fun VersionInfoCard() {
             }
         }
     }
-}
-
-@Preview(
-    showBackground = true,
-    showSystemUi = true
-)
-@Composable
-fun AboutScreenPreview() {
-    AboutScreen()
-}
-
-@Preview(showBackground = true)
-@Composable
-fun ListItemPreview() {
-    AnimatedActionItem(
-        title = "Title",
-        subtitle = "This is a sample subtitle text that might span multiple lines in the design",
-        icon = painterResource(id = R.drawable.ic_launcher_foreground),
-        onClick = {}
-    )
 }

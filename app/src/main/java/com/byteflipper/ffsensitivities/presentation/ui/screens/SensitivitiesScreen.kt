@@ -11,16 +11,23 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState // Import rememberScrollState
+import androidx.compose.foundation.verticalScroll // Import verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack // Import ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api // Import ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton // Import IconButton
+import androidx.compose.material3.Scaffold // Import Scaffold
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar // Import TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -45,201 +52,236 @@ import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
 import com.google.gson.Gson
 
+@OptIn(ExperimentalMaterial3Api::class) // Add OptIn
 @Composable
 fun SensitivitiesScreen(
     navController: NavController,
     device: String?,
     appViewModel: AppViewModel = hiltViewModel()
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp, 0.dp, 16.dp, 0.dp)
-    ) {
+    val manufacturer = navController.currentBackStackEntry?.arguments?.getString("manufacturer") ?: ""
+    val modelArg = navController.currentBackStackEntry?.arguments?.getString("model") ?: "" // Get model arg used in route (likely URI encoded)
+    val deviceModel = try { Gson().fromJson(device, DeviceModel::class.java) } catch (e: Exception) { null }
+    // Use modelArg for title consistency if available (decode if needed, though TopAppBar might handle it), otherwise fallback to parsed name
+    val titleModelName = if (modelArg.isNotEmpty()) modelArg else deviceModel?.name ?: ""
 
-        val context = LocalContext.current
-        val interstitialAdManager = remember { InterstitialAdManager(context) }
-        val activity = context as Activity
-
-        DisposableEffect(Unit) {
-            onDispose {
-                interstitialAdManager.destroy()
-            }
-        }
-
-        val visitCountState by appViewModel.visitCount.collectAsState()
-
-        LaunchedEffect(Unit) {
-            val currentVisitCount = visitCountState
-            val newVisitCount = currentVisitCount + 1
-            appViewModel.setVisitCount(newVisitCount) // Инкрементируем через ViewModel
-
-            if (newVisitCount % 3 == 0) {
-                interstitialAdManager.loadAd(
-                    adUnitId = "R-M-13549181-3", // TODO: Replace with your actual Ad Unit ID
-                    onLoaded = {
-                        interstitialAdManager.show(activity) // Pass activity context here
-                    },
-                    onError = { error ->
-                        Log.e("SensitivitiesScreen", "Interstitial Ad failed to load: ${error.description}")
-                    },
-                    onShown = {
-                        appViewModel.setVisitCount(0) // Сбрасываем через ViewModel
-                    },
-                    onDismissed = {
-                        // Можно добавить обработку закрытия рекламы
+    Scaffold( // Add Scaffold
+        topBar = {
+            TopAppBar(
+                title = { Text("$manufacturer $titleModelName") }, // Use manufacturer and model name
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
-                )
-            }
+                }
+            )
         }
-
-        navController.currentBackStackEntry?.arguments?.getString("name") ?: ""
-        val deviceModel = Gson().fromJson(device, DeviceModel::class.java)
-
-        var slider1Value by remember { mutableFloatStateOf(50f) }
-        var slider2Value by remember { mutableFloatStateOf(75f) }
-        var slider3Value by remember { mutableFloatStateOf(25f) }
-
-        ElevatedCard(
-            modifier = Modifier
-                .fillMaxWidth(),
-            shape = ShapeDefaults.ExtraLarge
-        ) {
+    ) { innerPadding -> // Get innerPadding from Scaffold
+        if (deviceModel == null) {
+            // Handle error case: device data couldn't be parsed
+            Column(modifier = Modifier.fillMaxSize().padding(innerPadding).padding(16.dp)) {
+                Text("Error: Could not load device sensitivity data.")
+            }
+        } else {
+            // Original content Column, now inside Scaffold's content lambda
             Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(21.dp)
+                    .fillMaxSize()
+                    .padding(innerPadding) // Apply innerPadding here
+                    .verticalScroll(rememberScrollState()) // Add vertical scroll
+                    .padding(horizontal = 16.dp) // Keep horizontal padding for content
             ) {
-                SliderView(
-                    label = R.string.review,
-                    initialValue = deviceModel.sensitivities?.review?.toFloat() ?: 0f,
-                    onValueChange = { slider1Value = it },
-                    enabled = false
-                )
 
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 1.dp
-                )
+                val context = LocalContext.current
+                val interstitialAdManager = remember { InterstitialAdManager(context) }
+                val activity = context as Activity
 
-                SliderView(
-                    label = R.string.collimator,
-                    initialValue = deviceModel.sensitivities?.collimator?.toFloat() ?: 0f,
-                    onValueChange = { slider2Value = it },
-                    enabled = false
-                )
+                DisposableEffect(Unit) {
+                    onDispose {
+                        interstitialAdManager.destroy()
+                    }
+                }
 
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 1.dp
-                )
+                val visitCountState by appViewModel.visitCount.collectAsState()
 
-                SliderView(
-                    label = R.string.x2_scope,
-                    initialValue = deviceModel.sensitivities?.x2_scope?.toFloat() ?: 0f,
-                    onValueChange = { slider3Value = it },
-                    enabled = false
-                )
+                LaunchedEffect(Unit) {
+                    val currentVisitCount = visitCountState
+                    val newVisitCount = currentVisitCount + 1
+                    appViewModel.setVisitCount(newVisitCount) // Инкрементируем через ViewModel
 
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 1.dp
-                )
-
-                SliderView(
-                    label = R.string.x4_scope,
-                    initialValue = deviceModel.sensitivities?.x4_scope?.toFloat() ?: 0f,
-                    onValueChange = { slider3Value = it },
-                    enabled = false
-                )
-
-                HorizontalDivider(
-                    modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 16.dp),
-                    thickness = 1.dp
-                )
-
-                Row {
-                    if (deviceModel.dpi == null || deviceModel.dpi == 0) {
-                        Text(
-                            text = stringResource(id = R.string.fire_button) + ": " + deviceModel.fire_button,
-                            modifier = Modifier.weight(1f)
-                        )
-                    } else {
-                        Text(
-                            text = stringResource(id = R.string.dpi) + ": " + deviceModel.dpi + " | " + stringResource(id = R.string.fire_button) + ": " + deviceModel.fire_button,
-                            modifier = Modifier.weight(1f)
+                    if (newVisitCount % 3 == 0) {
+                        interstitialAdManager.loadAd(
+                            adUnitId = "R-M-13549181-3", // TODO: Replace with your actual Ad Unit ID
+                            onLoaded = {
+                                interstitialAdManager.show(activity) // Pass activity context here
+                            },
+                            onError = { error ->
+                                Log.e(
+                                    "SensitivitiesScreen",
+                                    "Interstitial Ad failed to load: ${error.description}"
+                                )
+                            },
+                            onShown = {
+                                appViewModel.setVisitCount(0) // Сбрасываем через ViewModel
+                            },
+                            onDismissed = {
+                                // Можно добавить обработку закрытия рекламы
+                            }
                         )
                     }
                 }
 
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 16.dp),
-                    thickness = 1.dp
-                )
+                // deviceModel is already parsed and checked above
+                // Removed redundant navController argument reading and redundant parsing
 
-                Row(
+                var slider1Value by remember { mutableFloatStateOf(50f) } // These seem unused, consider removing
+                var slider2Value by remember { mutableFloatStateOf(75f) }
+                var slider3Value by remember { mutableFloatStateOf(25f) }
+
+                ElevatedCard(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
+                    shape = ShapeDefaults.ExtraLarge
                 ) {
-                    Text(
-                        text = stringResource(id = R.string.it_works),
-                        modifier = Modifier.weight(1f)
-                    )
-
-                    FilledTonalIconButton(
-                        onClick = { /* Действие для первой иконки */ },
-                        modifier = Modifier.size(40.dp)
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(21.dp)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Star,
-                            contentDescription = "Favorite"
+                        SliderView(
+                            label = R.string.review,
+                            initialValue = deviceModel.sensitivities?.review?.toFloat() ?: 0f,
+                            onValueChange = { slider1Value = it },
+                            enabled = false
                         )
-                    }
 
-                    Spacer(modifier = Modifier.width(8.dp))
-
-                    FilledTonalIconButton(
-                        onClick = { /* Действие для второй иконки */ },
-                        modifier = Modifier.size(40.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Favorite,
-                            contentDescription = "Favorite"
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
                         )
+
+                        SliderView(
+                            label = R.string.collimator,
+                            initialValue = deviceModel.sensitivities?.collimator?.toFloat() ?: 0f,
+                            onValueChange = { slider2Value = it },
+                            enabled = false
+                        )
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
+                        )
+
+                        SliderView(
+                            label = R.string.x2_scope,
+                            initialValue = deviceModel.sensitivities?.x2_scope?.toFloat() ?: 0f,
+                            onValueChange = { slider3Value = it },
+                            enabled = false
+                        )
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 1.dp
+                        )
+
+                        SliderView(
+                            label = R.string.x4_scope,
+                            initialValue = deviceModel.sensitivities?.x4_scope?.toFloat() ?: 0f,
+                            onValueChange = { slider3Value = it },
+                            enabled = false
+                        )
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 16.dp),
+                            thickness = 1.dp
+                        )
+
+                        Row {
+                            if (deviceModel.dpi == null || deviceModel.dpi == 0) {
+                                Text(
+                                    text = stringResource(id = R.string.fire_button) + ": " + deviceModel.fire_button,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            } else {
+                                Text(
+                                    text = stringResource(id = R.string.dpi) + ": " + deviceModel.dpi + " | " + stringResource(
+                                        id = R.string.fire_button
+                                    ) + ": " + deviceModel.fire_button,
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                        }
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 16.dp),
+                            thickness = 1.dp
+                        )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.it_works),
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            FilledTonalIconButton(
+                                onClick = { /* Действие для первой иконки */ },
+                                modifier = Modifier.size(40.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = "Favorite"
+                                )
+                            }
+
+                            Spacer(modifier = Modifier.width(8.dp))
+
+                            FilledTonalIconButton(
+                                onClick = { /* Действие для второй иконки */ },
+                                modifier = Modifier.size(40.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Favorite,
+                                    contentDescription = "Favorite"
+                                )
+                            }
+                        }
+
+
+                        HorizontalDivider(
+                            modifier = Modifier.padding(vertical = 16.dp),
+                            thickness = 1.dp
+                        )
+
+                        val clipboardManager = LocalClipboardManager.current
+
+                        val settingsText = buildString {
+                            append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi}\n")
+                            append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities?.review}\n")
+                            append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities?.collimator}\n")
+                            append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities?.x2_scope}\n")
+                            append("${stringResource(id = R.string.x4_scope)}: ${deviceModel.sensitivities?.x4_scope}\n")
+                            append("${stringResource(id = R.string.sniper_scope)}: ${deviceModel.sensitivities?.sniper_scope}\n")
+                            append("${stringResource(id = R.string.free_review)}: ${deviceModel.sensitivities?.free_review}\n")
+                            append("${stringResource(id = R.string.source)} ${deviceModel.settings_source_url}")
+                        }
+
+                        FilledTonalButton(
+                            onClick = {
+                                clipboardManager.setText(AnnotatedString(settingsText))
+                            },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.copy),
+                                modifier = Modifier.padding(8.dp)
+                            )
+                        }
                     }
-                }
-
-
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 16.dp),
-                    thickness = 1.dp
-                )
-
-                val clipboardManager = LocalClipboardManager.current
-
-                val settingsText = buildString {
-                    append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi}\n")
-                    append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities?.review}\n")
-                    append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities?.collimator}\n")
-                    append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities?.x2_scope}\n")
-                    append("${stringResource(id = R.string.x4_scope)}: ${deviceModel.sensitivities?.x4_scope}\n")
-                    append("${stringResource(id = R.string.sniper_scope)}: ${deviceModel.sensitivities?.sniper_scope}\n")
-                    append("${stringResource(id = R.string.free_review)}: ${deviceModel.sensitivities?.free_review}\n")
-                    append("${stringResource(id = R.string.source)} ${deviceModel.settings_source_url}")
-                }
-
-                FilledTonalButton(
-                    onClick = {
-                        clipboardManager.setText(AnnotatedString(settingsText))
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.copy),
-                        modifier = Modifier.padding(8.dp)
-                    )
                 }
             }
         }
