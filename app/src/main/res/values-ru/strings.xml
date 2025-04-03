@@ -142,4 +142,5 @@
     <string name="update_download_started">Загрузка обновления началась</string>
     <string name="update_download_complete">Загрузка обновления завершена. Начинается установка…</string>
     <string name="update_not_needed">Ваше приложение обновлено</string>
+    <string name="system_default">Системная по умолчанию</string> <!-- Added string -->
 </resources>

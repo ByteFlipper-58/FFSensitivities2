@@ -107,6 +107,7 @@
     <string name="light_theme_description">Light theme selected</string>
     <string name="night_theme_description">Night theme selected</string>
     <string name="system_theme_description">The appearance of the application will change depending on the Android theme</string>
+    <string name="system_default">System default</string> <!-- Added string -->
 
     <string name="switch_use_dynamic_colors_title">Use dynamic colors</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Dynamic colors are enabled</string>

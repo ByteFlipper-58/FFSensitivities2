@@ -141,5 +141,6 @@
     <string name="no_update_available">Немає доступних оновлень</string>
     <string name="update_download_started">Завантаження оновлення розпочато</string>
     <string name="update_download_complete">Завантаження оновлення завершено. Починається встановлення…</string>
-    <string name="update_not_needed">Ваша програма оновлена</string>
+    <string name="update_not_needed">Ваш додаток оновлено</string>
+    <string name="system_default">Системна за замовчуванням</string> <!-- Placeholder, please translate -->
 </resources>

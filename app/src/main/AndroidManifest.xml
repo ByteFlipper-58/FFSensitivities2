@@ -19,6 +19,7 @@
         tools:targetApi="35"
         android:enableOnBackInvokedCallback="true"
         android:name=".MyApplication">
+        <!-- android:localeConfig is removed to use automatic generation from build.gradle.kts -->
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
@@ -53,6 +54,7 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.App.Starting">
+            <!-- android:configChanges="locale|layoutDirection" removed to allow Activity recreation on locale change -->
         </activity>
 
         <activity

@@ -1,11 +1,12 @@
 package com.byteflipper.ffsensitivities.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,54 +30,170 @@ import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
 fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    // Removed onTitleChange parameter
 ) {
-    NavHost(navController, startDestination = NavigationItem.Home.route, modifier = modifier) {
+    val animationSpec = tween<IntOffset>(durationMillis = 500)
+
+    NavHost(
+        navController = navController,
+        startDestination = NavigationItem.Home.route,
+        modifier = modifier,
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None },
+        popEnterTransition = { EnterTransition.None },
+        popExitTransition = { ExitTransition.None }
+    ) {
         composable(
-            NavigationItem.Home.route,
-            enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }
+            route = NavigationItem.Home.route,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            }
         ) {
-            // Removed onTitleChange call
             HomeScreen(navController)
         }
         composable(
-            NavigationItem.About.route,
-            enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }
+            route = NavigationItem.About.route,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            }
         ) {
-            // Removed onTitleChange call
-            AboutScreen(navController = navController, modifier = modifier) // Pass navController
+            AboutScreen(navController = navController, modifier = modifier)
         }
         composable(
-            NavigationItem.Settings.route,
-            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Up, tween(500)) },
-            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Down, tween(500)) }
+            route = NavigationItem.Settings.route,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Up,
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Down,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Up,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Down,
+                    animationSpec
+                )
+            }
         ) {
-            // Removed onTitleChange call
-            SettingsScreen(navController = navController, modifier = modifier) // Pass navController
+            SettingsScreen(navController = navController, modifier = modifier)
         }
         composable(
-            "devices/{name}/{model}",
-            enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }
+            route = "devices/{name}/{model}",
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            }
         ) { backStackEntry ->
             val name = backStackEntry.arguments?.getString("name").orEmpty()
             val model = backStackEntry.arguments?.getString("model").orEmpty()
-            // Removed onTitleChange call
-            DevicesScreen(modifier = modifier, navController = navController, name = name, model = model)
+            DevicesScreen(
+                modifier = modifier,
+                navController = navController,
+                name = name,
+                model = model
+            )
         }
         composable(
-            // Updated route to accept manufacturer and modelName
-            "sensitivities/{manufacturer}/{modelName}",
-            enterTransition = { fadeIn(animationSpec = tween(500)) },
-            exitTransition = { fadeOut(animationSpec = tween(500)) }
+            route = "sensitivities/{manufacturer}/{modelName}",
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            }
         ) { backStackEntry ->
-            // Retrieve arguments using the names defined in the route
             val manufacturerArg = backStackEntry.arguments?.getString("manufacturer")
             val modelNameArg = backStackEntry.arguments?.getString("modelName")
-            // Removed onTitleChange call
-            // Pass the retrieved arguments to SensitivitiesScreen
             SensitivitiesScreen(
                 navController = navController,
                 manufacturerArg = manufacturerArg,

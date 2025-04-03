@@ -1,6 +1,5 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
-// import androidx.compose.ui.platform.LocalContext // Removed unused import
 import android.app.Activity
 import android.net.Uri
 import android.util.Log
@@ -94,39 +93,52 @@ fun DevicesScreen(
             )
         }
     ) { innerPadding ->
-        when (val state = uiState) {
-            is UiState.Loading -> {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(1),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(innerPadding),
-                    contentPadding = PaddingValues(8.dp)
-                ) {
-                    items(10) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(1),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            contentPadding = PaddingValues(8.dp)
+        ) {
+            when (val state = uiState) {
+                is UiState.Loading -> {
+                    items(10, key = { "shimmer_$it" }, contentType = { "shimmer" }) {
                         ShimmerLazyItem()
                     }
                 }
-            }
-            is UiState.Success<*> -> {
-                val devices = state.data as List<DeviceModel>
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(1),
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(innerPadding),
-                    contentPadding = PaddingValues(8.dp)
-                ) {
-                    items(devices.size) { index ->
+                is UiState.Success<*> -> {
+                    val devices = state.data as? List<DeviceModel> ?: emptyList() // Safe cast
+                    items(
+                        count = devices.size,
+                        key = { index -> devices[index].name }, // Use unique key
+                        contentType = { "deviceCard" } // Use content type
+                    ) { index ->
                         DevicesCard(devices[index], navController)
                     }
                 }
-            }
-            is UiState.NoInternet -> {
-            }
-            is UiState.Error -> {
+                is UiState.NoInternet -> {
+                    // Optionally display a message or placeholder
+                }
+                is UiState.Error -> {
+                    // Optionally display an error message
+                }
             }
         }
+    }
+}
+
+// Placeholder composables (add these or similar implementations if needed)
+@Composable
+fun NoInternetPlaceholder(modifier: Modifier = Modifier) {
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Text("No Internet Connection")
+    }
+}
+
+@Composable
+fun ErrorPlaceholder(modifier: Modifier = Modifier, message: String?) {
+    Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
+        Text("Error: ${message ?: "Unknown error"}")
     }
 }
 

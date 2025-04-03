@@ -89,6 +89,17 @@ fun SensitivitiesScreen(
         }
     }
 
+    // Fetch devices when the screen is composed or manufacturer/modelName changes
+    LaunchedEffect(manufacturer) {
+        if (manufacturer.isNotEmpty()) {
+            deviceViewModel.fetchDevices(manufacturer)
+        } else {
+             // Handle the case where manufacturer is empty, maybe show an error or default state
+             Log.w("SensitivitiesScreen", "Manufacturer is empty, cannot fetch devices.")
+             // Optionally update the state to an error state if needed:
+             // deviceViewModel.updateStateWithError("Manufacturer not provided")
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -104,7 +115,6 @@ fun SensitivitiesScreen(
     ) { innerPadding ->
         when (val state = deviceModelState) {
             is UiState.Loading -> {
-                // Show loading indicator
                 Column(
                     modifier = Modifier.fillMaxSize().padding(innerPadding).padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -139,7 +149,6 @@ fun SensitivitiesScreen(
                             AdManagerHolder.showInterstitialAd(
                                 activity = activity,
                                 // TODO: Consider if a specific Ad Unit ID is needed here or if AdManagerHolder handles it
-                                // adUnitId = AdConstants.SENSITIVITIES_INTERSTITIAL_AD_UNIT_ID, // Optional: Pass specific ID if needed by holder
                                 onShown = {
                                     Log.d("SensitivitiesScreen", "Interstitial Ad shown via AdManagerHolder.")
                                     appViewModel.setVisitCount(0) // Сбрасываем через ViewModel

@@ -214,10 +214,10 @@ fun AboutScreen(
 
             Card(
                 modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f)
-                ),
-                shape = RoundedCornerShape(16.dp)
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest // Use a more distinct color
+        ),
+        shape = RoundedCornerShape(16.dp)
             ) {
                 Column(
                     modifier = Modifier
@@ -245,7 +245,7 @@ fun AppInfoHeader() {
         ),
         shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow // Better contrast in dark mode
         )
     ) {
         Column(
@@ -333,7 +333,7 @@ fun ExpandableSection(
         ),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surface
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow // Better contrast in dark mode
         )
     ) {
         Column(
@@ -468,7 +468,7 @@ fun VersionInfoCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.7f)
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh // Consistent container color
         ),
         shape = RoundedCornerShape(16.dp)
     ) {

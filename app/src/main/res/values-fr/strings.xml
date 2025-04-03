@@ -142,4 +142,5 @@
     <string name="update_download_started">Téléchargement de la mise à jour commencé</string>
     <string name="update_download_complete">Téléchargement de la mise à jour terminé. Installation en cours…</string>
     <string name="update_not_needed">Votre application est à jour</string>
+    <string name="system_default">Système par défaut</string> <!-- Placeholder, please translate -->
 </resources>

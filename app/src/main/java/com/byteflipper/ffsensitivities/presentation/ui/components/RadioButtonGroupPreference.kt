@@ -35,7 +35,7 @@ import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesThem
 data class RadioOption(
     val key: String,
     val title: String,
-    val summary: String,
+    val summary: String? = null,
     val description: String? = null,
     val icon: Painter? = null,
     val summaryIcon: ImageVector? = null
@@ -89,7 +89,7 @@ fun RadioButtonGroup(
                 }
 
                 Text(
-                    text = option.summary,
+                    text = option.summary.toString(),
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )

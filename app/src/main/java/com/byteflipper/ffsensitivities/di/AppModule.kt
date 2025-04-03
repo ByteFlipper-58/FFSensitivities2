@@ -2,6 +2,7 @@ package com.byteflipper.ffsensitivities.di
 
 import android.content.Context
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.utils.PreferencesManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +23,12 @@ object AppModule {
     @Singleton
     fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager {
         return DataStoreManager(context)
+    }
+
+    @Provides
+    @Singleton
+    fun providePreferencesManager(@ApplicationContext context: Context): PreferencesManager {
+        return PreferencesManager(context)
     }
 
     @Provides

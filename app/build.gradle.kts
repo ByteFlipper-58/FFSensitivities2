@@ -82,6 +82,13 @@ android {
         // "sdk.dir" is ignored by default.
         ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
     }
+
+    bundle {
+        language {
+            // Disables language splitting
+            enableSplit = false
+        }
+    }
 }
 
 dependencies {

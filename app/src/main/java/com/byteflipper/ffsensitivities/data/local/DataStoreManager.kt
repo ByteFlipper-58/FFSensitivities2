@@ -9,7 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.map // Keep map import
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_prefs")
 
@@ -20,7 +20,6 @@ class DataStoreManager(private val context: Context) {
         val CONTRAST_THEME_KEY = booleanPreferencesKey("contrast_theme")
         val VISIT_COUNT_KEY = intPreferencesKey("visit_count")
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
-        val LANGUAGE_KEY = stringPreferencesKey("app_language")
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -28,6 +27,11 @@ class DataStoreManager(private val context: Context) {
             settings[key] = value
         }
     }
+
+    fun <T> readNullable(key: Preferences.Key<T>): Flow<T?> = context.dataStore.data
+        .map { settings ->
+            settings[key] // Returns null if key doesn't exist
+        }
 
     fun <T> read(key: Preferences.Key<T>, defaultValue: T): Flow<T> = context.dataStore.data
         .map { settings ->
@@ -64,11 +68,4 @@ class DataStoreManager(private val context: Context) {
     }
 
     fun getRequestSent() = read(PreferencesKeys.REQUEST_SENT_KEY, false)
-
-    suspend fun setLanguage(language: String) {
-        save(PreferencesKeys.LANGUAGE_KEY, language)
-    }
-
-    fun getLanguage() = read(PreferencesKeys.LANGUAGE_KEY, "en")
-
 }

@@ -14,11 +14,14 @@ import timber.log.Timber
 import java.io.IOException
 import javax.inject.Inject // Import Inject
 
-class DevicesRepository @Inject constructor(private val client: HttpClient) { // Add @Inject constructor
+class DevicesRepository @Inject constructor(private val client: HttpClient) {
     private val baseUrl = "https://raw.githubusercontent.com/ByteFlipper-58/database/refs/heads/main/FFSensitivities/"
 
-    suspend fun fetchDevices(model: String): UiState<List<DeviceModel>> {
-        val url = "$baseUrl$model.json"
+    suspend fun fetchDevices(manufacturer: String): UiState<List<DeviceModel>> {
+        // Convert manufacturer name to lowercase to match filename convention
+        val fileName = manufacturer.lowercase()
+        val url = "$baseUrl$fileName.json"
+        Timber.tag("DeviceRepository").d("Fetching devices from URL: %s", url)
         return try {
             val response: String = client.get(url) {
                 contentType(ContentType.Application.Json)

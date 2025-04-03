@@ -142,4 +142,5 @@
     <string name="update_download_started">Rozpoczęto pobieranie aktualizacji</string>
     <string name="update_download_complete">Pobieranie aktualizacji zakończone. Rozpoczyna się instalacja…</string>
     <string name="update_not_needed">Twoja aplikacja jest aktualna</string>
+    <string name="system_default">Domyślny systemowy</string> <!-- Placeholder, please translate -->
 </resources>

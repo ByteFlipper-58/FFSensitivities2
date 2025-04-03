@@ -125,7 +125,8 @@ fun MainActivityContent(
             content = { innerPadding: PaddingValues ->
                 NavigationHost(
                     navController = navController,
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                 )
             }
         )

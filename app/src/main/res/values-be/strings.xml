@@ -142,4 +142,5 @@
     <string name="update_download_started">Загрузка абнаўлення пачалася</string>
     <string name="update_download_complete">Загрузка абнаўлення завершана. Пачынаецца ўсталёўка…</string>
     <string name="update_not_needed">Ваша праграма абноўлена</string>
+    <string name="system_default">Сістэмная па змаўчанні</string> <!-- Added string -->
 </resources>

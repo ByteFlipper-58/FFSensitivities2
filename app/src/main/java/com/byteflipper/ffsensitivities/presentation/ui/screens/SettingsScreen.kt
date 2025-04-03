@@ -1,13 +1,19 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
-// import androidx.lifecycle.viewmodel.compose.viewModel // Use hiltViewModel instead
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -18,6 +24,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,19 +37,20 @@ import com.byteflipper.ffsensitivities.presentation.ui.components.PreferenceCate
 import com.byteflipper.ffsensitivities.presentation.ui.components.RadioButtonGroup
 import com.byteflipper.ffsensitivities.presentation.ui.components.RadioOption
 import com.byteflipper.ffsensitivities.presentation.ui.components.SwitchPreference
+import java.util.Locale
 
-@OptIn(ExperimentalMaterial3Api::class) // Add OptIn for TopAppBar
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-// @Preview(showBackground = true) // Preview might fail without Hilt context
 fun SettingsScreen(
-    navController: NavHostController, // Add navController parameter
+    navController: NavHostController,
     modifier: Modifier = Modifier,
-    appViewModel: AppViewModel = hiltViewModel() // Get ViewModel using Hilt
+    appViewModel: AppViewModel = hiltViewModel()
 ) {
     val dynamicColorState by appViewModel.dynamicColor.collectAsState()
     val contrastThemeState by appViewModel.contrastTheme.collectAsState()
     val selectedTheme by appViewModel.theme.collectAsState()
-    // val selectedLanguage by appViewModel.language.collectAsState() // Language settings seem removed, keep commented
+
+    val currentLocaleTag = remember { AppCompatDelegate.getApplicationLocales().toLanguageTags().ifEmpty { "system" } }
 
     Scaffold(
         topBar = {
@@ -57,17 +65,10 @@ fun SettingsScreen(
         }
     ) { innerPadding ->
         LazyColumn(
-            modifier = modifier // Use passed modifier
+            modifier = modifier
                 .fillMaxSize()
-                .padding(innerPadding) // Apply padding from Scaffold
+                .padding(innerPadding)
         ) {
-            /*item {
-                PreferenceCategory(
-                title = "General Settings",
-                icon = painterResource(id = R.drawable.settings_24px),
-            )
-        }*/
-
             item {
                 PreferenceCategory(
                     title = "Theme Settings",
@@ -138,7 +139,6 @@ fun SettingsScreen(
                             else -> "system"
                         }
                         appViewModel.setTheme(theme)
-                        // onThemeChange(theme) // Removed call
                     }
                 )
             }
@@ -159,6 +159,55 @@ fun SettingsScreen(
                     }
                 )
             }
+
+            item { HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp)) }
+
+            item {
+                PreferenceCategory(
+                    title = stringResource(R.string.change_language),
+                    icon = painterResource(id = R.drawable.translate_24px),
+                )
+            }
+
+            // Define the language list and FlowRow within the same item
+            item {
+                val languages = listOf(
+                    "system" to stringResource(R.string.system_default),
+                    "en" to getDisplayName("en"),
+                    "be" to getDisplayName("be"),
+                    "de" to getDisplayName("de"),
+                    "fr" to getDisplayName("fr"),
+                    "pl" to getDisplayName("pl"),
+                    "ru" to getDisplayName("ru"),
+                    "tr" to getDisplayName("tr"),
+                    "uk" to getDisplayName("uk")
+                )
+                FlowRow(
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    languages.forEach { (code, name) ->
+                        FilterChip(
+                            selected = currentLocaleTag == code || (currentLocaleTag == "system" && code == "system"),
+                            onClick = {
+                                val languageToSet = if (code == "system") null else code
+                                appViewModel.setLanguage(languageToSet)
+                            },
+                            label = { Text(name) }
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(8.dp))
+            }
         }
+    }
+}
+
+private fun getDisplayName(languageCode: String): String {
+    val locale = Locale(languageCode)
+    // Capitalize the first letter of the display name in its own language
+    return locale.getDisplayLanguage(locale).replaceFirstChar {
+        if (it.isLowerCase()) it.titlecase(locale) else it.toString()
     }
 }

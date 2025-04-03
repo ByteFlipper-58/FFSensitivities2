@@ -142,4 +142,5 @@
     <string name="update_download_started">Güncelleme indirme başlatıldı</string>
     <string name="update_download_complete">Güncelleme indirme tamamlandı. Kurulum başlıyor…</string>
     <string name="update_not_needed">Uygulamanız güncel</string>
+    <string name="system_default">Sistem varsayılanı</string> <!-- Placeholder, please translate -->
 </resources>
