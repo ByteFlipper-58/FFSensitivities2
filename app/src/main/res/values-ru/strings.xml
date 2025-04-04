@@ -143,4 +143,16 @@
     <string name="update_download_complete">Загрузка обновления завершена. Начинается установка…</string>
     <string name="update_not_needed">Ваше приложение обновлено</string>
     <string name="system_default">Системная по умолчанию</string> <!-- Added string -->
+
+    <!-- Onboarding -->
+    <string name="onboarding_image_desc">Иллюстрация онбординга</string>
+    <string name="onboarding_info_title">Добро пожаловать в FF Sensitivities!</string>
+    <string name="onboarding_info_description">Найдите лучшие настройки чувствительности для вашего устройства и улучшите свой геймплей.</string>
+    <string name="next">Далее</string>
+    <string name="onboarding_permissions_title">Разрешение на уведомления</string>
+    <string name="onboarding_permissions_description">Нам нужно разрешение, чтобы отправлять вам уведомления о новых настройках и обновлениях приложения.</string>
+    <string name="permission_granted">Разрешение получено</string>
+    <string name="grant_permission">Предоставить разрешение</string>
+    <!-- "Назад" string already exists -->
+
 </resources>

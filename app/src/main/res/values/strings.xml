@@ -6,10 +6,15 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Welcome to our application!</string>
     <string name="welcome_screen_message">Hello Fighter! Everyone will find a setting for themselves here; otherwise, you can request them</string>
-    <string name="privacy_policy_message" translatable="false">Continuing, you accept our Terms of Service and acknowledge that you have read our Privacy Policy.</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
+    <!-- Removed old privacy_policy_message -->
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string> <!-- Keep this if you also have Terms -->
     <string name="continue_button">Continue</string>
+    <string name="privacy_acceptance_checkbox">I have read and agree to the <![CDATA[<a href="privacy">Privacy Policy</a>]]></string> <!-- Using CDATA for link placeholder -->
+    <string name="privacy_dialog_title">Privacy Policy</string>
+    <string name="terms_acceptance_checkbox">I have read and agree to the <![CDATA[<a href="terms">Terms of Service</a>]]></string> <!-- Optional: If you also need Terms acceptance -->
+    <string name="accept_terms_and_policy">I have read and agree to the <![CDATA[<a href="terms">Terms of Service</a>]]> and <![CDATA[<a href="privacy">Privacy Policy</a>]]></string> <!-- Combined version -->
+    <string name="dialog_default_title">Information</string>
 
     <!-- Links & Contacts -->
     <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
@@ -143,4 +148,16 @@
     <string name="update_download_started">Update download started</string>
     <string name="update_download_complete">Update download complete. Installation starting…</string>
     <string name="update_not_needed">Your app is up to date</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_image_desc">Onboarding illustration</string>
+    <string name="onboarding_info_title">Welcome to FF Sensitivities!</string>
+    <string name="onboarding_info_description">Find the best sensitivity settings for your device and improve your gameplay.</string>
+    <string name="next">Next</string>
+    <string name="onboarding_permissions_title">Notification Permission</string>
+    <string name="onboarding_permissions_description">We need permission to send you notifications about new settings and app updates.</string>
+    <string name="permission_granted">Permission Granted</string>
+    <string name="grant_permission">Grant Permission</string>
+    <!-- "Back" string already exists -->
+
 </resources>
