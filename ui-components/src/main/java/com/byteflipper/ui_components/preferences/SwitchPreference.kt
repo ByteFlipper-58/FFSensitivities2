@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-package com.byteflipper.ffsensitivities.presentation.ui.components
+package com.byteflipper.ui_components.preferences // Updated package
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -29,13 +29,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
+// import androidx.compose.ui.res.painterResource // Removed app specific import
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+// import androidx.compose.ui.tooling.preview.Preview // Removed Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
+// import com.byteflipper.ffsensitivities.R // Removed app specific import
+// import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme // Removed app specific import
 
 @Composable
 fun SwitchPreference(
@@ -45,7 +45,7 @@ fun SwitchPreference(
     checked: Boolean,
     icon: Painter? = null,
     activeIndicatorColor: Color = MaterialTheme.colorScheme.primary,
-    inactiveIndicatorColor: Color = Color.Gray.copy(alpha = 0.3f),
+    inactiveIndicatorColor: Color = Color.Gray.copy(alpha = 0.3f), // Consider using MaterialTheme colors
     activeSwitchColor: Color = MaterialTheme.colorScheme.primary,
     inactiveSwitchColor: Color = MaterialTheme.colorScheme.surfaceVariant,
     onCheckedChange: (Boolean) -> Unit
@@ -57,7 +57,7 @@ fun SwitchPreference(
             .fillMaxWidth()
             .clickable { onCheckedChange(!checked) }, // Make the entire component clickable
         color = MaterialTheme.colorScheme.surface,
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp) // Consider making shape configurable or consistent
     ) {
         Row(
             modifier = Modifier
@@ -95,8 +95,8 @@ fun SwitchPreference(
             Box(
                 modifier = Modifier
                     .padding(horizontal = 12.dp)
-                    .width(3.dp)
-                    .height(32.dp)
+                    .width(3.dp) // Consider making width consistent (e.g., 2.dp like RadioButtonPreference)
+                    .height(32.dp) // Consider making height consistent
                     .background(
                         color = indicatorColor,
                         shape = RoundedCornerShape(50)
@@ -105,7 +105,7 @@ fun SwitchPreference(
 
             Switch(
                 checked = checked,
-                onCheckedChange = null,
+                onCheckedChange = null, // Click handled by the parent Row
                 colors = SwitchDefaults.colors(
                     checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
                     checkedTrackColor = activeSwitchColor,
@@ -119,6 +119,7 @@ fun SwitchPreference(
     }
 }
 
+/* // Removed Preview as it depends on app resources/theme
 @Preview(showBackground = true)
 @Composable
 fun PreviewSwitchWithText() {
@@ -156,3 +157,4 @@ fun PreviewSwitchWithText() {
         }
     }
 }
+*/

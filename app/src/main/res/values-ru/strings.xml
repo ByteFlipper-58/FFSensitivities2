@@ -155,4 +155,13 @@
     <string name="grant_permission">Предоставить разрешение</string>
     <!-- "Назад" string already exists -->
 
+    <!-- Error Screen (New Strings - Russian Translation) -->
+    <string name="error_occurred_title">Произошла ошибка</string>
+    <string name="error_occurred_message">К сожалению, приложение столкнулось с непредвиденной проблемой.</string>
+    <string name="error_details_info">Подробности ошибки были отправлены разработчикам. Вы можете скопировать детали ниже.</string>
+    <string name="error_details_label">Детали ошибки</string>
+    <string name="copy_error_details">Скопировать детали ошибки</string>
+    <string name="restart_app">Перезапустить приложение</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+
 </resources>

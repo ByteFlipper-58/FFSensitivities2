@@ -33,10 +33,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.components.PreferenceCategory
-import com.byteflipper.ffsensitivities.presentation.ui.components.RadioButtonGroup
-import com.byteflipper.ffsensitivities.presentation.ui.components.RadioOption
-import com.byteflipper.ffsensitivities.presentation.ui.components.SwitchPreference
+// Updated imports for moved components
+import com.byteflipper.ui_components.preferences.PreferenceCategory
+import com.byteflipper.ui_components.preferences.RadioButtonGroup
+import com.byteflipper.ui_components.preferences.RadioOption
+import com.byteflipper.ui_components.preferences.SwitchPreference
 import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)

@@ -160,4 +160,13 @@
     <string name="grant_permission">Grant Permission</string>
     <!-- "Back" string already exists -->
 
+    <!-- Error Screen (New Strings) -->
+    <string name="error_occurred_title">An Error Occurred</string>
+    <string name="error_occurred_message">Unfortunately, the application encountered an unexpected problem.</string>
+    <string name="error_details_info">Error details have been sent to the developers. You can copy the details below.</string>
+    <string name="error_details_label">Error Details</string>
+    <string name="copy_error_details">Copy error details</string>
+    <string name="restart_app">Restart App</string>
+    <string name="copied_to_clipboard">Copied to clipboard</string>
+
 </resources>

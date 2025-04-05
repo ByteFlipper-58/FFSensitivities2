@@ -9,4 +9,13 @@
         <item name="windowSplashScreenIconBackgroundColor">#EBEBEB</item>
         <item name="windowSplashScreenAnimationDuration">2000</item>
     </style>
+
+    <!-- Theme for ErrorActivity to avoid white flash -->
+    <style name="Theme.FFSensitivities.ErrorActivity" parent="Theme.FFSensitivities">
+        <!-- Set a dark background matching the dark theme's surfaceContainerLowest -->
+        <item name="android:windowBackground">#FF0A0F0C</item>
+        <!-- You might also want to set status bar/navigation bar colors if needed -->
+        <!-- <item name="android:statusBarColor">...</item> -->
+        <!-- <item name="android:navigationBarColor">...</item> -->
+    </style>
 </resources>

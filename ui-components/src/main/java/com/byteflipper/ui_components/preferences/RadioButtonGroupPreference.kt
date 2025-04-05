@@ -4,8 +4,10 @@
  * All rights reserved.
  */
 
-package com.byteflipper.ffsensitivities.presentation.ui.components
+package com.byteflipper.ui_components.preferences // Updated package
 
+// import androidx.compose.ui.res.painterResource // Removed app specific import
+// import androidx.compose.ui.tooling.preview.Preview // Removed Preview
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,8 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,13 +25,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 
+// import com.byteflipper.ffsensitivities.R // Removed app specific import
+// import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme // Removed app specific import
+
+// Note: RadioOption is defined here, but RadioButtonPreference is in its own file.
+// Consider moving RadioOption to RadioButtonPreference.kt or a separate models file if needed elsewhere.
 data class RadioOption(
     val key: String,
     val title: String,
@@ -53,6 +54,7 @@ fun RadioButtonGroup(
 
     Column {
         options.forEachIndexed { index, option ->
+            // Assuming RadioButtonPreference will be available in this package after moving
             RadioButtonPreference(
                 key = option.key,
                 title = option.title,
@@ -88,16 +90,20 @@ fun RadioButtonGroup(
                     Spacer(modifier = Modifier.width(16.dp))
                 }
 
-                Text(
-                    text = option.summary.toString(),
-                    fontSize = 12.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+                // Ensure summary is not null before converting to string
+                option.summary?.let { summaryText ->
+                    Text(
+                        text = summaryText,
+                        fontSize = 12.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
 }
 
+/* // Removed Preview as it depends on app resources/theme
 @Preview(showBackground = true)
 @Composable
 fun PreviewRadioButtonGroup() {
@@ -143,3 +149,4 @@ fun PreviewRadioButtonGroup() {
         }
     }
 }
+*/

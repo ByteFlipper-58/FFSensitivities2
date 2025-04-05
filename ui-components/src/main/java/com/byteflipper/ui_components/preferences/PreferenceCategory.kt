@@ -4,7 +4,7 @@
  * All rights reserved.
  */
 
-package com.byteflipper.ffsensitivities.presentation.ui.components
+package com.byteflipper.ui_components.preferences // Updated package
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,13 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
+// import androidx.compose.ui.res.painterResource // Removed app specific import
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+// import androidx.compose.ui.tooling.preview.Preview // Removed Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
+// import com.byteflipper.ffsensitivities.R // Removed app specific import
+// import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme // Removed app specific import
 
 @Composable
 fun PreferenceCategory(
@@ -81,6 +81,7 @@ fun PreferenceCategory(
     }
 }
 
+/* // Removed Preview as it depends on app resources/theme
 @Preview(showBackground = true)
 @Composable
 fun PreferenceCategoryPreview() {
@@ -112,3 +113,4 @@ fun PreferenceCategoryPreview() {
         }
     }
 }
+*/
