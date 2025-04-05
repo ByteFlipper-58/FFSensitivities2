@@ -28,6 +28,28 @@ android {
         }
     }
 
+    // Конфигурация подписи для релиза
+    signingConfigs {
+        create("release") {
+            // Считываем данные из переменных окружения, которые будут переданы из GitHub Secrets
+            val keystoreFile = System.getenv("SIGNING_KEYSTORE_PATH")
+            val keystorePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
+            val keyAlias = System.getenv("SIGNING_KEY_ALIAS")
+            val keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
+
+            if (keystoreFile != null && File(keystoreFile).exists()) {
+                storeFile = File(keystoreFile)
+                storePassword = keystorePassword
+                this.keyAlias = keyAlias
+                this.keyPassword = keyPassword
+            } else {
+                println("Keystore file not found at path specified by SIGNING_KEYSTORE_PATH or variable not set.")
+                // Можно добавить логику для использования debug ключа или остановки сборки,
+                // если ключ не найден, но для CI/CD это обычно не требуется.
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -36,6 +58,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // Указываем использовать конфигурацию подписи release
+            signingConfig = signingConfigs.getByName("release")
 
             ndk {
                 debugSymbolLevel = "FULL"
@@ -108,7 +132,7 @@ dependencies {
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
     // Yandex Mobile Ads
-    implementation("com.yandex.android:mobileads:7.11.0")
+    implementation("com.yandex.android:mobileads:7.12.0")
     implementation("com.yandex.android:mobileads-mediation:7.9.0.0")
 
     implementation("com.google.dagger:hilt-android:2.55")

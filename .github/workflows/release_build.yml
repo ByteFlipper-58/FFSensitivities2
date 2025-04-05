@@ -1,0 +1,49 @@
+name: Android Release Build
+
+on:
+  push:
+    branches:
+      - production # Запускать только при пуше в ветку production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17' # Укажите версию JDK, используемую в вашем проекте
+        distribution: 'temurin'
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3 # Используем официальный action для Gradle
+
+    - name: Decode Keystore
+      id: decode_keystore
+      # Декодируем keystore из секрета GitHub и сохраняем во временный файл
+      run: |
+        echo "${{ secrets.SIGNING_KEYSTORE_BASE64 }}" | base64 --decode > ${{ runner.temp }}/signing_keystore.jks
+        echo "keystore_path=${{ runner.temp }}/signing_keystore.jks" >> $GITHUB_OUTPUT
+
+    - name: Build Signed Release App Bundle
+      # Передаем секреты и путь к keystore как переменные окружения для Gradle
+      env:
+        SIGNING_KEYSTORE_PATH: ${{ steps.decode_keystore.outputs.keystore_path }}
+        SIGNING_KEYSTORE_PASSWORD: ${{ secrets.SIGNING_KEYSTORE_PASSWORD }}
+        SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+      run: ./gradlew :app:bundleRelease # Собираем подписанный AAB для модуля app
+
+    - name: Upload Signed Release App Bundle
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-release-signed-bundle # Имя артефакта (изменено для ясности)
+        path: app/build/outputs/bundle/release/*.aab # Путь к собранному и подписанному AAB
