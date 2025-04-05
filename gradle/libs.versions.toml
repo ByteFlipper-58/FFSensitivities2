@@ -19,6 +19,7 @@ navigationRuntimeKtx = "2.8.5"
 navigationCompose = "2.8.5"
 firebaseInappmessagingDisplay = "21.0.1"
 googleGmsGoogleServices = "4.4.2"
+material = "1.12.0"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
@@ -48,9 +49,11 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 library = { module = "me.zhanghai.compose.preference:library", version.ref = "library" }
 firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
+android-library = { id = "com.android.library", version.ref = "agp" }

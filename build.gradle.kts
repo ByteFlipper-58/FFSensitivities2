@@ -6,6 +6,7 @@ plugins {
     kotlin("plugin.serialization") version "1.8.20"
     id("org.jetbrains.kotlin.plugin.compose") version "2.1.0"
     id("com.google.dagger.hilt.android") version "2.52" apply false
+    alias(libs.plugins.android.library) apply false
 }
 
 buildscript {

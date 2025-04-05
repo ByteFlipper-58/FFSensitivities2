@@ -29,3 +29,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FF Sensitivities"
 include(":app")
+include(":ui-components")

@@ -20,6 +20,7 @@ class DataStoreManager(private val context: Context) {
         val CONTRAST_THEME_KEY = booleanPreferencesKey("contrast_theme")
         val VISIT_COUNT_KEY = intPreferencesKey("visit_count")
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
+        val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed") // Ключ для онбординга
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -66,6 +67,13 @@ class DataStoreManager(private val context: Context) {
     suspend fun setRequestSent(status: Boolean) {
         save(PreferencesKeys.REQUEST_SENT_KEY, status)
     }
+
+    // --- First Launch ---
+    suspend fun setFirstLaunchCompleted(completed: Boolean) {
+        save(PreferencesKeys.FIRST_LAUNCH_COMPLETED_KEY, completed)
+    }
+
+    fun getFirstLaunchCompleted(): Flow<Boolean> = read(PreferencesKeys.FIRST_LAUNCH_COMPLETED_KEY, false) // По умолчанию false (не завершен)
 
     fun getRequestSent() = read(PreferencesKeys.REQUEST_SENT_KEY, false)
 }

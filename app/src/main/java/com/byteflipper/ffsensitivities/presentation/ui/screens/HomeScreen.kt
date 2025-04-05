@@ -35,41 +35,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.data.local.getRequestSentStatus
-import com.byteflipper.ffsensitivities.data.local.saveRequestSentStatus
 import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.presentation.ui.dialogs.SensitivitiesRequestDialog
+import com.byteflipper.ffsensitivities.presentation.viewmodel.HomeScreenViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
 import io.ktor.client.HttpClient
 
-@OptIn(ExperimentalMaterial3Api::class) // Add OptIn for TopAppBar
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     navController: NavHostController,
-    repository: ManufacturerRepository = ManufacturerRepository(HttpClient())
-) {
-    val context = LocalContext.current
-    val viewModel: ManufacturerViewModel = viewModel(
+    repository: ManufacturerRepository = ManufacturerRepository(HttpClient()),
+    homeViewModel: HomeScreenViewModel = hiltViewModel(),
+    manufacturerViewModel: ManufacturerViewModel = viewModel(
         factory = ManufacturerViewModel.Factory(repository)
     )
+) {
 
-    val uiState = viewModel.uiState.collectAsState()
+    val uiState = manufacturerViewModel.uiState.collectAsState()
+    val isRequestSent by homeViewModel.isRequestSent.collectAsState()
 
     var showDialog by remember { mutableStateOf(false) }
-    var isRequestSent by remember { mutableStateOf(getRequestSentStatus(context)) }
 
     Scaffold(
         topBar = {
@@ -110,9 +109,8 @@ fun HomeScreen(
                         showDialog = false
                     },
                     onRequestSent = {
-                        isRequestSent = true
                         showDialog = false
-                        saveRequestSentStatus(context, true)
+                        homeViewModel.setRequestSent(true)
                     }
                 )
             }

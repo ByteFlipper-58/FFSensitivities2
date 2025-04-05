@@ -92,6 +92,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":ui-components")) // Добавляем зависимость от ui-components
+
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(platform(libs.androidx.compose.bom))
 

@@ -1,5 +1,4 @@
-package com.byteflipper.ffsensitivities.presentation.ui.components
-
+package com.byteflipper.ui_components.onboarding
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -14,7 +13,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -37,7 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalAnimationApi::class) // Needed for AnimatedVisibility transitions
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun OnboardingBottomBar(
     modifier: Modifier = Modifier,
@@ -48,12 +46,12 @@ fun OnboardingBottomBar(
     onFinishClick: () -> Unit,
     backEnabled: Boolean = true,
     nextEnabled: Boolean = true,
-    finishEnabled: Boolean = false // Typically enabled only on the last screen
+    finishEnabled: Boolean = false
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 24.dp), // Increased vertical padding
+            .padding(horizontal = 16.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -70,17 +68,16 @@ fun OnboardingBottomBar(
         // Navigation Buttons
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically // Align items vertically
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            // Animated Back Button (Smoother fade)
             AnimatedVisibility(
-                visible = backEnabled && currentScreenIndex > 0, // Show only if enabled and not first screen
-                enter = fadeIn(animationSpec = tween(200)), // Adjust duration if needed
-                exit = fadeOut(animationSpec = tween(200))  // Adjust duration if needed
+                visible = backEnabled && currentScreenIndex > 0,
+                enter = fadeIn(animationSpec = tween(200)),
+                exit = fadeOut(animationSpec = tween(200))
             ) {
                 FilledIconButton(
                     onClick = onBackClick,
-                    enabled = currentScreenIndex > 0, // Still needed for semantics
+                    enabled = currentScreenIndex > 0,
                     shape = CircleShape,
                     modifier = Modifier.size(48.dp)
                 ) {
@@ -90,27 +87,16 @@ fun OnboardingBottomBar(
                     )
                 }
             }
-            // Add a spacer that appears when the back button is hidden to maintain layout
-            AnimatedVisibility(
-                visible = !backEnabled || currentScreenIndex == 0,
-                enter = fadeIn(), // Optional: Animate spacer visibility if desired
-                exit = fadeOut()
-            ) {
-                 Spacer(modifier = Modifier.size(48.dp)) // Keep spacing consistent
-            }
 
-
-            // Next/Finish Button
             FilledIconButton(
                 onClick = if (finishEnabled) onFinishClick else onNextClick,
                 enabled = nextEnabled || finishEnabled,
                 shape = CircleShape,
                 modifier = Modifier.size(48.dp)
             ) {
-                // Crossfade animation for the icon
                 Crossfade(
                     targetState = finishEnabled,
-                    animationSpec = tween(durationMillis = 300), // Adjust duration as needed
+                    animationSpec = tween(durationMillis = 500),
                     label = "NextFinishIconCrossfade"
                 ) { isFinish ->
                     Icon(

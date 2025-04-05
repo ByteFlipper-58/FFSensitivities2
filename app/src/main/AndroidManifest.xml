@@ -55,8 +55,15 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.App.Starting">
             <!-- android:configChanges="locale|layoutDirection" removed to allow Activity recreation on locale change -->
+            <!-- Добавляем intent-filter, чтобы сделать MainActivity точкой входа -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
+        <!-- Удаляем блок activity для WelcomeActivity -->
+        <!--
         <activity
             android:name=".presentation.ui.WelcomeActivity"
             android:exported="true"
@@ -67,6 +74,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        -->
     </application>
 
 </manifest>
