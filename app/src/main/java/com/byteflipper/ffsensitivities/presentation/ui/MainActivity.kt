@@ -9,19 +9,19 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.byteflipper.ffsensitivities.AppViewModel
-import com.byteflipper.ffsensitivities.ads.AdsHelper
+import com.byteflipper.ffsensitivities.ads.ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.navigation.RootAppNavigation
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
-import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject lateinit var adsHelper: AdsHelper
+    @Inject lateinit var consentManager: ConsentManager
     @Inject lateinit var dataStoreManager: DataStoreManager
     private lateinit var appUpdateManagerWrapper: AppUpdateManagerWrapper
     private val viewModel: AppViewModel by viewModels()
@@ -31,9 +31,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
-        MobileAds.setAgeRestrictedUser(false)
-        MobileAds.setLocationConsent(true)
-        MobileAds.setUserConsent(adsHelper.isUserConsentGiven())
+
+        consentManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
+            Timber.d("UMP Consent resolved in MainActivity. Can request personalized ads: $canRequestPersonalizedAds")
+        }
+
         splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }
 
         setContent {

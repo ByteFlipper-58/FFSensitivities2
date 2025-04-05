@@ -4,43 +4,41 @@ import android.app.Application
 import android.content.Intent
 import android.os.Process
 import android.util.Log
-import com.byteflipper.ffsensitivities.ads.AdManagerHolder
-import com.byteflipper.ffsensitivities.presentation.ui.ErrorActivity // Will be created later
+import androidx.lifecycle.ProcessLifecycleOwner
+import com.byteflipper.ffsensitivities.ads.AppOpenAdManager
+import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.di.ApplicationScope
+import com.byteflipper.ffsensitivities.presentation.ui.ErrorActivity
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.yandex.mobile.ads.common.MobileAds
 import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.CoroutineScope
 import timber.log.Timber
+import javax.inject.Inject
 import kotlin.system.exitProcess
 
 @HiltAndroidApp
 class MyApplication : Application() {
-    //var appOpenAdManager: AppOpenAdManager? = null
+
+    @Inject lateinit var dataStoreManager: DataStoreManager
+    @Inject lateinit var appOpenAdManager: AppOpenAdManager
+    @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
 
     override fun onCreate() {
         super.onCreate()
+        ProcessLifecycleOwner.get().lifecycle.addObserver(appOpenAdManager)
+        registerActivityLifecycleCallbacks(appOpenAdManager)
+
         initializeLogging()
         Timber.plant(FileLoggingTree(this))
-        setupCrashHandler() // Add crash handler setup
-
-        MobileAds.initialize(this) {
-           Log.d("MyApplication", "Yandex Mobile Ads initialized.")
-           // Initialize AdManagerHolder after Yandex SDK is initialized
-           AdManagerHolder.initialize(this)
-        }
-       // appOpenAdManager = AppOpenAdManager(this) // Remove or keep commented old manager
+        setupCrashHandler()
     }
-
-    // TODO: Consider calling AdManagerHolder.destroy() in onTerminate() if needed,
-    // although Application.onTerminate() is not guaranteed to be called on real devices.
 
     private fun setupCrashHandler() {
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
-            // Log the crash to Crashlytics
             FirebaseCrashlytics.getInstance().recordException(throwable)
-            Timber.e(throwable, "Uncaught exception") // Log locally as well
+            Timber.e(throwable, "Uncaught exception")
 
-            // Start ErrorActivity
             val intent = Intent(this, ErrorActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 putExtra(ErrorActivity.EXTRA_ERROR_MESSAGE, throwable.message)
@@ -48,12 +46,8 @@ class MyApplication : Application() {
             }
             startActivity(intent)
 
-            // Terminate the process
             Process.killProcess(Process.myPid())
-            exitProcess(10) // Exit with a non-zero code
-
-            // Optionally, call the default handler if needed (e.g., for system reporting)
-            // defaultHandler?.uncaughtException(thread, throwable)
+            exitProcess(10)
         }
     }
 
@@ -103,35 +97,5 @@ class MyApplication : Application() {
             // Log warnings and errors in release builds
             return priority == Log.WARN || priority == Log.ERROR
         }
-    }
-}
-
-object Logger {
-    fun d(message: String, vararg args: Any?) {
-        Timber.d(message, *args)
-    }
-
-    fun i(message: String, vararg args: Any?) {
-        Timber.i(message, *args)
-    }
-
-    fun w(message: String, vararg args: Any?) {
-        Timber.w(message, *args)
-    }
-
-    fun e(message: String, vararg args: Any?) {
-        Timber.e(message, *args)
-    }
-
-    fun e(t: Throwable, message: String? = null) {
-        // Log non-fatal exceptions to Crashlytics via Timber
-        Timber.e(t, message ?: "An error occurred")
-    }
-
-    fun wtf(message: String, vararg args: Any?) {
-        // What a Terrible Failure - log as error
-        Timber.e("WTF: $message", *args)
-        // Consider logging WTF events to Crashlytics as non-fatal errors
-        FirebaseCrashlytics.getInstance().recordException(Exception("WTF: $message"))
     }
 }

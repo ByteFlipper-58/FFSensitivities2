@@ -9,7 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map // Keep map import
+import kotlinx.coroutines.flow.map
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_prefs")
 
@@ -20,7 +20,8 @@ class DataStoreManager(private val context: Context) {
         val CONTRAST_THEME_KEY = booleanPreferencesKey("contrast_theme")
         val VISIT_COUNT_KEY = intPreferencesKey("visit_count")
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
-        val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed") // Ключ для онбординга
+        val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed")
+        val APP_LAUNCH_COUNT_KEY = intPreferencesKey("app_launch_count")
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -31,7 +32,7 @@ class DataStoreManager(private val context: Context) {
 
     fun <T> readNullable(key: Preferences.Key<T>): Flow<T?> = context.dataStore.data
         .map { settings ->
-            settings[key] // Returns null if key doesn't exist
+            settings[key]
         }
 
     fun <T> read(key: Preferences.Key<T>, defaultValue: T): Flow<T> = context.dataStore.data
@@ -43,7 +44,7 @@ class DataStoreManager(private val context: Context) {
         save(PreferencesKeys.THEME_KEY, theme)
     }
 
-    fun getTheme() = read(PreferencesKeys.THEME_KEY, "system") // "system", "light", "dark"
+    fun getTheme() = read(PreferencesKeys.THEME_KEY, "system")
 
     suspend fun setDynamicColor(dynamicColor: Boolean) {
         save(PreferencesKeys.DYNAMIC_COLOR_KEY, dynamicColor)
@@ -68,7 +69,6 @@ class DataStoreManager(private val context: Context) {
         save(PreferencesKeys.REQUEST_SENT_KEY, status)
     }
 
-    // --- First Launch ---
     suspend fun setFirstLaunchCompleted(completed: Boolean) {
         save(PreferencesKeys.FIRST_LAUNCH_COMPLETED_KEY, completed)
     }
@@ -76,4 +76,13 @@ class DataStoreManager(private val context: Context) {
     fun getFirstLaunchCompleted(): Flow<Boolean> = read(PreferencesKeys.FIRST_LAUNCH_COMPLETED_KEY, false) // По умолчанию false (не завершен)
 
     fun getRequestSent() = read(PreferencesKeys.REQUEST_SENT_KEY, false)
+
+    suspend fun incrementAppLaunchCount() {
+        context.dataStore.edit { settings ->
+            val currentCount = settings[PreferencesKeys.APP_LAUNCH_COUNT_KEY] ?: 0
+            settings[PreferencesKeys.APP_LAUNCH_COUNT_KEY] = currentCount + 1
+        }
+    }
+
+    fun getAppLaunchCount(): Flow<Int> = read(PreferencesKeys.APP_LAUNCH_COUNT_KEY, 0)
 }

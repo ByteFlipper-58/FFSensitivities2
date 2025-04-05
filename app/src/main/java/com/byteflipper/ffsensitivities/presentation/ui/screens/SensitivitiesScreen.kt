@@ -69,7 +69,6 @@ fun SensitivitiesScreen(
     val visitCountState by appViewModel.visitCount.collectAsState()
 
     val deviceModelState by produceState<UiState<DeviceModel>>(initialValue = UiState.Loading, manufacturer, modelName, deviceViewModel) {
-        // Observe the DeviceViewModel's state
         deviceViewModel.uiState.collect { deviceListState ->
             value = when (deviceListState) {
                 is UiState.Success<*> -> {
@@ -89,15 +88,11 @@ fun SensitivitiesScreen(
         }
     }
 
-    // Fetch devices when the screen is composed or manufacturer/modelName changes
     LaunchedEffect(manufacturer) {
         if (manufacturer.isNotEmpty()) {
             deviceViewModel.fetchDevices(manufacturer)
         } else {
-             // Handle the case where manufacturer is empty, maybe show an error or default state
              Log.w("SensitivitiesScreen", "Manufacturer is empty, cannot fetch devices.")
-             // Optionally update the state to an error state if needed:
-             // deviceViewModel.updateStateWithError("Manufacturer not provided")
         }
     }
 
@@ -145,7 +140,7 @@ fun SensitivitiesScreen(
                         val newVisitCount = currentVisitCount + 1
                         appViewModel.setVisitCount(newVisitCount)
 
-                        if (newVisitCount % AdConstants.SENSITIVITIES_SCREEN_AD_FREQUENCY == 0) { // Use constant
+                        if (newVisitCount % AdConstants.SENSITIVITIES_SCREEN_AD_FREQUENCY == 0) {
                             AdManagerHolder.showInterstitialAd(
                                 activity = activity,
                                 // TODO: Consider if a specific Ad Unit ID is needed here or if AdManagerHolder handles it
@@ -155,7 +150,6 @@ fun SensitivitiesScreen(
                                 },
                                 onDismissed = {
                                     Log.d("SensitivitiesScreen", "Interstitial Ad dismissed via AdManagerHolder.")
-                                    // Можно добавить обработку закрытия рекламы
                                 }
                             )
                         }

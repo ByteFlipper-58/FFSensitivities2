@@ -1,6 +1,8 @@
 package com.byteflipper.ffsensitivities.di
 
 import android.content.Context
+import com.byteflipper.ffsensitivities.ads.AppOpenAdManager
+import com.byteflipper.ffsensitivities.ads.ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.utils.PreferencesManager
 import dagger.Module
@@ -12,8 +14,12 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -44,5 +50,32 @@ object AppModule {
                 })
             }
         }
+    }
+
+    @ApplicationScope
+    @Provides
+    @Singleton
+    fun provideCoroutineScope(): CoroutineScope {
+        return CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    }
+
+    @Provides
+    @Singleton
+    fun provideConsentManager(
+        @ApplicationContext context: Context,
+        @ApplicationScope coroutineScope: CoroutineScope,
+        appOpenAdManager: AppOpenAdManager
+    ): ConsentManager {
+        return ConsentManager(context, coroutineScope, appOpenAdManager)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAppOpenAdManager(
+        @ApplicationContext context: Context,
+        dataStoreManager: DataStoreManager,
+        @ApplicationScope coroutineScope: CoroutineScope
+    ): AppOpenAdManager {
+        return AppOpenAdManager(context, dataStoreManager, coroutineScope)
     }
 }
