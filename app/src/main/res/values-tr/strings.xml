@@ -6,7 +6,6 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Uygulamamıza Hoş Geldiniz!</string>
     <string name="welcome_screen_message">Merhaba Savaşçı! Herkes kendine uygun bir ayar bulacak; aksi takdirde onları talep edebilirsiniz</string>
-    <string name="privacy_policy_message" translatable="false">Devam ederek, Hizmet Şartlarımızı kabul ediyor ve Gizlilik Politikamızı okuduğunuzu onaylıyorsunuz.</string>
     <string name="privacy_policy" translatable="false">Privacy Policy</string>
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Devam</string>

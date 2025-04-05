@@ -6,7 +6,6 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Добро пожаловать в наше приложение!</string>
     <string name="welcome_screen_message">Привет, Боец! Каждый найдет здесь настройку для себя; в противном случае вы можете запросить их</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Продолжить</string>
 

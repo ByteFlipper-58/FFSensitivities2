@@ -6,7 +6,6 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Bienvenue dans notre application !</string>
     <string name="welcome_screen_message">Bonjour, combattant ! Chacun trouvera ici un réglage qui lui convient ; sinon, vous pouvez le demander</string>
-    <string name="privacy_policy_message" translatable="false">En continuant, vous acceptez nos Conditions d\'utilisation et reconnaissez avoir lu notre Politique de confidentialité.</string>
     <string name="privacy_policy" translatable="false">Privacy Policy</string>
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Continuer</string>

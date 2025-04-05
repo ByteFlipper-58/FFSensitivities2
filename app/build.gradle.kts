@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.gms.google.services)
     id("kotlinx-serialization")
     id("kotlin-parcelize")
@@ -28,10 +27,8 @@ android {
         }
     }
 
-    // Конфигурация подписи для релиза
     signingConfigs {
         create("release") {
-            // Считываем данные из переменных окружения, которые будут переданы из GitHub Secrets
             val keystoreFile = System.getenv("SIGNING_KEYSTORE_PATH")
             val keystorePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
             val keyAlias = System.getenv("SIGNING_KEY_ALIAS")
@@ -58,7 +55,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Указываем использовать конфигурацию подписи release
             signingConfig = signingConfigs.getByName("release")
 
             ndk {
@@ -81,7 +77,7 @@ android {
         buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "2.0.0"
+        kotlinCompilerExtensionVersion = "2.1.0"
     }
     packaging {
         resources {
@@ -104,19 +100,18 @@ android {
 
         // Configure which keys should be ignored by the plugin by providing regular expressions.
         // "sdk.dir" is ignored by default.
-        ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
+        ignoreList.add("sdk.*")
     }
 
     bundle {
         language {
-            // Disables language splitting
             enableSplit = false
         }
     }
 }
 
 dependencies {
-    implementation(project(":ui-components")) // Добавляем зависимость от ui-components
+    implementation(project(":ui-components"))
 
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(platform(libs.androidx.compose.bom))
@@ -149,10 +144,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
-    implementation("androidx.navigation:navigation-compose:2.8.4")
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
     implementation("androidx.core:core-splashscreen:1.0.1")
 
     implementation("androidx.lifecycle:lifecycle-process:2.8.7")

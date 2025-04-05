@@ -6,7 +6,6 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Ласкаво просимо до нашого додатку!</string>
     <string name="welcome_screen_message">Привіт, Боєць! Кожен знайде тут налаштування для себе; в іншому випадку ви можете їх запросити</string>
-    <string name="privacy_policy_message" translatable="false">Продовжуючи, ви приймаєте наші Умови надання послуг і підтверджуєте, що прочитали нашу Політику конфіденційності.</string>
     <string name="privacy_policy" translatable="false">Privacy Policy</string>
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Продовжити</string>

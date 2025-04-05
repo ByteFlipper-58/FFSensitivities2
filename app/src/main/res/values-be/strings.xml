@@ -6,7 +6,6 @@
     <!-- Welcome Screen -->
     <string name="welcome_screen_title">Сардэчна запрашаем у нашу праграму!</string>
     <string name="welcome_screen_message">Прывітанне, Баец! Кожны знойдзе тут настройку для сябе; у адваротным выпадку, вы можаце запытаць іх</string>
-    <string name="privacy_policy_message" translatable="false">Працягваючы, вы прымаеце нашы Умовы абслугоўвання і пацвярджаеце, што прачыталі нашу Палітыку прыватнасці.</string>
     <string name="privacy_policy" translatable="false">Privacy Policy</string>
     <string name="terms_of_service" translatable="false">Terms of Service</string>
     <string name="continue_button">Працягнуць</string>
