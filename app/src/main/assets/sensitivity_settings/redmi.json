@@ -146,22 +146,6 @@
             }
         },
         {
-            "__id__": "yRn8bVAezx2eOn6IvLVm",
-            "manufacturer": "Redmi",
-            "name": "Note 11",
-            "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 47,
-            "sensitivities": {
-                "review": 97,
-                "collimator": 88,
-                "x2_scope": 99,
-                "x4_scope": 97,
-                "sniper_scope": 21,
-                "free_review": 36
-            }
-        },
-        {
             "__id__": "1y2yDCsJEdbQ1Gni4xDm",
             "manufacturer": "Redmi",
             "name": "10C",

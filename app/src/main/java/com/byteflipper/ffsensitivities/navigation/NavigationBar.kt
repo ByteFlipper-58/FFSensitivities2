@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource // Import painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -14,12 +15,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 /**
- * Composable function that displays a bottom navigation bar.
+ * Отображает нижнюю панель навигации приложения.
  *
- * This function creates a bottom navigation bar with the specified navigation items.
- * It handles navigation between different screens based on the selected item.
+ * Эта панель содержит основные разделы приложения (например, "Главная", "О приложении")
+ * и управляет навигацией между ними с использованием [NavHostController].
+ * Обрабатывает выбор элементов, подсветку активного элемента (включая вложенные экраны)
+ * и специфическую логику навигации для возврата на предыдущие экраны или
+ * к корневому экрану вкладки.
  *
- * @param navController The NavHostController used for navigation.
+ * @param navController Контроллер навигации [NavHostController] для управления переходами.
+ * @param modifier Модификатор Compose для настройки внешнего вида панели.
  */
 @Composable
 fun BottomNavigationBar(
@@ -45,22 +50,69 @@ fun BottomNavigationBar(
 
             NavigationBarItem(
                 icon = {
-                    Icon(imageVector = item.icon, contentDescription = stringResource(item.resourceId))
+                    Icon(
+                        painter = painterResource(id = if (isSelected) item.selectedIcon else item.unselectedIcon), // Use painterResource
+                        contentDescription = stringResource(item.resourceId)
+                    )
                 },
                 label = { Text(stringResource(item.resourceId)) },
                 selected = isSelected,
                 onClick = {
-                    if (isSelected) {
-                        navController.popBackStack(item.route, inclusive = false)
-                    } else {
-                        navController.navigate(item.route) {
-                            launchSingleTop = true
-                            restoreState = true
-                            popUpTo(navController.graph.findStartDestination().id) {
-                                saveState = true
+                    val currentBackStackEntry = navController.currentBackStackEntry
+                    val currentDestination = currentBackStackEntry?.destination
+                    val startDestinationId = navController.graph.findStartDestination().id
+
+                    if (item == NavigationItem.Home && currentDestination?.route == NavigationItem.About.route) {
+                        // Get the entry *before* About
+                        val previousBackStackEntry = navController.previousBackStackEntry
+                        val previousRoute = previousBackStackEntry?.destination?.route
+                        // Check if the screen before About was part of the Home hierarchy (Devices/Sens)
+                        if (previousRoute != null && (previousRoute.startsWith("devices/") || previousRoute.startsWith("sensitivities/") || previousRoute == NavigationItem.Home.route)) {
+                            // If yes, just pop About to return to Devices/Sens (like system back)
+                            navController.popBackStack()
+                        } else {
+                            // Otherwise (e.g., came from root Home or somewhere else), use standard Home navigation
+                            navController.navigate(NavigationItem.Home.route) {
+                                launchSingleTop = true
+                                popUpTo(startDestinationId) { saveState = true }
+                                restoreState = true
                             }
                         }
+                        return@NavigationBarItem // Exit after handling this specific case
                     }
+
+                    // --- Handle clicking the ABOUT icon ---
+                    if (item == NavigationItem.About) {
+                        if (currentDestination?.route != NavigationItem.About.route) { // Avoid re-navigating if already on About
+                            navController.navigate(NavigationItem.About.route) {
+                                launchSingleTop = true
+                                restoreState = false // Show fresh
+                                // No popUpTo, preserve back stack
+                            }
+                        }
+                        return@NavigationBarItem // Exit after handling About click
+                    }
+
+                    // --- Standard Home click behavior (not from About) ---
+                    if (item == NavigationItem.Home) {
+                        if (!isSelected) {
+                             // Navigate TO Home tab (from other future tabs)
+                             navController.navigate(NavigationItem.Home.route) {
+                                 launchSingleTop = true
+                                 popUpTo(startDestinationId) { saveState = true }
+                                 restoreState = true
+                             }
+                        } else { // Home tab is already selected
+                             // If not already on the root Home screen (e.g., on Devices/Sens), pop back to the root Home screen.
+                             if (currentDestination?.route != NavigationItem.Home.route) {
+                                 navController.popBackStack(NavigationItem.Home.route, inclusive = false, saveState = false)
+                             }
+                             // If already selected AND on the root Home screen, do nothing.
+                        }
+                        return@NavigationBarItem // Exit after handling Home click
+                    }
+
+                    // Add else if for other future top-level items if needed
                 }
             )
         }
@@ -68,14 +120,17 @@ fun BottomNavigationBar(
 }
 
 /**
- * Checks if the given navigation item is currently selected, considering nested navigation.
+ * Проверяет, выбран ли данный элемент навигации [item] в текущем маршруте [currentRoute],
+ * учитывая вложенные маршруты.
  *
- * This function compares the current route with the route of the navigation item.
- * It also handles special cases for nested routes, such as the "Home" section.
+ * Сравнивает [currentRoute] с маршрутом [item.route].
+ * Особый случай: для элемента [NavigationItem.Home] проверяет, начинается ли
+ * [currentRoute] с префиксов "devices/" или "sensitivities/", чтобы считать
+ * вложенные экраны частью раздела "Home".
  *
- * @param currentRoute The current route string. Can be null.
- * @param item The navigation item to check.
- * @return True if the navigation item is selected, false otherwise.
+ * @param currentRoute Текущий маршрут навигации (может быть null).
+ * @param item Элемент навигации [NavigationItem] для проверки.
+ * @return `true`, если элемент [item] считается выбранным для данного [currentRoute], иначе `false`.
  */
 private fun isRouteSelected(currentRoute: String?, item: NavigationItem): Boolean {
     if (currentRoute == null) return false
