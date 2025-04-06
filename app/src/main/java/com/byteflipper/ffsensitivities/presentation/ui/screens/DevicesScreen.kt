@@ -129,16 +129,16 @@ fun DevicesScreen(
 
 // Placeholder composables (add these or similar implementations if needed)
 @Composable
-fun NoInternetPlaceholder(modifier: Modifier = Modifier) {
+fun NoInternetConnection(modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("No Internet Connection")
+        Text(stringResource(R.string.no_internet_connection))
     }
 }
 
 @Composable
-fun ErrorPlaceholder(modifier: Modifier = Modifier, message: String?) {
+fun ErrorMessage(message: String?, modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
-        Text("Error: ${message ?: "Unknown error"}")
+        Text(stringResource(R.string.error_prefix) + (message ?: stringResource(R.string.unknown_error)))
     }
 }
 

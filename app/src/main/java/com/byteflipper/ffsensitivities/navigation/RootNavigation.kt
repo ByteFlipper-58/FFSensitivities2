@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -184,6 +186,7 @@ private fun MainAppScaffold(
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val updateState by appUpdateManagerWrapper.updateState.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() } // Add SnackbarHostState
 
     val mainAppNavController = rememberNavController()
     val navBackStackEntry by mainAppNavController.currentBackStackEntryAsState()
@@ -200,7 +203,11 @@ private fun MainAppScaffold(
             UpdateState.FAILED -> context.getString(R.string.update_error_occurred)
             else -> null
         }
-        // TODO: Показать Snackbar с message, если он не null
+        message?.let {
+            coroutineScope.launch {
+                snackbarHostState.showSnackbar(it)
+            }
+        }
     }
     LaunchedEffect(updateState) {
         if (updateState == UpdateState.AVAILABLE) {
@@ -210,6 +217,7 @@ private fun MainAppScaffold(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         bottomBar = {
             Column(modifier = Modifier.fillMaxWidth()) {
                 if (isBottomBarVisible) {

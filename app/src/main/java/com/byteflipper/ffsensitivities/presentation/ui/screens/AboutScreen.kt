@@ -103,7 +103,7 @@ fun AboutScreen(
             AppInfoHeader()
 
             ExpandableSection(
-                title = "Support & Feedback",
+                title = stringResource(R.string.support_feedback_category_title),
                 icon = painterResource(id = R.drawable.bug_report_24px)
             ) {
                 Column(
@@ -133,7 +133,7 @@ fun AboutScreen(
             }
 
             ExpandableSection(
-                title = "Connect With Us",
+                title = stringResource(R.string.connect_with_us_category_title),
                 icon = painterResource(id = R.drawable.web_24px)
             ) {
                 Column(
@@ -178,7 +178,7 @@ fun AboutScreen(
             }
 
             ExpandableSection(
-                title = "Development",
+                title = stringResource(R.string.development_category_title),
                 icon = painterResource(id = R.drawable.code_24px)
             ) {
                 Column(
@@ -226,7 +226,7 @@ fun AboutScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Made with ❤️ by ByteFlipper",
+                        text = stringResource(R.string.made_with_love),
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Center
                     )
@@ -306,7 +306,7 @@ fun AppInfoHeader() {
                 )
             ) {
                 Text(
-                    text = "Contact Us",
+                    text = stringResource(R.string.contact_us),
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -376,7 +376,7 @@ fun ExpandableSection(
 
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = if (expanded) "Collapse" else "Expand",
+                    contentDescription = stringResource(if (expanded) R.string.expandable_section_collapse else R.string.expandable_section_expand),
                     modifier = Modifier.rotate(rotationState),
                     tint = MaterialTheme.colorScheme.primary
                 )

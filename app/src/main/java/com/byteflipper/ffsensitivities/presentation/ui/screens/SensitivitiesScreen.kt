@@ -115,7 +115,7 @@ fun SensitivitiesScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Text("Loading device data...")
+                    Text(stringResource(R.string.loading_device_data))
                 }
             }
 
@@ -252,7 +252,7 @@ fun SensitivitiesScreen(
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Star,
-                                        contentDescription = "Favorite"
+                                        contentDescription = stringResource(R.string.favorite_icon_desc)
                                     )
                                 }
 
@@ -264,7 +264,7 @@ fun SensitivitiesScreen(
                                 ) {
                                     Icon(
                                         imageVector = Icons.Default.Favorite,
-                                        contentDescription = "Favorite"
+                                        contentDescription = stringResource(R.string.favorite_icon_desc)
                                     )
                                 }
                             }

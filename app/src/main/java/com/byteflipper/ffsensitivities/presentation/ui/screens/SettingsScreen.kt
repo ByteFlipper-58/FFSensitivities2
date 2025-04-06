@@ -72,7 +72,7 @@ fun SettingsScreen(
         ) {
             item {
                 PreferenceCategory(
-                    title = "Theme Settings",
+                    title = stringResource(R.string.theme_settings_category_title),
                     icon = painterResource(id = R.drawable.palette_24px),
                 )
             }
@@ -99,7 +99,7 @@ fun SettingsScreen(
                     RadioOption(
                         key = "theme_system",
                         title = stringResource(R.string.system_theme),
-                        description = "Default system option", // Added description
+                        description = stringResource(R.string.theme_system_description_detail), // Use resource
                         summary = stringResource(R.string.system_theme_description),
                         icon = painterResource(id = R.drawable.night_sight_auto_24px),
                         summaryIcon = Icons.Outlined.Info
@@ -107,7 +107,7 @@ fun SettingsScreen(
                     RadioOption(
                         key = "theme_light",
                         title = stringResource(R.string.light_theme),
-                        description = "Bright theme for better visibility", // Added description
+                        description = stringResource(R.string.theme_light_description_detail), // Use resource
                         summary = stringResource(R.string.light_theme_description),
                         icon = painterResource(id = R.drawable.light_mode_24px),
                         summaryIcon = Icons.Outlined.Info
@@ -115,7 +115,7 @@ fun SettingsScreen(
                     RadioOption(
                         key = "theme_dark",
                         title = stringResource(R.string.night_theme),
-                        description = "Dark theme to reduce eye strain", // Added description
+                        description = stringResource(R.string.theme_dark_description_detail), // Use resource
                         summary = stringResource(R.string.night_theme_description),
                         icon = painterResource(id = R.drawable.dark_mode_24px),
                         summaryIcon = Icons.Outlined.Info
@@ -148,9 +148,9 @@ fun SettingsScreen(
 
             item {
                 SwitchPreference(
-                    title = "Contrast theme",
-                    descriptionOn = "Contrast theme is currently enabled.",
-                    descriptionOff = "Contrast theme is currently disabled.",
+                    title = stringResource(R.string.contrast_theme_title),
+                    descriptionOn = stringResource(R.string.contrast_theme_description_on),
+                    descriptionOff = stringResource(R.string.contrast_theme_description_off),
                     checked = contrastThemeState,
                     icon = painterResource(id = R.drawable.contrast_24px),
                     activeIndicatorColor = MaterialTheme.colorScheme.tertiary,

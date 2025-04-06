@@ -188,7 +188,7 @@ fun IconWithTextRow(text: String) {
 
         Image(
             painter = icon,
-            contentDescription = "App Icon",
+            contentDescription = stringResource(R.string.app_icon), // Use resource
             modifier = Modifier.size(64.dp)
                 .scale(1.5f)
         )
@@ -228,6 +228,6 @@ fun PreviewManufacturerCard() {
 @Composable
 fun PreviewIconWithTextRow() {
     IconWithTextRow(
-        text = "App Name"
+        text = stringResource(R.string.app_name) // Use resource
     )
 }

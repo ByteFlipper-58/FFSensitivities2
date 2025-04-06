@@ -51,8 +51,8 @@ fun ErrorScreen(
     val scrollState = rememberScrollState()
     val fullErrorDetails = remember(errorMessage, stackTrace) {
         buildString {
-            append("Message: ${errorMessage ?: "N/A"}")
-            append("\n\nStackTrace:\n${stackTrace ?: "N/A"}")
+            append(context.getString(R.string.error_message_prefix) + (errorMessage ?: context.getString(R.string.not_available_placeholder)))
+            append("\n\n" + context.getString(R.string.error_stacktrace_prefix) + "\n${stackTrace ?: context.getString(R.string.not_available_placeholder)}")
         }
     }
 
@@ -131,7 +131,7 @@ fun ErrorScreen(
 
                         FilledTonalButton(
                             onClick = {
-                                copyToClipboard(context, "Error Details", fullErrorDetails)
+                                copyToClipboard(context, context.getString(R.string.error_details_clipboard_label), fullErrorDetails)
                             },
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)

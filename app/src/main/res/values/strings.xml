@@ -113,6 +113,13 @@
     <string name="night_theme_description">Night theme selected</string>
     <string name="system_theme_description">The appearance of the application will change depending on the Android theme</string>
     <string name="system_default">System default</string> <!-- Added string -->
+    <string name="theme_settings_category_title">Theme Settings</string>
+    <string name="theme_system_description_detail">Default system option</string>
+    <string name="theme_light_description_detail">Bright theme for better visibility</string>
+    <string name="theme_dark_description_detail">Dark theme to reduce eye strain</string>
+    <string name="contrast_theme_title">Contrast theme</string>
+    <string name="contrast_theme_description_on">Contrast theme is currently enabled.</string>
+    <string name="contrast_theme_description_off">Contrast theme is currently disabled.</string>
 
     <string name="switch_use_dynamic_colors_title">Use dynamic colors</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Dynamic colors are enabled</string>
@@ -168,5 +175,26 @@
     <string name="copy_error_details">Copy error details</string>
     <string name="restart_app">Restart App</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
+
+    <!-- About Screen Specific -->
+    <string name="support_feedback_category_title">Support &amp; Feedback</string>
+    <string name="connect_with_us_category_title">Connect With Us</string>
+    <string name="development_category_title">Development</string>
+    <string name="made_with_love">Made with ❤️ by ByteFlipper</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="expandable_section_collapse">Collapse</string>
+    <string name="expandable_section_expand">Expand</string>
+
+    <!-- Hardcoded strings extraction -->
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="error_prefix">Error: </string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="error_message_prefix">Message: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <string name="not_available_placeholder">N/A</string>
+    <string name="error_details_clipboard_label">Error Details</string>
+    <string name="device_not_found">Device not found for %1$s %2$s</string>
+    <string name="loading_device_data">Loading device data...</string>
+    <string name="favorite_icon_desc">Favorite</string>
 
 </resources>

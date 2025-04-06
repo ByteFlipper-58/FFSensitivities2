@@ -36,7 +36,7 @@ import com.byteflipper.ffsensitivities.R // Импорт ресурсов из a
  * Content for the agreement page within the onboarding flow, specific to this app.
  */
 @Composable
-internal fun WelcomeAgreementContent( // internal, так как используется только внутри app
+internal fun WelcomeAgreementContent(
     navController: NavController,
     isChecked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
@@ -46,19 +46,18 @@ internal fun WelcomeAgreementContent( // internal, так как использ�
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(paddingValues) // Apply padding from parent Pager/Scaffold
-            .padding(horizontal = 16.dp), // Keep inner horizontal padding
+            .padding(paddingValues)
+            .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // Center the main content
         Column(
-            modifier = Modifier.weight(1f), // Takes available space
+            modifier = Modifier.weight(1f),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center // Center vertically
+            verticalArrangement = Arrangement.Center
         ) {
             Image(
-                painter = painterResource(id = R.drawable.app_logo), // Use app resources
-                contentDescription = stringResource(R.string.app_icon), // Use app resources
+                painter = painterResource(id = R.drawable.app_logo),
+                contentDescription = stringResource(R.string.app_icon),
                 modifier = Modifier
                     .size(150.dp)
                     .clip(RoundedCornerShape(32.dp))
@@ -67,7 +66,7 @@ internal fun WelcomeAgreementContent( // internal, так как использ�
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = stringResource(id = R.string.welcome_screen_title), // Use app resources
+                text = stringResource(id = R.string.welcome_screen_title),
                 style = MaterialTheme.typography.headlineSmall,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
@@ -84,7 +83,7 @@ internal fun WelcomeAgreementContent( // internal, так как использ�
                     .fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(32.dp)) // Space before checkbox
+            Spacer(modifier = Modifier.height(32.dp))
 
             // --- Agreement Row ---
             Row(
@@ -94,13 +93,13 @@ internal fun WelcomeAgreementContent( // internal, так как использ�
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Checkbox(
-                    checked = isChecked, // Use passed state
-                    onCheckedChange = onCheckedChange // Use passed lambda
+                    checked = isChecked,
+                    onCheckedChange = onCheckedChange
                 )
                 Spacer(modifier = Modifier.width(4.dp))
-                AcceptanceText( // Use local composable
+                AcceptanceText(
                     onShowPolicyClick = { documentType ->
-                        navController.navigate("policy/$documentType") // Navigation remains in app
+                        navController.navigate("policy/$documentType")
                     }
                 )
             }
@@ -113,7 +112,7 @@ internal fun WelcomeAgreementContent( // internal, так как использ�
  */
 @Composable
 private fun AcceptanceText(
-    onShowPolicyClick: (documentType: String) -> Unit, // Lambda for link clicks
+    onShowPolicyClick: (documentType: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val fullText = stringResource(id = R.string.privacy_acceptance_checkbox) // Use app resources
@@ -133,15 +132,14 @@ private fun AcceptanceText(
                     start = start,
                     end = end
                 )
-                // Improved logic for different document types
                 val tag = when (span.url) {
                     "privacy" -> "PRIVACY_POLICY"
                     "terms" -> "TERMS_OF_USE"
-                    else -> "UNKNOWN" // Handle potential unknown URLs
+                    else -> "UNKNOWN"
                 }
                 addStringAnnotation(
                     tag = tag,
-                    annotation = span.url, // Store the original URL if needed
+                    annotation = span.url,
                     start = start,
                     end = end
                 )
