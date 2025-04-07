@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen // Import BugReportScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SensitivitiesScreen
@@ -199,6 +200,35 @@ fun NavigationHost(
                 manufacturerArg = manufacturerArg,
                 modelNameArg = modelNameArg
             )
+        }
+        composable(
+            route = "bug_report", // Define route for bug report screen
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start, // Or Up/Down as preferred
+                    animationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Start,
+                    animationSpec
+                )
+            },
+            popEnterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            },
+            popExitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.End,
+                    animationSpec
+                )
+            }
+        ) {
+            BugReportScreen(navController = navController)
         }
     }
 }

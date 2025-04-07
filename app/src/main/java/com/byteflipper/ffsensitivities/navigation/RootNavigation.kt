@@ -191,7 +191,7 @@ private fun MainAppScaffold(
     val mainAppNavController = rememberNavController()
     val navBackStackEntry by mainAppNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val hiddenRoutes = listOf("settings")
+    val hiddenRoutes = listOf("settings", "bug_report")
     val isBottomBarVisible = currentRoute !in hiddenRoutes
 
     LaunchedEffect(Unit) { coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() } }

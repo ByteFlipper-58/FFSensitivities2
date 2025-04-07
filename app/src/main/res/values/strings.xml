@@ -197,4 +197,40 @@
     <string name="loading_device_data">Loading device data...</string>
     <string name="favorite_icon_desc">Favorite</string>
 
+    <!-- Bug Report Screen -->
+    <string name="report_bug_title">Report a Bug</string>
+    <string name="bug_report_heading">Describe the Issue</string>
+    <string name="bug_category_label">Category</string>
+    <string name="bug_description_label">Description</string>
+    <string name="submit_bug_report_button">Submit Report</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Support</string>
+    <string name="bug_category_report_bug">Report a bug</string>
+    <string name="bug_category_visual_error">Report a visual error</string>
+    <string name="bug_category_request_settings">Request settings</string>
+    <string name="bug_category_settings_not_working">Settings not working</string>
+    <string name="bug_category_other">Other</string>
+    <string name="include_logs_checkbox">Include application logs</string>
+
+    <!-- Bug Report Screen & Components -->
+    <string name="bug_report_back_button_desc">Back</string> <!-- Already exists, but good to have context -->
+    <string name="bug_report_submission_error">Submission error: %1$s</string>
+    <string name="bug_report_log_not_found">Log file not found.</string>
+    <string name="bug_report_log_read_error">Error reading log file: %1$s</string>
+    <string name="bug_report_header_subtitle">Help us improve the application</string>
+    <string name="bug_report_category_title">Problem category</string>
+    <string name="bug_report_category_placeholder">Select category</string>
+    <string name="bug_report_description_title">Problem description</string>
+    <string name="bug_report_description_placeholder">Describe the problem in detail...</string>
+    <string name="bug_report_logs_option_subtitle">This will help us diagnose the problem faster</string>
+    <string name="bug_report_info_note_text">The report will be sent anonymously. Our team will review it as soon as possible.</string>
+    <string name="bug_report_submitting_title">Sending report...</string>
+    <string name="bug_report_submitting_subtitle">Please wait...</string>
+    <string name="bug_report_submission_error_title">Submission Error</string>
+    <string name="bug_report_submission_failed_default">Failed to send report.</string>
+    <string name="bug_report_action_cancel">Cancel</string>
+    <string name="bug_report_action_retry">Retry</string>
+    <string name="bug_report_success_title">Report Sent</string>
+    <string name="bug_report_success_message">Thank you for helping improve the application! Your feedback is very important to us.</string>
+    <string name="bug_report_action_close">Close</string>
 </resources>

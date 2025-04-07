@@ -113,7 +113,7 @@ fun AboutScreen(
                         title = stringResource(R.string.bug_report_title),
                         subtitle = stringResource(R.string.bug_report_subtitle),
                         icon = painterResource(id = R.drawable.bug_report_24px),
-                        onClick = { FeedbackHelper.SendEmail(context) }
+                        onClick = { navController.navigate("bug_report") } // Navigate to BugReportScreen
                     )
 
                     AnimatedActionItem(
