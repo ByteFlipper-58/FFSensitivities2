@@ -115,7 +115,7 @@ private fun AcceptanceText(
     onShowPolicyClick: (documentType: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val fullText = stringResource(id = R.string.privacy_acceptance_checkbox) // Use app resources
+    val fullText = stringResource(id = R.string.accept_terms_and_policy) // Use app resources
     val parsedText = HtmlCompat.fromHtml(fullText, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
     val annotatedString = buildAnnotatedString {

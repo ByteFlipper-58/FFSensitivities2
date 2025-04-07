@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">जारी रखें</string>
+    <string name="copy">कॉपी करें</string>
+    <string name="copied">कॉपी किया गया</string>
+    <string name="copied_to_clipboard">क्लिपबोर्ड पर कॉपी किया गया</string>
+    <string name="link">लिंक</string>
+    <string name="copy_link">लिंक कॉपी करें</string>
+    <string name="open_link">लिंक खोलें</string>
+    <string name="back">वापस</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="action_retry">पुनः प्रयास</string>
+    <string name="next">अगला</string>
+    <string name="error">त्रुटि</string>
+    <string name="home">होम</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="dialog_default_title">जानकारी</string>
+    <string name="not_available_placeholder">लागू नहीं</string>
+    <string name="expandable_section_collapse">संक्षिप्त करें</string>
+    <string name="expandable_section_expand">विस्तार करें</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">हमारे एप्लिकेशन में आपका स्वागत है!</string>
+    <string name="welcome_screen_message">हेलो फाइटर! यहां हर किसी को अपने लिए एक सेटिंग मिलेगी; अन्यथा, आप उन्हें अनुरोध कर सकते हैं</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">गोपनीयता नीति</string>
+    <string name="terms_of_service">सेवा की शर्तें</string>
+    <string name="privacy_acceptance_checkbox">मैंने <![CDATA[<a href="privacy">गोपनीयता नीति</a>]]> पढ़ी है और मैं इससे सहमत हूं</string>
+    <string name="terms_acceptance_checkbox">मैंने <![CDATA[<a href="terms">सेवा की शर्तें</a>]]> पढ़ी हैं और मैं इससे सहमत हूं</string>
+    <string name="accept_terms_and_policy">मैंने <![CDATA[<a href="terms">सेवा की शर्तें</a>]]> और <![CDATA[<a href="privacy">गोपनीयता नीति</a>]]> पढ़ी है और मैं इससे सहमत हूं</string>
+    <string name="privacy_dialog_title">गोपनीयता नीति</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">ऑनबोर्डिंग चित्रण</string>
+    <string name="onboarding_info_title">FF Sensitivities में आपका स्वागत है!</string>
+    <string name="onboarding_info_description">अपने डिवाइस के लिए सर्वश्रेष्ठ संवेदनशीलता सेटिंग्स ढूंढें और अपने गेमप्ले में सुधार करें।</string>
+    <string name="onboarding_permissions_title">अधिसूचना अनुमति</string>
+    <string name="onboarding_permissions_description">हमें आपको नई सेटिंग्स और ऐप अपडेट के बारे में सूचनाएं भेजने के लिए अनुमति की आवश्यकता है।</string>
+    <string name="permission_granted">अनुमति दी गई</string>
+    <string name="grant_permission">अनुमति दें</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">सामान्य</string>
+    <string name="collimator">कोलाइमर</string>
+    <string name="x2_scope">x2 स्कोप</string>
+    <string name="x4_scope">x4 स्कोप</string>
+    <string name="sniper_scope">स्निपर स्कोप</string>
+    <string name="free_review">फ्री लुक</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">फायर बटन</string>
+    <string name="source">स्रोत</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">यह काम करता है?</string>
+    <string name="thank_for_review">आपकी समीक्षा के लिए धन्यवाद!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">क्या आपके फ़ोन का मॉडल नहीं है? अनुरोध करें!</string>
+    <string name="request_sensitivities_settings_title">संवेदनशीलता सेटिंग्स का अनुरोध करें</string>
+    <string name="request_sensitivities_settings_message">जानकारी जो डेवलपर को भेजी जाएगी</string>
+    <string name="request_sensitivities_settings_message_two">सेटिंग्स अनुरोध सबमिट करने के लिए अनुरोध बटन पर क्लिक करें, यह क्रिया पूर्ववत नहीं की जा सकती है।</string>
+    <string name="request_sensitivities_settings_button">अनुरोध</string>
+    <string name="request_sensitivities_settings_success">अनुरोध सफलतापूर्वक भेजा गया!\nहम जल्द ही एक नई सेटिंग जोड़ देंगे।</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">उपकरण: </string>
+    <string name="devices_list">उपकरण सूची</string>
+    <string name="sensitivity">संवेदनशीलता</string>
+    <string name="device_not_found">%1$s %2$s के लिए उपकरण नहीं मिला</string>
+    <string name="loading_device_data">उपकरण डेटा लोड हो रहा है…</string>
+    <string name="favorite_icon_desc">पसंदीदा</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">थीम सेटिंग्स</string>
+    <string name="app_theme">ऐप थीम</string>
+    <string name="auto_theme">ऑटो थीम</string>
+    <string name="system_theme">सिस्टम थीम</string>
+    <string name="light_theme">लाइट थीम</string>
+    <string name="night_theme">नाइट थीम</string>
+    <string name="system_default">सिस्टम डिफ़ॉल्ट</string>
+    <string name="auto_theme_description">एप्लिकेशन का स्वरूप सूर्योदय और सूर्यास्त के समय के आधार पर स्वचालित रूप से बदल जाएगा</string>
+    <string name="auto_level_of_charge_theme_description">एप्लिकेशन का स्वरूप फ़ोन के चार्ज स्तर के आधार पर स्वचालित रूप से बदल जाएगा</string>
+    <string name="light_theme_description">लाइट थीम चयनित</string>
+    <string name="night_theme_description">नाइट थीम चयनित</string>
+    <string name="system_theme_description">एप्लिकेशन का स्वरूप Android थीम के आधार पर बदल जाएगा</string>
+    <string name="theme_system_description_detail">डिफ़ॉल्ट सिस्टम विकल्प</string>
+    <string name="theme_light_description_detail">बेहतर दृश्यता के लिए उज्ज्वल थीम</string>
+    <string name="theme_dark_description_detail">आंखों के तनाव को कम करने के लिए डार्क थीम</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">कंट्रास्ट थीम</string>
+    <string name="contrast_theme_description_on">कंट्रास्ट थीम वर्तमान में सक्षम है।</string>
+    <string name="contrast_theme_description_off">कंट्रास्ट थीम वर्तमान में अक्षम है।</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">डायनामिक रंगों का उपयोग करें</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">डायनामिक रंग सक्षम हैं</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">डायनामिक रंग अक्षम हैं</string>
+    <string name="switch_dynamic_colors_are_not_supported">डायनामिक रंग समर्थित नहीं हैं</string>
+    <!-- Language -->
+    <string name="change_language">भाषा बदलें</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">अनुवाद में सुधार करें</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">ऐप के बारे में</string>
+    <string name="version">संस्करण</string>
+    <string name="app_icon">ऐप आइकन</string>
+    <string name="made_with_love">❤️ ByteFlipper द्वारा बनाया गया</string>
+    <string name="contact_us">हमसे संपर्क करें</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">समर्थन और प्रतिक्रिया</string>
+    <string name="connect_with_us_category_title">हमसे जुड़ें</string>
+    <string name="development_category_title">विकास</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">बग रिपोर्ट करें</string>
+    <string name="bug_report_subtitle">कृपया समस्या का वर्णन करें और हमें भेजें</string>
+    <string name="rate_the_app_title">ऐप को रेट करें</string>
+    <string name="rate_the_app_subtitle">गूगल प्ले पर ऐप को रेट करें</string>
+    <string name="other_apps_title">अन्य ऐप्स</string>
+    <string name="other_apps_subtitle">हमारे अन्य ऐप्स</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">ByteFlipper वेबसाइट</string>
+    <string name="website_subtitle">हमारी वेबसाइट</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">VK पर हमारा समुदाय</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">हमारा टेलीग्राम चैनल</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">हमारा YouTube चैनल</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">हमारा Discord सर्वर</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">हमारा Github रिपॉजिटरी</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">सोर्स कोड</string>
+    <string name="source_code_subtitle">GitHub पर एप्लिकेशन का सोर्स कोड</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">बग की रिपोर्ट करें</string>
+    <string name="report_bug">बग रिपोर्ट करें</string>
+    <string name="bug_report_heading">समस्या का वर्णन करें</string>
+    <string name="bug_report_header_subtitle">एप्लिकेशन को बेहतर बनाने में हमारी सहायता करें</string>
+    <string name="bug_category_label">श्रेणी</string>
+    <string name="bug_report_category_title">समस्या की श्रेणी</string>
+    <string name="bug_report_category_placeholder">श्रेणी चुनें</string>
+    <string name="bug_description_label">विवरण</string>
+    <string name="bug_report_description_title">समस्या का विवरण</string>
+    <string name="bug_report_description_placeholder">समस्या का विस्तार से वर्णन करें…</string>
+    <string name="include_logs_checkbox">एप्लिकेशन लॉग शामिल करें</string>
+    <string name="bug_report_logs_option_subtitle">यह हमें समस्या का तेज़ी से निदान करने में मदद करेगा</string>
+    <string name="bug_report_info_note_text">रिपोर्ट गुमनाम रूप से भेजी जाएगी। हमारी टीम जल्द से जल्द इसकी समीक्षा करेगी।</string>
+    <string name="submit_bug_report_button">रिपोर्ट सबमिट करें</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">समर्थन</string>
+    <string name="bug_category_report_bug">बग की रिपोर्ट करें</string>
+    <string name="bug_category_visual_error">दृश्य त्रुटि की रिपोर्ट करें</string>
+    <string name="bug_category_request_settings">सेटिंग्स का अनुरोध करें</string>
+    <string name="bug_category_settings_not_working">सेटिंग्स काम नहीं कर रही हैं</string>
+    <string name="bug_category_other">अन्य</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">रिपोर्ट भेजी जा रही है…</string>
+    <string name="bug_report_submitting_subtitle">कृपया प्रतीक्षा करें…</string>
+    <string name="bug_report_success_title">रिपोर्ट भेजी गई</string>
+    <string name="bug_report_success_message">एप्लिकेशन को बेहतर बनाने में मदद करने के लिए धन्यवाद! आपकी प्रतिक्रिया हमारे लिए बहुत महत्वपूर्ण है।</string>
+    <string name="bug_report_submission_error_title">सबमिशन त्रुटि</string>
+    <string name="bug_report_submission_failed_default">रिपोर्ट भेजने में विफल।</string>
+    <string name="bug_report_submission_error">सबमिशन त्रुटि: %1$s</string>
+    <string name="bug_report_log_not_found">लॉग फ़ाइल नहीं मिली।</string>
+    <string name="bug_report_log_read_error">लॉग फ़ाइल पढ़ने में त्रुटि: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">वापस</string>
+    <string name="bug_report_action_cancel">रद्द करें</string>
+    <string name="bug_report_action_retry">पुनः प्रयास करें</string>
+    <string name="bug_report_action_close">बंद करें</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">अपडेट्स के लिए जांचें</string>
+    <string name="update_available">एक अपडेट उपलब्ध है</string>
+    <string name="update_now_available">डाउनलोड के लिए एक अपडेट उपलब्ध है!</string>
+    <string name="no_update_available">कोई अपडेट उपलब्ध नहीं है</string>
+    <string name="update_not_needed">आपका ऐप अप टू डेट है</string>
+    <string name="update_now">अभी अपडेट करें</string>
+    <string name="update_later">बाद में अपडेट करें</string>
+    <string name="update_required">ऐप का उपयोग करने के लिए यह अपडेट आवश्यक है</string>
+    <string name="update_checking">अपडेट्स की जांच हो रही है…</string>
+    <string name="update_downloading">अपडेट डाउनलोड हो रहा है…</string>
+    <string name="update_installing">अपडेट इंस्टॉल हो रहा है…</string>
+    <string name="update_download_started">अपडेट डाउनलोड शुरू हुआ</string>
+    <string name="update_download_complete">अपडेट डाउनलोड पूरा हुआ। इंस्टॉलेशन शुरू हो रहा है…</string>
+    <string name="update_restart">अपडेट पूरा करने के लिए कृपया ऐप को पुनरारंभ करें</string>
+    <string name="update_failed">अपडेट डाउनलोड करने में विफल</string>
+    <string name="update_no_connection">कोई इंटरनेट कनेक्शन नहीं। कृपया बाद में पुनः प्रयास करें।</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">अपडेट करते समय एक त्रुटि हुई। कृपया बाद में पुनः प्रयास करें।</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">त्रुटि: </string>
+    <string name="unknown_error">अज्ञात त्रुटि</string>
+    <string name="error_message_prefix">संदेश: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">कोई इंटरनेट कनेक्शन नहीं</string>
+    <string name="error_no_internet_title">कोई इंटरनेट कनेक्शन नहीं</string>
+    <string name="error_no_internet_message">कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">एक त्रुटि हुई</string>
+    <string name="error_occurred_message">दुर्भाग्य से, एप्लिकेशन को एक अप्रत्याशित समस्या का सामना करना पड़ा।</string>
+    <string name="error_details_info">त्रुटि विवरण डेवलपर्स को भेज दिए गए हैं। आप नीचे दिए गए विवरणों को कॉपी कर सकते हैं।</string>
+    <string name="error_details_label">त्रुटि विवरण</string>
+    <string name="copy_error_details">त्रुटि विवरण कॉपी करें</string>
+    <string name="restart_app">ऐप पुनरारंभ करें</string>
+    <string name="error_details_clipboard_label">त्रुटि विवरण</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">इस URL को खोलने के लिए कोई ब्राउज़र नहीं मिला</string>
+</resources>

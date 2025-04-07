@@ -1,145 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_title">Сардэчна запрашаем у нашу праграму!</string>
-    <string name="welcome_screen_message">Прывітанне, Баец! Кожны знойдзе тут настройку для сябе; у адваротным выпадку, вы можаце запытаць іх</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
-    <string name="continue_button">Працягнуць</string>
-
-    <!-- Links & Contacts -->
-    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Review Settings -->
+    <!-- Common Actions       -->
+    <string name="continue_button">Працягнуць</string>
+    <string name="copy">Капіяваць</string>
+    <string name="copied">Скапіявана</string>
+    <string name="copied_to_clipboard">Скапіявана ў буфер абмену</string>
+    <string name="link">Спасылка</string>
+    <string name="copy_link">Капіяваць спасылку</string>
+    <string name="open_link">Адкрыць спасылку</string>
+    <string name="back">Назад</string>
+    <string name="try_again">Паспрабаваць зноў</string>
+    <string name="action_retry">Паўтарыць</string>
+    <string name="next">Далей</string>
+    <string name="error">Памылка</string>
+    <string name="home">Галоўная</string>
+    <string name="settings">Налады</string>
+    <string name="dialog_default_title">Інфармацыя</string>
+    <string name="not_available_placeholder">Н/Д</string> <!-- Н/Д = Няма дадзеных / Не даступна -->
+    <string name="expandable_section_collapse">Згарнуць</string>
+    <string name="expandable_section_expand">Разгарнуць</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Вітаем у нашым дадатку!</string>
+    <string name="welcome_screen_message">Прывітанне, баец! Тут кожны знойдзе налады для сябе; у адваротным выпадку вы можаце іх запытаць</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Палітыка прыватнасці</string>
+    <string name="terms_of_service">Умовы абслугоўвання</string>
+    <string name="privacy_acceptance_checkbox">Я прачытаў(-ла) і згаджаюся з <![CDATA[<a href="privacy">Палітыкай прыватнасці</a>]]></string>
+    <string name="terms_acceptance_checkbox">Я прачытаў(-ла) і згаджаюся з <![CDATA[<a href="terms">Умовамі абслугоўвання</a>]]></string>
+    <string name="accept_terms_and_policy">Я прачытаў(-ла) і згаджаюся з <![CDATA[<a href="terms">Умовамі абслугоўвання</a>]]> і <![CDATA[<a href="privacy">Палітыкай прыватнасці</a>]]></string>
+    <string name="privacy_dialog_title">Палітыка прыватнасці</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Ілюстрацыя для азнаямлення</string>
+    <string name="onboarding_info_title">Вітаем у FF Sensitivities!</string>
+    <string name="onboarding_info_description">Знайдзіце найлепшыя налады адчувальнасці для вашай прылады і палепшыце сваю гульню.</string>
+    <string name="onboarding_permissions_title">Дазвол на апавяшчэнні</string>
+    <string name="onboarding_permissions_description">Нам патрэбны дазвол, каб адпраўляць вам апавяшчэнні аб новых наладах і абнаўленнях праграмы.</string>
+    <string name="permission_granted">Дазвол атрыманы</string>
+    <string name="grant_permission">Даць дазвол</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
     <string name="review">Агульны</string>
-    <string name="collimator">Чырвоная кропка</string>
-    <string name="x2_scope">x2 Прыцэл</string>
-    <string name="x4_scope">x4 Прыцэл</string>
+    <string name="collimator">Каліматар</string>
+    <string name="x2_scope">Прыцэл x2</string>
+    <string name="x4_scope">Прыцэл x4</string>
     <string name="sniper_scope">Снайперскі прыцэл</string>
-    <string name="free_review">Свабодны погляд</string>
+    <string name="free_review">Свабодны агляд</string>
     <string name="dpi">DPI</string>
     <string name="fire_button">Кнопка агню</string>
     <string name="source">Крыніца</string>
+    <!-- Review/Feedback -->
     <string name="it_works">Працуе?</string>
     <string name="thank_for_review">Дзякуй за ваш водгук!</string>
-
-    <!-- Request Sensitivity Settings -->
+    <!-- Request Settings -->
     <string name="dont_have_your_phone_model">Няма вашай мадэлі тэлефона? Зрабіце запыт!</string>
-
     <string name="request_sensitivities_settings_title">Запытаць налады адчувальнасці</string>
     <string name="request_sensitivities_settings_message">Інфармацыя, якая будзе адпраўлена распрацоўніку</string>
-    <string name="request_sensitivities_settings_message_two">Націсніце кнопку "Запыт", каб адправіць запыт налад, гэта дзеянне нельга адмяніць.</string>
-    <string name="request_sensitivities_settings_button">Запыт</string>
-    <string name="request_sensitivities_settings_success">Запыт паспяхова адпраўлены!\nМы хутка дадамо новую настройку.</string>
+    <string name="request_sensitivities_settings_message_two">Націсніце кнопку "Запытаць", каб адправіць запыт на налады, гэта дзеянне нельга адмяніць.</string>
+    <string name="request_sensitivities_settings_button">Запытаць</string>
+    <string name="request_sensitivities_settings_success">Запыт паспяхова адпраўлены!\nМы хутка дадамо новыя налады.</string>
 
-    <!-- Utility Actions -->
-    <string name="improve_translation">Палепшыць пераклад</string>
-    <string name="copy">Капіяваць</string>
-    <string name="copied">Скапіявана</string>
-    <string name="link">Спасылка</string>
-    <string name="copy_link">Скапіяваць спасылку</string>
-    <string name="open_link">Адкрыць спасылку</string>
-    <string name="error">Памылка</string>
-    <string name="back">Назад</string>
-    <string name="app_icon">Значок праграмы</string>
+    <!-- Devices List Screen  -->
+    <string name="devices">Прылады: </string>
+    <string name="devices_list">Спіс прылад</string>
+    <string name="sensitivity">Адчувальнасць</string>
+    <string name="device_not_found">Прылада не знойдзена для %1$s %2$s</string>
+    <string name="loading_device_data">Загрузка даных прылады…</string>
+    <string name="favorite_icon_desc">Абранае</string>
 
-    <!-- About Section -->
-    <string name="about_app">Пра праграму</string>
-    <string name="home">Галоўная</string>
-    <string name="version">Версія</string>
-
-    <!-- Source Code -->
-    <string name="source_code_title">Зыходны код</string>
-    <string name="source_code_subtitle">Зыходны код праграмы на GitHub</string>
-    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
-
-    <!-- Bug Report -->
-    <string name="bug_report_title">Паведамленне пра памылку</string>
-    <string name="bug_report_subtitle">Калі ласка, апішыце праблему і дашліце яе нам</string>
-
-    <!-- Rate the App -->
-    <string name="rate_the_app_title">Ацаніць праграму</string>
-    <string name="rate_the_app_subtitle">Ацаніць праграму ў Google Play</string>
-
-    <!-- External Links -->
-    <string name="website_title">Вэб-сайт ByteFlipper</string>
-    <string name="website_subtitle">Наш вэб-сайт</string>
-    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
-
-    <string name="github_title">Github</string>
-    <string name="github_subtitle">Наш Github-рэпазіторый</string>
-    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
-
-    <string name="vk_title">VK</string>
-    <string name="vk_subtitle">Наша супольнасць у VK</string>
-    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
-
-    <string name="telegram_title">Telegram</string>
-    <string name="telegram_subtitle">Наш Telegram-канал</string>
-    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
-
-    <string name="youtube_title">YouTube</string>
-    <string name="youtube_subtitle">Наш YouTube-канал</string>
-    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
-
-    <string name="discord_title">Discord</string>
-    <string name="discord_subtitle">Наш Discord-сервер</string>
-    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
-
-    <string name="other_apps_title">Іншыя праграмы</string>
-    <string name="other_apps_subtitle">Нашы іншыя праграмы</string>
-    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
-
-    <!-- Settings -->
-    <string name="settings">Налады</string>
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Налады тэмы</string>
     <string name="app_theme">Тэма праграмы</string>
     <string name="auto_theme">Аўтаматычная тэма</string>
     <string name="system_theme">Сістэмная тэма</string>
     <string name="light_theme">Светлая тэма</string>
     <string name="night_theme">Цёмная тэма</string>
-    <string name="auto_theme_description">Знешні выгляд праграмы будзе змяняцца аўтаматычна ў залежнасці ад часу ўзыходу і заходу сонца</string>
-    <string name="auto_level_of_charge_theme_description">Знешні выгляд праграмы будзе змяняцца аўтаматычна ў залежнасці ад узроўню зарада тэлефона</string>
+    <string name="system_default">Сістэмная па змаўчанні</string>
+    <string name="auto_theme_description">Выгляд праграмы будзе змяняцца аўтаматычна ў залежнасці ад часу ўзыходу і заходу сонца</string>
+    <string name="auto_level_of_charge_theme_description">Выгляд праграмы будзе змяняцца аўтаматычна ў залежнасці ад узроўню зарада тэлефона</string>
     <string name="light_theme_description">Выбрана светлая тэма</string>
     <string name="night_theme_description">Выбрана цёмная тэма</string>
-    <string name="system_theme_description">Знешні выгляд праграмы будзе змяняцца ў залежнасці ад тэмы Android</string>
-
+    <string name="system_theme_description">Выгляд праграмы будзе змяняцца ў залежнасці ад тэмы Android</string>
+    <string name="theme_system_description_detail">Сістэмны варыянт па змаўчанні</string>
+    <string name="theme_light_description_detail">Светлая тэма для лепшай бачнасці</string>
+    <string name="theme_dark_description_detail">Цёмная тэма для зніжэння нагрузкі на вочы</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Кантрасная тэма</string>
+    <string name="contrast_theme_description_on">Кантрасная тэма ўключана.</string>
+    <string name="contrast_theme_description_off">Кантрасная тэма выключана.</string>
+    <!-- Dynamic Colors -->
     <string name="switch_use_dynamic_colors_title">Выкарыстоўваць дынамічныя колеры</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Дынамічныя колеры ўключаны</string>
-    <string name="switch_use_dynamic_colors_subtitle_off">Дынамічныя колеры адключаны</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Дынамічныя колеры выключаны</string>
     <string name="switch_dynamic_colors_are_not_supported">Дынамічныя колеры не падтрымліваюцца</string>
-
+    <!-- Language -->
     <string name="change_language">Змяніць мову</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Палепшыць пераклад</string>
 
-    <!-- Error Screen -->
-    <string name="try_again">Паспрабаваць зноў</string>
+    <!-- About Screen         -->
+    <string name="about_app">Пра праграму</string>
+    <string name="version">Версія</string>
+    <string name="app_icon">Значок праграмы</string>
+    <string name="made_with_love">Зроблена з ❤️ ByteFlipper</string>
+    <string name="contact_us">Звязацца з намі</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Падтрымка і зваротная сувязь</string>
+    <string name="connect_with_us_category_title">Звяжыцеся з намі</string>
+    <string name="development_category_title">Распрацоўка</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Паведаміць пра памылку</string>
+    <string name="bug_report_subtitle">Калі ласка, апішыце праблему і дашліце нам</string>
+    <string name="rate_the_app_title">Ацаніць праграму</string>
+    <string name="rate_the_app_subtitle">Ацаніце праграму ў Google Play</string>
+    <string name="other_apps_title">Іншыя праграмы</string>
+    <string name="other_apps_subtitle">Нашы іншыя праграмы</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Вэб-сайт ByteFlipper</string>
+    <string name="website_subtitle">Наш вэб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наша суполка ў VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Наш Telegram-канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Наш YouTube-канал</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Наш Discord-сервер</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Наш рэпазітар на Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Зыходны код</string>
+    <string name="source_code_subtitle">Зыходны код праграмы на GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Паведаміць пра памылку</string>
     <string name="report_bug">Паведаміць пра памылку</string>
+    <string name="bug_report_heading">Апішыце праблему</string>
+    <string name="bug_report_header_subtitle">Дапамажыце нам палепшыць праграму</string>
+    <string name="bug_category_label">Катэгорыя</string>
+    <string name="bug_report_category_title">Катэгорыя праблемы</string>
+    <string name="bug_report_category_placeholder">Выберыце катэгорыю</string>
+    <string name="bug_description_label">Апісанне</string>
+    <string name="bug_report_description_title">Апісанне праблемы</string>
+    <string name="bug_report_description_placeholder">Падрабязна апішыце праблему…</string>
+    <string name="include_logs_checkbox">Уключыць логі праграмы</string>
+    <string name="bug_report_logs_option_subtitle">Гэта дапаможа нам хутчэй дыягнаставаць праблему</string>
+    <string name="bug_report_info_note_text">Справаздача будзе адпраўлена ананімна. Наша каманда разгледзіць яе як мага хутчэй.</string>
+    <string name="submit_bug_report_button">Адправіць справаздачу</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Падтрымка</string>
+    <string name="bug_category_report_bug">Паведаміць пра памылку</string>
+    <string name="bug_category_visual_error">Паведаміць пра візуальную памылку</string>
+    <string name="bug_category_request_settings">Запытаць налады</string>
+    <string name="bug_category_settings_not_working">Налады не працуюць</string>
+    <string name="bug_category_other">Іншае</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Адпраўка справаздачы…</string>
+    <string name="bug_report_submitting_subtitle">Калі ласка, пачакайце…</string>
+    <string name="bug_report_success_title">Справаздача адпраўлена</string>
+    <string name="bug_report_success_message">Дзякуй за дапамогу ў паляпшэнні праграмы! Ваш водгук вельмі важны для нас.</string>
+    <string name="bug_report_submission_error_title">Памылка адпраўкі</string>
+    <string name="bug_report_submission_failed_default">Не ўдалося адправіць справаздачу.</string>
+    <string name="bug_report_submission_error">Памылка адпраўкі: %1$s</string>
+    <string name="bug_report_log_not_found">Файл логаў не знойдзены.</string>
+    <string name="bug_report_log_read_error">Памылка чытання файла логаў: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Назад</string>
+    <string name="bug_report_action_cancel">Скасаваць</string>
+    <string name="bug_report_action_retry">Паўтарыць</string>
+    <string name="bug_report_action_close">Закрыць</string>
 
-    <!-- Devices List -->
-    <string name="devices">Прылады: </string>
-    <string name="devices_list">Спіс прылад</string>
-    <string name="sensitivity">Адчувальнасць</string>
-
-    <!-- Updates -->
-    <string name="update_available">Даступна абнаўленне</string>
-    <string name="update_now">Абнавіць зараз</string>
-    <string name="update_required">Гэта абнаўленне неабходна для выкарыстання праграмы</string>
-    <string name="update_failed">Не атрымалася загрузіць абнаўленне</string>
-    <string name="update_later">Абнавіць пазней</string>
-    <string name="update_restart">Перазапусціце праграму, каб завяршыць абнаўленне</string>
-    <string name="update_no_connection">Няма падлучэння да інтэрнэту. Паспрабуйце пазней.</string>
-    <string name="update_checking">Праверка абнаўленняў…</string>
-    <string name="update_downloading">Загрузка абнаўлення…</string>
-    <string name="update_installing">Усталёўка абнаўлення…</string>
-    <string name="update_error_occurred">У час абнаўлення адбылася памылка. Паспрабуйце пазней.</string>
-    <string name="update_now_available">Даступна абнаўленне для загрузкі!</string>
+    <!-- Update Flow -->
     <string name="check_for_updates">Праверыць абнаўленні</string>
-    <string name="no_update_available">Няма даступных абнаўленняў</string>
-    <string name="update_download_started">Загрузка абнаўлення пачалася</string>
-    <string name="update_download_complete">Загрузка абнаўлення завершана. Пачынаецца ўсталёўка…</string>
-    <string name="update_not_needed">Ваша праграма абноўлена</string>
-    <string name="system_default">Сістэмная па змаўчанні</string> <!-- Added string -->
+    <string name="update_available">Даступна абнаўленне</string>
+    <string name="update_now_available">Даступна абнаўленне для спампоўкі!</string>
+    <string name="no_update_available">Абнаўленняў няма</string>
+    <string name="update_not_needed">Ваша праграма абноўлена да апошняй версіі</string>
+    <string name="update_now">Абнавіць зараз</string>
+    <string name="update_later">Абнавіць пазней</string>
+    <string name="update_required">Гэта абнаўленне неабходна для выкарыстання праграмы</string>
+    <string name="update_checking">Праверка абнаўленняў...</string>
+    <string name="update_downloading">Спампоўка абнаўлення...</string>
+    <string name="update_installing">Усталёўка абнаўлення...</string>
+    <string name="update_download_started">Спампоўка абнаўлення пачалася</string>
+    <string name="update_download_complete">Спампоўка абнаўлення завершана. Пачынаецца ўсталёўка...</string>
+    <string name="update_restart">Калі ласка, перазапусціце праграму, каб завяршыць абнаўленне</string>
+    <string name="update_failed">Не ўдалося спампаваць абнаўленне</string>
+    <string name="update_no_connection">Няма падключэння да інтэрнэту. Калі ласка, паспрабуйце пазней.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Адбылася памылка падчас абнаўлення. Калі ласка, паспрабуйце пазней.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Памылка: </string>
+    <string name="unknown_error">Невядомая памылка</string>
+    <string name="error_message_prefix">Паведамленне: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Няма падключэння да Інтэрнэту</string>
+    <string name="error_no_internet_title">Няма падключэння да Інтэрнэту</string>
+    <string name="error_no_internet_message">Калі ласка, праверце ваша інтэрнэт-злучэнне і паспрабуйце зноў.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Адбылася памылка</string>
+    <string name="error_occurred_message">На жаль, праграма сутыкнулася з нечаканай праблемай.</string>
+    <string name="error_details_info">Звесткі пра памылку адпраўлены распрацоўнікам. Вы можаце скапіяваць дэталі ніжэй.</string>
+    <string name="error_details_label">Дэталі памылкі</string>
+    <string name="copy_error_details">Капіяваць дэталі памылкі</string>
+    <string name="restart_app">Перазапусціць праграму</string>
+    <string name="error_details_clipboard_label">Дэталі памылкі</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Не знойдзены браўзер для адкрыцця гэтага URL</string>
 </resources>

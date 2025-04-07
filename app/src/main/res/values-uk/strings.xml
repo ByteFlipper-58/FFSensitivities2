@@ -1,145 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_title">Ласкаво просимо до нашого додатку!</string>
-    <string name="welcome_screen_message">Привіт, Боєць! Кожен знайде тут налаштування для себе; в іншому випадку ви можете їх запросити</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
-    <string name="continue_button">Продовжити</string>
-
-    <!-- Links & Contacts -->
-    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Review Settings -->
-    <string name="review">Загальне</string>
-    <string name="collimator">Червона точка</string>
-    <string name="x2_scope">x2 Приціл</string>
-    <string name="x4_scope">x4 Приціл</string>
+    <!-- Common Actions       -->
+    <string name="continue_button">Продовжити</string>
+    <string name="copy">Копіювати</string>
+    <string name="copied">Скопійовано</string>
+    <string name="copied_to_clipboard">Скопійовано в буфер обміну</string>
+    <string name="link">Посилання</string>
+    <string name="copy_link">Копіювати посилання</string>
+    <string name="open_link">Відкрити посилання</string>
+    <string name="back">Назад</string>
+    <string name="try_again">Спробувати ще раз</string>
+    <string name="action_retry">Повторити</string>
+    <string name="next">Далі</string>
+    <string name="error">Помилка</string>
+    <string name="home">Головна</string>
+    <string name="settings">Налаштування</string>
+    <string name="dialog_default_title">Інформація</string>
+    <string name="not_available_placeholder">Н/Д</string> <!-- Н/Д = Немає даних / Не доступно -->
+    <string name="expandable_section_collapse">Згорнути</string>
+    <string name="expandable_section_expand">Розгорнути</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Ласкаво просимо до нашого застосунку!</string>
+    <string name="welcome_screen_message">Привіт, бійцю! Тут кожен знайде налаштування для себе; інакше ви можете їх запросити</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Політика конфіденційності</string>
+    <string name="terms_of_service">Умови надання послуг</string>
+    <string name="privacy_acceptance_checkbox">Я прочитав(-ла) та погоджуюся з <![CDATA[<a href="privacy">Політикою конфіденційності</a>]]></string>
+    <string name="terms_acceptance_checkbox">Я прочитав(-ла) та погоджуюся з <![CDATA[<a href="terms">Умовами надання послуг</a>]]></string>
+    <string name="accept_terms_and_policy">Я прочитав(-ла) та погоджуюся з <![CDATA[<a href="terms">Умовами надання послуг</a>]]> та <![CDATA[<a href="privacy">Політикою конфіденційності</a>]]></string>
+    <string name="privacy_dialog_title">Політика конфіденційності</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Ілюстрація для ознайомлення</string>
+    <string name="onboarding_info_title">Ласкаво просимо до FF Sensitivities!</string>
+    <string name="onboarding_info_description">Знайдіть найкращі налаштування чутливості для вашого пристрою та покращте свою гру.</string>
+    <string name="onboarding_permissions_title">Дозвіл на сповіщення</string>
+    <string name="onboarding_permissions_description">Нам потрібен дозвіл, щоб надсилати вам сповіщення про нові налаштування та оновлення застосунку.</string>
+    <string name="permission_granted">Дозвіл надано</string>
+    <string name="grant_permission">Надати дозвіл</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Загальний</string>
+    <string name="collimator">Коліматор</string>
+    <string name="x2_scope">Приціл x2</string>
+    <string name="x4_scope">Приціл x4</string>
     <string name="sniper_scope">Снайперський приціл</string>
     <string name="free_review">Вільний огляд</string>
     <string name="dpi">DPI</string>
     <string name="fire_button">Кнопка вогню</string>
     <string name="source">Джерело</string>
+    <!-- Review/Feedback -->
     <string name="it_works">Працює?</string>
     <string name="thank_for_review">Дякуємо за ваш відгук!</string>
-
-    <!-- Request Sensitivity Settings -->
+    <!-- Request Settings -->
     <string name="dont_have_your_phone_model">Немає вашої моделі телефону? Зробіть запит!</string>
-
-    <string name="request_sensitivities_settings_title">Запит налаштувань чутливості</string>
+    <string name="request_sensitivities_settings_title">Запросити налаштування чутливості</string>
     <string name="request_sensitivities_settings_message">Інформація, яка буде надіслана розробнику</string>
-    <string name="request_sensitivities_settings_message_two">Натисніть кнопку "Запит", щоб надіслати запит налаштувань, цю дію не можна скасувати.</string>
-    <string name="request_sensitivities_settings_button">Запит</string>
-    <string name="request_sensitivities_settings_success">Запит надіслано успішно!\nМи скоро додамо нове налаштування.</string>
+    <string name="request_sensitivities_settings_message_two">Натисніть кнопку "Запросити", щоб надіслати запит на налаштування, цю дію не можна скасувати.</string>
+    <string name="request_sensitivities_settings_button">Запросити</string>
+    <string name="request_sensitivities_settings_success">Запит успішно надіслано!\nМи незабаром додамо нові налаштування.</string>
 
-    <!-- Utility Actions -->
-    <string name="improve_translation">Покращити переклад</string>
-    <string name="copy">Копіювати</string>
-    <string name="copied">Скопійовано</string>
-    <string name="link">Посилання</string>
-    <string name="copy_link">Копіювати посилання</string>
-    <string name="open_link">Відкрити посилання</string>
-    <string name="error">Помилка</string>
-    <string name="back">Назад</string>
-    <string name="app_icon">Іконка додатка</string>
+    <!-- Devices List Screen  -->
+    <string name="devices">Пристрої: </string>
+    <string name="devices_list">Список пристроїв</string>
+    <string name="sensitivity">Чутливість</string>
+    <string name="device_not_found">Пристрій не знайдено для %1$s %2$s</string>
+    <string name="loading_device_data">Завантаження даних пристрою…</string>
+    <string name="favorite_icon_desc">Обране</string>
 
-    <!-- About Section -->
-    <string name="about_app">Про додаток</string>
-    <string name="home">Головна</string>
-    <string name="version">Версія</string>
-
-    <!-- Source Code -->
-    <string name="source_code_title">Вихідний код</string>
-    <string name="source_code_subtitle">Вихідний код додатку на GitHub</string>
-    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
-
-    <!-- Bug Report -->
-    <string name="bug_report_title">Звіт про помилку</string>
-    <string name="bug_report_subtitle">Будь ласка, опишіть проблему та надішліть її нам</string>
-
-    <!-- Rate the App -->
-    <string name="rate_the_app_title">Оцінити додаток</string>
-    <string name="rate_the_app_subtitle">Оцінити додаток у Google Play</string>
-
-    <!-- External Links -->
-    <string name="website_title">Веб-сайт ByteFlipper</string>
-    <string name="website_subtitle">Наш веб-сайт</string>
-    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
-
-    <string name="github_title">Github</string>
-    <string name="github_subtitle">Наш Github-репозиторій</string>
-    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
-
-    <string name="vk_title">VK</string>
-    <string name="vk_subtitle">Наша спільнота у VK</string>
-    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
-
-    <string name="telegram_title">Telegram</string>
-    <string name="telegram_subtitle">Наш Telegram-канал</string>
-    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
-
-    <string name="youtube_title">YouTube</string>
-    <string name="youtube_subtitle">Наш YouTube-канал</string>
-    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
-
-    <string name="discord_title">Discord</string>
-    <string name="discord_subtitle">Наш Discord-сервер</string>
-    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
-
-    <string name="other_apps_title">Інші додатки</string>
-    <string name="other_apps_subtitle">Наші інші додатки</string>
-    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
-
-    <!-- Settings -->
-    <string name="settings">Налаштування</string>
-    <string name="app_theme">Тема додатку</string>
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Налаштування теми</string>
+    <string name="app_theme">Тема застосунку</string>
     <string name="auto_theme">Автоматична тема</string>
     <string name="system_theme">Системна тема</string>
     <string name="light_theme">Світла тема</string>
     <string name="night_theme">Темна тема</string>
-    <string name="auto_theme_description">Вигляд програми автоматично змінюватиметься залежно від часу сходу та заходу сонця</string>
-    <string name="auto_level_of_charge_theme_description">Вигляд програми автоматично змінюватиметься залежно від рівня заряду телефону</string>
-    <string name="light_theme_description">Вибрано світлу тему</string>
-    <string name="night_theme_description">Вибрано темну тему</string>
-    <string name="system_theme_description">Вигляд програми змінюватиметься залежно від теми Android</string>
-
+    <string name="system_default">Системна за замовчуванням</string>
+    <string name="auto_theme_description">Вигляд застосунку змінюватиметься автоматично залежно від часу сходу та заходу сонця</string>
+    <string name="auto_level_of_charge_theme_description">Вигляд застосунку змінюватиметься автоматично залежно від рівня заряду телефону</string>
+    <string name="light_theme_description">Обрано світлу тему</string>
+    <string name="night_theme_description">Обрано темну тему</string>
+    <string name="system_theme_description">Вигляд застосунку змінюватиметься залежно від теми Android</string>
+    <string name="theme_system_description_detail">Системна опція за замовчуванням</string>
+    <string name="theme_light_description_detail">Світла тема для кращої видимості</string>
+    <string name="theme_dark_description_detail">Темна тема для зменшення навантаження на очі</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Контрастна тема</string>
+    <string name="contrast_theme_description_on">Контрастну тему увімкнено.</string>
+    <string name="contrast_theme_description_off">Контрастну тему вимкнено.</string>
+    <!-- Dynamic Colors -->
     <string name="switch_use_dynamic_colors_title">Використовувати динамічні кольори</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Динамічні кольори увімкнено</string>
     <string name="switch_use_dynamic_colors_subtitle_off">Динамічні кольори вимкнено</string>
     <string name="switch_dynamic_colors_are_not_supported">Динамічні кольори не підтримуються</string>
-
+    <!-- Language -->
     <string name="change_language">Змінити мову</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Покращити переклад</string>
 
-    <!-- Error Screen -->
-    <string name="try_again">Спробувати знову</string>
+    <!-- About Screen         -->
+    <string name="about_app">Про застосунок</string>
+    <string name="version">Версія</string>
+    <string name="app_icon">Іконка застосунку</string>
+    <string name="made_with_love">Зроблено з ❤️ ByteFlipper</string>
+    <string name="contact_us">Зв\'язатися з нами</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Підтримка та зворотний зв\'язок</string>
+    <string name="connect_with_us_category_title">Зв\'яжіться з нами</string>
+    <string name="development_category_title">Розробка</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Повідомити про помилку</string>
+    <string name="bug_report_subtitle">Будь ласка, опишіть проблему та надішліть нам</string>
+    <string name="rate_the_app_title">Оцінити застосунок</string>
+    <string name="rate_the_app_subtitle">Оцініть застосунок у Google Play</string>
+    <string name="other_apps_title">Інші застосунки</string>
+    <string name="other_apps_subtitle">Наші інші застосунки</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Веб-сайт ByteFlipper</string>
+    <string name="website_subtitle">Наш веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наша спільнота у VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Наш Telegram-канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Наш YouTube-канал</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Наш Discord-сервер</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Наш репозиторій на Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Вихідний код</string>
+    <string name="source_code_subtitle">Вихідний код застосунку на GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Повідомити про помилку</string>
     <string name="report_bug">Повідомити про помилку</string>
+    <string name="bug_report_heading">Опишіть проблему</string>
+    <string name="bug_report_header_subtitle">Допоможіть нам покращити застосунок</string>
+    <string name="bug_category_label">Категорія</string>
+    <string name="bug_report_category_title">Категорія проблеми</string>
+    <string name="bug_report_category_placeholder">Виберіть категорію</string>
+    <string name="bug_description_label">Опис</string>
+    <string name="bug_report_description_title">Опис проблеми</string>
+    <string name="bug_report_description_placeholder">Детально опишіть проблему…</string>
+    <string name="include_logs_checkbox">Включити журнали застосунку</string>
+    <string name="bug_report_logs_option_subtitle">Це допоможе нам швидше діагностувати проблему</string>
+    <string name="bug_report_info_note_text">Звіт буде надіслано анонімно. Наша команда розгляне його якнайшвидше.</string>
+    <string name="submit_bug_report_button">Надіслати звіт</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Підтримка</string>
+    <string name="bug_category_report_bug">Повідомити про помилку</string>
+    <string name="bug_category_visual_error">Повідомити про візуальну помилку</string>
+    <string name="bug_category_request_settings">Запросити налаштування</string>
+    <string name="bug_category_settings_not_working">Налаштування не працюють</string>
+    <string name="bug_category_other">Інше</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Надсилання звіту…</string>
+    <string name="bug_report_submitting_subtitle">Будь ласка, зачекайте…</string>
+    <string name="bug_report_success_title">Звіт надіслано</string>
+    <string name="bug_report_success_message">Дякуємо за допомогу в покращенні застосунку! Ваш відгук дуже важливий для нас.</string>
+    <string name="bug_report_submission_error_title">Помилка надсилання</string>
+    <string name="bug_report_submission_failed_default">Не вдалося надіслати звіт.</string>
+    <string name="bug_report_submission_error">Помилка надсилання: %1$s</string>
+    <string name="bug_report_log_not_found">Файл журналів не знайдено.</string>
+    <string name="bug_report_log_read_error">Помилка читання файлу журналів: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Назад</string>
+    <string name="bug_report_action_cancel">Скасувати</string>
+    <string name="bug_report_action_retry">Повторити</string>
+    <string name="bug_report_action_close">Закрити</string>
 
-    <!-- Devices List -->
-    <string name="devices">Пристрої: </string>
-    <string name="devices_list">Список пристроїв</string>
-    <string name="sensitivity">Чутливість</string>
-
-    <!-- Updates -->
+    <!-- Update Flow -->
+    <string name="check_for_updates">Перевірити оновлення</string>
     <string name="update_available">Доступне оновлення</string>
+    <string name="update_now_available">Доступне оновлення для завантаження!</string>
+    <string name="no_update_available">Оновлень немає</string>
+    <string name="update_not_needed">Ваш застосунок оновлено до останньої версії</string>
     <string name="update_now">Оновити зараз</string>
-    <string name="update_required">Це оновлення необхідне для використання програми</string>
-    <string name="update_failed">Не вдалося завантажити оновлення</string>
     <string name="update_later">Оновити пізніше</string>
-    <string name="update_restart">Будь ласка, перезапустіть програму, щоб завершити оновлення</string>
-    <string name="update_no_connection">Немає підключення до інтернету. Будь ласка, спробуйте пізніше.</string>
+    <string name="update_required">Це оновлення необхідне для використання застосунку</string>
     <string name="update_checking">Перевірка оновлень…</string>
     <string name="update_downloading">Завантаження оновлення…</string>
     <string name="update_installing">Встановлення оновлення…</string>
-    <string name="update_error_occurred">Під час оновлення сталася помилка. Будь ласка, спробуйте пізніше.</string>
-    <string name="update_now_available">Оновлення доступне для завантаження!</string>
-    <string name="check_for_updates">Перевірити наявність оновлень</string>
-    <string name="no_update_available">Немає доступних оновлень</string>
     <string name="update_download_started">Завантаження оновлення розпочато</string>
-    <string name="update_download_complete">Завантаження оновлення завершено. Починається встановлення…</string>
-    <string name="update_not_needed">Ваш додаток оновлено</string>
-    <string name="system_default">Системна за замовчуванням</string> <!-- Placeholder, please translate -->
+    <string name="update_download_complete">Завантаження оновлення завершено. Розпочинається встановлення…</string>
+    <string name="update_restart">Будь ласка, перезапустіть застосунок, щоб завершити оновлення</string>
+    <string name="update_failed">Не вдалося завантажити оновлення</string>
+    <string name="update_no_connection">Немає підключення до Інтернету. Будь ласка, спробуйте пізніше.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Сталася помилка під час оновлення. Будь ласка, спробуйте пізніше.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Помилка: </string>
+    <string name="unknown_error">Невідома помилка</string>
+    <string name="error_message_prefix">Повідомлення: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Немає підключення до Інтернету</string>
+    <string name="error_no_internet_title">Немає підключення до Інтернету</string>
+    <string name="error_no_internet_message">Будь ласка, перевірте ваше інтернет-з\'єднання та спробуйте ще раз.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Сталася помилка</string>
+    <string name="error_occurred_message">На жаль, застосунок зіткнувся з неочікуваною проблемою.</string>
+    <string name="error_details_info">Деталі помилки надіслано розробникам. Ви можете скопіювати деталі нижче.</string>
+    <string name="error_details_label">Деталі помилки</string>
+    <string name="copy_error_details">Копіювати деталі помилки</string>
+    <string name="restart_app">Перезапустити застосунок</string>
+    <string name="error_details_clipboard_label">Деталі помилки</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Не знайдено браузер для відкриття цієї URL-адреси</string>
 </resources>

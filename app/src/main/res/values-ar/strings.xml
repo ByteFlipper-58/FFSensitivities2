@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">متابعة</string>
+    <string name="copy">نسخ</string>
+    <string name="copied">تم النسخ</string>
+    <string name="copied_to_clipboard">تم النسخ إلى الحافظة</string>
+    <string name="link">رابط</string>
+    <string name="copy_link">نسخ الرابط</string>
+    <string name="open_link">فتح الرابط</string>
+    <string name="back">رجوع</string>
+    <string name="try_again">حاول مرة أخرى</string>
+    <string name="action_retry">إعادة المحاولة</string>
+    <string name="next">التالي</string>
+    <string name="error">خطأ</string>
+    <string name="home">الرئيسية</string>
+    <string name="settings">الإعدادات</string>
+    <string name="dialog_default_title">معلومات</string>
+    <string name="not_available_placeholder">غير متاح</string>
+    <string name="expandable_section_collapse">طي</string>
+    <string name="expandable_section_expand">توسيع</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">مرحبًا بك في تطبيقنا!</string>
+    <string name="welcome_screen_message">أهلاً أيها المقاتل! سيجد الجميع إعدادات تناسبهم هنا؛ وإلا، يمكنك طلبها</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="terms_of_service">شروط الخدمة</string>
+    <string name="privacy_acceptance_checkbox">لقد قرأت <![CDATA[<a href="privacy">سياسة الخصوصية</a>]]> وأوافق عليها</string>
+    <string name="terms_acceptance_checkbox">لقد قرأت <![CDATA[<a href="terms">شروط الخدمة</a>]]> وأوافق عليها</string>
+    <string name="accept_terms_and_policy">لقد قرأت <![CDATA[<a href="terms">شروط الخدمة</a>]]> و <![CDATA[<a href="privacy">سياسة الخصوصية</a>]]> وأوافق عليهما</string>
+    <string name="privacy_dialog_title">سياسة الخصوصية</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">رسم توضيحي للتهيئة</string>
+    <string name="onboarding_info_title">مرحبًا بك في FF Sensitivities!</string>
+    <string name="onboarding_info_description">ابحث عن أفضل إعدادات الحساسية لجهازك وحسّن طريقة لعبك.</string>
+    <string name="onboarding_permissions_title">إذن الإشعارات</string>
+    <string name="onboarding_permissions_description">نحتاج إلى إذن لإرسال إشعارات إليك حول الإعدادات الجديدة وتحديثات التطبيق.</string>
+    <string name="permission_granted">تم منح الإذن</string>
+    <string name="grant_permission">منح الإذن</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">عام</string>
+    <string name="collimator">منظار كوليماتور</string>
+    <string name="x2_scope">منظار x2</string>
+    <string name="x4_scope">منظار x4</string>
+    <string name="sniper_scope">منظار قنص</string>
+    <string name="free_review">نظرة حرة</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">زر إطلاق النار</string>
+    <string name="source">المصدر</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">هل تعمل؟</string>
+    <string name="thank_for_review">شكرا لمراجعتك!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">لا تملك طراز هاتفك؟ قدم طلبًا!</string>
+    <string name="request_sensitivities_settings_title">طلب إعدادات الحساسية</string>
+    <string name="request_sensitivities_settings_message">المعلومات التي سيتم إرسالها إلى المطور</string>
+    <string name="request_sensitivities_settings_message_two">انقر فوق زر الطلب لإرسال طلب إعدادات، لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="request_sensitivities_settings_button">طلب</string>
+    <string name="request_sensitivities_settings_success">تم إرسال الطلب بنجاح!\nسنضيف إعدادًا جديدًا قريبًا.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">الأجهزة: </string>
+    <string name="devices_list">قائمة الأجهزة</string>
+    <string name="sensitivity">الحساسية</string>
+    <string name="device_not_found">لم يتم العثور على جهاز لـ %1$s %2$s</string>
+    <string name="loading_device_data">جاري تحميل بيانات الجهاز…</string>
+    <string name="favorite_icon_desc">المفضلة</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">إعدادات المظهر</string>
+    <string name="app_theme">مظهر التطبيق</string>
+    <string name="auto_theme">المظهر التلقائي</string>
+    <string name="system_theme">مظهر النظام</string>
+    <string name="light_theme">المظهر الفاتح</string>
+    <string name="night_theme">المظهر الداكن</string>
+    <string name="system_default">افتراضي النظام</string>
+    <string name="auto_theme_description">سيتغير مظهر التطبيق تلقائيًا حسب وقت شروق الشمس وغروبها</string>
+    <string name="auto_level_of_charge_theme_description">سيتغير مظهر التطبيق تلقائيًا حسب مستوى شحن الهاتف</string>
+    <string name="light_theme_description">تم تحديد المظهر الفاتح</string>
+    <string name="night_theme_description">تم تحديد المظهر الداكن</string>
+    <string name="system_theme_description">سيتغير مظهر التطبيق حسب مظهر Android</string>
+    <string name="theme_system_description_detail">خيار النظام الافتراضي</string>
+    <string name="theme_light_description_detail">مظهر فاتح لرؤية أفضل</string>
+    <string name="theme_dark_description_detail">مظهر داكن لتقليل إجهاد العين</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">مظهر التباين</string>
+    <string name="contrast_theme_description_on">مظهر التباين ممكّن حاليًا.</string>
+    <string name="contrast_theme_description_off">مظهر التباين معطل حاليًا.</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">استخدام الألوان الديناميكية</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">الألوان الديناميكية ممكّنة</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">الألوان الديناميكية معطلة</string>
+    <string name="switch_dynamic_colors_are_not_supported">الألوان الديناميكية غير مدعومة</string>
+    <!-- Language -->
+    <string name="change_language">تغيير اللغة</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">تحسين الترجمة</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">حول التطبيق</string>
+    <string name="version">الإصدار</string>
+    <string name="app_icon">أيقونة التطبيق</string>
+    <string name="made_with_love">تم التطوير بـ ❤️ بواسطة ByteFlipper</string>
+    <string name="contact_us">اتصل بنا</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">الدعم والملاحظات</string>
+    <string name="connect_with_us_category_title">تواصل معنا</string>
+    <string name="development_category_title">التطوير</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">الإبلاغ عن خطأ</string>
+    <string name="bug_report_subtitle">يرجى وصف المشكلة وإرسالها إلينا</string>
+    <string name="rate_the_app_title">تقييم التطبيق</string>
+    <string name="rate_the_app_subtitle">قم بتقييم التطبيق على Google Play</string>
+    <string name="other_apps_title">تطبيقات أخرى</string>
+    <string name="other_apps_subtitle">تطبيقاتنا الأخرى</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">موقع ByteFlipper</string>
+    <string name="website_subtitle">موقعنا الإلكتروني</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">مجتمعنا على VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">قناتنا على Telegram</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">قناتنا على YouTube</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">خادمنا على Discord</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">مستودعنا على Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">الكود المصدري</string>
+    <string name="source_code_subtitle">الكود المصدري للتطبيق على GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">الإبلاغ عن خطأ</string>
+    <string name="report_bug">الإبلاغ عن خطأ</string>
+    <string name="bug_report_heading">قم بوصف المشكلة</string>
+    <string name="bug_report_header_subtitle">ساعدنا في تحسين التطبيق</string>
+    <string name="bug_category_label">الفئة</string>
+    <string name="bug_report_category_title">فئة المشكلة</string>
+    <string name="bug_report_category_placeholder">اختر الفئة</string>
+    <string name="bug_description_label">الوصف</string>
+    <string name="bug_report_description_title">وصف المشكلة</string>
+    <string name="bug_report_description_placeholder">قم بوصف المشكلة بالتفصيل…</string>
+    <string name="include_logs_checkbox">تضمين سجلات التطبيق</string>
+    <string name="bug_report_logs_option_subtitle">سيساعدنا هذا في تشخيص المشكلة بشكل أسرع</string>
+    <string name="bug_report_info_note_text">سيتم إرسال التقرير بشكل مجهول. سيقوم فريقنا بمراجعته في أقرب وقت ممكن.</string>
+    <string name="submit_bug_report_button">إرسال التقرير</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">الدعم</string>
+    <string name="bug_category_report_bug">الإبلاغ عن خطأ</string>
+    <string name="bug_category_visual_error">الإبلاغ عن خطأ بصري</string>
+    <string name="bug_category_request_settings">طلب إعدادات</string>
+    <string name="bug_category_settings_not_working">الإعدادات لا تعمل</string>
+    <string name="bug_category_other">أخرى</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">جاري إرسال التقرير…</string>
+    <string name="bug_report_submitting_subtitle">يرجى الانتظار…</string>
+    <string name="bug_report_success_title">تم إرسال التقرير</string>
+    <string name="bug_report_success_message">شكرًا لمساعدتنا في تحسين التطبيق! ملاحظاتك مهمة جدًا بالنسبة لنا.</string>
+    <string name="bug_report_submission_error_title">خطأ في الإرسال</string>
+    <string name="bug_report_submission_failed_default">فشل إرسال التقرير.</string>
+    <string name="bug_report_submission_error">خطأ في الإرسال: %1$s</string>
+    <string name="bug_report_log_not_found">لم يتم العثور على ملف السجل.</string>
+    <string name="bug_report_log_read_error">خطأ في قراءة ملف السجل: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">رجوع</string>
+    <string name="bug_report_action_cancel">إلغاء</string>
+    <string name="bug_report_action_retry">إعادة المحاولة</string>
+    <string name="bug_report_action_close">إغلاق</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">التحقق من وجود تحديثات</string>
+    <string name="update_available">يتوفر تحديث</string>
+    <string name="update_now_available">يتوفر تحديث للتحميل!</string>
+    <string name="no_update_available">لا توجد تحديثات متاحة</string>
+    <string name="update_not_needed">التطبيق محدث</string>
+    <string name="update_now">التحديث الآن</string>
+    <string name="update_later">التحديث لاحقًا</string>
+    <string name="update_required">هذا التحديث مطلوب لاستخدام التطبيق</string>
+    <string name="update_checking">جاري التحقق من وجود تحديثات…</string>
+    <string name="update_downloading">جاري تحميل التحديث…</string>
+    <string name="update_installing">جاري تثبيت التحديث…</string>
+    <string name="update_download_started">بدأ تحميل التحديث</string>
+    <string name="update_download_complete">اكتمل تحميل التحديث. جاري بدء التثبيت…</string>
+    <string name="update_restart">يرجى إعادة تشغيل التطبيق لإكمال التحديث</string>
+    <string name="update_failed">فشل تحميل التحديث</string>
+    <string name="update_no_connection">لا يوجد اتصال بالإنترنت. يرجى المحاولة مرة أخرى لاحقًا.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">حدث خطأ أثناء التحديث. يرجى المحاولة مرة أخرى لاحقًا.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">خطأ: </string>
+    <string name="unknown_error">خطأ غير معروف</string>
+    <string name="error_message_prefix">الرسالة: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">لا يوجد اتصال بالإنترنت</string>
+    <string name="error_no_internet_title">لا يوجد اتصال بالإنترنت</string>
+    <string name="error_no_internet_message">يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">حدث خطأ</string>
+    <string name="error_occurred_message">للأسف، واجه التطبيق مشكلة غير متوقعة.</string>
+    <string name="error_details_info">تم إرسال تفاصيل الخطأ إلى المطورين. يمكنك نسخ التفاصيل أدناه.</string>
+    <string name="error_details_label">تفاصيل الخطأ</string>
+    <string name="copy_error_details">نسخ تفاصيل الخطأ</string>
+    <string name="restart_app">إعادة تشغيل التطبيق</string>
+    <string name="error_details_clipboard_label">تفاصيل الخطأ</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">لم يتم العثور على متصفح لفتح هذا الرابط</string>
+</resources>

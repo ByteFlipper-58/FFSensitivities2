@@ -1,48 +1,76 @@
 package com.byteflipper.ffsensitivities.utils
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.content.pm.PackageManager
+import android.util.Log
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
+import com.byteflipper.ffsensitivities.R
 
 object ChromeCustomTabUtil {
 
-    private const val CUSTOM_TAB_PACKAGE_NAME = "com.android.chrome"
+    private const val TAG = "ChromeCustomTabUtil"
 
-    fun openUrl(context: Context, url: String) {
+    /**
+     * Opens a URL in a Chrome Custom Tab or falls back to the default browser.
+     *
+     * @param context The application context.
+     * @param url The URL to open.
+     * @param primaryColor The primary color from the current MaterialTheme (as ARGB Int).
+     */
+    fun openUrl(context: Context, url: String, primaryColor: Int) {
+        val uri = Uri.parse(url)
         try {
             val customTabsIntent = CustomTabsIntent.Builder()
-                .setUrlBarHidingEnabled(true)
+                .setDefaultColorSchemeParams(
+                    CustomTabColorSchemeParams.Builder()
+                        .setToolbarColor(primaryColor)
+                        .build()
+                )
                 .setShowTitle(true)
+                // Add custom animations (optional, requires anim resources)
+                // .setStartAnimations(context, R.anim.slide_in_right, R.anim.slide_out_left)
+                // .setExitAnimations(context, android.R.anim.slide_in_left, android.R.anim.slide_out_right)
                 .build()
 
-            customTabsIntent.intent.putExtra(Intent.EXTRA_REFERRER, Uri.parse("android-app://" + context.packageName))
+            customTabsIntent.intent.putExtra(
+                Intent.EXTRA_REFERRER,
+                Uri.parse("android-app://" + context.packageName)
+            )
 
-            customTabsIntent.launchUrl(context, Uri.parse(url))
+            customTabsIntent.launchUrl(context, uri)
+
+        } catch (e: ActivityNotFoundException) {
+            Log.e(TAG, "Custom Tabs not supported or no browser found: ${e.message}")
+            openUrlInDefaultBrowser(context, uri)
         } catch (e: Exception) {
-            openUrlInDefaultBrowser(context, url)
-            e.printStackTrace()
+            // Handle other potential exceptions during Custom Tab launch
+            Log.e(TAG, "Error launching Custom Tab: ${e.message}", e)
+            openUrlInDefaultBrowser(context, uri)
         }
     }
 
-    fun isChromeInstalled(context: Context): Boolean {
-        val pm: PackageManager = context.packageManager
-        return try {
-            pm.getPackageInfo(CUSTOM_TAB_PACKAGE_NAME, PackageManager.GET_ACTIVITIES)
-            true
-        } catch (e: PackageManager.NameNotFoundException) {
-            false
-        }
-    }
-
-    private fun openUrlInDefaultBrowser(context: Context, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        if (intent.resolveActivity(context.packageManager) != null) {
+    private fun openUrlInDefaultBrowser(context: Context, uri: Uri) {
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        try {
             context.startActivity(intent)
-        } else {
-            Toast.makeText(context, "No browser found to open this URL", Toast.LENGTH_SHORT).show()
+        } catch (e: ActivityNotFoundException) {
+            Log.e(TAG, "No browser found to open URL: ${e.message}")
+            Toast.makeText(
+                context,
+                context.getString(R.string.error_no_browser_found),
+                Toast.LENGTH_SHORT
+            ).show()
+        } catch (e: Exception) {
+            Log.e(TAG, "Error opening URL in default browser: ${e.message}", e)
+            Toast.makeText(
+                context,
+                context.getString(R.string.error_no_browser_found),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

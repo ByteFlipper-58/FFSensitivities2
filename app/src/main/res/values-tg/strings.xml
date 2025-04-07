@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">Давом додан</string>
+    <string name="copy">Нусхабардорӣ</string>
+    <string name="copied">Нусхабардорӣ шуд</string>
+    <string name="copied_to_clipboard">Ба буфери мубодила нусхабардорӣ шуд</string>
+    <string name="link">Истинод</string>
+    <string name="copy_link">Нусхабардории истинод</string>
+    <string name="open_link">Кушодани истинод</string>
+    <string name="back">Бозгашт</string>
+    <string name="try_again">Бори дигар кӯшиш кунед</string>
+    <string name="action_retry">Такрор</string>
+    <string name="next">Оянда</string>
+    <string name="error">Хато</string>
+    <string name="home">Асосӣ</string>
+    <string name="settings">Танзимот</string>
+    <string name="dialog_default_title">Иттилоот</string>
+    <string name="not_available_placeholder">Мавҷуд нест</string>
+    <string name="expandable_section_collapse">Пӯшидан</string>
+    <string name="expandable_section_expand">Кушодан</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Ба барномаи мо хуш омадед!</string>
+    <string name="welcome_screen_message">Салом, Мубориз! Ҳар кас дар ин ҷо танзимоти худро пайдо мекунад; дар акси ҳол, шумо метавонед онҳоро дархост кунед</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Сиёсати махфият</string>
+    <string name="terms_of_service">Шартҳои хизматрасонӣ</string>
+    <string name="privacy_acceptance_checkbox">Ман <![CDATA[<a href="privacy">Сиёсати махфият</a>]]>-ро хондам ва розӣ ҳастам</string>
+    <string name="terms_acceptance_checkbox">Ман <![CDATA[<a href="terms">Шартҳои хизматрасонӣ</a>]]>-ро хондам ва розӣ ҳастам</string>
+    <string name="accept_terms_and_policy">Ман <![CDATA[<a href="terms">Шартҳои хизматрасонӣ</a>]]> ва <![CDATA[<a href="privacy">Сиёсати махфият</a>]]>-ро хондам ва розӣ ҳастам</string>
+    <string name="privacy_dialog_title">Сиёсати махфият</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Тасвири шиносоӣ</string>
+    <string name="onboarding_info_title">Ба FF Sensitivities хуш омадед!</string>
+    <string name="onboarding_info_description">Танзимоти беҳтарини ҳассосиятро барои дастгоҳи худ ёбед ва бозии худро такмил диҳед.</string>
+    <string name="onboarding_permissions_title">Иҷозати огоҳинома</string>
+    <string name="onboarding_permissions_description">Ба мо иҷозат лозим аст, то дар бораи танзимоти нав ва навсозиҳои барнома ба шумо огоҳинома фиристем.</string>
+    <string name="permission_granted">Иҷозат дода шуд</string>
+    <string name="grant_permission">Додани иҷозат</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Умумӣ</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">Нишонгири x2</string>
+    <string name="x4_scope">Нишонгири x4</string>
+    <string name="sniper_scope">Нишонгири снайпер</string>
+    <string name="free_review">Нигоҳи озод</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Тугмаи тирандозӣ</string>
+    <string name="source">Манбаъ</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">Кор мекунад?</string>
+    <string name="thank_for_review">Барои фикру мулоҳизаатон ташаккур!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Модели телефони шумо нест? Дархост кунед!</string>
+    <string name="request_sensitivities_settings_title">Дархости танзимоти ҳассосият</string>
+    <string name="request_sensitivities_settings_message">Маълумоте, ки ба таҳиягар фиристода мешавад</string>
+    <string name="request_sensitivities_settings_message_two">Барои фиристодани дархости танзимот тугмаи "Дархост"-ро пахш кунед, ин амалро бекор кардан мумкин нест.</string>
+    <string name="request_sensitivities_settings_button">Дархост</string>
+    <string name="request_sensitivities_settings_success">Дархост бомуваффақият фиристода шуд!\nМо ба зудӣ танзимоти навро илова хоҳем кард.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">Дастгоҳҳо: </string>
+    <string name="devices_list">Рӯйхати дастгоҳҳо</string>
+    <string name="sensitivity">Ҳассосият</string>
+    <string name="device_not_found">Дастгоҳ барои %1$s %2$s ёфт нашуд</string>
+    <string name="loading_device_data">Боркунии маълумоти дастгоҳ…</string>
+    <string name="favorite_icon_desc">Дӯстдошта</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Танзимоти мавзӯъ</string>
+    <string name="app_theme">Мавзӯи барнома</string>
+    <string name="auto_theme">Мавзӯи худкор</string>
+    <string name="system_theme">Мавзӯи системавӣ</string>
+    <string name="light_theme">Мавзӯи равшан</string>
+    <string name="night_theme">Мавзӯи торик</string>
+    <string name="system_default">Пешфарзи система</string>
+    <string name="auto_theme_description">Намуди зоҳирии барнома вобаста ба вақти тулӯъ ва ғуруби офтоб ба таври худкор тағйир меёбад</string>
+    <string name="auto_level_of_charge_theme_description">Намуди зоҳирии барнома вобаста ба сатҳи заряди телефон ба таври худкор тағйир меёбад</string>
+    <string name="light_theme_description">Мавзӯи равшан интихоб шуд</string>
+    <string name="night_theme_description">Мавзӯи торик интихоб шуд</string>
+    <string name="system_theme_description">Намуди зоҳирии барнома вобаста ба мавзӯи Android тағйир меёбад</string>
+    <string name="theme_system_description_detail">Опсияи пешфарзи система</string>
+    <string name="theme_light_description_detail">Мавзӯи равшан барои намоиши беҳтар</string>
+    <string name="theme_dark_description_detail">Мавзӯи торик барои кам кардани хастагии чашм</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Мавзӯи контрастӣ</string>
+    <string name="contrast_theme_description_on">Мавзӯи контрастӣ ҳоло фаъол аст.</string>
+    <string name="contrast_theme_description_off">Мавзӯи контрастӣ ҳоло ғайрифаъол аст.</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">Истифодаи рангҳои динамикӣ</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Рангҳои динамикӣ фаъол карда шудаанд</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Рангҳои динамикӣ ғайрифаъол карда шудаанд</string>
+    <string name="switch_dynamic_colors_are_not_supported">Рангҳои динамикӣ дастгирӣ намешаванд</string>
+    <!-- Language -->
+    <string name="change_language">Тағйири забон</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Такмили тарҷума</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">Дар бораи барнома</string>
+    <string name="version">Версия</string>
+    <string name="app_icon">Нишонаи барнома</string>
+    <string name="made_with_love">Бо ❤️ аз ҷониби ByteFlipper сохта шудааст</string>
+    <string name="contact_us">Бо мо тамос гиред</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Дастгирӣ ва алоқаи бозгашт</string>
+    <string name="connect_with_us_category_title">Бо мо пайваст шавед</string>
+    <string name="development_category_title">Таҳия</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Гузориш додани хато</string>
+    <string name="bug_report_subtitle">Лутфан, мушкилотро тавсиф кунед ва ба мо фиристед</string>
+    <string name="rate_the_app_title">Баҳо додан ба барнома</string>
+    <string name="rate_the_app_subtitle">Ба барнома дар Google Play баҳо диҳед</string>
+    <string name="other_apps_title">Барномаҳои дигар</string>
+    <string name="other_apps_subtitle">Барномаҳои дигари мо</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Вебсайти ByteFlipper</string>
+    <string name="website_subtitle">Вебсайти мо</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Ҷомеаи мо дар VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Канали Telegram-и мо</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Канали YouTube-и мо</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Сервери Discord-и мо</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Анбори Github-и мо</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Коди сарчашма</string>
+    <string name="source_code_subtitle">Коди сарчашмаи барнома дар GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Гузориш додани хато</string>
+    <string name="report_bug">Гузориш додани хато</string>
+    <string name="bug_report_heading">Масъаларо тавсиф кунед</string>
+    <string name="bug_report_header_subtitle">Ба мо дар беҳтар кардани барнома кӯмак кунед</string>
+    <string name="bug_category_label">Категория</string>
+    <string name="bug_report_category_title">Категорияи мушкилот</string>
+    <string name="bug_report_category_placeholder">Категорияро интихоб кунед</string>
+    <string name="bug_description_label">Тавсиф</string>
+    <string name="bug_report_description_title">Тавсифи мушкилот</string>
+    <string name="bug_report_description_placeholder">Мушкилотро муфассал тавсиф кунед…</string>
+    <string name="include_logs_checkbox">Илова кардани логҳои барнома</string>
+    <string name="bug_report_logs_option_subtitle">Ин ба мо дар ташхиси зудтари мушкилот кӯмак мекунад</string>
+    <string name="bug_report_info_note_text">Гузориш ба таври беном фиристода мешавад. Гурӯҳи мо онро ҳарчи зудтар баррасӣ хоҳад кард.</string>
+    <string name="submit_bug_report_button">Ирсоли гузориш</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Дастгирӣ</string>
+    <string name="bug_category_report_bug">Гузориш додани хато</string>
+    <string name="bug_category_visual_error">Гузориш додани хатои визуалӣ</string>
+    <string name="bug_category_request_settings">Дархости танзимот</string>
+    <string name="bug_category_settings_not_working">Танзимот кор намекунанд</string>
+    <string name="bug_category_other">Дигар</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Ирсоли гузориш…</string>
+    <string name="bug_report_submitting_subtitle">Лутфан, интизор шавед…</string>
+    <string name="bug_report_success_title">Гузориш ирсол шуд</string>
+    <string name="bug_report_success_message">Барои кӯмак дар беҳтар кардани барнома ташаккур! Фикру мулоҳизаи шумо барои мо хеле муҳим аст.</string>
+    <string name="bug_report_submission_error_title">Хатои ирсол</string>
+    <string name="bug_report_submission_failed_default">Ирсоли гузориш ноком шуд.</string>
+    <string name="bug_report_submission_error">Хатои ирсол: %1$s</string>
+    <string name="bug_report_log_not_found">Файли лог ёфт нашуд.</string>
+    <string name="bug_report_log_read_error">Хатои хондани файли лог: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Бозгашт</string>
+    <string name="bug_report_action_cancel">Бекор кардан</string>
+    <string name="bug_report_action_retry">Такрор</string>
+    <string name="bug_report_action_close">Пӯшидан</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">Санҷиши навсозиҳо</string>
+    <string name="update_available">Навсозӣ дастрас аст</string>
+    <string name="update_now_available">Навсозӣ барои боргирӣ дастрас аст!</string>
+    <string name="no_update_available">Навсозиҳо мавҷуд нестанд</string>
+    <string name="update_not_needed">Барномаи шумо навсозӣ шудааст</string>
+    <string name="update_now">Ҳозир навсозӣ кунед</string>
+    <string name="update_later">Баъдтар навсозӣ кунед</string>
+    <string name="update_required">Ин навсозӣ барои истифодаи барнома зарур аст</string>
+    <string name="update_checking">Санҷиши навсозиҳо…</string>
+    <string name="update_downloading">Боргирии навсозӣ…</string>
+    <string name="update_installing">Насби навсозӣ…</string>
+    <string name="update_download_started">Боргирии навсозӣ оғоз шуд</string>
+    <string name="update_download_complete">Боргирии навсозӣ анҷом ёфт. Насбкунӣ оғоз мешавад…</string>
+    <string name="update_restart">Лутфан, барои анҷом додани навсозӣ барномаро бозоғоз кунед</string>
+    <string name="update_failed">Боргирии навсозӣ ноком шуд</string>
+    <string name="update_no_connection">Пайвастшавӣ ба интернет нест. Лутфан, дертар бори дигар кӯшиш кунед.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Ҳангоми навсозӣ хато рух дод. Лутфан, дертар бори дигар кӯшиш кунед.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Хато: </string>
+    <string name="unknown_error">Хатои номаълум</string>
+    <string name="error_message_prefix">Паём: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Пайвастшавӣ ба Интернет нест</string>
+    <string name="error_no_internet_title">Пайвастшавӣ ба Интернет нест</string>
+    <string name="error_no_internet_message">Лутфан, пайвастшавии интернетии худро санҷед ва бори дигар кӯшиш кунед.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Хато рух дод</string>
+    <string name="error_occurred_message">Мутаассифона, барнома ба мушкилоти ғайричашмдошт дучор шуд.</string>
+    <string name="error_details_info">Тафсилоти хато ба таҳиягарон фиристода шуд. Шумо метавонед тафсилотро дар зер нусхабардорӣ кунед.</string>
+    <string name="error_details_label">Тафсилоти хато</string>
+    <string name="copy_error_details">Нусхабардории тафсилоти хато</string>
+    <string name="restart_app">Бозоғозии барнома</string>
+    <string name="error_details_clipboard_label">Тафсилоти хато</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Барои кушодани ин URL браузер ёфт нашуд</string>
+</resources>

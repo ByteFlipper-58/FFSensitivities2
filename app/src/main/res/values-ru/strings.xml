@@ -1,166 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_title">Добро пожаловать в наше приложение!</string>
-    <string name="welcome_screen_message">Привет, Боец! Каждый найдет здесь настройку для себя; в противном случае вы можете запросить их</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
-    <string name="continue_button">Продолжить</string>
-
-
-    <!-- Links & Contacts -->
-    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Review Settings -->
-    <string name="review">Общее</string>
-    <string name="collimator">Красная точка</string>
-    <string name="x2_scope">x2 Прицел</string>
-    <string name="x4_scope">x4 Прицел</string>
+    <!-- Common Actions       -->
+    <string name="continue_button">Продолжить</string>
+    <string name="copy">Копировать</string>
+    <string name="copied">Скопировано</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+    <string name="link">Ссылка</string>
+    <string name="copy_link">Копировать ссылку</string>
+    <string name="open_link">Открыть ссылку</string>
+    <string name="back">Назад</string>
+    <string name="try_again">Попробовать снова</string>
+    <string name="action_retry">Повторить</string>
+    <string name="next">Далее</string>
+    <string name="error">Ошибка</string>
+    <string name="home">Главная</string>
+    <string name="settings">Настройки</string>
+    <string name="dialog_default_title">Информация</string>
+    <string name="not_available_placeholder">Н/Д</string>
+    <string name="expandable_section_collapse">Свернуть</string>
+    <string name="expandable_section_expand">Развернуть</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Добро пожаловать в наше приложение!</string>
+    <string name="welcome_screen_message">Привет, боец! Здесь каждый найдет настройки для себя; в противном случае, вы можете их запросить</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="terms_of_service">Условия обслуживания</string>
+    <string name="privacy_acceptance_checkbox">Я прочитал(а) и согласен(на) с <![CDATA[<a href="privacy">Политикой конфиденциальности</a>]]></string>
+    <string name="terms_acceptance_checkbox">Я прочитал(а) и согласен(на) с <![CDATA[<a href="terms">Условиями обслуживания</a>]]></string>
+    <string name="accept_terms_and_policy">Я прочитал(а) и согласен(на) с <![CDATA[<a href="terms">Условиями обслуживания</a>]]> и <![CDATA[<a href="privacy">Политикой конфиденциальности</a>]]></string>
+    <string name="privacy_dialog_title">Политика конфиденциальности</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Иллюстрация для ознакомления</string>
+    <string name="onboarding_info_title">Добро пожаловать в FF Sensitivities!</string>
+    <string name="onboarding_info_description">Найдите лучшие настройки чувствительности для вашего устройства и улучшите свою игру.</string>
+    <string name="onboarding_permissions_title">Разрешение на уведомления</string>
+    <string name="onboarding_permissions_description">Нам нужно разрешение, чтобы отправлять вам уведомления о новых настройках и обновлениях приложения.</string>
+    <string name="permission_granted">Разрешение предоставлено</string>
+    <string name="grant_permission">Предоставить разрешение</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Общий</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">Прицел x2</string>
+    <string name="x4_scope">Прицел x4</string>
     <string name="sniper_scope">Снайперский прицел</string>
     <string name="free_review">Свободный обзор</string>
     <string name="dpi">DPI</string>
     <string name="fire_button">Кнопка огня</string>
     <string name="source">Источник</string>
+    <!-- Review/Feedback -->
     <string name="it_works">Работает?</string>
     <string name="thank_for_review">Спасибо за ваш отзыв!</string>
-
-    <!-- Request Sensitivity Settings -->
+    <!-- Request Settings -->
     <string name="dont_have_your_phone_model">Нет вашей модели телефона? Сделайте запрос!</string>
-
     <string name="request_sensitivities_settings_title">Запросить настройки чувствительности</string>
     <string name="request_sensitivities_settings_message">Информация, которая будет отправлена разработчику</string>
-    <string name="request_sensitivities_settings_message_two">Нажмите кнопку "Запрос", чтобы отправить запрос настроек, это действие нельзя отменить.</string>
+    <string name="request_sensitivities_settings_message_two">Нажмите кнопку «Запросить», чтобы отправить запрос настроек, это действие нельзя отменить.</string>
     <string name="request_sensitivities_settings_button">Запросить</string>
-    <string name="request_sensitivities_settings_success">Запрос успешно отправлен!\nМы скоро добавим новую настройку.</string>
+    <string name="request_sensitivities_settings_success">Запрос успешно отправлен!\nМы скоро добавим новые настройки.</string>
 
-    <!-- Utility Actions -->
-    <string name="improve_translation">Улучшить перевод</string>
-    <string name="copy">Копировать</string>
-    <string name="copied">Скопировано</string>
-    <string name="link">Ссылка</string>
-    <string name="copy_link">Копировать ссылку</string>
-    <string name="open_link">Открыть ссылку</string>
-    <string name="error">Ошибка</string>
-    <string name="back">Назад</string>
-    <string name="app_icon">Иконка приложения</string>
+    <!-- Devices List Screen  -->
+    <string name="devices">Устройства: </string>
+    <string name="devices_list">Список устройств</string>
+    <string name="sensitivity">Чувствительность</string>
+    <string name="device_not_found">Устройство не найдено для %1$s %2$s</string>
+    <string name="loading_device_data">Загрузка данных устройства…</string>
+    <string name="favorite_icon_desc">Избранное</string>
 
-    <!-- About Section -->
-    <string name="about_app">О приложении</string>
-    <string name="home">Главная</string>
-    <string name="version">Версия</string>
-
-    <!-- Source Code -->
-    <string name="source_code_title">Исходный код</string>
-    <string name="source_code_subtitle">Исходный код приложения на GitHub</string>
-    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
-
-    <!-- Bug Report -->
-    <string name="bug_report_title">Сообщить об ошибке</string>
-    <string name="bug_report_subtitle">Пожалуйста, опишите проблему и отправьте её нам</string>
-
-    <!-- Rate the App -->
-    <string name="rate_the_app_title">Оценить приложение</string>
-    <string name="rate_the_app_subtitle">Оценить приложение в Google Play</string>
-
-    <!-- External Links -->
-    <string name="website_title">Веб-сайт ByteFlipper</string>
-    <string name="website_subtitle">Наш веб-сайт</string>
-    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
-
-    <string name="github_title">Github</string>
-    <string name="github_subtitle">Наш репозиторий Github</string>
-    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
-
-    <string name="vk_title">VK</string>
-    <string name="vk_subtitle">Наше сообщество в VK</string>
-    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
-
-    <string name="telegram_title">Telegram</string>
-    <string name="telegram_subtitle">Наш Telegram-канал</string>
-    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
-
-    <string name="youtube_title">YouTube</string>
-    <string name="youtube_subtitle">Наш YouTube-канал</string>
-    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
-
-    <string name="discord_title">Discord</string>
-    <string name="discord_subtitle">Наш Discord-сервер</string>
-    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
-
-    <string name="other_apps_title">Другие приложения</string>
-    <string name="other_apps_subtitle">Наши другие приложения</string>
-    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
-
-    <!-- Settings -->
-    <string name="settings">Настройки</string>
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Настройки темы</string>
     <string name="app_theme">Тема приложения</string>
-    <string name="auto_theme">Авто тема</string>
+    <string name="auto_theme">Автоматическая тема</string>
     <string name="system_theme">Системная тема</string>
     <string name="light_theme">Светлая тема</string>
-    <string name="night_theme">Темная тема</string>
+    <string name="night_theme">Тёмная тема</string>
+    <string name="system_default">Системная по умолчанию</string>
     <string name="auto_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от времени восхода и захода солнца</string>
     <string name="auto_level_of_charge_theme_description">Внешний вид приложения будет меняться автоматически в зависимости от уровня заряда телефона</string>
     <string name="light_theme_description">Выбрана светлая тема</string>
-    <string name="night_theme_description">Выбрана темная тема</string>
+    <string name="night_theme_description">Выбрана тёмная тема</string>
     <string name="system_theme_description">Внешний вид приложения будет меняться в зависимости от темы Android</string>
-
+    <string name="theme_system_description_detail">Системная опция по умолчанию</string>
+    <string name="theme_light_description_detail">Светлая тема для лучшей видимости</string>
+    <string name="theme_dark_description_detail">Тёмная тема для снижения нагрузки на глаза</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Контрастная тема</string>
+    <string name="contrast_theme_description_on">Контрастная тема включена.</string>
+    <string name="contrast_theme_description_off">Контрастная тема выключена.</string>
+    <!-- Dynamic Colors -->
     <string name="switch_use_dynamic_colors_title">Использовать динамические цвета</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Динамические цвета включены</string>
     <string name="switch_use_dynamic_colors_subtitle_off">Динамические цвета выключены</string>
     <string name="switch_dynamic_colors_are_not_supported">Динамические цвета не поддерживаются</string>
+    <!-- Language -->
+    <string name="change_language">Сменить язык</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Улучшить перевод</string>
 
-    <string name="change_language">Изменить язык</string>
+    <!-- About Screen         -->
+    <string name="about_app">О приложении</string>
+    <string name="version">Версия</string>
+    <string name="app_icon">Иконка приложения</string>
+    <string name="made_with_love">Сделано с ❤️ ByteFlipper</string>
+    <string name="contact_us">Связаться с нами</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Поддержка и обратная связь</string>
+    <string name="connect_with_us_category_title">Свяжитесь с нами</string>
+    <string name="development_category_title">Разработка</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Сообщить об ошибке</string>
+    <string name="bug_report_subtitle">Пожалуйста, опишите проблему и отправьте нам</string>
+    <string name="rate_the_app_title">Оценить приложение</string>
+    <string name="rate_the_app_subtitle">Оцените приложение в Google Play</string>
+    <string name="other_apps_title">Другие приложения</string>
+    <string name="other_apps_subtitle">Наши другие приложения</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Веб-сайт ByteFlipper</string>
+    <string name="website_subtitle">Наш веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Наше сообщество в VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Наш Telegram канал</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Наш YouTube канал</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Наш Discord сервер</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Наш репозиторий на Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Исходный код</string>
+    <string name="source_code_subtitle">Исходный код приложения на GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
 
-    <!-- Error Screen -->
-    <string name="try_again">Попробовать снова</string>
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Сообщить об ошибке</string>
     <string name="report_bug">Сообщить об ошибке</string>
+    <string name="bug_report_heading">Опишите проблему</string>
+    <string name="bug_report_header_subtitle">Помогите нам улучшить приложение</string>
+    <string name="bug_category_label">Категория</string>
+    <string name="bug_report_category_title">Категория проблемы</string>
+    <string name="bug_report_category_placeholder">Выберите категорию</string>
+    <string name="bug_description_label">Описание</string>
+    <string name="bug_report_description_title">Описание проблемы</string>
+    <string name="bug_report_description_placeholder">Подробно опишите проблему…</string>
+    <string name="include_logs_checkbox">Включить логи приложения</string>
+    <string name="bug_report_logs_option_subtitle">Это поможет нам быстрее диагностировать проблему</string>
+    <string name="bug_report_info_note_text">Отчет будет отправлен анонимно. Наша команда рассмотрит его как можно скорее.</string>
+    <string name="submit_bug_report_button">Отправить отчет</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Поддержка</string>
+    <string name="bug_category_report_bug">Сообщить об ошибке</string>
+    <string name="bug_category_visual_error">Сообщить о визуальной ошибке</string>
+    <string name="bug_category_request_settings">Запросить настройки</string>
+    <string name="bug_category_settings_not_working">Настройки не работают</string>
+    <string name="bug_category_other">Другое</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Отправка отчета…</string>
+    <string name="bug_report_submitting_subtitle">Пожалуйста, подождите…</string>
+    <string name="bug_report_success_title">Отчет отправлен</string>
+    <string name="bug_report_success_message">Спасибо за помощь в улучшении приложения! Ваш отзыв очень важен для нас.</string>
+    <string name="bug_report_submission_error_title">Ошибка отправки</string>
+    <string name="bug_report_submission_failed_default">Не удалось отправить отчет.</string>
+    <string name="bug_report_submission_error">Ошибка отправки: %1$s</string>
+    <string name="bug_report_log_not_found">Файл логов не найден.</string>
+    <string name="bug_report_log_read_error">Ошибка чтения файла логов: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Назад</string>
+    <string name="bug_report_action_cancel">Отмена</string>
+    <string name="bug_report_action_retry">Повторить</string>
+    <string name="bug_report_action_close">Закрыть</string>
 
-    <!-- Devices List -->
-    <string name="devices">Устройства: </string>
-    <string name="devices_list">Список устройств</string>
-    <string name="sensitivity">Чувствительность</string>
-
-    <!-- Updates -->
+    <!-- Update Flow -->
+    <string name="check_for_updates">Проверить обновления</string>
     <string name="update_available">Доступно обновление</string>
+    <string name="update_now_available">Доступно обновление для скачивания!</string>
+    <string name="no_update_available">Обновлений нет</string>
+    <string name="update_not_needed">Ваше приложение обновлено до последней версии</string>
     <string name="update_now">Обновить сейчас</string>
-    <string name="update_required">Это обновление необходимо для использования приложения</string>
-    <string name="update_failed">Не удалось загрузить обновление</string>
     <string name="update_later">Обновить позже</string>
-    <string name="update_restart">Перезапустите приложение, чтобы завершить обновление</string>
-    <string name="update_no_connection">Нет подключения к интернету. Пожалуйста, попробуйте позже.</string>
+    <string name="update_required">Это обновление необходимо для использования приложения</string>
     <string name="update_checking">Проверка обновлений…</string>
     <string name="update_downloading">Загрузка обновления…</string>
     <string name="update_installing">Установка обновления…</string>
-    <string name="update_error_occurred">Во время обновления произошла ошибка. Пожалуйста, попробуйте позже.</string>
-    <string name="update_now_available">Обновление доступно для загрузки!</string>
-    <string name="check_for_updates">Проверить обновления</string>
-    <string name="no_update_available">Нет доступных обновлений</string>
-    <string name="update_download_started">Загрузка обновления началась</string>
+    <string name="update_download_started">Загрузка обновления начата</string>
     <string name="update_download_complete">Загрузка обновления завершена. Начинается установка…</string>
-    <string name="update_not_needed">Ваше приложение обновлено</string>
-    <string name="system_default">Системная по умолчанию</string> <!-- Added string -->
+    <string name="update_restart">Пожалуйста, перезапустите приложение, чтобы завершить обновление</string>
+    <string name="update_failed">Не удалось загрузить обновление</string>
+    <string name="update_no_connection">Нет подключения к интернету. Пожалуйста, попробуйте позже.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Произошла ошибка при обновлении. Пожалуйста, попробуйте позже.</string>
 
-    <!-- Onboarding -->
-    <string name="onboarding_image_desc">Иллюстрация онбординга</string>
-    <string name="onboarding_info_title">Добро пожаловать в FF Sensitivities!</string>
-    <string name="onboarding_info_description">Найдите лучшие настройки чувствительности для вашего устройства и улучшите свой геймплей.</string>
-    <string name="next">Далее</string>
-    <string name="onboarding_permissions_title">Разрешение на уведомления</string>
-    <string name="onboarding_permissions_description">Нам нужно разрешение, чтобы отправлять вам уведомления о новых настройках и обновлениях приложения.</string>
-    <string name="permission_granted">Разрешение получено</string>
-    <string name="grant_permission">Предоставить разрешение</string>
-    <!-- "Назад" string already exists -->
-
-    <!-- Error Screen (New Strings - Russian Translation) -->
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Ошибка: </string>
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="error_message_prefix">Сообщение: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Нет подключения к Интернету</string>
+    <string name="error_no_internet_title">Нет подключения к Интернету</string>
+    <string name="error_no_internet_message">Пожалуйста, проверьте ваше интернет-соединение и попробуйте снова.</string>
+    <!-- Generic Error Screen -->
     <string name="error_occurred_title">Произошла ошибка</string>
     <string name="error_occurred_message">К сожалению, приложение столкнулось с непредвиденной проблемой.</string>
-    <string name="error_details_info">Подробности ошибки были отправлены разработчикам. Вы можете скопировать детали ниже.</string>
+    <string name="error_details_info">Сведения об ошибке отправлены разработчикам. Вы можете скопировать детали ниже.</string>
     <string name="error_details_label">Детали ошибки</string>
-    <string name="copy_error_details">Скопировать детали ошибки</string>
+    <string name="copy_error_details">Копировать детали ошибки</string>
     <string name="restart_app">Перезапустить приложение</string>
-    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
-
+    <string name="error_details_clipboard_label">Детали ошибки</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Не найден браузер для открытия этой ссылки</string>
 </resources>

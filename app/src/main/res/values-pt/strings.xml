@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">Continuar</string>
+    <string name="copy">Copiar</string>
+    <string name="copied">Copiado</string>
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+    <string name="link">Link</string>
+    <string name="copy_link">Copiar Link</string>
+    <string name="open_link">Abrir Link</string>
+    <string name="back">Voltar</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="action_retry">Tentar Novamente</string>
+    <string name="next">Próximo</string>
+    <string name="error">Erro</string>
+    <string name="home">Início</string>
+    <string name="settings">Configurações</string>
+    <string name="dialog_default_title">Informação</string>
+    <string name="not_available_placeholder">N/D</string> <!-- Não disponível -->
+    <string name="expandable_section_collapse">Recolher</string>
+    <string name="expandable_section_expand">Expandir</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Bem-vindo ao nosso aplicativo!</string>
+    <string name="welcome_screen_message">Olá, Lutador! Todos encontrarão uma configuração para si aqui; caso contrário, você pode solicitá-las</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Política de Privacidade</string>
+    <string name="terms_of_service">Termos de Serviço</string>
+    <string name="privacy_acceptance_checkbox">Li e concordo com a <![CDATA[<a href="privacy">Política de Privacidade</a>]]></string>
+    <string name="terms_acceptance_checkbox">Li e concordo com os <![CDATA[<a href="terms">Termos de Serviço</a>]]></string>
+    <string name="accept_terms_and_policy">Li e concordo com os <![CDATA[<a href="terms">Termos de Serviço</a>]]> e a <![CDATA[<a href="privacy">Política de Privacidade</a>]]></string>
+    <string name="privacy_dialog_title">Política de Privacidade</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Ilustração de integração</string>
+    <string name="onboarding_info_title">Bem-vindo ao FF Sensitivities!</string>
+    <string name="onboarding_info_description">Encontre as melhores configurações de sensibilidade para o seu dispositivo e melhore sua jogabilidade.</string>
+    <string name="onboarding_permissions_title">Permissão de Notificação</string>
+    <string name="onboarding_permissions_description">Precisamos de permissão para enviar notificações sobre novas configurações e atualizações do aplicativo.</string>
+    <string name="permission_granted">Permissão Concedida</string>
+    <string name="grant_permission">Conceder Permissão</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Geral</string>
+    <string name="collimator">Mira Red Dot</string> <!-- ou Colimador -->
+    <string name="x2_scope">Mira 2x</string>
+    <string name="x4_scope">Mira 4x</string>
+    <string name="sniper_scope">Mira Sniper</string>
+    <string name="free_review">Olhadinha</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Botão de Atirar</string>
+    <string name="source">Fonte</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">Funciona?</string>
+    <string name="thank_for_review">Obrigado pela sua avaliação!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Não tem o modelo do seu celular? Faça um pedido!</string>
+    <string name="request_sensitivities_settings_title">Solicitar configurações de sensibilidade</string>
+    <string name="request_sensitivities_settings_message">Informações que serão enviadas ao desenvolvedor</string>
+    <string name="request_sensitivities_settings_message_two">Clique no botão Solicitar para enviar um pedido de configurações, esta ação não pode ser desfeita.</string>
+    <string name="request_sensitivities_settings_button">Solicitar</string>
+    <string name="request_sensitivities_settings_success">Solicitação enviada com sucesso!\nAdicionaremos uma nova configuração em breve.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">Dispositivos: </string>
+    <string name="devices_list">Lista de dispositivos</string>
+    <string name="sensitivity">Sensibilidade</string>
+    <string name="device_not_found">Dispositivo não encontrado para %1$s %2$s</string>
+    <string name="loading_device_data">Carregando dados do dispositivo…</string>
+    <string name="favorite_icon_desc">Favorito</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Configurações de Tema</string>
+    <string name="app_theme">Tema do Aplicativo</string>
+    <string name="auto_theme">Tema automático</string>
+    <string name="system_theme">Tema do sistema</string>
+    <string name="light_theme">Tema claro</string>
+    <string name="night_theme">Tema escuro</string>
+    <string name="system_default">Padrão do sistema</string>
+    <string name="auto_theme_description">A aparência do aplicativo mudará automaticamente dependendo da hora do nascer e do pôr do sol</string>
+    <string name="auto_level_of_charge_theme_description">A aparência do aplicativo mudará automaticamente dependendo do nível de carga do celular</string>
+    <string name="light_theme_description">Tema claro selecionado</string>
+    <string name="night_theme_description">Tema escuro selecionado</string>
+    <string name="system_theme_description">A aparência do aplicativo mudará dependendo do tema do Android</string>
+    <string name="theme_system_description_detail">Opção padrão do sistema</string>
+    <string name="theme_light_description_detail">Tema claro para melhor visibilidade</string>
+    <string name="theme_dark_description_detail">Tema escuro para reduzir o cansaço visual</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Tema de contraste</string>
+    <string name="contrast_theme_description_on">O tema de contraste está ativado.</string>
+    <string name="contrast_theme_description_off">O tema de contraste está desativado.</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">Usar cores dinâmicas</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Cores dinâmicas estão ativadas</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Cores dinâmicas estão desativadas</string>
+    <string name="switch_dynamic_colors_are_not_supported">Cores dinâmicas não são suportadas</string>
+    <!-- Language -->
+    <string name="change_language">Mudar idioma</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Melhorar Tradução</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">Sobre o Aplicativo</string>
+    <string name="version">Versão</string>
+    <string name="app_icon">Ícone do aplicativo</string>
+    <string name="made_with_love">Feito com ❤️ por ByteFlipper</string>
+    <string name="contact_us">Contate-nos</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Suporte e Feedback</string>
+    <string name="connect_with_us_category_title">Conecte-se Conosco</string>
+    <string name="development_category_title">Desenvolvimento</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Reportar um Bug</string>
+    <string name="bug_report_subtitle">Por favor, descreva o problema e envie para nós</string>
+    <string name="rate_the_app_title">Avaliar o aplicativo</string>
+    <string name="rate_the_app_subtitle">Avalie o aplicativo na Google Play</string>
+    <string name="other_apps_title">Outros Aplicativos</string>
+    <string name="other_apps_subtitle">Nossos Outros Aplicativos</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Site da ByteFlipper</string>
+    <string name="website_subtitle">Nosso Site</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Nossa comunidade no VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Nosso Canal no Telegram</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Nosso Canal no YouTube</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Nosso Servidor no Discord</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Nosso Repositório no Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Código Fonte</string>
+    <string name="source_code_subtitle">Código fonte do aplicativo no GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Reportar um Bug</string>
+    <string name="report_bug">Reportar bug</string>
+    <string name="bug_report_heading">Descreva o Problema</string>
+    <string name="bug_report_header_subtitle">Ajude-nos a melhorar o aplicativo</string>
+    <string name="bug_category_label">Categoria</string>
+    <string name="bug_report_category_title">Categoria do problema</string>
+    <string name="bug_report_category_placeholder">Selecione a categoria</string>
+    <string name="bug_description_label">Descrição</string>
+    <string name="bug_report_description_title">Descrição do problema</string>
+    <string name="bug_report_description_placeholder">Descreva o problema em detalhes…</string>
+    <string name="include_logs_checkbox">Incluir logs do aplicativo</string>
+    <string name="bug_report_logs_option_subtitle">Isso nos ajudará a diagnosticar o problema mais rapidamente</string>
+    <string name="bug_report_info_note_text">O relatório será enviado anonimamente. Nossa equipe irá revisá-lo o mais rápido possível.</string>
+    <string name="submit_bug_report_button">Enviar Relatório</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Suporte</string>
+    <string name="bug_category_report_bug">Reportar um bug</string>
+    <string name="bug_category_visual_error">Reportar um erro visual</string>
+    <string name="bug_category_request_settings">Solicitar configurações</string>
+    <string name="bug_category_settings_not_working">Configurações não funcionam</string>
+    <string name="bug_category_other">Outro</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Enviando relatório…</string>
+    <string name="bug_report_submitting_subtitle">Por favor, aguarde…</string>
+    <string name="bug_report_success_title">Relatório Enviado</string>
+    <string name="bug_report_success_message">Obrigado por ajudar a melhorar o aplicativo! Seu feedback é muito importante para nós.</string>
+    <string name="bug_report_submission_error_title">Erro no Envio</string>
+    <string name="bug_report_submission_failed_default">Falha ao enviar relatório.</string>
+    <string name="bug_report_submission_error">Erro no envio: %1$s</string>
+    <string name="bug_report_log_not_found">Arquivo de log não encontrado.</string>
+    <string name="bug_report_log_read_error">Erro ao ler arquivo de log: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Voltar</string>
+    <string name="bug_report_action_cancel">Cancelar</string>
+    <string name="bug_report_action_retry">Tentar Novamente</string>
+    <string name="bug_report_action_close">Fechar</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">Verificar atualizações</string>
+    <string name="update_available">Uma atualização está disponível</string>
+    <string name="update_now_available">Uma atualização está disponível para download!</string>
+    <string name="no_update_available">Nenhuma atualização disponível</string>
+    <string name="update_not_needed">Seu aplicativo está atualizado</string>
+    <string name="update_now">Atualizar agora</string>
+    <string name="update_later">Atualizar mais tarde</string>
+    <string name="update_required">Esta atualização é necessária para usar o aplicativo</string>
+    <string name="update_checking">Verificando atualizações…</string>
+    <string name="update_downloading">Baixando atualização…</string>
+    <string name="update_installing">Instalando atualização…</string>
+    <string name="update_download_started">Download da atualização iniciado</string>
+    <string name="update_download_complete">Download da atualização concluído. Iniciando a instalação…</string>
+    <string name="update_restart">Por favor, reinicie o aplicativo para completar a atualização</string>
+    <string name="update_failed">Falha ao baixar a atualização</string>
+    <string name="update_no_connection">Sem conexão com a internet. Por favor, tente novamente mais tarde.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Ocorreu um erro durante a atualização. Por favor, tente novamente mais tarde.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Erro: </string>
+    <string name="unknown_error">Erro desconhecido</string>
+    <string name="error_message_prefix">Mensagem: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Sem Conexão com a Internet</string>
+    <string name="error_no_internet_title">Sem Conexão com a Internet</string>
+    <string name="error_no_internet_message">Por favor, verifique sua conexão com a internet e tente novamente.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Ocorreu um Erro</string>
+    <string name="error_occurred_message">Infelizmente, o aplicativo encontrou um problema inesperado.</string>
+    <string name="error_details_info">Detalhes do erro foram enviados aos desenvolvedores. Você pode copiar os detalhes abaixo.</string>
+    <string name="error_details_label">Detalhes do Erro</string>
+    <string name="copy_error_details">Copiar detalhes do erro</string>
+    <string name="restart_app">Reiniciar Aplicativo</string>
+    <string name="error_details_clipboard_label">Detalhes do Erro</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Nenhum navegador encontrado para abrir esta URL</string>
+</resources>

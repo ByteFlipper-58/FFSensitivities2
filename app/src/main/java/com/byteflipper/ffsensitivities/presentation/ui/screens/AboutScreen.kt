@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -19,8 +18,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -36,7 +33,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -45,6 +41,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.rememberCoroutineScope
@@ -67,16 +64,16 @@ fun AboutScreen(
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
+    val primaryColorArgb = MaterialTheme.colorScheme.primary.toArgb() // Get color in Composable scope
     val reviewManager = remember { ReviewManagerFactory.create(context) }
 
     fun launchReviewFlow() {
         val activity = context as? ComponentActivity ?: return
         coroutineScope.launch {
             try {
-                val reviewInfo = reviewManager.requestReviewFlow().await() // Используем await() для получения ReviewInfo
-                reviewManager.launchReviewFlow(activity, reviewInfo) // Передаем полученный ReviewInfo
+                val reviewInfo = reviewManager.requestReviewFlow().await()
+                reviewManager.launchReviewFlow(activity, reviewInfo)
             } catch (e: Exception) {
-                // Обработка ошибки: открываем страницу приложения в Play Store
                 println("In-App Review failed, opening Play Store: ${e.message}")
                 try {
                     val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -85,7 +82,6 @@ fun AboutScreen(
                     }
                     context.startActivity(intent)
                 } catch (activityNotFoundException: Exception) {
-                    // Если Play Store не найден, открываем веб-версию
                     println("Play Store not found, opening web URL: ${activityNotFoundException.message}")
                     try {
                         val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}"))
@@ -93,7 +89,6 @@ fun AboutScreen(
                         context.startActivity(webIntent)
                     } catch (webException: Exception) {
                         println("Failed to open web URL: ${webException.message}")
-                        // Можно добавить дополнительную обработку, если и веб-ссылка не открылась
                     }
                 }
             }
@@ -150,8 +145,14 @@ fun AboutScreen(
                         title = stringResource(R.string.other_apps_title),
                         subtitle = stringResource(R.string.other_apps_subtitle),
                         icon = painterResource(id = R.drawable.apps_24px),
-                        onClick = { /* TODO: Add other apps action */ },
-                        showDivider = false // Hide divider for the last item
+                        onClick = {
+                            ChromeCustomTabUtil.openUrl(
+                                context = context,
+                                url = context.getString(R.string.google_play_store),
+                                primaryColor = primaryColorArgb // Use variable
+                            )
+                        },
+                        showDivider = false
                     )
                 }
             }
@@ -173,7 +174,8 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://byteflipper.web.app",
-                                )
+                                primaryColor = primaryColorArgb // Use variable
+                            )
                         }
                     )
 
@@ -185,7 +187,8 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://vk.com/byteflipper",
-                                )
+                                primaryColor = primaryColorArgb // Use variable
+                            )
                         }
                     )
 
@@ -197,7 +200,8 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://t.me/byteflipper",
-                                )
+                                primaryColor = primaryColorArgb // Use variable
+                            )
                         },
                         showDivider = false
                     )
@@ -221,7 +225,8 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58",
-                                )
+                                primaryColor = primaryColorArgb // Use variable
+                            )
                         }
                     )
 
@@ -233,7 +238,8 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58/FFSensitivities2",
-                                )
+                                primaryColor = primaryColorArgb
+                            )
                         },
                         showDivider = false
                     )
@@ -291,17 +297,15 @@ fun AppInfoHeader() {
             ) {
                 Box(
                     modifier = Modifier
-                        .size(60.dp)
-                        .clip(CircleShape)
-                        .shadow(8.dp, CircleShape)
-                        .background(MaterialTheme.colorScheme.primaryContainer),
+                        .size(86.dp)
+                        .clip(CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_launcher_foreground),
                         contentDescription = "App Icon",
-                        modifier = Modifier.size(100.dp),
-                        contentScale = ContentScale.Fit
+                        modifier = Modifier.size(128.dp),
+                        contentScale = ContentScale.Crop
                     )
                 }
 
@@ -321,24 +325,6 @@ fun AppInfoHeader() {
                         color = MaterialTheme.colorScheme.secondary
                     )
                 }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Button(
-                onClick = { /* TODO: Add action */ },
-                modifier = Modifier
-                    .fillMaxWidth(0.7f)
-                    .height(48.dp),
-                shape = RoundedCornerShape(24.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
-            ) {
-                Text(
-                    text = stringResource(R.string.contact_us),
-                    style = MaterialTheme.typography.titleMedium
-                )
             }
         }
     }

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">Улантуу</string>
+    <string name="copy">Көчүрүү</string>
+    <string name="copied">Көчүрүлдү</string>
+    <string name="copied_to_clipboard">Алмашуу буферине көчүрүлдү</string>
+    <string name="link">Шилтеме</string>
+    <string name="copy_link">Шилтемени көчүрүү</string>
+    <string name="open_link">Шилтемени ачуу</string>
+    <string name="back">Артка</string>
+    <string name="try_again">Кайра аракет кылыңыз</string>
+    <string name="action_retry">Кайталоо</string>
+    <string name="next">Кийинки</string>
+    <string name="error">Ката</string>
+    <string name="home">Башкы бет</string>
+    <string name="settings">Орнотуулар</string>
+    <string name="dialog_default_title">Маалымат</string>
+    <string name="not_available_placeholder">Ж/Ж</string> <!-- Жеткиликтүү эмес / Жок -->
+    <string name="expandable_section_collapse">Жыйнактоо</string>
+    <string name="expandable_section_expand">Жайып көрсөтүү</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Биздин тиркемеге кош келиңиз!</string>
+    <string name="welcome_screen_message">Салам, Жоокер! Бул жерден ар ким өзүнө ылайыктуу жөндөөнү табат; антпесе, аларды сурасаңыз болот</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Купуялык саясаты</string>
+    <string name="terms_of_service">Тейлөө шарттары</string>
+    <string name="privacy_acceptance_checkbox">Мен <![CDATA[<a href="privacy">Купуялык саясатын</a>]]> окуп чыктым жана макулмун</string>
+    <string name="terms_acceptance_checkbox">Мен <![CDATA[<a href="terms">Тейлөө шарттарын</a>]]> окуп чыктым жана макулмун</string>
+    <string name="accept_terms_and_policy">Мен <![CDATA[<a href="terms">Тейлөө шарттарын</a>]]> жана <![CDATA[<a href="privacy">Купуялык саясатын</a>]]> окуп чыктым жана макулмун</string>
+    <string name="privacy_dialog_title">Купуялык саясаты</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Таанышуу иллюстрациясы</string>
+    <string name="onboarding_info_title">FF Sensitivities-ке кош келиңиз!</string>
+    <string name="onboarding_info_description">Түзмөгүңүз үчүн эң мыкты сезгичтик жөндөөлөрүн таап, оюнуңузду жакшыртыңыз.</string>
+    <string name="onboarding_permissions_title">Кабарлоо уруксаты</string>
+    <string name="onboarding_permissions_description">Жаңы жөндөөлөр жана колдонмо жаңыртуулары жөнүндө сизге кабарлоолорду жөнөтүү үчүн уруксат керек.</string>
+    <string name="permission_granted">Уруксат берилди</string>
+    <string name="grant_permission">Уруксат берүү</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Жалпы</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">x2 Меркегич</string>
+    <string name="x4_scope">x4 Меркегич</string>
+    <string name="sniper_scope">Снайпердик меркегич</string>
+    <string name="free_review">Эркин кароо</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Атуу баскычы</string>
+    <string name="source">Булак</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">Иштейби?</string>
+    <string name="thank_for_review">Сын-пикириңиз үчүн рахмат!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Телефонуңуздун модели жокпу? Сурам жөнөтүңүз!</string>
+    <string name="request_sensitivities_settings_title">Сезгичтик жөндөөлөрүн суроо</string>
+    <string name="request_sensitivities_settings_message">Иштеп чыгуучуга жөнөтүлө турган маалымат</string>
+    <string name="request_sensitivities_settings_message_two">Жөндөөлөр сурамын жөнөтүү үчүн "Суроо" баскычын басыңыз, бул аракетти жокко чыгаруу мүмкүн эмес.</string>
+    <string name="request_sensitivities_settings_button">Суроо</string>
+    <string name="request_sensitivities_settings_success">Сурам ийгиликтүү жөнөтүлдү!\nЖакында жаңы жөндөөнү кошобуз.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">Түзмөктөр: </string>
+    <string name="devices_list">Түзмөктөр тизмеси</string>
+    <string name="sensitivity">Сезгичтик</string>
+    <string name="device_not_found">%1$s %2$s үчүн түзмөк табылган жок</string>
+    <string name="loading_device_data">Түзмөк маалыматтары жүктөлүүдө…</string>
+    <string name="favorite_icon_desc">Тандалган</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Тема жөндөөлөрү</string>
+    <string name="app_theme">Колдонмо темасы</string>
+    <string name="auto_theme">Автоматтык тема</string>
+    <string name="system_theme">Системалык тема</string>
+    <string name="light_theme">Ачык тема</string>
+    <string name="night_theme">Караңгы тема</string>
+    <string name="system_default">Системалык демейки</string>
+    <string name="auto_theme_description">Колдонмонун көрүнүшү күндүн чыгышына жана батышына жараша автоматтык түрдө өзгөрөт</string>
+    <string name="auto_level_of_charge_theme_description">Колдонмонун көрүнүшү телефондун заряд деңгээлине жараша автоматтык түрдө өзгөрөт</string>
+    <string name="light_theme_description">Ачык тема тандалды</string>
+    <string name="night_theme_description">Караңгы тема тандалды</string>
+    <string name="system_theme_description">Колдонмонун көрүнүшү Android темасына жараша өзгөрөт</string>
+    <string name="theme_system_description_detail">Демейки системалык опция</string>
+    <string name="theme_light_description_detail">Жакшы көрүнүү үчүн ачык тема</string>
+    <string name="theme_dark_description_detail">Көздүн чарчоосун азайтуу үчүн караңгы тема</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Контраст темасы</string>
+    <string name="contrast_theme_description_on">Контраст темасы учурда иштетилген.</string>
+    <string name="contrast_theme_description_off">Контраст темасы учурда өчүрүлгөн.</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">Динамикалык түстөрдү колдонуу</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Динамикалык түстөр иштетилди</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Динамикалык түстөр өчүрүлдү</string>
+    <string name="switch_dynamic_colors_are_not_supported">Динамикалык түстөр колдоого алынбайт</string>
+    <!-- Language -->
+    <string name="change_language">Тилди өзгөртүү</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Котормону жакшыртуу</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">Колдонмо жөнүндө</string>
+    <string name="version">Версия</string>
+    <string name="app_icon">Колдонмо сөлөкөтү</string>
+    <string name="made_with_love">ByteFlipper ❤️ менен жасаган</string>
+    <string name="contact_us">Биз менен байланышыңыз</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Колдоо &amp; Кайтарым байланыш</string>
+    <string name="connect_with_us_category_title">Биз менен байланышыңыз</string>
+    <string name="development_category_title">Иштеп чыгуу</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Ката жөнүндө кабарлоо</string>
+    <string name="bug_report_subtitle">Көйгөйдү сүрөттөп, бизге жөнөтүңүз</string>
+    <string name="rate_the_app_title">Колдонмого баа берүү</string>
+    <string name="rate_the_app_subtitle">Google Play\'де колдонмого баа бериңиз</string>
+    <string name="other_apps_title">Башка колдонмолор</string>
+    <string name="other_apps_subtitle">Биздин башка колдонмолор</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">ByteFlipper веб-сайты</string>
+    <string name="website_subtitle">Биздин веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Биздин VK\'дагы коомчулугубуз</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Биздин Telegram каналыбыз</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Биздин YouTube каналыбыз</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Биздин Discord серверибиз</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Биздин Github репозиторийибиз</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Баштапкы код</string>
+    <string name="source_code_subtitle">GitHub\'дагы колдонмонун баштапкы коду</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Ката жөнүндө кабарлоо</string>
+    <string name="report_bug">Ката жөнүндө кабарлоо</string>
+    <string name="bug_report_heading">Көйгөйдү сүрөттөңүз</string>
+    <string name="bug_report_header_subtitle">Колдонмону жакшыртууга жардам бериңиз</string>
+    <string name="bug_category_label">Категория</string>
+    <string name="bug_report_category_title">Көйгөй категориясы</string>
+    <string name="bug_report_category_placeholder">Категорияны тандаңыз</string>
+    <string name="bug_description_label">Сүрөттөмө</string>
+    <string name="bug_report_description_title">Көйгөй сүрөттөмөсү</string>
+    <string name="bug_report_description_placeholder">Көйгөйдү кеңири сүрөттөңүз…</string>
+    <string name="include_logs_checkbox">Колдонмо журналдарын кошуу</string>
+    <string name="bug_report_logs_option_subtitle">Бул көйгөйдү тезирээк аныктоого жардам берет</string>
+    <string name="bug_report_info_note_text">Отчет жашыруун түрдө жөнөтүлөт. Биздин команда аны мүмкүн болушунча тезирээк карайт.</string>
+    <string name="submit_bug_report_button">Отчетту жөнөтүү</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Колдоо</string>
+    <string name="bug_category_report_bug">Ката жөнүндө кабарлоо</string>
+    <string name="bug_category_visual_error">Визуалдык ката жөнүндө кабарлоо</string>
+    <string name="bug_category_request_settings">Жөндөөлөрдү суроо</string>
+    <string name="bug_category_settings_not_working">Жөндөөлөр иштебейт</string>
+    <string name="bug_category_other">Башка</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Отчет жөнөтүлүүдө…</string>
+    <string name="bug_report_submitting_subtitle">Күтө туруңуз…</string>
+    <string name="bug_report_success_title">Отчет жөнөтүлдү</string>
+    <string name="bug_report_success_message">Колдонмону жакшыртууга жардам бергениңиз үчүн рахмат! Сиздин пикириңиз биз үчүн абдан маанилүү.</string>
+    <string name="bug_report_submission_error_title">Жөнөтүү катасы</string>
+    <string name="bug_report_submission_failed_default">Отчетту жөнөтүү мүмкүн болгон жок.</string>
+    <string name="bug_report_submission_error">Жөнөтүү катасы: %1$s</string>
+    <string name="bug_report_log_not_found">Журнал файлы табылган жок.</string>
+    <string name="bug_report_log_read_error">Журнал файлын окуу катасы: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Артка</string>
+    <string name="bug_report_action_cancel">Жокко чыгаруу</string>
+    <string name="bug_report_action_retry">Кайталоо</string>
+    <string name="bug_report_action_close">Жабуу</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">Жаңыртууларды текшерүү</string>
+    <string name="update_available">Жаңыртуу жеткиликтүү</string>
+    <string name="update_now_available">Жүктөө үчүн жаңыртуу жеткиликтүү!</string>
+    <string name="no_update_available">Жаңыртуулар жок</string>
+    <string name="update_not_needed">Колдонмоңуз жаңыртылган</string>
+    <string name="update_now">Азыр жаңыртуу</string>
+    <string name="update_later">Кийинчерээк жаңыртуу</string>
+    <string name="update_required">Колдонмону колдонуу үчүн бул жаңыртуу талап кылынат</string>
+    <string name="update_checking">Жаңыртуулар текшерилүүдө…</string>
+    <string name="update_downloading">Жаңыртуу жүктөлүүдө…</string>
+    <string name="update_installing">Жаңыртуу орнотулууда…</string>
+    <string name="update_download_started">Жаңыртууну жүктөө башталды</string>
+    <string name="update_download_complete">Жаңыртууну жүктөө аяктады. Орнотуу башталды…</string>
+    <string name="update_restart">Жаңыртууну аяктоо үчүн колдонмону кайра иштетиңиз</string>
+    <string name="update_failed">Жаңыртууну жүктөө мүмкүн болгон жок</string>
+    <string name="update_no_connection">Интернет байланышы жок. Кийинчерээк кайталап көрүңүз.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Жаңыртуу учурунда ката кетти. Кийинчерээк кайталап көрүңүз.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Ката: </string>
+    <string name="unknown_error">Белгисиз ката</string>
+    <string name="error_message_prefix">Кабар: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Интернет байланышы жок</string>
+    <string name="error_no_internet_title">Интернет байланышы жок</string>
+    <string name="error_no_internet_message">Интернет байланышыңызды текшерип, кайра аракет кылыңыз.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Ката кетти</string>
+    <string name="error_occurred_message">Тилекке каршы, колдонмо күтүлбөгөн көйгөйгө туш болду.</string>
+    <string name="error_details_info">Ката маалыматтары иштеп чыгуучуларга жөнөтүлдү. Төмөндөгү маалыматтарды көчүрө аласыз.</string>
+    <string name="error_details_label">Ката маалыматтары</string>
+    <string name="copy_error_details">Ката маалыматтарын көчүрүү</string>
+    <string name="restart_app">Колдонмону кайра иштетүү</string>
+    <string name="error_details_clipboard_label">Ката маалыматтары</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Бул URL дарегин ачуу үчүн браузер табылган жок</string>
+</resources>

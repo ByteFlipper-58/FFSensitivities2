@@ -1,145 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_title">Uygulamamıza Hoş Geldiniz!</string>
-    <string name="welcome_screen_message">Merhaba Savaşçı! Herkes kendine uygun bir ayar bulacak; aksi takdirde onları talep edebilirsiniz</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
-    <string name="continue_button">Devam</string>
-
-    <!-- Links & Contacts -->
-    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Review Settings -->
+    <!-- Common Actions       -->
+    <string name="continue_button">Devam Et</string>
+    <string name="copy">Kopyala</string>
+    <string name="copied">Kopyalandı</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="link">Bağlantı</string>
+    <string name="copy_link">Bağlantıyı Kopyala</string>
+    <string name="open_link">Bağlantıyı Aç</string>
+    <string name="back">Geri</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="action_retry">Yeniden Dene</string>
+    <string name="next">İleri</string>
+    <string name="error">Hata</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="settings">Ayarlar</string>
+    <string name="dialog_default_title">Bilgi</string>
+    <string name="not_available_placeholder">M/D</string> <!-- Mevcut Değil -->
+    <string name="expandable_section_collapse">Daralt</string>
+    <string name="expandable_section_expand">Genişlet</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Uygulamamıza hoş geldiniz!</string>
+    <string name="welcome_screen_message">Merhaba Savaşçı! Burada herkes kendine uygun bir ayar bulacaktır; bulamazsanız talep edebilirsiniz</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="terms_of_service">Hizmet Şartları</string>
+    <string name="privacy_acceptance_checkbox"><![CDATA[<a href="privacy">Gizlilik Politikası</a>]]>\'nı okudum ve kabul ediyorum</string>
+    <string name="terms_acceptance_checkbox"><![CDATA[<a href="terms">Hizmet Şartları</a>]]>\'nı okudum ve kabul ediyorum</string>
+    <string name="accept_terms_and_policy"><![CDATA[<a href="terms">Hizmet Şartları</a>]]>\'nı ve <![CDATA[<a href="privacy">Gizlilik Politikası</a>]]>\'nı okudum ve kabul ediyorum</string>
+    <string name="privacy_dialog_title">Gizlilik Politikası</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Tanıtım illüstrasyonu</string>
+    <string name="onboarding_info_title">FF Sensitivities\'e Hoş Geldiniz!</string>
+    <string name="onboarding_info_description">Cihazınız için en iyi hassasiyet ayarlarını bulun ve oyun deneyiminizi geliştirin.</string>
+    <string name="onboarding_permissions_title">Bildirim İzni</string>
+    <string name="onboarding_permissions_description">Yeni ayarlar ve uygulama güncellemeleri hakkında size bildirim gönderebilmemiz için izninize ihtiyacımız var.</string>
+    <string name="permission_granted">İzin Verildi</string>
+    <string name="grant_permission">İzin Ver</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
     <string name="review">Genel</string>
-    <string name="collimator">Kırmızı Nokta</string>
+    <string name="collimator">Kolimatör</string>
     <string name="x2_scope">x2 Dürbün</string>
     <string name="x4_scope">x4 Dürbün</string>
     <string name="sniper_scope">Keskin Nişancı Dürbünü</string>
     <string name="free_review">Serbest Bakış</string>
     <string name="dpi">DPI</string>
-    <string name="fire_button">Ateş Düğmesi</string>
+    <string name="fire_button">Ateş Butonu</string>
     <string name="source">Kaynak</string>
-    <string name="it_works">Çalışıyor mu?</string>
-    <string name="thank_for_review">İncelemeniz için teşekkür ederiz!</string>
-
-    <!-- Request Sensitivity Settings -->
-    <string name="dont_have_your_phone_model">Telefon modeliniz yok mu? İstek yapın!</string>
-
+    <!-- Review/Feedback -->
+    <string name="it_works">İşe Yarıyor mu?</string>
+    <string name="thank_for_review">Değerlendirmeniz için teşekkür ederiz!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Telefon modeliniz yok mu? Talep oluşturun!</string>
     <string name="request_sensitivities_settings_title">Hassasiyet ayarları talep et</string>
     <string name="request_sensitivities_settings_message">Geliştiriciye gönderilecek bilgiler</string>
-    <string name="request_sensitivities_settings_message_two">Ayarlar isteği göndermek için İstek düğmesine tıklayın, bu işlem geri alınamaz.</string>
-    <string name="request_sensitivities_settings_button">İstek</string>
-    <string name="request_sensitivities_settings_success">İstek başarıyla gönderildi!\nYakında yeni bir ayar ekleyeceğiz.</string>
+    <string name="request_sensitivities_settings_message_two">Bir ayar talebi göndermek için Talep Et düğmesine tıklayın, bu işlem geri alınamaz.</string>
+    <string name="request_sensitivities_settings_button">Talep Et</string>
+    <string name="request_sensitivities_settings_success">Talep başarıyla gönderildi!\nYakında yeni bir ayar ekleyeceğiz.</string>
 
-    <!-- Utility Actions -->
-    <string name="improve_translation">Çeviriyi İyileştir</string>
-    <string name="copy">Kopyala</string>
-    <string name="copied">Kopyalandı</string>
-    <string name="link">Bağlantı</string>
-    <string name="copy_link">Bağlantıyı Kopyala</string>
-    <string name="open_link">Bağlantıyı Aç</string>
-    <string name="error">Hata</string>
-    <string name="back">Geri</string>
-    <string name="app_icon">Uygulama simgesi</string>
+    <!-- Devices List Screen  -->
+    <string name="devices">Cihazlar: </string>
+    <string name="devices_list">Cihaz listesi</string>
+    <string name="sensitivity">Hassasiyet</string>
+    <string name="device_not_found">%1$s %2$s için cihaz bulunamadı</string>
+    <string name="loading_device_data">Cihaz verileri yükleniyor…</string>
+    <string name="favorite_icon_desc">Favori</string>
 
-    <!-- About Section -->
-    <string name="about_app">Uygulama Hakkında</string>
-    <string name="home">Ana Sayfa</string>
-    <string name="version">Sürüm</string>
-
-    <!-- Source Code -->
-    <string name="source_code_title">Kaynak Kodu</string>
-    <string name="source_code_subtitle">Uygulamanın GitHub\'daki kaynak kodu</string>
-    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
-
-    <!-- Bug Report -->
-    <string name="bug_report_title">Hata Raporu</string>
-    <string name="bug_report_subtitle">Lütfen sorunu açıklayın ve bize gönderin</string>
-
-    <!-- Rate the App -->
-    <string name="rate_the_app_title">Uygulamayı Değerlendir</string>
-    <string name="rate_the_app_subtitle">Uygulamayı Google Play\'de değerlendir</string>
-
-    <!-- External Links -->
-    <string name="website_title">ByteFlipper Web Sitesi</string>
-    <string name="website_subtitle">Web Sitemiz</string>
-    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
-
-    <string name="github_title">Github</string>
-    <string name="github_subtitle">Github Depomuz</string>
-    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
-
-    <string name="vk_title">VK</string>
-    <string name="vk_subtitle">VK\'daki topluluğumuz</string>
-    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
-
-    <string name="telegram_title">Telegram</string>
-    <string name="telegram_subtitle">Telegram Kanalımız</string>
-    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
-
-    <string name="youtube_title">YouTube</string>
-    <string name="youtube_subtitle">YouTube Kanalımız</string>
-    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
-
-    <string name="discord_title">Discord</string>
-    <string name="discord_subtitle">Discord Sunucumuz</string>
-    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
-
-    <string name="other_apps_title">Diğer Uygulamalar</string>
-    <string name="other_apps_subtitle">Diğer Uygulamalarımız</string>
-    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
-
-    <!-- Settings -->
-    <string name="settings">Ayarlar</string>
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Tema Ayarları</string>
     <string name="app_theme">Uygulama Teması</string>
     <string name="auto_theme">Otomatik tema</string>
     <string name="system_theme">Sistem teması</string>
     <string name="light_theme">Açık tema</string>
-    <string name="night_theme">Gece teması</string>
-    <string name="auto_theme_description">Uygulamanın görünümü, güneşin doğuş ve batış saatine bağlı olarak otomatik olarak değişecektir</string>
-    <string name="auto_level_of_charge_theme_description">Uygulamanın görünümü, telefonun şarj düzeyine bağlı olarak otomatik olarak değişecektir</string>
+    <string name="night_theme">Koyu tema</string>
+    <string name="system_default">Sistem varsayılanı</string>
+    <string name="auto_theme_description">Uygulamanın görünümü gün doğumu ve gün batımı zamanına göre otomatik olarak değişecektir</string>
+    <string name="auto_level_of_charge_theme_description">Uygulamanın görünümü telefonun şarj seviyesine göre otomatik olarak değişecektir</string>
     <string name="light_theme_description">Açık tema seçildi</string>
-    <string name="night_theme_description">Gece teması seçildi</string>
-    <string name="system_theme_description">Uygulamanın görünümü, Android temasına bağlı olarak değişecektir</string>
-
+    <string name="night_theme_description">Koyu tema seçildi</string>
+    <string name="system_theme_description">Uygulamanın görünümü Android temasına göre değişecektir</string>
+    <string name="theme_system_description_detail">Varsayılan sistem seçeneği</string>
+    <string name="theme_light_description_detail">Daha iyi görünürlük için açık tema</string>
+    <string name="theme_dark_description_detail">Göz yorgunluğunu azaltmak için koyu tema</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Kontrast teması</string>
+    <string name="contrast_theme_description_on">Kontrast teması şu anda etkin.</string>
+    <string name="contrast_theme_description_off">Kontrast teması şu anda devre dışı.</string>
+    <!-- Dynamic Colors -->
     <string name="switch_use_dynamic_colors_title">Dinamik renkleri kullan</string>
-    <string name="switch_use_dynamic_colors_subtitle_on">Dinamik renkler etkin</string>
-    <string name="switch_use_dynamic_colors_subtitle_off">Dinamik renkler devre dışı</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Dinamik renkler etkinleştirildi</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Dinamik renkler devre dışı bırakıldı</string>
     <string name="switch_dynamic_colors_are_not_supported">Dinamik renkler desteklenmiyor</string>
-
+    <!-- Language -->
     <string name="change_language">Dili değiştir</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Çeviriyi İyileştir</string>
 
-    <!-- Error Screen -->
-    <string name="try_again">Tekrar dene</string>
+    <!-- About Screen         -->
+    <string name="about_app">Uygulama Hakkında</string>
+    <string name="version">Sürüm</string>
+    <string name="app_icon">Uygulama simgesi</string>
+    <string name="made_with_love">❤️ ile ByteFlipper tarafından yapıldı</string>
+    <string name="contact_us">Bize Ulaşın</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Destek &amp; Geri Bildirim</string>
+    <string name="connect_with_us_category_title">Bizimle Bağlantı Kurun</string>
+    <string name="development_category_title">Geliştirme</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Hata Bildir</string>
+    <string name="bug_report_subtitle">Lütfen sorunu açıklayın ve bize gönderin</string>
+    <string name="rate_the_app_title">Uygulamayı Değerlendir</string>
+    <string name="rate_the_app_subtitle">Uygulamayı Google Play\'de değerlendirin</string>
+    <string name="other_apps_title">Diğer Uygulamalar</string>
+    <string name="other_apps_subtitle">Diğer Uygulamalarımız</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">ByteFlipper Web Sitesi</string>
+    <string name="website_subtitle">Web Sitemiz</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">VK\'daki topluluğumuz</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Telegram Kanalımız</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">YouTube Kanalımız</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Discord Sunucumuz</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Github Depomuz</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Kaynak Kodu</string>
+    <string name="source_code_subtitle">Uygulamanın GitHub\'daki kaynak kodu</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Hata Bildir</string>
     <string name="report_bug">Hata bildir</string>
+    <string name="bug_report_heading">Sorunu Açıklayın</string>
+    <string name="bug_report_header_subtitle">Uygulamayı geliştirmemize yardımcı olun</string>
+    <string name="bug_category_label">Kategori</string>
+    <string name="bug_report_category_title">Sorun kategorisi</string>
+    <string name="bug_report_category_placeholder">Kategori seçin</string>
+    <string name="bug_description_label">Açıklama</string>
+    <string name="bug_report_description_title">Sorun açıklaması</string>
+    <string name="bug_report_description_placeholder">Sorunu ayrıntılı olarak açıklayın…</string>
+    <string name="include_logs_checkbox">Uygulama günlüklerini dahil et</string>
+    <string name="bug_report_logs_option_subtitle">Bu, sorunu daha hızlı teşhis etmemize yardımcı olacaktır</string>
+    <string name="bug_report_info_note_text">Rapor anonim olarak gönderilecektir. Ekibimiz en kısa sürede inceleyecektir.</string>
+    <string name="submit_bug_report_button">Raporu Gönder</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Destek</string>
+    <string name="bug_category_report_bug">Hata bildir</string>
+    <string name="bug_category_visual_error">Görsel hata bildir</string>
+    <string name="bug_category_request_settings">Ayar talep et</string>
+    <string name="bug_category_settings_not_working">Ayarlar çalışmıyor</string>
+    <string name="bug_category_other">Diğer</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Rapor gönderiliyor…</string>
+    <string name="bug_report_submitting_subtitle">Lütfen bekleyin…</string>
+    <string name="bug_report_success_title">Rapor Gönderildi</string>
+    <string name="bug_report_success_message">Uygulamayı geliştirmemize yardımcı olduğunuz için teşekkür ederiz! Geri bildiriminiz bizim için çok önemli.</string>
+    <string name="bug_report_submission_error_title">Gönderme Hatası</string>
+    <string name="bug_report_submission_failed_default">Rapor gönderilemedi.</string>
+    <string name="bug_report_submission_error">Gönderme hatası: %1$s</string>
+    <string name="bug_report_log_not_found">Günlük dosyası bulunamadı.</string>
+    <string name="bug_report_log_read_error">Günlük dosyası okuma hatası: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Geri</string>
+    <string name="bug_report_action_cancel">İptal</string>
+    <string name="bug_report_action_retry">Yeniden Dene</string>
+    <string name="bug_report_action_close">Kapat</string>
 
-    <!-- Devices List -->
-    <string name="devices">Cihazlar: </string>
-    <string name="devices_list">Cihaz listesi</string>
-    <string name="sensitivity">Hassasiyet</string>
-
-    <!-- Updates -->
+    <!-- Update Flow -->
+    <string name="check_for_updates">Güncellemeleri kontrol et</string>
     <string name="update_available">Bir güncelleme mevcut</string>
+    <string name="update_now_available">İndirilebilecek bir güncelleme mevcut!</string>
+    <string name="no_update_available">Mevcut güncelleme yok</string>
+    <string name="update_not_needed">Uygulamanız güncel</string>
     <string name="update_now">Şimdi güncelle</string>
-    <string name="update_required">Bu güncelleme, uygulamayı kullanmak için gereklidir</string>
-    <string name="update_failed">Güncelleme indirilemedi</string>
     <string name="update_later">Daha sonra güncelle</string>
-    <string name="update_restart">Güncellemeyi tamamlamak için lütfen uygulamayı yeniden başlatın</string>
-    <string name="update_no_connection">İnternet bağlantısı yok. Lütfen daha sonra tekrar deneyin.</string>
+    <string name="update_required">Uygulamayı kullanmak için bu güncelleme gereklidir</string>
     <string name="update_checking">Güncellemeler kontrol ediliyor…</string>
     <string name="update_downloading">Güncelleme indiriliyor…</string>
     <string name="update_installing">Güncelleme yükleniyor…</string>
+    <string name="update_download_started">Güncelleme indirme başladı</string>
+    <string name="update_download_complete">Güncelleme indirme tamamlandı. Yükleme başlıyor…</string>
+    <string name="update_restart">Güncellemeyi tamamlamak için lütfen uygulamayı yeniden başlatın</string>
+    <string name="update_failed">Güncelleme indirilemedi</string>
+    <string name="update_no_connection">İnternet bağlantısı yok. Lütfen daha sonra tekrar deneyin.</string>
+    <!-- Also used in Error Handling -->
     <string name="update_error_occurred">Güncelleme sırasında bir hata oluştu. Lütfen daha sonra tekrar deneyin.</string>
-    <string name="update_now_available">İndirmek için bir güncelleme mevcut!</string>
-    <string name="check_for_updates">Güncellemeleri kontrol et</string>
-    <string name="no_update_available">Kullanılabilir güncelleme yok</string>
-    <string name="update_download_started">Güncelleme indirme başlatıldı</string>
-    <string name="update_download_complete">Güncelleme indirme tamamlandı. Kurulum başlıyor…</string>
-    <string name="update_not_needed">Uygulamanız güncel</string>
-    <string name="system_default">Sistem varsayılanı</string> <!-- Placeholder, please translate -->
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Hata: </string>
+    <string name="unknown_error">Bilinmeyen hata</string>
+    <string name="error_message_prefix">Mesaj: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">İnternet Bağlantısı Yok</string>
+    <string name="error_no_internet_title">İnternet Bağlantısı Yok</string>
+    <string name="error_no_internet_message">Lütfen internet bağlantınızı kontrol edin ve tekrar deneyin.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Bir Hata Oluştu</string>
+    <string name="error_occurred_message">Maalesef uygulama beklenmedik bir sorunla karşılaştı.</string>
+    <string name="error_details_info">Hata ayrıntıları geliştiricilere gönderildi. Aşağıdaki ayrıntıları kopyalayabilirsiniz.</string>
+    <string name="error_details_label">Hata Ayrıntıları</string>
+    <string name="copy_error_details">Hata ayrıntılarını kopyala</string>
+    <string name="restart_app">Uygulamayı Yeniden Başlat</string>
+    <string name="error_details_clipboard_label">Hata Ayrıntıları</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Bu URL\'yi açacak tarayıcı bulunamadı</string>
 </resources>

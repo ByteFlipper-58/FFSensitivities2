@@ -1,145 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- App Information -->
     <string name="app_name" translatable="false">FF Sensitivities</string>
-
-    <!-- Welcome Screen -->
-    <string name="welcome_screen_title">Bienvenue dans notre application !</string>
-    <string name="welcome_screen_message">Bonjour, combattant ! Chacun trouvera ici un réglage qui lui convient ; sinon, vous pouvez le demander</string>
-    <string name="privacy_policy" translatable="false">Privacy Policy</string>
-    <string name="terms_of_service" translatable="false">Terms of Service</string>
-    <string name="continue_button">Continuer</string>
-
-    <!-- Links & Contacts -->
-    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Review Settings -->
-    <string name="review">Général</string>
-    <string name="collimator">Point rouge</string>
-    <string name="x2_scope">Lunette x2</string>
-    <string name="x4_scope">Lunette x4</string>
-    <string name="sniper_scope">Lunette de sniper</string>
-    <string name="free_review">Vue libre</string>
-    <string name="dpi">DPI</string>
-    <string name="fire_button">Bouton de tir</string>
-    <string name="source">Source</string>
-    <string name="it_works">Ça marche ?</string>
-    <string name="thank_for_review">Merci pour votre avis !</string>
-
-    <!-- Request Sensitivity Settings -->
-    <string name="dont_have_your_phone_model">Vous n\'avez pas votre modèle de téléphone ? Faites une demande !</string>
-
-    <string name="request_sensitivities_settings_title">Demander les paramètres de sensibilité</string>
-    <string name="request_sensitivities_settings_message">Informations qui seront envoyées au développeur</string>
-    <string name="request_sensitivities_settings_message_two">Cliquez sur le bouton Demander pour soumettre une demande de paramètres, cette action est irréversible.</string>
-    <string name="request_sensitivities_settings_button">Demander</string>
-    <string name="request_sensitivities_settings_success">Demande envoyée avec succès !\nNous ajouterons bientôt un nouveau réglage.</string>
-
-    <!-- Utility Actions -->
-    <string name="improve_translation">Améliorer la traduction</string>
+    <!-- Common Actions       -->
+    <string name="continue_button">Continuer</string>
     <string name="copy">Copier</string>
     <string name="copied">Copié</string>
+    <string name="copied_to_clipboard">Copié dans le presse-papiers</string>
     <string name="link">Lien</string>
     <string name="copy_link">Copier le lien</string>
     <string name="open_link">Ouvrir le lien</string>
-    <string name="error">Erreur</string>
     <string name="back">Retour</string>
-    <string name="app_icon">Icône de l\'application</string>
-
-    <!-- About Section -->
-    <string name="about_app">À propos de l\'application</string>
+    <string name="try_again">Réessayer</string>
+    <string name="action_retry">Réessayer</string>
+    <string name="next">Suivant</string>
+    <string name="error">Erreur</string>
     <string name="home">Accueil</string>
-    <string name="version">Version</string>
-
-    <!-- Source Code -->
-    <string name="source_code_title">Code source</string>
-    <string name="source_code_subtitle">Code source de l\'application sur GitHub</string>
-    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
-
-    <!-- Bug Report -->
-    <string name="bug_report_title">Rapport de bug</string>
-    <string name="bug_report_subtitle">Veuillez décrire le problème et nous l\'envoyer</string>
-
-    <!-- Rate the App -->
-    <string name="rate_the_app_title">Évaluer l\'application</string>
-    <string name="rate_the_app_subtitle">Évaluer l\'application sur Google Play</string>
-
-    <!-- External Links -->
-    <string name="website_title">Site Web ByteFlipper</string>
-    <string name="website_subtitle">Notre site Web</string>
-    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
-
-    <string name="github_title">Github</string>
-    <string name="github_subtitle">Notre dépôt Github</string>
-    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
-
-    <string name="vk_title">VK</string>
-    <string name="vk_subtitle">Notre communauté sur VK</string>
-    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
-
-    <string name="telegram_title">Telegram</string>
-    <string name="telegram_subtitle">Notre chaîne Telegram</string>
-    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
-
-    <string name="youtube_title">YouTube</string>
-    <string name="youtube_subtitle">Notre chaîne YouTube</string>
-    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
-
-    <string name="discord_title">Discord</string>
-    <string name="discord_subtitle">Notre serveur Discord</string>
-    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
-
-    <string name="other_apps_title">Autres applications</string>
-    <string name="other_apps_subtitle">Nos autres applications</string>
-    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
-
-    <!-- Settings -->
     <string name="settings">Paramètres</string>
+    <string name="dialog_default_title">Information</string>
+    <string name="not_available_placeholder">N/D</string> <!-- Non Disponible -->
+    <string name="expandable_section_collapse">Réduire</string>
+    <string name="expandable_section_expand">Développer</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Bienvenue dans notre application !</string>
+    <string name="welcome_screen_message">Salut Combattant ! Chacun trouvera ici un paramètre pour lui-même ; sinon, vous pouvez les demander</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="terms_of_service">Conditions d\'utilisation</string>
+    <string name="privacy_acceptance_checkbox">J\'ai lu et j\'accepte la <![CDATA[<a href="privacy">Politique de confidentialité</a>]]></string>
+    <string name="terms_acceptance_checkbox">J\'ai lu et j\'accepte les <![CDATA[<a href="terms">Conditions d\'utilisation</a>]]></string>
+    <string name="accept_terms_and_policy">J\'ai lu et j\'accepte les <![CDATA[<a href="terms">Conditions d\'utilisation</a>]]> et la <![CDATA[<a href="privacy">Politique de confidentialité</a>]]></string>
+    <string name="privacy_dialog_title">Politique de confidentialité</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Illustration d\'accueil</string>
+    <string name="onboarding_info_title">Bienvenue dans FF Sensitivities !</string>
+    <string name="onboarding_info_description">Trouvez les meilleurs paramètres de sensibilité pour votre appareil et améliorez votre gameplay.</string>
+    <string name="onboarding_permissions_title">Autorisation de notification</string>
+    <string name="onboarding_permissions_description">Nous avons besoin de l\'autorisation pour vous envoyer des notifications sur les nouveaux paramètres et les mises à jour de l\'application.</string>
+    <string name="permission_granted">Autorisation accordée</string>
+    <string name="grant_permission">Accorder l\'autorisation</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Général</string>
+    <string name="collimator">Point Rouge</string> <!-- Ou Collimateur si préféré -->
+    <string name="x2_scope">Lunette x2</string>
+    <string name="x4_scope">Lunette x4</string>
+    <string name="sniper_scope">Lunette de sniper</string>
+    <string name="free_review">Visée libre</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Bouton de tir</string>
+    <string name="source">Source</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">Ça fonctionne ?</string>
+    <string name="thank_for_review">Merci pour votre évaluation !</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Vous n\'avez pas votre modèle de téléphone ? Faites une demande !</string>
+    <string name="request_sensitivities_settings_title">Demander des paramètres de sensibilités</string>
+    <string name="request_sensitivities_settings_message">Informations qui seront envoyées au développeur</string>
+    <string name="request_sensitivities_settings_message_two">Cliquez sur le bouton Demander pour soumettre une demande de paramètres, cette action ne peut pas être annulée.</string>
+    <string name="request_sensitivities_settings_button">Demander</string>
+    <string name="request_sensitivities_settings_success">Demande envoyée avec succès !nNous ajouterons bientôt un nouveau paramètre.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">Appareils : </string>
+    <string name="devices_list">Liste des appareils</string>
+    <string name="sensitivity">Sensibilité</string>
+    <string name="device_not_found">Appareil non trouvé pour %1$s %2$s</string>
+    <string name="loading_device_data">Chargement des données de l\'appareil…</string>
+    <string name="favorite_icon_desc">Favori</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Paramètres du thème</string>
     <string name="app_theme">Thème de l\'application</string>
     <string name="auto_theme">Thème automatique</string>
     <string name="system_theme">Thème système</string>
     <string name="light_theme">Thème clair</string>
     <string name="night_theme">Thème sombre</string>
+    <string name="system_default">Système par défaut</string>
     <string name="auto_theme_description">L\'apparence de l\'application changera automatiquement en fonction de l\'heure du lever et du coucher du soleil</string>
     <string name="auto_level_of_charge_theme_description">L\'apparence de l\'application changera automatiquement en fonction du niveau de charge du téléphone</string>
     <string name="light_theme_description">Thème clair sélectionné</string>
     <string name="night_theme_description">Thème sombre sélectionné</string>
     <string name="system_theme_description">L\'apparence de l\'application changera en fonction du thème Android</string>
-
+    <string name="theme_system_description_detail">Option système par défaut</string>
+    <string name="theme_light_description_detail">Thème lumineux pour une meilleure visibilité</string>
+    <string name="theme_dark_description_detail">Thème sombre pour réduire la fatigue oculaire</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Thème de contraste</string>
+    <string name="contrast_theme_description_on">Le thème de contraste est actuellement activé.</string>
+    <string name="contrast_theme_description_off">Le thème de contraste est actuellement désactivé.</string>
+    <!-- Dynamic Colors -->
     <string name="switch_use_dynamic_colors_title">Utiliser les couleurs dynamiques</string>
     <string name="switch_use_dynamic_colors_subtitle_on">Les couleurs dynamiques sont activées</string>
     <string name="switch_use_dynamic_colors_subtitle_off">Les couleurs dynamiques sont désactivées</string>
-    <string name="switch_dynamic_colors_are_not_supported">Les couleurs dynamiques ne sont pas prises en charge</string>
-
+    <string name="switch_dynamic_colors_are_not_supported">Les couleurs dynamiques не sont pas prises en charge</string>
+    <!-- Language -->
     <string name="change_language">Changer de langue</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Améliorer la traduction</string>
 
-    <!-- Error Screen -->
-    <string name="try_again">Réessayer</string>
+    <!-- About Screen         -->
+    <string name="about_app">À propos de l\'application</string>
+    <string name="version">Version</string>
+    <string name="app_icon">Icône de l\'application</string>
+    <string name="made_with_love">Fait avec ❤️ par ByteFlipper</string>
+    <string name="contact_us">Contactez-nous</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Support et commentaires</string>
+    <string name="connect_with_us_category_title">Connectez-vous avec nous</string>
+    <string name="development_category_title">Développement</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Signaler un bug</string>
+    <string name="bug_report_subtitle">Veuillez décrire le problème et nous l\'envoyer</string>
+    <string name="rate_the_app_title">Évaluer l\'application</string>
+    <string name="rate_the_app_subtitle">Évaluez l\'application sur Google Play</string>
+    <string name="other_apps_title">Autres applications</string>
+    <string name="other_apps_subtitle">Nos autres applications</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">Site Web de ByteFlipper</string>
+    <string name="website_subtitle">Notre site Web</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Notre communauté sur VK</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Notre chaîne Telegram</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Notre chaîne YouTube</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Notre serveur Discord</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Notre dépôt Github</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Code source</string>
+    <string name="source_code_subtitle">Code source de l\'application sur GitHub</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Signaler un bug</string>
     <string name="report_bug">Signaler un bug</string>
+    <string name="bug_report_heading">Décrivez le problème</string>
+    <string name="bug_report_header_subtitle">Aidez-nous à améliorer l\'application</string>
+    <string name="bug_category_label">Catégorie</string>
+    <string name="bug_report_category_title">Catégorie du problème</string>
+    <string name="bug_report_category_placeholder">Sélectionnez une catégorie</string>
+    <string name="bug_description_label">Description</string>
+    <string name="bug_report_description_title">Description du problème</string>
+    <string name="bug_report_description_placeholder">Décrivez le problème en détail…</string>
+    <string name="include_logs_checkbox">Inclure les journaux de l\'application</string>
+    <string name="bug_report_logs_option_subtitle">Cela nous aidera à diagnostiquer le problème plus rapidement</string>
+    <string name="bug_report_info_note_text">Le rapport sera envoyé de manière anonyme. Notre équipe l\'examinera dès que possible.</string>
+    <string name="submit_bug_report_button">Envoyer le rapport</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Support</string>
+    <string name="bug_category_report_bug">Signaler un bug</string>
+    <string name="bug_category_visual_error">Signaler une erreur visuelle</string>
+    <string name="bug_category_request_settings">Demander des paramètres</string>
+    <string name="bug_category_settings_not_working">Les paramètres ne fonctionnent pas</string>
+    <string name="bug_category_other">Autre</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Envoi du rapport…</string>
+    <string name="bug_report_submitting_subtitle">Veuillez patienter…</string>
+    <string name="bug_report_success_title">Rapport envoyé</string>
+    <string name="bug_report_success_message">Merci de nous aider à améliorer l\'application ! Vos commentaires sont très importants pour nous.</string>
+    <string name="bug_report_submission_error_title">Erreur d\'envoi</string>
+    <string name="bug_report_submission_failed_default">Échec de l\'envoi du rapport.</string>
+    <string name="bug_report_submission_error">Erreur d\'envoi : %1$s</string>
+    <string name="bug_report_log_not_found">Fichier journal introuvable.</string>
+    <string name="bug_report_log_read_error">Erreur de lecture du fichier journal : %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Retour</string>
+    <string name="bug_report_action_cancel">Annuler</string>
+    <string name="bug_report_action_retry">Réessayer</string>
+    <string name="bug_report_action_close">Fermer</string>
 
-    <!-- Devices List -->
-    <string name="devices">Appareils : </string>
-    <string name="devices_list">Liste des appareils</string>
-    <string name="sensitivity">Sensibilité</string>
-
-    <!-- Updates -->
+    <!-- Update Flow -->
+    <string name="check_for_updates">Vérifier les mises à jour</string>
     <string name="update_available">Une mise à jour est disponible</string>
+    <string name="update_now_available">Une mise à jour est disponible au téléchargement !</string>
+    <string name="no_update_available">Aucune mise à jour disponible</string>
+    <string name="update_not_needed">Votre application est à jour</string>
     <string name="update_now">Mettre à jour maintenant</string>
-    <string name="update_required">Cette mise à jour est nécessaire pour utiliser l\'application</string>
-    <string name="update_failed">Échec du téléchargement de la mise à jour</string>
     <string name="update_later">Mettre à jour plus tard</string>
-    <string name="update_restart">Veuillez redémarrer l\'application pour terminer la mise à jour</string>
-    <string name="update_no_connection">Pas de connexion Internet. Veuillez réessayer plus tard.</string>
+    <string name="update_required">Cette mise à jour est requise pour utiliser l\'application</string>
     <string name="update_checking">Vérification des mises à jour…</string>
     <string name="update_downloading">Téléchargement de la mise à jour…</string>
     <string name="update_installing">Installation de la mise à jour…</string>
-    <string name="update_error_occurred">Une erreur s\'est produite lors de la mise à jour. Veuillez réessayer plus tard.</string>
-    <string name="update_now_available">Une mise à jour est disponible au téléchargement !</string>
-    <string name="check_for_updates">Vérifier les mises à jour</string>
-    <string name="no_update_available">Aucune mise à jour disponible</string>
-    <string name="update_download_started">Téléchargement de la mise à jour commencé</string>
+    <string name="update_download_started">Le téléchargement de la mise à jour a commencé</string>
     <string name="update_download_complete">Téléchargement de la mise à jour terminé. Installation en cours…</string>
-    <string name="update_not_needed">Votre application est à jour</string>
-    <string name="system_default">Système par défaut</string> <!-- Placeholder, please translate -->
+    <string name="update_restart">Veuillez redémarrer l\'application pour terminer la mise à jour</string>
+    <string name="update_failed">Échec du téléchargement de la mise à jour</string>
+    <string name="update_no_connection">Pas de connexion Internet. Veuillez réessayer plus tard.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Une erreur s\'est produite lors de la mise à jour. Veuillez réessayer plus tard.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Erreur : </string>
+    <string name="unknown_error">Erreur inconnue</string>
+    <string name="error_message_prefix">Message : </string>
+    <string name="error_stacktrace_prefix">StackTrace :</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Pas de connexion Internet</string>
+    <string name="error_no_internet_title">Pas de connexion Internet</string>
+    <string name="error_no_internet_message">Veuillez vérifier votre connexion Internet et réessayer.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Une erreur s\'est produite</string>
+    <string name="error_occurred_message">Malheureusement, l\'application a rencontré un problème inattendu.</string>
+    <string name="error_details_info">Les détails de l\'erreur ont été envoyés aux développeurs. Vous pouvez copier les détails ci-dessous.</string>
+    <string name="error_details_label">Détails de l\'erreur</string>
+    <string name="copy_error_details">Copier les détails de l\'erreur</string>
+    <string name="restart_app">Redémarrer l\'application</string>
+    <string name="error_details_clipboard_label">Détails de l\'erreur</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Aucun navigateur trouvé pour ouvrir cette URL</string>
 </resources>

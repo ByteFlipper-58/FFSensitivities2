@@ -63,7 +63,7 @@ fun PolicyScreen(
                         // Consider disabling file access and content access for external URLs:
                         // settings.allowFileAccess = false
                         // settings.allowContentAccess = false
-                        loadUrl(contentUrl) // Используем параметр URL
+                        loadUrl(contentUrl)
                     }
                 },
                 update = { webView ->

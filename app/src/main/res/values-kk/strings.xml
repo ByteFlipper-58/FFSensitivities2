@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App Information -->
+    <string name="app_name" translatable="false">FF Sensitivities</string>
+    <string name="email" translatable="false">byteflipper.business@gmail.com</string>
+    <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
+
+    <!-- Common Actions       -->
+    <string name="continue_button">Жалғастыру</string>
+    <string name="copy">Көшіру</string>
+    <string name="copied">Көшірілді</string>
+    <string name="copied_to_clipboard">Алмасу буферіне көшірілді</string>
+    <string name="link">Сілтеме</string>
+    <string name="copy_link">Сілтемені көшіру</string>
+    <string name="open_link">Сілтемені ашу</string>
+    <string name="back">Артқа</string>
+    <string name="try_again">Қайта байқап көріңіз</string>
+    <string name="action_retry">Қайталау</string>
+    <string name="next">Келесі</string>
+    <string name="error">Қате</string>
+    <string name="home">Басты бет</string>
+    <string name="settings">Баптаулар</string>
+    <string name="dialog_default_title">Ақпарат</string>
+    <string name="not_available_placeholder">Қ/Ж</string> <!-- Қолжетімді Жоқ -->
+    <string name="expandable_section_collapse">Жию</string>
+    <string name="expandable_section_expand">Жаю</string>
+
+    <!-- Welcome / Onboarding -->
+    <string name="welcome_screen_title">Біздің қолданбаға қош келдіңіз!</string>
+    <string name="welcome_screen_message">Сәлем, Жауынгер! Мұнда әркім өзіне арналған баптауды табады; әйтпесе, оларды сұрай аласыз</string>
+    <!-- Privacy & Terms -->
+    <string name="privacy_policy">Құпиялылық саясаты</string>
+    <string name="terms_of_service">Қызмет көрсету шарттары</string>
+    <string name="privacy_acceptance_checkbox">Мен <![CDATA[<a href="privacy">Құпиялылық саясатын</a>]]> оқып шықтым және келісемін</string>
+    <string name="terms_acceptance_checkbox">Мен <![CDATA[<a href="terms">Қызмет көрсету шарттарын</a>]]> оқып шықтым және келісемін</string>
+    <string name="accept_terms_and_policy">Мен <![CDATA[<a href="terms">Қызмет көрсету шарттарымен</a>]]> және <![CDATA[<a href="privacy">Құпиялылық саясатымен</a>]]> таныстым және келісемін</string>
+    <string name="privacy_dialog_title">Құпиялылық саясаты</string>
+    <!-- Onboarding Specific -->
+    <string name="onboarding_image_desc">Таныстыру суреті</string>
+    <string name="onboarding_info_title">FF Sensitivities-ке қош келдіңіз!</string>
+    <string name="onboarding_info_description">Құрылғыңыз үшін ең жақсы сезімталдық баптауларын тауып, ойын барысын жақсартыңыз.</string>
+    <string name="onboarding_permissions_title">Хабарландыру рұқсаты</string>
+    <string name="onboarding_permissions_description">Жаңа баптаулар мен қолданба жаңартулары туралы хабарландырулар жіберу үшін рұқсат қажет.</string>
+    <string name="permission_granted">Рұқсат берілді</string>
+    <string name="grant_permission">Рұқсат беру</string>
+
+    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Types -->
+    <string name="review">Жалпы</string>
+    <string name="collimator">Коллиматор</string>
+    <string name="x2_scope">x2 Көздеуіш</string>
+    <string name="x4_scope">x4 Көздеуіш</string>
+    <string name="sniper_scope">Снайперлік көздеуіш</string>
+    <string name="free_review">Еркін қарау</string>
+    <string name="dpi">DPI</string>
+    <string name="fire_button">Ату түймесі</string>
+    <string name="source">Көз</string>
+    <!-- Review/Feedback -->
+    <string name="it_works">Жұмыс істей ме?</string>
+    <string name="thank_for_review">Пікіріңіз үшін рахмет!</string>
+    <!-- Request Settings -->
+    <string name="dont_have_your_phone_model">Телефоныңыздың үлгісі жоқ па? Сұрау салыңыз!</string>
+    <string name="request_sensitivities_settings_title">Сезімталдық баптауларын сұрау</string>
+    <string name="request_sensitivities_settings_message">Әзірлеушіге жіберілетін ақпарат</string>
+    <string name="request_sensitivities_settings_message_two">Баптауларға сұрау салу үшін "Сұрау салу" түймесін басыңыз, бұл әрекетті болдырмау мүмкін емес.</string>
+    <string name="request_sensitivities_settings_button">Сұрау салу</string>
+    <string name="request_sensitivities_settings_success">Сұрау сәтті жіберілді!\nЖақын арада жаңа баптау қосамыз.</string>
+
+    <!-- Devices List Screen  -->
+    <string name="devices">Құрылғылар: </string>
+    <string name="devices_list">Құрылғылар тізімі</string>
+    <string name="sensitivity">Сезімталдық</string>
+    <string name="device_not_found">%1$s %2$s үшін құрылғы табылмады</string>
+    <string name="loading_device_data">Құрылғы деректері жүктелуде…</string>
+    <string name="favorite_icon_desc">Таңдаулы</string>
+
+    <!-- Settings Screen      -->
+    <!-- Theme Settings -->
+    <string name="theme_settings_category_title">Тақырып баптаулары</string>
+    <string name="app_theme">Қолданба тақырыбы</string>
+    <string name="auto_theme">Автоматты тақырып</string>
+    <string name="system_theme">Жүйелік тақырып</string>
+    <string name="light_theme">Ашық тақырып</string>
+    <string name="night_theme">Қараңғы тақырып</string>
+    <string name="system_default">Жүйелік әдепкі</string>
+    <string name="auto_theme_description">Қолданбаның көрінісі күннің шығу және бату уақытына байланысты автоматты түрде өзгереді</string>
+    <string name="auto_level_of_charge_theme_description">Қолданбаның көрінісі телефонның заряд деңгейіне байланысты автоматты түрде өзгереді</string>
+    <string name="light_theme_description">Ашық тақырып таңдалды</string>
+    <string name="night_theme_description">Қараңғы тақырып таңдалды</string>
+    <string name="system_theme_description">Қолданбаның көрінісі Android тақырыбына байланысты өзгереді</string>
+    <string name="theme_system_description_detail">Әдепкі жүйелік опция</string>
+    <string name="theme_light_description_detail">Жақсы көріну үшін ашық тақырып</string>
+    <string name="theme_dark_description_detail">Көзге түсетін жүктемені азайту үшін қараңғы тақырып</string>
+    <!-- Contrast Theme -->
+    <string name="contrast_theme_title">Контраст тақырыбы</string>
+    <string name="contrast_theme_description_on">Контраст тақырыбы қазір қосулы.</string>
+    <string name="contrast_theme_description_off">Контраст тақырыбы қазір өшірулі.</string>
+    <!-- Dynamic Colors -->
+    <string name="switch_use_dynamic_colors_title">Динамикалық түстерді пайдалану</string>
+    <string name="switch_use_dynamic_colors_subtitle_on">Динамикалық түстер қосулы</string>
+    <string name="switch_use_dynamic_colors_subtitle_off">Динамикалық түстер өшірулі</string>
+    <string name="switch_dynamic_colors_are_not_supported">Динамикалық түстерге қолдау көрсетілмейді</string>
+    <!-- Language -->
+    <string name="change_language">Тілді өзгерту</string>
+    <!-- Other Settings -->
+    <string name="improve_translation">Аударманы жақсарту</string>
+
+    <!-- About Screen         -->
+    <string name="about_app">Қолданба туралы</string>
+    <string name="version">Нұсқа</string>
+    <string name="app_icon">Қолданба белгішесі</string>
+    <string name="made_with_love">ByteFlipper ❤️-пен жасаған</string>
+    <string name="contact_us">Бізбен байланысыңыз</string>
+    <!-- Categories -->
+    <string name="support_feedback_category_title">Қолдау және кері байланыс</string>
+    <string name="connect_with_us_category_title">Бізбен байланысыңыз</string>
+    <string name="development_category_title">Әзірлеу</string>
+    <!-- Actions/Links -->
+    <string name="bug_report_title">Ақау туралы хабарлау</string>
+    <string name="bug_report_subtitle">Мәселені сипаттап, бізге жіберіңіз</string>
+    <string name="rate_the_app_title">Қолданбаны бағалау</string>
+    <string name="rate_the_app_subtitle">Google Play-де қолданбаны бағалаңыз</string>
+    <string name="other_apps_title">Басқа қолданбалар</string>
+    <string name="other_apps_subtitle">Біздің басқа қолданбаларымыз</string>
+    <string name="other_apps_url" translatable="false">https://www.google.com/</string>
+    <string name="website_title">ByteFlipper веб-сайты</string>
+    <string name="website_subtitle">Біздің веб-сайт</string>
+    <string name="website_url" translatable="false">https://byteflipper.web.app/</string>
+    <string name="vk_title">VK</string>
+    <string name="vk_subtitle">Біздің VK-дағы қауымдастығымыз</string>
+    <string name="vk_url" translatable="false">https://vk.com/byteflipper</string>
+    <string name="telegram_title">Telegram</string>
+    <string name="telegram_subtitle">Біздің Telegram арнамыз</string>
+    <string name="telegram_url" translatable="false">https://t.me/byte_flipper</string>
+    <string name="youtube_title">YouTube</string>
+    <string name="youtube_subtitle">Біздің YouTube арнамыз</string>
+    <string name="youtube_url" translatable="false">https://www.youtube.com/</string>
+    <string name="discord_title">Discord</string>
+    <string name="discord_subtitle">Біздің Discord серверіміз</string>
+    <string name="discord_url" translatable="false">https://discord.gg/byteflipper</string>
+    <string name="github_title">Github</string>
+    <string name="github_subtitle">Біздің Github репозиторийіміз</string>
+    <string name="github_url" translatable="false">https://github.com/ByteFlipper-58/</string>
+    <string name="source_code_title">Бастапқы код</string>
+    <string name="source_code_subtitle">GitHub-тағы қолданбаның бастапқы коды</string>
+    <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
+
+    <!-- Bug Report Screen    -->
+    <string name="report_bug_title">Ақау туралы хабарлау</string>
+    <string name="report_bug">Ақау туралы хабарлау</string>
+    <string name="bug_report_heading">Мәселені сипаттаңыз</string>
+    <string name="bug_report_header_subtitle">Қолданбаны жақсартуға көмектесіңіз</string>
+    <string name="bug_category_label">Санат</string>
+    <string name="bug_report_category_title">Мәселе санаты</string>
+    <string name="bug_report_category_placeholder">Санатты таңдаңыз</string>
+    <string name="bug_description_label">Сипаттама</string>
+    <string name="bug_report_description_title">Мәселе сипаттамасы</string>
+    <string name="bug_report_description_placeholder">Мәселені егжей-тегжейлі сипаттаңыз…</string>
+    <string name="include_logs_checkbox">Қолданба журналдарын қосу</string>
+    <string name="bug_report_logs_option_subtitle">Бұл мәселені тезірек диагностикалауға көмектеседі</string>
+    <string name="bug_report_info_note_text">Есеп жасырын түрде жіберіледі. Біздің топ оны мүмкіндігінше тез қарайды.</string>
+    <string name="submit_bug_report_button">Есепті жіберу</string>
+    <!-- Bug Report Categories -->
+    <string name="bug_category_support">Қолдау</string>
+    <string name="bug_category_report_bug">Ақау туралы хабарлау</string>
+    <string name="bug_category_visual_error">Көрнекі қате туралы хабарлау</string>
+    <string name="bug_category_request_settings">Баптауларды сұрау</string>
+    <string name="bug_category_settings_not_working">Баптаулар жұмыс істемейді</string>
+    <string name="bug_category_other">Басқа</string>
+    <!-- Submission Status -->
+    <string name="bug_report_submitting_title">Есеп жіберілуде…</string>
+    <string name="bug_report_submitting_subtitle">Күте тұрыңыз…</string>
+    <string name="bug_report_success_title">Есеп жіберілді</string>
+    <string name="bug_report_success_message">Қолданбаны жақсартуға көмектескеніңіз үшін рахмет! Сіздің пікіріңіз біз үшін өте маңызды.</string>
+    <string name="bug_report_submission_error_title">Жіберу қатесі</string>
+    <string name="bug_report_submission_failed_default">Есепті жіберу мүмкін болмады.</string>
+    <string name="bug_report_submission_error">Жіберу қатесі: %1$s</string>
+    <string name="bug_report_log_not_found">Журнал файлы табылмады.</string>
+    <string name="bug_report_log_read_error">Журнал файлын оқу қатесі: %1$s</string>
+    <!-- Actions -->
+    <string name="bug_report_back_button_desc">Артқа</string>
+    <string name="bug_report_action_cancel">Болдырмау</string>
+    <string name="bug_report_action_retry">Қайталау</string>
+    <string name="bug_report_action_close">Жабу</string>
+
+    <!-- Update Flow -->
+    <string name="check_for_updates">Жаңартуларды тексеру</string>
+    <string name="update_available">Жаңарту қолжетімді</string>
+    <string name="update_now_available">Жүктеуге жаңарту қолжетімді!</string>
+    <string name="no_update_available">Жаңартулар жоқ</string>
+    <string name="update_not_needed">Қолданбаңыз жаңартылған</string>
+    <string name="update_now">Қазір жаңарту</string>
+    <string name="update_later">Кейінірек жаңарту</string>
+    <string name="update_required">Қолданбаны пайдалану үшін бұл жаңарту қажет</string>
+    <string name="update_checking">Жаңартулар тексерілуде…</string>
+    <string name="update_downloading">Жаңарту жүктелуде…</string>
+    <string name="update_installing">Жаңарту орнатылуда…</string>
+    <string name="update_download_started">Жаңартуды жүктеу басталды</string>
+    <string name="update_download_complete">Жаңартуды жүктеу аяқталды. Орнату басталуда…</string>
+    <string name="update_restart">Жаңартуды аяқтау үшін қолданбаны қайта іске қосыңыз</string>
+    <string name="update_failed">Жаңартуды жүктеу мүмкін болмады</string>
+    <string name="update_no_connection">Интернет байланысы жоқ. Кейінірек қайталап көріңіз.</string>
+    <!-- Also used in Error Handling -->
+    <string name="update_error_occurred">Жаңарту кезінде қате пайда болды. Кейінірек қайталап көріңіз.</string>
+
+    <!-- Error Handling -->
+    <!-- General Errors -->
+    <string name="error_prefix">Қате: </string>
+    <string name="unknown_error">Белгісіз қате</string>
+    <string name="error_message_prefix">Хабарлама: </string>
+    <string name="error_stacktrace_prefix">StackTrace:</string>
+    <!-- No Internet -->
+    <string name="no_internet_connection">Интернет байланысы жоқ</string>
+    <string name="error_no_internet_title">Интернет байланысы жоқ</string>
+    <string name="error_no_internet_message">Интернет байланысыңызды тексеріп, қайталап көріңіз.</string>
+    <!-- Generic Error Screen -->
+    <string name="error_occurred_title">Қате пайда болды</string>
+    <string name="error_occurred_message">Өкінішке орай, қолданба күтпеген мәселеге тап болды.</string>
+    <string name="error_details_info">Қате туралы мәліметтер әзірлеушілерге жіберілді. Төмендегі мәліметтерді көшіре аласыз.</string>
+    <string name="error_details_label">Қате туралы мәліметтер</string>
+    <string name="copy_error_details">Қате туралы мәліметтерді көшіру</string>
+    <string name="restart_app">Қолданбаны қайта іске қосу</string>
+    <string name="error_details_clipboard_label">Қате туралы мәліметтер</string>
+    <!-- Specific Errors -->
+    <string name="error_no_browser_found">Бұл URL мекенжайын ашу үшін браузер табылмады</string>
+</resources>

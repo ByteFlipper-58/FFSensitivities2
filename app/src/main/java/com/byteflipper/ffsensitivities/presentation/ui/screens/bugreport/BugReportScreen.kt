@@ -144,10 +144,10 @@ fun BugReportScreen(navController: NavController) {
                     onDescriptionChange = { description = it }
                 )
 
-                LogsOption(
+                /*LogsOption(
                     includeLogs = includeLogs,
                     onIncludeLogsChange = { includeLogs = it }
-                )
+                )*/
 
                 InfoNote()
 

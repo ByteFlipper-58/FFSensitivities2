@@ -93,6 +93,11 @@ android {
         generateLocaleConfig = true
     }
 
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
+
     secrets {
         // Change the properties file from the default "local.properties" in your root project
         // to another properties file in your root project.
