@@ -62,6 +62,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ui_components.components.LoadingIndicator
 import kotlinx.coroutines.delay
 
 @Composable
@@ -252,60 +253,6 @@ private fun LoadingOrErrorCard(
                 }
             }
         }
-    }
-}
-
-@Composable
-private fun LoadingIndicator() {
-    val infiniteTransition = rememberInfiniteTransition(label = "loading_rotation")
-    val rotation by infiniteTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = 360f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(1500, easing = LinearEasing),
-            repeatMode = RepeatMode.Restart
-        ),
-        label = "loading_rotation"
-    )
-
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .wrapContentSize()
-            .size(70.dp)
-    ) {
-        // Outer circle
-        CircularProgressIndicator(
-            modifier = Modifier.size(70.dp),
-            color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.3f),
-            strokeWidth = 2.5.dp,
-            trackColor = MaterialTheme.colorScheme.surface
-        )
-
-        // Inner rotating circle
-        CircularProgressIndicator(
-            modifier = Modifier
-                .size(55.dp)
-                .rotate(rotation),
-            color = MaterialTheme.colorScheme.primary,
-            strokeWidth = 3.5.dp,
-            strokeCap = StrokeCap.Round
-        )
-
-        // Center dot
-        Box(
-            modifier = Modifier
-                .size(15.dp)
-                .clip(CircleShape)
-                .background(
-                    Brush.radialGradient(
-                        colors = listOf(
-                            MaterialTheme.colorScheme.primary,
-                            MaterialTheme.colorScheme.tertiary
-                        )
-                    )
-                )
-        )
     }
 }
 

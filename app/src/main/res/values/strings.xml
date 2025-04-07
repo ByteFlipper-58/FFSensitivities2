@@ -167,6 +167,11 @@
     <string name="grant_permission">Grant Permission</string>
     <!-- "Back" string already exists -->
 
+    <!-- Error Handling -->
+    <string name="error_no_internet_title">No Internet Connection</string>
+    <string name="error_no_internet_message">Please check your internet connection and try again.</string>
+    <string name="action_retry">Retry</string> <!-- Generic retry action -->
+
     <!-- Error Screen (New Strings) -->
     <string name="error_occurred_title">An Error Occurred</string>
     <string name="error_occurred_message">Unfortunately, the application encountered an unexpected problem.</string>
