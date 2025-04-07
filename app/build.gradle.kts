@@ -130,6 +130,7 @@ dependencies {
     implementation("com.google.android.ump:user-messaging-platform:3.2.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
+    implementation("com.google.android.play:review-ktx:2.0.1") // Добавлено для In-App Review
 
     // Yandex Mobile Ads
     implementation("com.yandex.android:mobileads:7.12.0")
@@ -169,6 +170,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.library)
     implementation(libs.androidx.browser)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1") // Добавлено для await()
 
     testImplementation(libs.junit)
 

@@ -1,16 +1,7 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
-import androidx.compose.animation.expandVertically
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,47 +19,44 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.ui.unit.dp
+import androidx.activity.ComponentActivity
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
-import com.byteflipper.ffsensitivities.utils.FeedbackHelper
+import com.byteflipper.ui_components.components.AnimatedActionItem
+import com.byteflipper.ui_components.components.ExpandableSection
+import com.google.android.play.core.review.ReviewManagerFactory
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,6 +66,39 @@ fun AboutScreen(
 ) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
+    val coroutineScope = rememberCoroutineScope()
+    val reviewManager = remember { ReviewManagerFactory.create(context) }
+
+    fun launchReviewFlow() {
+        val activity = context as? ComponentActivity ?: return
+        coroutineScope.launch {
+            try {
+                val reviewInfo = reviewManager.requestReviewFlow().await() // Используем await() для получения ReviewInfo
+                reviewManager.launchReviewFlow(activity, reviewInfo) // Передаем полученный ReviewInfo
+            } catch (e: Exception) {
+                // Обработка ошибки: открываем страницу приложения в Play Store
+                println("In-App Review failed, opening Play Store: ${e.message}")
+                try {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse("market://details?id=${context.packageName}")
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    }
+                    context.startActivity(intent)
+                } catch (activityNotFoundException: Exception) {
+                    // Если Play Store не найден, открываем веб-версию
+                    println("Play Store not found, opening web URL: ${activityNotFoundException.message}")
+                    try {
+                        val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=${context.packageName}"))
+                        webIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(webIntent)
+                    } catch (webException: Exception) {
+                        println("Failed to open web URL: ${webException.message}")
+                        // Можно добавить дополнительную обработку, если и веб-ссылка не открылась
+                    }
+                }
+            }
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -104,7 +125,9 @@ fun AboutScreen(
 
             ExpandableSection(
                 title = stringResource(R.string.support_feedback_category_title),
-                icon = painterResource(id = R.drawable.bug_report_24px)
+                icon = painterResource(id = R.drawable.bug_report_24px),
+                expandedContentDescription = stringResource(R.string.expandable_section_expand),
+                collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -113,28 +136,31 @@ fun AboutScreen(
                         title = stringResource(R.string.bug_report_title),
                         subtitle = stringResource(R.string.bug_report_subtitle),
                         icon = painterResource(id = R.drawable.bug_report_24px),
-                        onClick = { navController.navigate("bug_report") } // Navigate to BugReportScreen
+                        onClick = { navController.navigate("bug_report") }
                     )
 
                     AnimatedActionItem(
                         title = stringResource(R.string.rate_the_app_title),
                         subtitle = stringResource(R.string.rate_the_app_subtitle),
                         icon = painterResource(id = R.drawable.rate_review_24px),
-                        onClick = { /* TODO: Add rating action */ }
+                        onClick = { launchReviewFlow() }
                     )
 
                     AnimatedActionItem(
                         title = stringResource(R.string.other_apps_title),
                         subtitle = stringResource(R.string.other_apps_subtitle),
                         icon = painterResource(id = R.drawable.apps_24px),
-                        onClick = { /* TODO: Add other apps action */ }
+                        onClick = { /* TODO: Add other apps action */ },
+                        showDivider = false // Hide divider for the last item
                     )
                 }
             }
 
             ExpandableSection(
                 title = stringResource(R.string.connect_with_us_category_title),
-                icon = painterResource(id = R.drawable.web_24px)
+                icon = painterResource(id = R.drawable.web_24px),
+                expandedContentDescription = stringResource(R.string.expandable_section_expand),
+                collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -172,14 +198,17 @@ fun AboutScreen(
                                 context = context,
                                 url = "https://t.me/byteflipper",
                                 )
-                        }
+                        },
+                        showDivider = false
                     )
                 }
             }
 
             ExpandableSection(
                 title = stringResource(R.string.development_category_title),
-                icon = painterResource(id = R.drawable.code_24px)
+                icon = painterResource(id = R.drawable.code_24px),
+                expandedContentDescription = stringResource(R.string.expandable_section_expand),
+                collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
                 Column(
                     modifier = Modifier.fillMaxWidth()
@@ -205,7 +234,8 @@ fun AboutScreen(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58/FFSensitivities2",
                                 )
-                        }
+                        },
+                        showDivider = false
                     )
                 }
             }
@@ -215,7 +245,7 @@ fun AboutScreen(
             Card(
                 modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest // Use a more distinct color
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
         ),
         shape = RoundedCornerShape(16.dp)
             ) {
@@ -245,7 +275,7 @@ fun AppInfoHeader() {
         ),
         shape = RoundedCornerShape(24.dp),
         colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow // Better contrast in dark mode
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
         )
     ) {
         Column(
@@ -315,160 +345,11 @@ fun AppInfoHeader() {
 }
 
 @Composable
-fun ExpandableSection(
-    title: String,
-    icon: Painter,
-    content: @Composable () -> Unit
-) {
-    var expanded by remember { mutableStateOf(false) }
-    val rotationState by animateFloatAsState(
-        targetValue = if (expanded) 180f else 0f,
-        label = "rotation"
-    )
-
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.elevatedCardElevation(
-            defaultElevation = 4.dp
-        ),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow // Better contrast in dark mode
-        )
-    ) {
-        Column(
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { expanded = !expanded }
-                    .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            painter = icon,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.onPrimaryContainer,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(16.dp))
-
-                    Text(
-                        text = title,
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                }
-
-                Icon(
-                    imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = stringResource(if (expanded) R.string.expandable_section_collapse else R.string.expandable_section_expand),
-                    modifier = Modifier.rotate(rotationState),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-            }
-
-            AnimatedVisibility(
-                visible = expanded,
-                enter = expandVertically(
-                    animationSpec = spring(
-                        dampingRatio = Spring.DampingRatioMediumBouncy,
-                        stiffness = Spring.StiffnessLow
-                    )
-                ) + fadeIn(),
-                exit = shrinkVertically() + fadeOut()
-            ) {
-                content()
-            }
-        }
-    }
-}
-
-@Composable
-fun AnimatedActionItem(
-    title: String,
-    subtitle: String,
-    icon: Painter,
-    onClick: () -> Unit
-) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        color = Color.Transparent
-    ) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = icon,
-                    contentDescription = null,
-                    modifier = Modifier.size(28.dp),
-                    tint = MaterialTheme.colorScheme.primary
-                )
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = title,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-
-                Spacer(modifier = Modifier.height(2.dp))
-
-                Text(
-                    text = subtitle,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 2,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-        }
-    }
-
-    HorizontalDivider(
-        modifier = Modifier.padding(start = 80.dp, end = 16.dp),
-        thickness = 0.5.dp,
-        color = MaterialTheme.colorScheme.outlineVariant
-    )
-}
-
-@Composable
 fun VersionInfoCard() {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh // Consistent container color
+            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
         ),
         shape = RoundedCornerShape(16.dp)
     ) {
