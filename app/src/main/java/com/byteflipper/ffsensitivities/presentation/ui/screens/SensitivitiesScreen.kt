@@ -39,6 +39,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
@@ -251,7 +252,7 @@ fun SensitivitiesScreen(
                                     modifier = Modifier.size(40.dp)
                                 ) {
                                     Icon(
-                                        imageVector = Icons.Default.Star,
+                                        painter = painterResource(id = R.drawable.thumb_up_24px),
                                         contentDescription = stringResource(R.string.favorite_icon_desc)
                                     )
                                 }
@@ -263,7 +264,7 @@ fun SensitivitiesScreen(
                                     modifier = Modifier.size(40.dp)
                                 ) {
                                     Icon(
-                                        imageVector = Icons.Default.Favorite,
+                                        painter = painterResource(id = R.drawable.thumb_down_24px),
                                         contentDescription = stringResource(R.string.favorite_icon_desc)
                                     )
                                 }

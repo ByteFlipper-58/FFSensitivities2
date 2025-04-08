@@ -18,6 +18,21 @@
         },
         {
             "manufacturer": "Redmi",
+            "name": "13c",
+            "settings_source_url": "",
+            "dpi": 0,
+            "fire_button": 70,
+            "sensitivities": {
+                "review": 164,
+                "collimator": 90,
+                "x2_scope": 176,
+                "x4_scope": 88,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
             "name": "13",
             "settings_source_url": "",
             "dpi": 577,
@@ -215,15 +230,15 @@
             "manufacturer": "Redmi",
             "name": "10",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 45,
+            "dpi": 777,
+            "fire_button": 55,
             "sensitivities": {
-                "review": 97,
-                "collimator": 93,
-                "x2_scope": 95,
-                "x4_scope": 91,
-                "sniper_scope": 59,
-                "free_review": 40
+                "review": 146,
+                "collimator": 181,
+                "x2_scope": 63,
+                "x4_scope": 200,
+                "sniper_scope": 200,
+                "free_review": 68
             }
         },
         {

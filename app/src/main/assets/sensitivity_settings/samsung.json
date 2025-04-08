@@ -258,6 +258,21 @@
     },
     {
       "manufacturer": "Samsung",
+      "name": "A16",
+      "settings_source_url": "",
+      "dpi": 445,
+      "fire_button": 45,
+      "sensitivities": {
+        "review": 135,
+        "collimator": 165,
+        "x2_scope": 170,
+        "x4_scope": 170,
+        "sniper_scope": 150,
+        "free_review": 125
+      }
+    },
+    {
+      "manufacturer": "Samsung",
       "name": "A55 5G",
       "settings_source_url": "",
       "dpi": 523,
@@ -963,6 +978,21 @@
     },
     {
       "manufacturer": "Samsung",
+      "name": "M21",
+      "settings_source_url": "",
+      "dpi": 540,
+      "fire_button": 50,
+      "sensitivities": {
+        "review": 182,
+        "collimator": 180,
+        "x2_scope": 185,
+        "x4_scope": 180,
+        "sniper_scope": 150,
+        "free_review": 170
+      }
+    },
+    {
+      "manufacturer": "Samsung",
       "name": "M20",
       "settings_source_url": "",
       "dpi": 653,
@@ -1018,6 +1048,21 @@
         "x2_scope": 160,
         "x4_scope": 185,
         "sniper_scope": 200,
+        "free_review": 200
+      }
+    },
+    {
+      "manufacturer": "Samsung",
+      "name": "A7",
+      "settings_source_url": "",
+      "dpi": 740,
+      "fire_button": 63,
+      "sensitivities": {
+        "review": 200,
+        "collimator": 110,
+        "x2_scope": 130,
+        "x4_scope": 155,
+        "sniper_scope": 140,
         "free_review": 200
       }
     },

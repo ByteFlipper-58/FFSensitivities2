@@ -161,7 +161,7 @@ fun SettingsScreen(
                 )
             }
 
-            item { HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp)) }
+            /*item { HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp)) }
 
             item {
                 PreferenceCategory(
@@ -200,7 +200,7 @@ fun SettingsScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-            }
+            }*/
         }
     }
 }

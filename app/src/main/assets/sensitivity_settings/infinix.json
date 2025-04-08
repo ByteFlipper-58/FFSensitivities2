@@ -3,6 +3,21 @@
     "models": [
       {
         "manufacturer": "Infinix",
+        "name": "Hot 30I",
+        "settings_source_url": "",
+        "dpi": 720,
+        "fire_button": 58,
+        "sensitivities": {
+          "review": 200,
+          "collimator": 181,
+          "x2_scope": 130,
+          "x4_scope": 177,
+          "sniper_scope": 135,
+          "free_review": 100
+        }
+      },
+      {
+        "manufacturer": "Infinix",
         "name": "Hot 20I",
         "settings_source_url": "",
         "dpi": 420,
