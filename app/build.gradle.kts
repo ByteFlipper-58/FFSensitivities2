@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 70
-        versionName = "2.2.0"
+        versionCode = 80
+        versionName = "v3.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -28,10 +28,8 @@ android {
         }
     }
 
-    // Конфигурация подписи для релиза
     signingConfigs {
         create("release") {
-            // Считываем данные из переменных окружения, которые будут переданы из GitHub Secrets
             val keystoreFile = System.getenv("SIGNING_KEYSTORE_PATH")
             val keystorePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
             val keyAlias = System.getenv("SIGNING_KEY_ALIAS")
@@ -44,8 +42,6 @@ android {
                 this.keyPassword = keyPassword
             } else {
                 println("Keystore file not found at path specified by SIGNING_KEYSTORE_PATH or variable not set.")
-                // Можно добавить логику для использования debug ключа или остановки сборки,
-                // если ключ не найден, но для CI/CD это обычно не требуется.
             }
         }
     }
@@ -58,7 +54,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Указываем использовать конфигурацию подписи release
             signingConfig = signingConfigs.getByName("release")
 
             ndk {
@@ -99,29 +94,20 @@ android {
     }
 
     secrets {
-        // Change the properties file from the default "local.properties" in your root project
-        // to another properties file in your root project.
         propertiesFileName = "secrets.properties"
-
-        // A properties file containing default secret values. This file can be checked in version
-        // control.
         defaultPropertiesFileName = "local.defaults.properties"
-
-        // Configure which keys should be ignored by the plugin by providing regular expressions.
-        // "sdk.dir" is ignored by default.
-        ignoreList.add("sdk.*")       // Ignore all keys matching the regexp "sdk.*"
+        ignoreList.add("sdk.*")
     }
 
     bundle {
         language {
-            // Disables language splitting
             enableSplit = false
         }
     }
 }
 
 dependencies {
-    implementation(project(":ui-components")) // Добавляем зависимость от ui-components
+    implementation(project(":ui-components"))
 
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(platform(libs.androidx.compose.bom))
@@ -135,7 +121,7 @@ dependencies {
     implementation("com.google.android.ump:user-messaging-platform:3.2.0")
     implementation("com.google.android.play:app-update:2.1.0")
     implementation("com.google.android.play:app-update-ktx:2.1.0")
-    implementation("com.google.android.play:review-ktx:2.0.1") // Добавлено для In-App Review
+    implementation("com.google.android.play:review-ktx:2.0.2")
 
     // Yandex Mobile Ads
     implementation("com.yandex.android:mobileads:7.12.0")
@@ -175,7 +161,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.library)
     implementation(libs.androidx.browser)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1") // Добавлено для await()
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
     testImplementation(libs.junit)
 

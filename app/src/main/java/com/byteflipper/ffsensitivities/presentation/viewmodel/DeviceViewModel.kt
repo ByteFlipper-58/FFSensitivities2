@@ -31,7 +31,19 @@ class DeviceViewModel @Inject constructor(
         lastManufacturer = manufacturer // Store the last fetched manufacturer
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            _uiState.value = repository.fetchDevices(manufacturer) // Use the correct parameter
+            when (val result = repository.fetchDevices(manufacturer)) { // Use the correct parameter
+                is UiState.Success<*> -> {
+                    @Suppress("UNCHECKED_CAST")
+                    val devices = result.data as? List<DeviceModel> ?: emptyList()
+                    // Filter out duplicates based on manufacturer and name
+                    val uniqueDevices = devices.distinctBy { "${it.manufacturer}_${it.name}" }
+                    _uiState.value = UiState.Success(uniqueDevices)
+                }
+                else -> {
+                    // Pass through Loading, Error, NoInternet states directly
+                    _uiState.value = result
+                }
+            }
         }
     }
 
@@ -40,7 +52,19 @@ class DeviceViewModel @Inject constructor(
         lastManufacturer?.let { manu ->
              viewModelScope.launch { // Ensure retry is also within a coroutine scope
                  _uiState.value = UiState.Loading
-                 _uiState.value = repository.fetchDevices(manu)
+                 when (val result = repository.fetchDevices(manu)) {
+                     is UiState.Success<*> -> {
+                         @Suppress("UNCHECKED_CAST")
+                         val devices = result.data as? List<DeviceModel> ?: emptyList()
+                         // Filter out duplicates based on manufacturer and name
+                         val uniqueDevices = devices.distinctBy { "${it.manufacturer}_${it.name}" }
+                         _uiState.value = UiState.Success(uniqueDevices)
+                     }
+                     else -> {
+                         // Pass through Loading, Error, NoInternet states directly
+                         _uiState.value = result
+                     }
+                 }
              }
         } ?: run {
             // Handle case where lastManufacturer is null (e.g., initial load failed before manufacturer was set)

@@ -110,14 +110,13 @@ fun DevicesScreen(
                     val devices = state.data as? List<DeviceModel> ?: emptyList() // Safe cast
                     items(
                         count = devices.size,
-                        key = { index -> devices[index].name }, // Use unique key
+                        key = { index -> "${devices[index].manufacturer}_${devices[index].name}" },
                         contentType = { "deviceCard" } // Use content type
                     ) { index ->
                         DevicesCard(devices[index], navController)
                     }
                 }
                 is UiState.NoInternet -> {
-                    // Optionally display a message or placeholder
                 }
                 is UiState.Error -> {
                     // Optionally display an error message

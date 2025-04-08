@@ -135,7 +135,10 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = PaddingValues(10.dp)
                     ) {
-                        items(manufacturers) { manufacturer ->
+                        items(
+                            items = manufacturers,
+                            key = { manufacturer -> manufacturer.name } // Add explicit key using manufacturer name
+                        ) { manufacturer ->
                             ManufacturerCard(manufacturer, navController)
                         }
                     }
