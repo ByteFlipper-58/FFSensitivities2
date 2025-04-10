@@ -148,7 +148,9 @@ private fun AcceptanceText(
 
     ClickableText(
         text = annotatedString,
-        style = MaterialTheme.typography.bodySmall,
+        style = MaterialTheme.typography.bodySmall.copy(
+            color = MaterialTheme.colorScheme.onSurface
+        ),
         modifier = modifier,
         onClick = { offset ->
             annotatedString.getStringAnnotations(tag = "PRIVACY_POLICY", start = offset, end = offset)

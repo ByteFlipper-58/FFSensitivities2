@@ -10,6 +10,6 @@ object AdConstants {
     const val BANNER_HEIGHT = 50
 
     // Ad Display Frequencies
-    const val SENSITIVITIES_SCREEN_AD_FREQUENCY = 4
-    const val DEVICES_SCREEN_AD_FREQUENCY = 8
+    const val SENSITIVITIES_SCREEN_AD_FREQUENCY = 3
+    const val DEVICES_SCREEN_AD_FREQUENCY = 7
 }
