@@ -10,12 +10,18 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.byteflipper.ffsensitivities.AppViewModel // Import AppViewModel
 import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen // Import BugReportScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
+// Import new settings screens
+import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.LanguageSettingsScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.PrivacySettingsScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.ThemeSettingsScreen
+
 
 /**
  * Composable function that sets up the navigation graph for the application.
@@ -31,6 +37,7 @@ import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
 fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    appViewModel: AppViewModel // Add AppViewModel parameter
 ) {
     val animationSpec = tween<IntOffset>(durationMillis = 500)
 
@@ -105,33 +112,60 @@ fun NavigationHost(
             route = NavigationItem.Settings.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Up,
+                    AnimatedContentTransitionScope.SlideDirection.Start, // Changed from Up
                     animationSpec
                 )
             },
             exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Down,
+                    AnimatedContentTransitionScope.SlideDirection.Start, // Changed from Down
                     animationSpec
                 )
             },
             popEnterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Up,
+                    AnimatedContentTransitionScope.SlideDirection.End, // Changed from Up
                     animationSpec
                 )
             },
             popExitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Down,
+                    AnimatedContentTransitionScope.SlideDirection.End, // Changed from Down
                     animationSpec
                 )
             }
         ) {
-            SettingsScreen(navController = navController, modifier = modifier)
+            SettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
         }
         composable(
-            route = "devices/{name}/{model}",
+            route = Screen.ThemeSettings.route, // Use Screen object
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
+            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) }
+        ) {
+            ThemeSettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
+        }
+        composable(
+            route = Screen.PrivacySettings.route, // Use Screen object
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
+            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) }
+        ) {
+            PrivacySettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
+        }
+         composable(
+            route = Screen.LanguageSettings.route, // Use Screen object
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
+            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) }
+        ) {
+            LanguageSettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
+        }
+        composable(
+            route = Screen.Devices.route, // Use Screen object
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -167,7 +201,7 @@ fun NavigationHost(
             )
         }
         composable(
-            route = "sensitivities/{manufacturer}/{modelName}",
+            route = Screen.Sensitivities.route, // Use Screen object
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -202,7 +236,7 @@ fun NavigationHost(
             )
         }
         composable(
-            route = "bug_report", // Define route for bug report screen
+            route = Screen.BugReport.route, // Use Screen object
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start, // Or Up/Down as preferred

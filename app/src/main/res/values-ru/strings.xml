@@ -78,6 +78,7 @@
     <!-- Settings Screen      -->
     <!-- Theme Settings -->
     <string name="theme_settings_category_title">Настройки темы</string>
+    <string name="theme_settings_card_description">Настройте внешний вид, динамические цвета и контрастность</string> <!-- New -->
     <string name="app_theme">Тема приложения</string>
     <string name="auto_theme">Автоматическая тема</string>
     <string name="system_theme">Системная тема</string>
@@ -224,4 +225,13 @@
     <string name="error_details_clipboard_label">Детали ошибки</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Не найден браузер для открытия этой ссылки</string>
+
+    <!-- Privacy Settings -->
+    <string name="privacy_settings_category_title">Конфиденциальность</string>
+    <string name="privacy_settings_card_description">Управляйте параметрами согласия на рекламу</string> <!-- New -->
+    <string name="privacy_settings_button_title">Настройки конфиденциальности</string>
+    <string name="privacy_settings_button_description">Управление настройками согласия</string>
+    <string name="privacy_settings_not_required_title">Настройки конфиденциальности управляются</string>
+    <string name="privacy_settings_not_required_description">В настоящее время для вашего региона не требуются особые параметры конфиденциальности.</string>
+    <string name="language_settings_card_description">Изменить язык приложения</string> <!-- New, uncommented -->
 </resources>

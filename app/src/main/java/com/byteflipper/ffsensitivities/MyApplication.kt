@@ -6,6 +6,7 @@ import android.os.Process
 import android.util.Log
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.byteflipper.ffsensitivities.ads.AppOpenAdManager
+import com.byteflipper.ffsensitivities.ads.ConsentManager // Import ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import com.byteflipper.ffsensitivities.presentation.ui.ErrorActivity
@@ -21,10 +22,13 @@ class MyApplication : Application() {
 
     @Inject lateinit var dataStoreManager: DataStoreManager
     @Inject lateinit var appOpenAdManager: AppOpenAdManager
+    @Inject lateinit var consentManager: ConsentManager
     @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
 
     override fun onCreate() {
         super.onCreate()
+        consentManager.initializeMobileAdsSdk()
+
         ProcessLifecycleOwner.get().lifecycle.addObserver(appOpenAdManager)
         registerActivityLifecycleCallbacks(appOpenAdManager)
 

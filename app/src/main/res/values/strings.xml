@@ -78,6 +78,7 @@
     <!-- Settings Screen      -->
     <!-- Theme Settings -->
     <string name="theme_settings_category_title">Theme Settings</string>
+    <string name="theme_settings_card_description">Customize appearance, dynamic colors, and contrast</string> <!-- New -->
     <string name="app_theme">App Theme</string>
     <string name="auto_theme">Auto theme</string>
     <string name="system_theme">System theme</string>
@@ -224,4 +225,13 @@
     <string name="error_details_clipboard_label">Error Details</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">No browser found to open this URL</string>
+
+    <!-- Privacy Settings -->
+    <string name="privacy_settings_category_title">Privacy</string>
+    <string name="privacy_settings_card_description">Manage your advertising consent options</string> <!-- New -->
+    <string name="privacy_settings_button_title">Privacy Settings</string>
+    <string name="privacy_settings_button_description">Manage your consent choices</string>
+    <string name="privacy_settings_not_required_title">Privacy Settings Managed</string>
+    <string name="privacy_settings_not_required_description">No specific privacy options are required for your region at this time.</string>
+    <string name="language_settings_card_description">Change the application language</string> <!-- New, uncommented -->
 </resources>

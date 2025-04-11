@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FFSensitivities" parent="android:Theme.Material.Light.NoActionBar"/>
+    <style name="Theme.FFSensitivities" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Set a dark background to prevent white flash during theme/language changes -->
+        <item name="android:windowBackground">#FF0A0F0C</item>
+    </style>
+    <!-- Reverted back from Material3 theme due to build error -->
 
     <style name="Theme.App.Starting" parent="Theme.FFSensitivities">
         <item name="windowSplashScreenBackground">#BCBCBC</item>

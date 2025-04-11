@@ -191,8 +191,8 @@ private fun MainAppScaffold(
     val mainAppNavController = rememberNavController()
     val navBackStackEntry by mainAppNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val hiddenRoutes = listOf("settings", "bug_report")
-    val isBottomBarVisible = currentRoute !in hiddenRoutes
+    // Hide bottom bar on settings screens (main and sub-screens) and bug report screen
+    val isBottomBarVisible = currentRoute?.startsWith("settings") != true && currentRoute != "bug_report"
 
     LaunchedEffect(Unit) { coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() } }
     LaunchedEffect(updateState) {
@@ -228,7 +228,8 @@ private fun MainAppScaffold(
         content = { innerPadding: PaddingValues ->
             NavigationHost(
                 navController = mainAppNavController,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                appViewModel = appViewModel // Pass AppViewModel here
             )
         }
     )

@@ -1,12 +1,15 @@
 package com.byteflipper.ffsensitivities
 
 import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.byteflipper.ffsensitivities.ads.ConsentManager // Import ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.manager.AppLocaleManager // Import AppLocaleManager
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext // Import ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -21,9 +24,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppViewModel @Inject constructor(
-    application: Application,
-    private val dataStoreManager: DataStoreManager
-) : AndroidViewModel(application) {
+    @ApplicationContext private val context: Context, // Inject Context
+    private val dataStoreManager: DataStoreManager,
+    val consentManager: ConsentManager // Inject and expose ConsentManager
+) : AndroidViewModel(context.applicationContext as Application) { // Pass Application to super
+
+    private val appLocaleManager = AppLocaleManager() // Create instance
+
+    // StateFlow for the current language code
+    private val _currentLanguageCode = MutableStateFlow(appLocaleManager.getCurrentLanguageCode())
+    val currentLanguageCode: StateFlow<String> = _currentLanguageCode.asStateFlow()
 
     val theme: StateFlow<String> = dataStoreManager.getTheme()
         .stateIn(
@@ -67,21 +77,19 @@ class AppViewModel @Inject constructor(
     init {
         // Coroutine to wait for actual settings load
         viewModelScope.launch {
-            // Combine the flows from DataStoreManager directly
-            // Combine flows for theme and dynamic color only
+            // No need to load/apply language here, AppLocalesMetadataHolderService handles it.
+
+            // Wait for other settings
             combine(
                 dataStoreManager.getTheme(),
                 dataStoreManager.getDynamicColor(),
                 dataStoreManager.getContrastTheme()
-                // Removed language flow
-            ) { theme, dynamic, contrast ->
-                // This lambda executes when all flows have emitted at least one value.
+            ) { _, _, _ -> // We only care that they emitted, values applied elsewhere
                 true // Indicate that loading is complete
             }.first { it } // Collect the first emission where the value is true
 
             // Mark settings as loaded
             _settingsLoaded.value = true
-            // No need to apply language here, system handles it
         }
     }
 
@@ -115,15 +123,13 @@ class AppViewModel @Inject constructor(
         }
     }
 
-    // Updated setLanguage: only applies the locale, doesn't save to DataStore
-    fun setLanguage(languageCode: String?) {
-        val localesToSet = if (languageCode != null) {
-            LocaleListCompat.forLanguageTags(languageCode)
-        } else {
-            LocaleListCompat.getEmptyLocaleList() // System default
-        }
-        // Apply the change immediately on the main thread
-        // No need for viewModelScope or Dispatchers.IO as it's a UI-related call
-        AppCompatDelegate.setApplicationLocales(localesToSet)
+    // Updated setLanguage: applies the locale AND saves to DataStore
+    // Uses AppLocaleManager to change the language
+    fun setLanguage(languageCode: String?) { // languageCode is "en", "ru", "system", etc.
+        appLocaleManager.changeLanguage(context, languageCode)
+        // Update the state flow directly with the intended value ("system" if null)
+        _currentLanguageCode.value = languageCode ?: "system"
     }
+
+    // Removed the old applyLanguage helper function
 }
