@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Singleton
 class ConsentManager @Inject constructor(
     @ApplicationContext private val context: Context,
-    @ApplicationScope private val coroutineScope: CoroutineScope, // Use qualifier
+    @ApplicationScope private val coroutineScope: CoroutineScope,
     private val appOpenAdManager: AppOpenAdManager
 ) {
     private lateinit var consentInformation: ConsentInformation

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import java.util.Locale
 
-// Data class to represent a language option
 data class Language(
     val code: String, // e.g., "en", "ru"
     val displayLanguage: String // e.g., "English", "Русский"
@@ -49,13 +48,13 @@ class AppLocaleManager {
             if (localeTag != null) {
                 localeManager?.applicationLocales = LocaleList.forLanguageTags(localeTag)
             } else {
-                localeManager?.applicationLocales = LocaleList.getEmptyLocaleList() // Reset to system default
+                localeManager?.applicationLocales = LocaleList.getEmptyLocaleList()
             }
         } else {
             val locales = if (localeTag != null) {
                 LocaleListCompat.forLanguageTags(localeTag)
             } else {
-                LocaleListCompat.getEmptyLocaleList() // Reset to system default
+                LocaleListCompat.getEmptyLocaleList()
             }
             AppCompatDelegate.setApplicationLocales(locales)
         }
@@ -70,7 +69,7 @@ class AppLocaleManager {
         return if (!locales.isEmpty) {
             locales.toLanguageTags()
         } else {
-            "system" // App is using system default
+            "system"
         }
     }
 }

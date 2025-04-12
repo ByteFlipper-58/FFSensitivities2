@@ -47,6 +47,7 @@ import androidx.navigation.compose.rememberNavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
+import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.presentation.ui.dialogs.SensitivitiesRequestDialog
@@ -75,7 +76,7 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
                 actions = {
-                    IconButton(onClick = { navController.navigate("settings") }) {
+                    IconButton(onClick = { navController.navigate(Screen.Settings.route) }) { // Use Screen object
                         Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
                     }
                 }
@@ -85,7 +86,7 @@ fun HomeScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding) // Apply padding from Scaffold
+                .padding(innerPadding)
         ) {
             ElevatedCard(
                 modifier = Modifier
@@ -137,7 +138,7 @@ fun HomeScreen(
                     ) {
                         items(
                             items = manufacturers,
-                            key = { manufacturer -> manufacturer.name } // Add explicit key using manufacturer name
+                            key = { manufacturer -> manufacturer.name }
                         ) { manufacturer ->
                             ManufacturerCard(manufacturer, navController)
                         }
@@ -159,11 +160,12 @@ fun ManufacturerCard(manufacturer: Manufacturer, navController: NavHostControlle
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
+            // Encode the device name to handle special characters in the route
+            // val encodedDeviceName = Uri.encode(devices.name) // Encoding might not be needed when using Screen object, but let's keep it for safety if model/name can have special chars
+            // Navigate using the Screen object
             navController.navigate(
-                "devices/${manufacturer.name}/${manufacturer.model}"
-            ) {
-                launchSingleTop = true
-            }
+                Screen.Devices(name = manufacturer.name, model = manufacturer.model).route
+            )
         }
     ) {
         Column(

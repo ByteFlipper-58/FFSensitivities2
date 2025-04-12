@@ -10,14 +10,13 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.byteflipper.ffsensitivities.AppViewModel // Import AppViewModel
+import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen // Import BugReportScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SensitivitiesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
-// Import new settings screens
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.LanguageSettingsScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.PrivacySettingsScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.ThemeSettingsScreen
@@ -37,7 +36,7 @@ import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.ThemeSet
 fun NavigationHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    appViewModel: AppViewModel // Add AppViewModel parameter
+    appViewModel: AppViewModel
 ) {
     val animationSpec = tween<IntOffset>(durationMillis = 500)
 
@@ -112,25 +111,25 @@ fun NavigationHost(
             route = NavigationItem.Settings.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, // Changed from Up
+                    AnimatedContentTransitionScope.SlideDirection.Start,
                     animationSpec
                 )
             },
             exitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, // Changed from Down
+                    AnimatedContentTransitionScope.SlideDirection.Start,
                     animationSpec
                 )
             },
             popEnterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, // Changed from Up
+                    AnimatedContentTransitionScope.SlideDirection.End,
                     animationSpec
                 )
             },
             popExitTransition = {
                 slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.End, // Changed from Down
+                    AnimatedContentTransitionScope.SlideDirection.End,
                     animationSpec
                 )
             }
@@ -138,7 +137,7 @@ fun NavigationHost(
             SettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
         }
         composable(
-            route = Screen.ThemeSettings.route, // Use Screen object
+            route = Screen.ThemeSettings.route,
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
@@ -147,7 +146,7 @@ fun NavigationHost(
             ThemeSettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
         }
         composable(
-            route = Screen.PrivacySettings.route, // Use Screen object
+            route = Screen.PrivacySettings.route,
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
@@ -156,7 +155,7 @@ fun NavigationHost(
             PrivacySettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
         }
          composable(
-            route = Screen.LanguageSettings.route, // Use Screen object
+            route = Screen.LanguageSettings.route,
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
@@ -165,7 +164,8 @@ fun NavigationHost(
             LanguageSettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
         }
         composable(
-            route = Screen.Devices.route, // Use Screen object
+            route = Screen.Devices.baseRoute,
+            arguments = Screen.Devices.arguments,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -191,8 +191,8 @@ fun NavigationHost(
                 )
             }
         ) { backStackEntry ->
-            val name = backStackEntry.arguments?.getString("name").orEmpty()
-            val model = backStackEntry.arguments?.getString("model").orEmpty()
+            val name = backStackEntry.arguments?.getString(Screen.Devices.ArgName).orEmpty()
+            val model = backStackEntry.arguments?.getString(Screen.Devices.ArgModel).orEmpty()
             DevicesScreen(
                 modifier = modifier,
                 navController = navController,
@@ -201,7 +201,8 @@ fun NavigationHost(
             )
         }
         composable(
-            route = Screen.Sensitivities.route, // Use Screen object
+            route = Screen.Sensitivities.baseRoute,
+            arguments = Screen.Sensitivities.arguments,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -227,8 +228,8 @@ fun NavigationHost(
                 )
             }
         ) { backStackEntry ->
-            val manufacturerArg = backStackEntry.arguments?.getString("manufacturer")
-            val modelNameArg = backStackEntry.arguments?.getString("modelName")
+            val manufacturerArg = backStackEntry.arguments?.getString(Screen.Sensitivities.ArgManufacturer)
+            val modelNameArg = backStackEntry.arguments?.getString(Screen.Sensitivities.ArgModelName)
             SensitivitiesScreen(
                 navController = navController,
                 manufacturerArg = manufacturerArg,
@@ -236,10 +237,10 @@ fun NavigationHost(
             )
         }
         composable(
-            route = Screen.BugReport.route, // Use Screen object
+            route = Screen.BugReport.route,
             enterTransition = {
                 slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Start, // Or Up/Down as preferred
+                    AnimatedContentTransitionScope.SlideDirection.Start,
                     animationSpec
                 )
             },

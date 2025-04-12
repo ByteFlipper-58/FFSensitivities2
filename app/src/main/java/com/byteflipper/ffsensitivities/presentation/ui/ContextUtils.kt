@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 
-// Helper function to find the Activity from a Context
 fun Context.findActivity(): Activity? {
     var context = this
     while (context is ContextWrapper) {

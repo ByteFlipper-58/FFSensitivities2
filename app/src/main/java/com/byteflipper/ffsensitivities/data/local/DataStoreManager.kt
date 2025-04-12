@@ -22,7 +22,6 @@ class DataStoreManager(private val context: Context) {
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
         val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed")
         val APP_LAUNCH_COUNT_KEY = intPreferencesKey("app_launch_count")
-        // Removed LANGUAGE_KEY
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -86,6 +85,4 @@ class DataStoreManager(private val context: Context) {
     }
 
     fun getAppLaunchCount(): Flow<Int> = read(PreferencesKeys.APP_LAUNCH_COUNT_KEY, 0)
-
-    // --- Removed Language Preferences ---
 }

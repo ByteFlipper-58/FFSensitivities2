@@ -93,15 +93,15 @@ abstract class BaseAdManager<AdLoader, Ad, AdLoadListener, AdEventListener>(
     protected var ad: Ad? = null
     protected var adLoader: AdLoader? = null
     private var isLoading: Boolean = false
-    private var currentAdUnitId: String? = null // Store adUnitId for preloading
+    private var currentAdUnitId: String? = null
 
     protected abstract fun createAdLoader(): AdLoader
     protected abstract fun setAdLoadListener(loader: AdLoader, listener: AdLoadListener)
-    protected abstract fun clearAdLoadListener(loader: AdLoader?): Unit // Explicit Unit return type
+    protected abstract fun clearAdLoadListener(loader: AdLoader?): Unit
     protected abstract fun loadAdInternal(loader: AdLoader, adRequest: AdRequestConfiguration)
-    protected abstract fun setAdEventListener(ad: Ad, listener: AdEventListener?) // Allow null listener
-    protected abstract fun clearAdEventListener(ad: Ad?): Unit // Explicit Unit return type
-    protected abstract fun showAdInternal(ad: Ad, activity: Activity) // Keep Activity here for showing
+    protected abstract fun setAdEventListener(ad: Ad, listener: AdEventListener?)
+    protected abstract fun clearAdEventListener(ad: Ad?): Unit
+    protected abstract fun showAdInternal(ad: Ad, activity: Activity)
     protected abstract fun createAdLoadListener(
         onLoaded: (Ad) -> Unit,
         onError: (AdRequestError) -> Unit
@@ -112,14 +112,14 @@ abstract class BaseAdManager<AdLoader, Ad, AdLoadListener, AdEventListener>(
         onFailedToShow: (com.yandex.mobile.ads.common.AdError) -> Unit = {},
         onClicked: () -> Unit = {},
         onImpression: (ImpressionData?) -> Unit = {},
-        onRewarded: (Reward) -> Unit = {} // Specific to Rewarded
+        onRewarded: (Reward) -> Unit = {}
     ): AdEventListener
 
 
     // Store default callbacks used during load for preloading
     private var defaultOnShown: () -> Unit = {}
     private var defaultOnDismissed: () -> Unit = {}
-    private var defaultOnRewarded: (Reward) -> Unit = {} // Specific to Rewarded
+    private var defaultOnRewarded: (Reward) -> Unit = {}
 
     fun loadAd(
         adUnitId: String,
@@ -127,7 +127,7 @@ abstract class BaseAdManager<AdLoader, Ad, AdLoadListener, AdEventListener>(
         onError: (AdRequestError) -> Unit = {},
         onShown: () -> Unit = {},
         onDismissed: () -> Unit = {},
-        onRewarded: (Reward) -> Unit = {} // Specific to Rewarded
+        onRewarded: (Reward) -> Unit = {}
     ) {
         // Store callbacks provided during load, primarily for preloading scenarios
         defaultOnShown = onShown
@@ -315,11 +315,9 @@ class RewardedAdManager(context: Context) : BaseAdManager<RewardedAdLoader, Rewa
 
     override fun createAdLoader(): RewardedAdLoader = RewardedAdLoader(context)
     override fun setAdLoadListener(loader: RewardedAdLoader, listener: RewardedAdLoadListener) { loader.setAdLoadListener(listener) }
-    // Ensure Unit return type explicitly for overridden methods
     override fun clearAdLoadListener(loader: RewardedAdLoader?): Unit { loader?.setAdLoadListener(null) }
     override fun loadAdInternal(loader: RewardedAdLoader, adRequest: AdRequestConfiguration) { loader.loadAd(adRequest) }
     override fun setAdEventListener(ad: RewardedAd, listener: RewardedAdEventListener?) { ad.setAdEventListener(listener) }
-    // Ensure Unit return type explicitly for overridden methods
     override fun clearAdEventListener(ad: RewardedAd?): Unit { ad?.setAdEventListener(null) }
     override fun showAdInternal(ad: RewardedAd, activity: Activity) { ad.show(activity) }
 

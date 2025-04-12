@@ -30,7 +30,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
-import com.byteflipper.ffsensitivities.R // Импорт ресурсов из app
+import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.navigation.Screen
 
 /**
  * Content for the agreement page within the onboarding flow, specific to this app.
@@ -99,7 +100,7 @@ internal fun WelcomeAgreementContent(
                 Spacer(modifier = Modifier.width(4.dp))
                 AcceptanceText(
                     onShowPolicyClick = { documentType ->
-                        navController.navigate("policy/$documentType")
+                        navController.navigate(Screen.Policy(documentType).route) // Use Screen object
                     }
                 )
             }
@@ -115,7 +116,7 @@ private fun AcceptanceText(
     onShowPolicyClick: (documentType: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val fullText = stringResource(id = R.string.accept_terms_and_policy) // Use app resources
+    val fullText = stringResource(id = R.string.accept_terms_and_policy)
     val parsedText = HtmlCompat.fromHtml(fullText, HtmlCompat.FROM_HTML_MODE_LEGACY)
 
     val annotatedString = buildAnnotatedString {

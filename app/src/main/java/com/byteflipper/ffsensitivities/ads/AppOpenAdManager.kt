@@ -37,14 +37,14 @@ class AppOpenAdManager @Inject constructor(
     private var isShowing: Boolean = false
     private var loadTime: Long = 0
     private var currentActivity: Activity? = null
-    private var appOpenAdLoader: AppOpenAdLoader = AppOpenAdLoader(context) // Initialize loader here
-    private var isFirstLoadAttempted = false // Flag for initial load
-    private var shouldAttemptShowOnLoad = false // Flag to show ad immediately after load if needed
+    private var appOpenAdLoader: AppOpenAdLoader = AppOpenAdLoader(context)
+    private var isFirstLoadAttempted = false
+    private var shouldAttemptShowOnLoad = false
 
     companion object {
         private const val TAG = "AppOpenAdManager"
-        private const val AD_EXPIRATION_MS = 4 * 60 * 60 * 1000 // 4 hours
-        private const val SHOW_FREQUENCY = 4 // Show every 4 launches
+        private const val AD_EXPIRATION_MS = 4 * 60 * 60 * 1000
+        private const val SHOW_FREQUENCY = 4
     }
 
     // Declare listener before init block
@@ -58,7 +58,7 @@ class AppOpenAdManager @Inject constructor(
             // If we intended to show this ad immediately after load, try now
             if (shouldAttemptShowOnLoad) {
                 Log.d(TAG, "Ad loaded, attempting to show immediately due to shouldAttemptShowOnLoad flag.")
-                showAdIfAvailable() // This will reset the flag internally if shown
+                showAdIfAvailable()
             }
         }
 
@@ -196,9 +196,6 @@ class AppOpenAdManager @Inject constructor(
             }
         }
     }
-
-    // --- Application.ActivityLifecycleCallbacks Implementation ---
-    // Only used to track the current activity
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 

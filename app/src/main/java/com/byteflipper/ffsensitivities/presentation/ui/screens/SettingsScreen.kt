@@ -1,13 +1,12 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.background // Import background
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape // Import CircleShape
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward // Import forward arrow
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -16,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.clickable
-import androidx.compose.ui.graphics.Color // Import Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import android.app.Activity
@@ -54,18 +52,17 @@ fun SettingsScreen(
             )
         }
     ) { innerPadding ->
-        // Use Column instead of LazyColumn if the number of categories is small and fixed
         Column(
             modifier = modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .padding(16.dp), // Add padding around the column content
-            verticalArrangement = Arrangement.spacedBy(16.dp) // Space between cards
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             // --- Theme Settings Card ---
             SettingsCategoryCard(
                 title = stringResource(R.string.theme_settings_category_title),
-                description = stringResource(R.string.theme_settings_card_description), // New string
+                description = stringResource(R.string.theme_settings_card_description),
                 iconRes = R.drawable.palette_24px,
                 onClick = { navController.navigate(Screen.ThemeSettings.route) }
             )
@@ -73,9 +70,9 @@ fun SettingsScreen(
             // --- Language Settings Card ---
              SettingsCategoryCard(
                 title = stringResource(R.string.change_language),
-                description = stringResource(R.string.language_settings_card_description), // New string
+                description = stringResource(R.string.language_settings_card_description),
                 iconRes = R.drawable.translate_24px,
-                onClick = { navController.navigate(Screen.LanguageSettings.route) } // Uncommented navigation
+                onClick = { navController.navigate(Screen.LanguageSettings.route) }
             )
 
             // --- Privacy Settings Card ---
@@ -83,7 +80,7 @@ fun SettingsScreen(
             if (privacyOptionsRequired) {
                 SettingsCategoryCard(
                     title = stringResource(R.string.privacy_settings_category_title),
-                    description = stringResource(R.string.privacy_settings_card_description), // New string
+                    description = stringResource(R.string.privacy_settings_card_description),
                     iconRes = R.drawable.privacy_tip_24px,
                     onClick = { navController.navigate(Screen.PrivacySettings.route) }
                 )
@@ -103,46 +100,44 @@ private fun SettingsCategoryCard(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clip(MaterialTheme.shapes.medium) // Clip the row for ripple effect
+            .clip(MaterialTheme.shapes.medium)
             .clickable(onClick = onClick)
-            .padding(horizontal = 8.dp, vertical = 12.dp), // Adjust padding
+            .padding(horizontal = 8.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Box for circular background
         Box(
             modifier = Modifier
-                .size(48.dp) // Size of the background circle
+                .size(48.dp)
                 .background(
-                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f), // Semi-transparent background
+                    color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f),
                     shape = CircleShape
                 ),
-            contentAlignment = Alignment.Center // Center the icon inside the Box
+            contentAlignment = Alignment.Center
         ) {
             Icon(
                 painter = painterResource(id = iconRes),
-                contentDescription = null, // Decorative
-                modifier = Modifier.size(28.dp), // Smaller icon size
-                tint = MaterialTheme.colorScheme.onPrimaryContainer // Icon color contrasting with background
+                contentDescription = null,
+                modifier = Modifier.size(28.dp),
+                tint = MaterialTheme.colorScheme.onPrimaryContainer
             )
         }
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleMedium // Smaller title
+                style = MaterialTheme.typography.titleMedium
             )
-            Spacer(modifier = Modifier.height(2.dp)) // Reduced spacer
+            Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = description,
-                style = MaterialTheme.typography.bodySmall, // Smaller body text
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-        // Add arrow icon at the end
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-            contentDescription = null, // Decorative
-            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f) // Subtle color
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
         )
     }
 }

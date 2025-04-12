@@ -1,15 +1,5 @@
 package com.byteflipper.ffsensitivities.ads
 
-//import com.google.android.gms.ads.AdError
-//import com.google.android.gms.ads.AdRequest
-//import com.google.android.gms.ads.AdSize
-//import com.google.android.gms.ads.AdView
-//import com.google.android.gms.ads.FullScreenContentCallback
-//import com.google.android.gms.ads.LoadAdError
-//import com.google.android.gms.ads.MobileAds
-//import com.google.android.gms.ads.appopen.AppOpenAd
-//import com.google.android.gms.ads.interstitial.InterstitialAd
-//import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager

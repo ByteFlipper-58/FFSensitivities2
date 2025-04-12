@@ -16,10 +16,6 @@ object AdManagerHolder {
 
     private const val TAG = "AdManagerHolder"
 
-    // Use constants from AdConstants object
-    // private const val INTERSTITIAL_AD_UNIT_ID = "R-M-13549181-3" // Removed hardcoded ID
-    // private const val REWARDED_AD_UNIT_ID = "YOUR_REWARDED_AD_UNIT_ID" // Removed hardcoded ID
-
     /**
      * Initializes the ad managers and starts preloading.
      * Should be called once from Application.onCreate().
@@ -47,8 +43,6 @@ object AdManagerHolder {
             adUnitId = AdConstants.INTERSTITIAL_AD_UNIT_ID, // Use constant
             onLoaded = { Log.i(TAG, "Interstitial Ad preloaded successfully.") },
             onError = { error -> Log.e(TAG, "Failed to preload Interstitial Ad: ${error.description}") }
-            // Other callbacks (onShown, onDismissed) are handled by the manager internally
-            // and trigger the next preload via preloadNextAd() in BaseAdManager
         )
     }
 
@@ -60,8 +54,6 @@ object AdManagerHolder {
     fun showInterstitialAd(activity: Activity, onShown: () -> Unit = {}, onDismissed: () -> Unit = {}) {
         Log.d(TAG, "Attempting to show Interstitial Ad...")
 
-        // Pass the specific callbacks for this show instance to the manager's show method.
-        // BaseAdManager will handle setting the listener with these callbacks before showing.
         interstitialAdManager?.show(
             activity = activity,
             onShown = {
@@ -70,15 +62,10 @@ object AdManagerHolder {
             },
             onDismissed = {
                 Log.d(TAG, "Interstitial Ad dismissed callback triggered.")
-                onDismissed() // Call the provided callback
-                // Preloading is handled internally by BaseAdManager after dismissal
+                onDismissed()
             }
             // onRewarded is not applicable here
         )
-
-        // If the ad wasn't loaded, BaseAdManager's show method logs a warning
-        // and attempts to preload the next ad. We don't need to load on demand here,
-        // relying on the preload mechanism.
     }
 
     // --- Rewarded Ad Methods (similar structure if needed) ---

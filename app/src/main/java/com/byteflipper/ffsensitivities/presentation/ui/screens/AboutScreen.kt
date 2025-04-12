@@ -48,6 +48,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
 import com.byteflipper.ui_components.components.AnimatedActionItem
 import com.byteflipper.ui_components.components.ExpandableSection
@@ -131,7 +132,7 @@ fun AboutScreen(
                         title = stringResource(R.string.bug_report_title),
                         subtitle = stringResource(R.string.bug_report_subtitle),
                         icon = painterResource(id = R.drawable.bug_report_24px),
-                        onClick = { navController.navigate("bug_report") }
+                        onClick = { navController.navigate(Screen.BugReport.route) } // Use Screen object
                     )
 
                     AnimatedActionItem(

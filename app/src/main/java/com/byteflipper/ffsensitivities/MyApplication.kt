@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Process
 import android.util.Log
 import androidx.lifecycle.ProcessLifecycleOwner
+import com.byteflipper.crashhandler.CrashHandler
 import com.byteflipper.ffsensitivities.ads.AppOpenAdManager
 import com.byteflipper.ffsensitivities.ads.ConsentManager // Import ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
@@ -14,6 +15,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import timber.log.Timber
+import java.io.File
 import javax.inject.Inject
 import kotlin.system.exitProcess
 
@@ -34,7 +36,14 @@ class MyApplication : Application() {
 
         initializeLogging()
         Timber.plant(FileLoggingTree(this))
-        setupCrashHandler()
+
+        val logsDir = File(getExternalFilesDir(null), "my_crash_logs")
+
+        CrashHandler.init(this)
+            .configureCrashLogsDir(logsDir)
+            .enableCrashActivity(true)
+            .enableLogSaving(true)
+            .enableFirebaseCrashlytics(true)
     }
 
     private fun setupCrashHandler() {

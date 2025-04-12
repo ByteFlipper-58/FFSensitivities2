@@ -108,6 +108,7 @@ android {
 
 dependencies {
     implementation(project(":ui-components"))
+    implementation(project(":Crash Handler"))
 
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation(platform(libs.androidx.compose.bom))

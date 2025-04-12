@@ -36,6 +36,7 @@ import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.AdManagerHolder
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
+import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
@@ -151,10 +152,11 @@ fun DevicesCard(devices: DeviceModel, navController: NavHostController) {
         onClick = {
             val encodedManufacturer = Uri.encode(devices.manufacturer)
             val encodedDeviceName = Uri.encode(devices.name)
+            // Navigate using the Screen object
             navController.navigate(
-                "sensitivities/$encodedManufacturer/$encodedDeviceName"
+                Screen.Sensitivities(manufacturer = encodedManufacturer, modelName = encodedDeviceName).route
             ) {
-                launchSingleTop = true
+                launchSingleTop = true // Keep the launchSingleTop behavior
             }
         }
     ) {
