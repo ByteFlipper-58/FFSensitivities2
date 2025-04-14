@@ -1,20 +1,19 @@
 [versions]
 activityKtx = "1.10.1"
-agp = "8.9.0"
-appcompat = "1.7.0"
+agp = "8.9.1"
 browser = "1.8.0"
 coilCompose = "2.7.0"
 firebaseBom = "33.12.0"
 kotlin = "2.1.10"
-coreKtx = "1.15.0"
+coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
-kotlinxSerializationJson = "1.7.3"
+kotlinxSerializationJson = "1.8.0"
 library = "1.1.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
-composeBom = "2025.03.01"
+composeBom = "2025.04.00"
 navigationRuntimeKtx = "2.8.9"
 navigationCompose = "2.8.9"
 firebaseInappmessagingDisplay = "21.0.2"
@@ -23,7 +22,6 @@ material = "1.12.0"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
-androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
@@ -49,7 +47,6 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 library = { module = "me.zhanghai.compose.preference:library", version.ref = "library" }
 firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

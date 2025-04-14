@@ -7,7 +7,7 @@ plugins {
     id("kotlin-parcelize")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.firebase.crashlytics")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
 }
 
@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 81
-        versionName = "v3.0.1"
+        versionCode = 83
+        versionName = "v3.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -129,8 +129,8 @@ dependencies {
     implementation("com.yandex.android:mobileads-mediation:7.9.0.0")
 
     implementation("com.google.dagger:hilt-android:2.55")
-    kapt("com.google.dagger:hilt-compiler:2.55")
-    kapt("com.google.dagger:hilt-android-compiler:2.55")
+    ksp("com.google.dagger:hilt-compiler:2.55")
+    ksp("com.google.dagger:hilt-android-compiler:2.55")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     implementation("androidx.datastore:datastore-preferences:1.0.0")
