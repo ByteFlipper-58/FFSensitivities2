@@ -6,16 +6,20 @@ import com.byteflipper.ffsensitivities.data.repository.DevicesRepository
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import android.util.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class DeviceViewModel @Inject constructor(
     private val repository: DevicesRepository
 ) : ViewModel() {
+
+    private companion object {
+        private const val TAG = "DeviceViewModel"
+    }
 
     private val _uiState = MutableStateFlow<UiState<List<DeviceModel>>>(UiState.Loading)
     val uiState: StateFlow<UiState<List<DeviceModel>>> = _uiState
@@ -69,7 +73,7 @@ class DeviceViewModel @Inject constructor(
         } ?: run {
             // Handle case where lastManufacturer is null (e.g., initial load failed before manufacturer was set)
              _uiState.value = UiState.Error("Cannot retry without a manufacturer.")
-             Timber.tag("DeviceViewModel").w("Retry called but lastManufacturer is null.")
+             Log.w(TAG, "Retry called but lastManufacturer is null.")
         }
     }
 }

@@ -13,13 +13,17 @@ import com.byteflipper.ffsensitivities.ads.ConsentManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.navigation.RootAppNavigation
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
+import android.util.Log
 import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    private companion object {
+        private const val TAG = "MainActivity"
+    }
 
     @Inject lateinit var consentManager: ConsentManager
     @Inject lateinit var dataStoreManager: DataStoreManager
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
         appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
 
         consentManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
-            Timber.d("UMP Consent resolved in MainActivity. Can request personalized ads: $canRequestPersonalizedAds")
+            Log.d(TAG, "UMP Consent resolved in MainActivity. Can request personalized ads: $canRequestPersonalizedAds")
         }
 
         splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }

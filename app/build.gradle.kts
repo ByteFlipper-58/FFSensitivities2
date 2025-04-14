@@ -156,7 +156,6 @@ dependencies {
     implementation("io.ktor:ktor-client-cio:2.3.4")
     implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
-    implementation("com.jakewharton.timber:timber:5.0.1")
 
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.serialization.json)

@@ -41,10 +41,10 @@ import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.compone
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.InfoNote
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.LogsOption
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.SubmissionStatusOverlay
+import android.util.Log
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.SubmitButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -55,6 +55,7 @@ import java.util.Locale
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BugReportScreen(navController: NavController) {
+    val TAG = "BugReportScreen" // Define TAG for logging
     var selectedCategory by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
@@ -165,7 +166,7 @@ fun BugReportScreen(navController: NavController) {
                             val tag = if (selectedIndex != -1 && selectedIndex < categories_tags.size) {
                                 categories_tags[selectedIndex]
                             } else {
-                                Timber.w("Selected category '$selectedCategory' not found in list or tags list mismatch. Defaulting to 'other'.")
+                                Log.w(TAG, "Selected category '$selectedCategory' not found in list or tags list mismatch. Defaulting to 'other'.")
                                 "other"
                             }
 
@@ -194,10 +195,10 @@ fun BugReportScreen(navController: NavController) {
                             val result = sendBugReport(tag, formattedMessage)
 
                             result.onSuccess {
-                                Timber.i("Bug report submitted successfully. Ticket: $ticketId")
+                                Log.i(TAG, "Bug report submitted successfully. Ticket: $ticketId")
                                 isSuccess = true
                             }.onFailure { error ->
-                                Timber.e(error, "Bug report submission failed.")
+                                Log.e(TAG, "Bug report submission failed.", error)
                                 submissionError = context.getString(R.string.bug_report_submission_error, error.message ?: context.getString(R.string.unknown_error))
                             }
                         }
