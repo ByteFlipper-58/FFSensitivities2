@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Ката маалыматтары</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Бул URL дарегин ачуу үчүн браузер табылган жок</string>
+
+    <string name="privacy_settings_category_title">Купуялуулук жөндөөлөрү</string>
+    <string name="privacy_settings_card_description">Жарнама максаттары үчүн макулдугуңузду башкарыңыз</string>
+    <string name="privacy_settings_button_title">Купуялуулук жөндөөлөрү</string>
+    <string name="privacy_settings_button_description">Макулдук параметрлерин башкаруу</string>
+    <string name="privacy_settings_not_required_title">Купуялуулук жөндөөлөрү башкарылды</string>
+    <string name="privacy_settings_not_required_description">Сиздин аймакта атайын купуялуулук параметрлери талап кылынбайт.</string>
+    <string name="language_settings_card_description">Колдонмонун тилин өзгөртүү</string>
+    <string name="theme_settings_card_description">Көрүнүштү, динамикалык түстөрдү жана контрастты ыңгайлаштырыңыз</string>
+    <string name="selected">Тандалды</string>
+
 </resources>

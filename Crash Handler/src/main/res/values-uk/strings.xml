@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Сталася невідома помилка</string>
+    <string name="crash_handler_error_fallback">Помилка</string>
+    <string name="crash_handler_icon_description">Іконка збою</string>
+    <string name="crash_handler_title">Ой! Щось пішло не так</string>
+    <string name="crash_handler_subtitle">Не хвилюйтеся, ваші дані в безпеці</string>
+    <string name="crash_handler_tab_error_details">Деталі помилки</string>
+    <string name="crash_handler_tab_technical_details">Технічні деталі</string>
+    <string name="crash_handler_card_title_what_happened">Що трапилось?</string>
+    <string name="crash_handler_card_content_what_happened">Додаток зіткнувся з неочікуваною проблемою і був змушений зупинитися. Зазвичай це спричинено проблемою в програмному забезпеченні.</string>
+    <string name="crash_handler_copy_button_description">Скопіювати деталі помилки</string>
+    <string name="crash_handler_copy_button_text">Скопіювати в буфер обміну</string>
+    <string name="crash_handler_copy_confirmation">Скопійовано!</string>
+    <string name="crash_handler_restart_button">Перезапустити додаток</string>
+    <string name="crash_handler_close_button">Закрити додаток</string>
+</resources>

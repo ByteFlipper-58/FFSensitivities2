@@ -224,4 +224,14 @@
     <string name="error_details_clipboard_label">Тафсилоти хато</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Барои кушодани ин URL браузер ёфт нашуд</string>
+    <string name="privacy_settings_category_title">Танзимоти махфият</string>
+    <string name="privacy_settings_card_description">Идоракунии розигии шумо барои мақсадҳои таблиғотӣ</string>
+    <string name="privacy_settings_button_title">Танзимоти махфият</string>
+    <string name="privacy_settings_button_description">Имконоти розигии худро идора кунед</string>
+    <string name="privacy_settings_not_required_title">Танзимоти махфият идора шуданд</string>
+    <string name="privacy_settings_not_required_description">Дар минтақаи шумо ҳоло танзимоти махсуси махфият талаб карда намешавад.</string>
+    <string name="language_settings_card_description">Тағйири забони барнома</string>
+    <string name="theme_settings_card_description">Намудор, рангҳои динамикӣ ва контрастро танзим кунед</string>
+    <string name="selected">Интихобшуда</string>
+
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Адбылася невядомая памылка</string>
+    <string name="crash_handler_error_fallback">Памылка</string>
+    <string name="crash_handler_icon_description">Значок збою</string>
+    <string name="crash_handler_title">Ой! Нешта пайшло не так</string>
+    <string name="crash_handler_subtitle">Не хвалюйцеся, вашы даныя ў бяспецы</string>
+    <string name="crash_handler_tab_error_details">Дэталі памылкі</string>
+    <string name="crash_handler_tab_technical_details">Тэхнічныя дэталі</string>
+    <string name="crash_handler_card_title_what_happened">Што здарылася?</string>
+    <string name="crash_handler_card_content_what_happened">Прыкладанне сутыкнулася з нечаканай праблемай і было вымушана спыніцца. Звычайна гэта выклікана праблемай у праграмным забеспячэнні.</string>
+    <string name="crash_handler_copy_button_description">Скапіяваць дэталі памылкі</string>
+    <string name="crash_handler_copy_button_text">Скапіяваць у буфер абмену</string>
+    <string name="crash_handler_copy_confirmation">Скапіявана!</string>
+    <string name="crash_handler_restart_button">Перазапусціць прыкладанне</string>
+    <string name="crash_handler_close_button">Закрыць прыкладанне</string>
+</resources>

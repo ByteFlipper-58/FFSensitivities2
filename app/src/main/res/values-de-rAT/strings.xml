@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Fehlerdetails</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Kein Browser zum Öffnen dieser URL gefunden</string>
+    <!-- Datenschutzeinstellungen -->
+    <string name="privacy_settings_category_title">Datenschutz</string>
+    <string name="privacy_settings_card_description">Verwalte deine Zustimmung für Werbung</string>
+    <string name="privacy_settings_button_title">Datenschutzeinstellungen</string>
+    <string name="privacy_settings_button_description">Verwalte deine Auswahl zur Zustimmung</string>
+    <string name="privacy_settings_not_required_title">Datenschutzeinstellungen verwaltet</string>
+    <string name="privacy_settings_not_required_description">Für deine Region sind momentan keine besonderen Datenschutzoptionen erforderlich.</string>
+    <string name="language_settings_card_description">App-Sprache ändern</string>
+    <string name="theme_settings_card_description">Passen Sie das Aussehen, dynamische Farben und den Kontrast an</string>
+    <string name="selected">Ausgewählt</string>
+
 </resources>

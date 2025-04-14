@@ -66,6 +66,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -73,6 +74,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.byteflipper.crashhandler.R // Add import for R class
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -87,10 +89,12 @@ fun CrashScreen(
     var showCopyConfirmation by remember { mutableStateOf(false) }
     val clipboardManager = LocalClipboardManager.current
     val scope = rememberCoroutineScope()
-    val errorMessageToShow = if (errorMessage.isNotBlank()) errorMessage else "Unknown error occurred"
+    val unknownErrorString = stringResource(id = R.string.crash_handler_unknown_error)
+    val errorFallbackString = stringResource(id = R.string.crash_handler_error_fallback)
+    val errorMessageToShow = if (errorMessage.isNotBlank()) errorMessage else unknownErrorString
 
     // Parse the stack trace to get the exception name for a better error display
-    val exceptionName = stackTrace.lines().firstOrNull()?.split(":")?.firstOrNull() ?: "Error"
+    val exceptionName = stackTrace.lines().firstOrNull()?.split(":")?.firstOrNull() ?: errorFallbackString
 
     // Auto-scroll controller for stack trace
     val scrollState = rememberScrollState()
@@ -147,7 +151,7 @@ fun CrashScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.BugReport,
-                    contentDescription = "Crash icon",
+                    contentDescription = stringResource(id = R.string.crash_handler_icon_description),
                     modifier = Modifier.size(40.dp), // Уменьшенный размер с 50dp до 40dp
                     tint = MaterialTheme.colorScheme.onError
                 )
@@ -157,7 +161,7 @@ fun CrashScreen(
 
             // Error title with shadow effect
             Text(
-                text = "Oops! Something went wrong",
+                text = stringResource(id = R.string.crash_handler_title),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground,
@@ -175,7 +179,7 @@ fun CrashScreen(
 
             // Error subtitle
             Text(
-                text = "Don't worry, your data is safe",
+                text = stringResource(id = R.string.crash_handler_subtitle),
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center
@@ -214,7 +218,7 @@ fun CrashScreen(
                             onClick = { selectedTabIndex = 0 },
                             text = {
                                 Text(
-                                    "Error Details",
+                                    stringResource(id = R.string.crash_handler_tab_error_details),
                                     fontWeight = FontWeight.Medium
                                 )
                             }
@@ -225,7 +229,7 @@ fun CrashScreen(
                             onClick = { selectedTabIndex = 1 },
                             text = {
                                 Text(
-                                    "Technical Details",
+                                    stringResource(id = R.string.crash_handler_tab_technical_details),
                                     fontWeight = FontWeight.Medium
                                 )
                             }
@@ -282,7 +286,7 @@ fun CrashScreen(
                                     ) {
                                         Column(modifier = Modifier.padding(12.dp)) {
                                             Text(
-                                                text = "What happened?",
+                                                text = stringResource(id = R.string.crash_handler_card_title_what_happened),
                                                 fontWeight = FontWeight.SemiBold,
                                                 fontSize = 15.sp,
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -291,7 +295,7 @@ fun CrashScreen(
                                             Spacer(modifier = Modifier.height(4.dp))
 
                                             Text(
-                                                text = "The application encountered an unexpected problem and was forced to stop. This is usually caused by a software issue.",
+                                                text = stringResource(id = R.string.crash_handler_card_content_what_happened),
                                                 fontSize = 14.sp,
                                                 lineHeight = 18.sp,
                                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f)
@@ -372,12 +376,12 @@ fun CrashScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.ContentCopy,
-                                contentDescription = "Copy error details",
+                                contentDescription = stringResource(id = R.string.crash_handler_copy_button_description),
                                 modifier = Modifier.size(16.dp) // Уменьшенный размер иконки
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Copy to Clipboard",
+                                text = stringResource(id = R.string.crash_handler_copy_button_text),
                                 fontWeight = FontWeight.Medium,
                                 fontSize = 14.sp
                             )
@@ -402,7 +406,7 @@ fun CrashScreen(
                                 )
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
-                                    text = "Copied!",
+                                    text = stringResource(id = R.string.crash_handler_copy_confirmation),
                                     color = MaterialTheme.colorScheme.primary,
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium
@@ -443,7 +447,7 @@ fun CrashScreen(
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = "Restart Application",
+                        text = stringResource(id = R.string.crash_handler_restart_button),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -461,7 +465,7 @@ fun CrashScreen(
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.5f))
                 ) {
                     Text(
-                        text = "Close Application",
+                        text = stringResource(id = R.string.crash_handler_close_button),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
                     )

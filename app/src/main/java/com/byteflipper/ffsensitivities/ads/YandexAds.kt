@@ -87,7 +87,7 @@ fun YandexBannerAd(
 }
 
 abstract class BaseAdManager<AdLoader, Ad, AdLoadListener, AdEventListener>(
-    protected val context: Context, // Changed from Activity to Context
+    protected val context: Context,
     private val adTypeTag: String
 ) {
     protected var ad: Ad? = null
@@ -277,11 +277,9 @@ class InterstitialAdManager(context: Context) : BaseAdManager<InterstitialAdLoad
 
     override fun createAdLoader(): InterstitialAdLoader = InterstitialAdLoader(context)
     override fun setAdLoadListener(loader: InterstitialAdLoader, listener: InterstitialAdLoadListener) { loader.setAdLoadListener(listener) }
-    // Ensure Unit return type explicitly for overridden methods
     override fun clearAdLoadListener(loader: InterstitialAdLoader?): Unit { loader?.setAdLoadListener(null) }
     override fun loadAdInternal(loader: InterstitialAdLoader, adRequest: AdRequestConfiguration) { loader.loadAd(adRequest) }
     override fun setAdEventListener(ad: InterstitialAd, listener: InterstitialAdEventListener?) { ad.setAdEventListener(listener) }
-    // Ensure Unit return type explicitly for overridden methods
     override fun clearAdEventListener(ad: InterstitialAd?): Unit { ad?.setAdEventListener(null) }
     override fun showAdInternal(ad: InterstitialAd, activity: Activity) { ad.show(activity) }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Произошла неизвестная ошибка</string>
+    <string name="crash_handler_error_fallback">Ошибка</string>
+    <string name="crash_handler_icon_description">Иконка сбоя</string>
+    <string name="crash_handler_title">Ой! Что-то пошло не так</string>
+    <string name="crash_handler_subtitle">Не волнуйтесь, ваши данные в безопасности</string>
+    <string name="crash_handler_tab_error_details">Детали ошибки</string>
+    <string name="crash_handler_tab_technical_details">Технические детали</string>
+    <string name="crash_handler_card_title_what_happened">Что случилось?</string>
+    <string name="crash_handler_card_content_what_happened">Приложение столкнулось с непредвиденной проблемой и было вынуждено остановиться. Обычно это вызвано проблемой в программном обеспечении.</string>
+    <string name="crash_handler_copy_button_description">Скопировать детали ошибки</string>
+    <string name="crash_handler_copy_button_text">Скопировать в буфер обмена</string>
+    <string name="crash_handler_copy_confirmation">Скопировано!</string>
+    <string name="crash_handler_restart_button">Перезапустить приложение</string>
+    <string name="crash_handler_close_button">Закрыть приложение</string>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Wystąpił nieznany błąd</string>
+    <string name="crash_handler_error_fallback">Błąd</string>
+    <string name="crash_handler_icon_description">Ikona awarii</string>
+    <string name="crash_handler_title">Ups! Coś poszło nie tak</string>
+    <string name="crash_handler_subtitle">Nie martw się, Twoje dane są bezpieczne</string>
+    <string name="crash_handler_tab_error_details">Szczegóły błędu</string>
+    <string name="crash_handler_tab_technical_details">Szczegóły techniczne</string>
+    <string name="crash_handler_card_title_what_happened">Co się stało?</string>
+    <string name="crash_handler_card_content_what_happened">Aplikacja napotkała nieoczekiwany problem i musiała zostać zatrzymana. Zazwyczaj jest to spowodowane problemem z oprogramowaniem.</string>
+    <string name="crash_handler_copy_button_description">Skopiuj szczegóły błędu</string>
+    <string name="crash_handler_copy_button_text">Kopiuj do schowka</string>
+    <string name="crash_handler_copy_confirmation">Skopiowano!</string>
+    <string name="crash_handler_restart_button">Uruchom ponownie aplikację</string>
+    <string name="crash_handler_close_button">Zamknij aplikację</string>
+</resources>

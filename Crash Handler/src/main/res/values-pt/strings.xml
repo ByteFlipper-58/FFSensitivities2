@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Ocorreu um erro desconhecido</string>
+    <string name="crash_handler_error_fallback">Erro</string>
+    <string name="crash_handler_icon_description">Ícone de falha</string>
+    <string name="crash_handler_title">Oops! Algo deu errado</string>
+    <string name="crash_handler_subtitle">Não se preocupe, seus dados estão seguros</string>
+    <string name="crash_handler_tab_error_details">Detalhes do Erro</string>
+    <string name="crash_handler_tab_technical_details">Detalhes Técnicos</string>
+    <string name="crash_handler_card_title_what_happened">O que aconteceu?</string>
+    <string name="crash_handler_card_content_what_happened">A aplicação encontrou um problema inesperado e teve que parar. Isso geralmente é causado por um problema de software.</string>
+    <string name="crash_handler_copy_button_description">Copiar detalhes do erro</string>
+    <string name="crash_handler_copy_button_text">Copiar para a Área de Transferência</string>
+    <string name="crash_handler_copy_confirmation">Copiado!</string>
+    <string name="crash_handler_restart_button">Reiniciar Aplicação</string>
+    <string name="crash_handler_close_button">Fechar Aplicação</string>
+</resources>

@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Szczegóły błędu</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Nie znaleziono przeglądarki do otwarcia tego adresu URL</string>
+
+    <string name="privacy_settings_category_title">Ustawienia prywatności</string>
+    <string name="privacy_settings_card_description">Zarządzaj swoją zgodą na cele reklamowe</string>
+    <string name="privacy_settings_button_title">Ustawienia prywatności</string>
+    <string name="privacy_settings_button_description">Zarządzaj swoimi opcjami zgody</string>
+    <string name="privacy_settings_not_required_title">Ustawienia prywatności zostały zarządzane</string>
+    <string name="privacy_settings_not_required_description">W Twoim regionie nie są wymagane żadne szczególne ustawienia prywatności.</string>
+    <string name="language_settings_card_description">Zmień język aplikacji</string>
+    <string name="theme_settings_card_description">Dostosuj wygląd, dynamiczne kolory i kontrast</string>
+    <string name="selected">Wybrano</string>
+
 </resources>

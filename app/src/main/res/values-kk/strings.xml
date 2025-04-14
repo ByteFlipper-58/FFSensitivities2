@@ -224,4 +224,14 @@
     <string name="error_details_clipboard_label">Қате туралы мәліметтер</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Бұл URL мекенжайын ашу үшін браузер табылмады</string>
+    <string name="privacy_settings_category_title">Құпиялық параметрлері</string>
+    <string name="privacy_settings_card_description">Жарнама мақсатындағы келісімді басқару</string>
+    <string name="privacy_settings_button_title">Құпиялық параметрлері</string>
+    <string name="privacy_settings_button_description">Келісім опцияларын басқару</string>
+    <string name="privacy_settings_not_required_title">Құпиялық параметрлері басқарылды</string>
+    <string name="privacy_settings_not_required_description">Сіздің аймақта құпиялықтың нақты параметрлері талап етілмейді.</string>
+    <string name="language_settings_card_description">Қолданба тілін өзгерту</string>
+    <string name="theme_settings_card_description">Көріністі, динамикалық түстерді және контрастты баптаңыз</string>
+    <string name="selected">Таңдалды</string>
+
 </resources>

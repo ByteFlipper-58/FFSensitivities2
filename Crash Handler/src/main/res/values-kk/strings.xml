@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Белгісіз қате орын алды</string>
+    <string name="crash_handler_error_fallback">Қате</string>
+    <string name="crash_handler_icon_description">Апат белгішесі</string>
+    <string name="crash_handler_title">Ой! Бірдеңе дұрыс болмады</string>
+    <string name="crash_handler_subtitle">Уайымдамаңыз, деректеріңіз қауіпсіз</string>
+    <string name="crash_handler_tab_error_details">Қате туралы мәліметтер</string>
+    <string name="crash_handler_tab_technical_details">Техникалық мәліметтер</string>
+    <string name="crash_handler_card_title_what_happened">Не болды?</string>
+    <string name="crash_handler_card_content_what_happened">Қолданба күтпеген мәселеге тап болып, тоқтауға мәжбүр болды. Бұл әдетте бағдарламалық жасақтама мәселесінен туындайды.</string>
+    <string name="crash_handler_copy_button_description">Қате туралы мәліметтерді көшіру</string>
+    <string name="crash_handler_copy_button_text">Алмасу буферіне көшіру</string>
+    <string name="crash_handler_copy_confirmation">Көшірілді!</string>
+    <string name="crash_handler_restart_button">Қолданбаны қайта іске қосу</string>
+    <string name="crash_handler_close_button">Қолданбаны жабу</string>
+</resources>

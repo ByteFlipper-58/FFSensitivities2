@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Деталі помилки</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Не знайдено браузер для відкриття цієї URL-адреси</string>
+
+    <string name="privacy_settings_category_title">Налаштування конфіденційності</string>
+    <string name="privacy_settings_card_description">Керуйте своєю згодою для рекламних цілей</string>
+    <string name="privacy_settings_button_title">Налаштування конфіденційності</string>
+    <string name="privacy_settings_button_description">Керуйте параметрами своєї згоди</string>
+    <string name="privacy_settings_not_required_title">Налаштування конфіденційності керуються</string>
+    <string name="privacy_settings_not_required_description">У вашому регіоні наразі не потрібні спеціальні налаштування конфіденційності.</string>
+    <string name="language_settings_card_description">Змінити мову застосунку</string>
+    <string name="theme_settings_card_description">Налаштуйте вигляд, динамічні кольори та контраст</string>
+    <string name="selected">Обрано</string>
+
 </resources>

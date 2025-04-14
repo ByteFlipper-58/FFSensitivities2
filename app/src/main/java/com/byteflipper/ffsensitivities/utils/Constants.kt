@@ -11,5 +11,5 @@ object AdConstants {
 
     // Ad Display Frequencies
     const val SENSITIVITIES_SCREEN_AD_FREQUENCY = 3
-    const val DEVICES_SCREEN_AD_FREQUENCY = 7
+    const val DEVICES_SCREEN_AD_FREQUENCY = 6
 }

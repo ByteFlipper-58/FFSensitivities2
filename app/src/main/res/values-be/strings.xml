@@ -6,7 +6,7 @@
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
     <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Common Actions       -->
+    <!-- Common Actions -->
     <string name="continue_button">Працягнуць</string>
     <string name="copy">Капіяваць</string>
     <string name="copied">Скапіявана</string>
@@ -22,7 +22,7 @@
     <string name="home">Галоўная</string>
     <string name="settings">Налады</string>
     <string name="dialog_default_title">Інфармацыя</string>
-    <string name="not_available_placeholder">Н/Д</string> <!-- Н/Д = Няма дадзеных / Не даступна -->
+    <string name="not_available_placeholder">Н/Д</string>
     <string name="expandable_section_collapse">Згарнуць</string>
     <string name="expandable_section_expand">Разгарнуць</string>
 
@@ -45,7 +45,7 @@
     <string name="permission_granted">Дазвол атрыманы</string>
     <string name="grant_permission">Даць дазвол</string>
 
-    <!-- Sensitivity Settings Screen  -->
+    <!-- Sensitivity Settings Screen -->
     <!-- Sensitivity Types -->
     <string name="review">Агульны</string>
     <string name="collimator">Каліматар</string>
@@ -75,9 +75,10 @@
     <string name="loading_device_data">Загрузка даных прылады…</string>
     <string name="favorite_icon_desc">Абранае</string>
 
-    <!-- Settings Screen      -->
+    <!-- Settings Screen -->
     <!-- Theme Settings -->
     <string name="theme_settings_category_title">Налады тэмы</string>
+    <string name="theme_settings_card_description">Наладзьце знешні выгляд, дынамічныя колеры і кантраснасць</string>
     <string name="app_theme">Тэма праграмы</string>
     <string name="auto_theme">Аўтаматычная тэма</string>
     <string name="system_theme">Сістэмная тэма</string>
@@ -103,10 +104,11 @@
     <string name="switch_dynamic_colors_are_not_supported">Дынамічныя колеры не падтрымліваюцца</string>
     <!-- Language -->
     <string name="change_language">Змяніць мову</string>
+    <string name="selected">Выбрана</string>
     <!-- Other Settings -->
     <string name="improve_translation">Палепшыць пераклад</string>
 
-    <!-- About Screen         -->
+    <!-- About Screen -->
     <string name="about_app">Пра праграму</string>
     <string name="version">Версія</string>
     <string name="app_icon">Значок праграмы</string>
@@ -146,7 +148,7 @@
     <string name="source_code_subtitle">Зыходны код праграмы на GitHub</string>
     <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
 
-    <!-- Bug Report Screen    -->
+    <!-- Bug Report Screen -->
     <string name="report_bug_title">Паведаміць пра памылку</string>
     <string name="report_bug">Паведаміць пра памылку</string>
     <string name="bug_report_heading">Апішыце праблему</string>
@@ -193,16 +195,25 @@
     <string name="update_now">Абнавіць зараз</string>
     <string name="update_later">Абнавіць пазней</string>
     <string name="update_required">Гэта абнаўленне неабходна для выкарыстання праграмы</string>
-    <string name="update_checking">Праверка абнаўленняў...</string>
-    <string name="update_downloading">Спампоўка абнаўлення...</string>
-    <string name="update_installing">Усталёўка абнаўлення...</string>
+    <string name="update_checking">Праверка абнаўленняў…</string>
+    <string name="update_downloading">Спампоўка абнаўлення…</string>
+    <string name="update_installing">Усталёўка абнаўлення…</string>
     <string name="update_download_started">Спампоўка абнаўлення пачалася</string>
-    <string name="update_download_complete">Спампоўка абнаўлення завершана. Пачынаецца ўсталёўка...</string>
+    <string name="update_download_complete">Спампоўка абнаўлення завершана. Пачынаецца ўсталёўка…</string>
     <string name="update_restart">Калі ласка, перазапусціце праграму, каб завяршыць абнаўленне</string>
     <string name="update_failed">Не ўдалося спампаваць абнаўленне</string>
     <string name="update_no_connection">Няма падключэння да інтэрнэту. Калі ласка, паспрабуйце пазней.</string>
     <!-- Also used in Error Handling -->
     <string name="update_error_occurred">Адбылася памылка падчас абнаўлення. Калі ласка, паспрабуйце пазней.</string>
+
+    <!-- Privacy Settings -->
+    <string name="privacy_settings_category_title">Прыватнасць</string>
+    <string name="privacy_settings_card_description">Кіруйце сваімі параметрамі згоды на рэкламу</string>
+    <string name="privacy_settings_button_title">Налады прыватнасці</string>
+    <string name="privacy_settings_button_description">Кіруйце сваімі выбарамі згоды</string>
+    <string name="privacy_settings_not_required_title">Налады прыватнасці кіруюцца</string>
+    <string name="privacy_settings_not_required_description">На дадзены момант для вашага рэгіёна не патрабуюцца спецыяльныя параметры прыватнасці.</string>
+    <string name="language_settings_card_description">Змяніць мову праграмы</string>
 
     <!-- Error Handling -->
     <!-- General Errors -->

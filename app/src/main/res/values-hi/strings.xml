@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">त्रुटि विवरण</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">इस URL को खोलने के लिए कोई ब्राउज़र नहीं मिला</string>
+
+    <string name="privacy_settings_category_title">गोपनीयता सेटिंग्स</string>
+    <string name="privacy_settings_card_description">विज्ञापन उद्देश्यों के लिए अपनी सहमति प्रबंधित करें</string>
+    <string name="privacy_settings_button_title">गोपनीयता सेटिंग्स</string>
+    <string name="privacy_settings_button_description">अपनी सहमति विकल्पों को प्रबंधित करें</string>
+    <string name="privacy_settings_not_required_title">गोपनीयता सेटिंग्स प्रबंधित की गईं</string>
+    <string name="privacy_settings_not_required_description">आपके क्षेत्र में वर्तमान में कोई विशिष्ट गोपनीयता विकल्प आवश्यक नहीं हैं।</string>
+    <string name="language_settings_card_description">एप्लिकेशन भाषा बदलें</string>
+    <string name="theme_settings_card_description">रूप, डायनामिक रंग और कंट्रास्ट को अनुकूलित करें</string>
+    <string name="selected">चयनित</string>
+
 </resources>

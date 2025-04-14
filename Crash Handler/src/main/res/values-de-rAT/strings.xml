@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Unbekannter Fehler aufgetreten</string>
+    <string name="crash_handler_error_fallback">Fehler</string>
+    <string name="crash_handler_icon_description">Absturzsymbol</string>
+    <string name="crash_handler_title">Hoppla! Etwas ist schiefgegangen</string>
+    <string name="crash_handler_subtitle">Keine Sorge, Ihre Daten sind sicher</string>
+    <string name="crash_handler_tab_error_details">Fehlerdetails</string>
+    <string name="crash_handler_tab_technical_details">Technische Details</string>
+    <string name="crash_handler_card_title_what_happened">Was ist passiert?</string>
+    <string name="crash_handler_card_content_what_happened">Die Anwendung ist auf ein unerwartetes Problem gestoßen und musste beendet werden. Dies wird normalerweise durch ein Softwareproblem verursacht.</string>
+    <string name="crash_handler_copy_button_description">Fehlerdetails kopieren</string>
+    <string name="crash_handler_copy_button_text">In die Zwischenablage kopieren</string>
+    <string name="crash_handler_copy_confirmation">Kopiert!</string>
+    <string name="crash_handler_restart_button">Anwendung neu starten</string>
+    <string name="crash_handler_close_button">Anwendung schließen</string>
+</resources>

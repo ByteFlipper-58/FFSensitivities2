@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Detalhes do Erro</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Nenhum navegador encontrado para abrir esta URL</string>
+
+    <string name="privacy_settings_category_title">Definições de privacidade</string>
+    <string name="privacy_settings_card_description">Gerir o seu consentimento para fins publicitários</string>
+    <string name="privacy_settings_button_title">Definições de privacidade</string>
+    <string name="privacy_settings_button_description">Gerir as suas opções de consentimento</string>
+    <string name="privacy_settings_not_required_title">Definições de privacidade geridas</string>
+    <string name="privacy_settings_not_required_description">Atualmente, não são necessárias definições de privacidade específicas na sua região.</string>
+    <string name="language_settings_card_description">Alterar o idioma da aplicação</string>
+    <string name="theme_settings_card_description">Personalize a aparência, as cores dinâmicas e o contraste</string>
+    <string name="selected">Selecionado</string>
+
 </resources>

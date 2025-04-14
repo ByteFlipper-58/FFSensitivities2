@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">حدث خطأ غير معروف</string>
+    <string name="crash_handler_error_fallback">خطأ</string>
+    <string name="crash_handler_icon_description">أيقونة التعطل</string>
+    <string name="crash_handler_title">عفوًا! حدث خطأ ما</string>
+    <string name="crash_handler_subtitle">لا تقلق، بياناتك آمنة</string>
+    <string name="crash_handler_tab_error_details">تفاصيل الخطأ</string>
+    <string name="crash_handler_tab_technical_details">التفاصيل الفنية</string>
+    <string name="crash_handler_card_title_what_happened">ماذا حدث؟</string>
+    <string name="crash_handler_card_content_what_happened">واجه التطبيق مشكلة غير متوقعة واضطر إلى التوقف. عادة ما يكون سبب ذلك مشكلة في البرنامج.</string>
+    <string name="crash_handler_copy_button_description">نسخ تفاصيل الخطأ</string>
+    <string name="crash_handler_copy_button_text">نسخ إلى الحافظة</string>
+    <string name="crash_handler_copy_confirmation">تم النسخ!</string>
+    <string name="crash_handler_restart_button">إعادة تشغيل التطبيق</string>
+    <string name="crash_handler_close_button">إغلاق التطبيق</string>
+</resources>

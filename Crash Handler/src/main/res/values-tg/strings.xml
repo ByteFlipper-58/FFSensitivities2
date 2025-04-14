@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Хатои номаълум рух дод</string>
+    <string name="crash_handler_error_fallback">Хато</string>
+    <string name="crash_handler_icon_description">Нишонаи садама</string>
+    <string name="crash_handler_title">Оҳ! Чизе хато рафт</string>
+    <string name="crash_handler_subtitle">Парво накунед, маълумоти шумо бехатар аст</string>
+    <string name="crash_handler_tab_error_details">Тафсилоти хато</string>
+    <string name="crash_handler_tab_technical_details">Тафсилоти техникӣ</string>
+    <string name="crash_handler_card_title_what_happened">Чӣ шуд?</string>
+    <string name="crash_handler_card_content_what_happened">Барнома бо мушкилоти ғайричашмдошт дучор шуд ва маҷбур шуд, ки қатъ шавад. Ин одатан аз сабаби мушкилоти нармафзор ба вуҷуд меояд.</string>
+    <string name="crash_handler_copy_button_description">Нусхабардории тафсилоти хато</string>
+    <string name="crash_handler_copy_button_text">Нусхабардорӣ ба буфер</string>
+    <string name="crash_handler_copy_confirmation">Нусхабардорӣ шуд!</string>
+    <string name="crash_handler_restart_button">Барномаро аз нав оғоз кунед</string>
+    <string name="crash_handler_close_button">Барномаро пӯшед</string>
+</resources>

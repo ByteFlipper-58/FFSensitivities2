@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Unknown error occurred</string>
+    <string name="crash_handler_error_fallback">Error</string>
+    <string name="crash_handler_icon_description">Crash icon</string>
+    <string name="crash_handler_title">Oops! Something went wrong</string>
+    <string name="crash_handler_subtitle">Don\'t worry, your data is safe</string>
+    <string name="crash_handler_tab_error_details">Error Details</string>
+    <string name="crash_handler_tab_technical_details">Technical Details</string>
+    <string name="crash_handler_card_title_what_happened">What happened?</string>
+    <string name="crash_handler_card_content_what_happened">The application encountered an unexpected problem and was forced to stop. This is usually caused by a software issue.</string>
+    <string name="crash_handler_copy_button_description">Copy error details</string>
+    <string name="crash_handler_copy_button_text">Copy to Clipboard</string>
+    <string name="crash_handler_copy_confirmation">Copied!</string>
+    <string name="crash_handler_restart_button">Restart Application</string>
+    <string name="crash_handler_close_button">Close Application</string>
+</resources>

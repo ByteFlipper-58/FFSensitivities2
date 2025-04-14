@@ -44,7 +44,7 @@ class AppOpenAdManager @Inject constructor(
     companion object {
         private const val TAG = "AppOpenAdManager"
         private const val AD_EXPIRATION_MS = 4 * 60 * 60 * 1000
-        private const val SHOW_FREQUENCY = 4
+        private const val SHOW_FREQUENCY = 3
     }
 
     // Declare listener before init block

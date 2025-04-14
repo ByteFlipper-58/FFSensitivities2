@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_handler_unknown_error">Белгисиз ката кетти</string>
+    <string name="crash_handler_error_fallback">Ката</string>
+    <string name="crash_handler_icon_description">Кырсык сүрөтчөсү</string>
+    <string name="crash_handler_title">Ой! Бир нерсе туура эмес кетти</string>
+    <string name="crash_handler_subtitle">Кабатыр болбоңуз, сиздин маалыматтарыңыз коопсуз</string>
+    <string name="crash_handler_tab_error_details">Катанын чоо-жайы</string>
+    <string name="crash_handler_tab_technical_details">Техникалык чоо-жайы</string>
+    <string name="crash_handler_card_title_what_happened">Эмне болду?</string>
+    <string name="crash_handler_card_content_what_happened">Тиркеме күтүлбөгөн көйгөйгө туш болуп, токтотууга аргасыз болду. Бул көбүнчө программалык камсыздоо маселесинен улам келип чыгат.</string>
+    <string name="crash_handler_copy_button_description">Катанын чоо-жайын көчүрүү</string>
+    <string name="crash_handler_copy_button_text">Алмашуу буферине көчүрүү</string>
+    <string name="crash_handler_copy_confirmation">Көчүрүлдү!</string>
+    <string name="crash_handler_restart_button">Тиркемени кайра баштоо</string>
+    <string name="crash_handler_close_button">Тиркемени жабуу</string>
+</resources>

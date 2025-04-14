@@ -224,4 +224,15 @@
     <string name="error_details_clipboard_label">Hata Ayrıntıları</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Bu URL\'yi açacak tarayıcı bulunamadı</string>
+
+    <string name="privacy_settings_category_title">Gizlilik ayarları</string>
+    <string name="privacy_settings_card_description">Reklam amaçlı onayınızı yönetin</string>
+    <string name="privacy_settings_button_title">Gizlilik ayarları</string>
+    <string name="privacy_settings_button_description">Onay seçeneklerinizi yönetin</string>
+    <string name="privacy_settings_not_required_title">Gizlilik ayarları yönetildi</string>
+    <string name="privacy_settings_not_required_description">Bölgenizde şu anda özel bir gizlilik ayarı gerekmiyor.</string>
+    <string name="language_settings_card_description">Uygulama dilini değiştir</string>
+    <string name="theme_settings_card_description">Görünümü, dinamik renkleri ve kontrastı özelleştirin</string>
+    <string name="selected">Seçildi</string>
+
 </resources>

@@ -6,7 +6,7 @@
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
     <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Common Actions       -->
+    <!-- Common Actions -->
     <string name="continue_button">Continue</string>
     <string name="copy">Copy</string>
     <string name="copied">Copied</string>
@@ -67,7 +67,7 @@
     <string name="request_sensitivities_settings_button">Request</string>
     <string name="request_sensitivities_settings_success">Request sent successfully!\nWe will add a new setting soon.</string>
 
-    <!-- Devices List Screen  -->
+    <!-- Devices List Screen -->
     <string name="devices">Devices: </string>
     <string name="devices_list">Devices list</string>
     <string name="sensitivity">Sensitivity</string>
@@ -104,6 +104,8 @@
     <string name="switch_dynamic_colors_are_not_supported">Dynamic colors are not supported</string>
     <!-- Language -->
     <string name="change_language">Change language</string>
+    <string name="selected">Selected</string>
+    <string name="privacy_settings_card_description">Manage your advertising consent options</string> <!-- New -->
     <!-- Other Settings -->
     <string name="improve_translation">Improve Translation</string>
 
@@ -228,10 +230,9 @@
 
     <!-- Privacy Settings -->
     <string name="privacy_settings_category_title">Privacy</string>
-    <string name="privacy_settings_card_description">Manage your advertising consent options</string> <!-- New -->
     <string name="privacy_settings_button_title">Privacy Settings</string>
     <string name="privacy_settings_button_description">Manage your consent choices</string>
     <string name="privacy_settings_not_required_title">Privacy Settings Managed</string>
     <string name="privacy_settings_not_required_description">No specific privacy options are required for your region at this time.</string>
-    <string name="language_settings_card_description">Change the application language</string> <!-- New, uncommented -->
+    <string name="language_settings_card_description">Change the application language</string>
 </resources>

@@ -6,7 +6,7 @@
     <string name="email" translatable="false">byteflipper.business@gmail.com</string>
     <string name="google_play_store" translatable="false">https://play.google.com/store/apps/dev?id=6878164003588576864</string>
 
-    <!-- Common Actions       -->
+    <!-- Common Actions -->
     <string name="continue_button">متابعة</string>
     <string name="copy">نسخ</string>
     <string name="copied">تم النسخ</string>
@@ -67,7 +67,7 @@
     <string name="request_sensitivities_settings_button">طلب</string>
     <string name="request_sensitivities_settings_success">تم إرسال الطلب بنجاح!\nسنضيف إعدادًا جديدًا قريبًا.</string>
 
-    <!-- Devices List Screen  -->
+    <!-- Devices List Screen -->
     <string name="devices">الأجهزة: </string>
     <string name="devices_list">قائمة الأجهزة</string>
     <string name="sensitivity">الحساسية</string>
@@ -75,9 +75,10 @@
     <string name="loading_device_data">جاري تحميل بيانات الجهاز…</string>
     <string name="favorite_icon_desc">المفضلة</string>
 
-    <!-- Settings Screen      -->
+    <!-- Settings Screen -->
     <!-- Theme Settings -->
     <string name="theme_settings_category_title">إعدادات المظهر</string>
+    <string name="theme_settings_card_description">تخصيص المظهر والألوان الديناميكية والتباين</string>
     <string name="app_theme">مظهر التطبيق</string>
     <string name="auto_theme">المظهر التلقائي</string>
     <string name="system_theme">مظهر النظام</string>
@@ -103,10 +104,11 @@
     <string name="switch_dynamic_colors_are_not_supported">الألوان الديناميكية غير مدعومة</string>
     <!-- Language -->
     <string name="change_language">تغيير اللغة</string>
+    <string name="selected">محدد</string>
     <!-- Other Settings -->
     <string name="improve_translation">تحسين الترجمة</string>
 
-    <!-- About Screen         -->
+    <!-- About Screen -->
     <string name="about_app">حول التطبيق</string>
     <string name="version">الإصدار</string>
     <string name="app_icon">أيقونة التطبيق</string>
@@ -146,7 +148,7 @@
     <string name="source_code_subtitle">الكود المصدري للتطبيق على GitHub</string>
     <string name="source_code_url" translatable="false">https://github.com/ByteFlipper-58/FFSensitivities</string>
 
-    <!-- Bug Report Screen    -->
+    <!-- Bug Report Screen -->
     <string name="report_bug_title">الإبلاغ عن خطأ</string>
     <string name="report_bug">الإبلاغ عن خطأ</string>
     <string name="bug_report_heading">قم بوصف المشكلة</string>
@@ -203,6 +205,15 @@
     <string name="update_no_connection">لا يوجد اتصال بالإنترنت. يرجى المحاولة مرة أخرى لاحقًا.</string>
     <!-- Also used in Error Handling -->
     <string name="update_error_occurred">حدث خطأ أثناء التحديث. يرجى المحاولة مرة أخرى لاحقًا.</string>
+
+    <!-- Privacy Settings -->
+    <string name="privacy_settings_category_title">الخصوصية</string>
+    <string name="privacy_settings_card_description">إدارة خيارات موافقتك الإعلانية</string>
+    <string name="privacy_settings_button_title">إعدادات الخصوصية</string>
+    <string name="privacy_settings_button_description">إدارة خيارات موافقتك</string>
+    <string name="privacy_settings_not_required_title">تمت إدارة إعدادات الخصوصية</string>
+    <string name="privacy_settings_not_required_description">لا توجد خيارات خصوصية محددة مطلوبة لمنطقتك في الوقت الحالي.</string>
+    <string name="language_settings_card_description">تغيير لغة التطبيق</string>
 
     <!-- Error Handling -->
     <!-- General Errors -->
