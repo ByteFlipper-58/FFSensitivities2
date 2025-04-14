@@ -8,12 +8,14 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import android.util.Log
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import timber.log.Timber
 
 @Serializable
 data class RequestPayload(val tag: String, val message: String)
+
+private const val TAG = "BugReportApi" // Define TAG for logging
 
 @Serializable
 data class ResponseData(val status: String? = null, val message: String? = null, val error: String? = null)
@@ -33,7 +35,7 @@ suspend fun sendBugReport(tag: String, message: String, serverUrl: String = "htt
     }
 
     val payload = RequestPayload(tag = tag, message = message)
-    Timber.d("Sending bug report. Tag: $tag, Payload size: ${message.length}")
+    Log.d(TAG, "Sending bug report. Tag: $tag, Payload size: ${message.length}")
 
     return try {
         val response: HttpResponse = client.post(serverUrl) {
@@ -42,7 +44,7 @@ suspend fun sendBugReport(tag: String, message: String, serverUrl: String = "htt
         }
 
         val responseBody: ResponseData = response.body()
-        Timber.i("Bug report response status: ${response.status}, Body: $responseBody")
+        Log.i(TAG, "Bug report response status: ${response.status}, Body: $responseBody")
 
         if (response.status.isSuccess()) {
             Result.success(responseBody)
@@ -50,7 +52,7 @@ suspend fun sendBugReport(tag: String, message: String, serverUrl: String = "htt
             Result.failure(Exception("Server error: ${response.status.value} - ${responseBody.error ?: responseBody.message ?: "Unknown error"}"))
         }
     } catch (e: Exception) {
-        Timber.e(e, "Error sending bug report")
+        Log.e(TAG, "Error sending bug report", e)
         Result.failure(e)
     } finally {
         client.close()
