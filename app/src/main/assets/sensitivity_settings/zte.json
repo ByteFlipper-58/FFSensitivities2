@@ -3,6 +3,231 @@
     "models": [
         {
             "manufacturer": "ZTE",
+            "name": "Blade A75",
+            "settings_source_url": "",
+            "dpi": 585,
+            "fire_button": 53,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 149,
+                "x2_scope": 199,
+                "x4_scope": 177,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A73",
+            "settings_source_url": "",
+            "dpi": 575,
+            "fire_button": 43,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 120,
+                "x2_scope": 161,
+                "x4_scope": 150,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A72s",
+            "settings_source_url": "",
+            "dpi": 538,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 157,
+                "x2_scope": 189,
+                "x4_scope": 175,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A72 5G",
+            "settings_source_url": "",
+            "dpi": 505,
+            "fire_button": 41,
+            "sensitivities": {
+                "review": 192,
+                "collimator": 187,
+                "x2_scope": 159,
+                "x4_scope": 174,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A72",
+            "settings_source_url": "",
+            "dpi": 532,
+            "fire_button": 47,
+            "sensitivities": {
+                "review": 199,
+                "collimator": 161,
+                "x2_scope": 152,
+                "x4_scope": 181,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A71",
+            "settings_source_url": "",
+            "dpi": 524,
+            "fire_button": 43,
+            "sensitivities": {
+                "review": 184,
+                "collimator": 152,
+                "x2_scope": 151,
+                "x4_scope": 157,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A55",
+            "settings_source_url": "",
+            "dpi": 455,
+            "fire_button": 41,
+            "sensitivities": {
+                "review": 171,
+                "collimator": 186,
+                "x2_scope": 134,
+                "x4_scope": 164,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A54",
+            "settings_source_url": "",
+            "dpi": 548,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 195,
+                "collimator": 178,
+                "x2_scope": 194,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A53 Pro",
+            "settings_source_url": "",
+            "dpi": 526,
+            "fire_button": 48,
+            "sensitivities": {
+                "review": 190,
+                "collimator": 167,
+                "x2_scope": 160,
+                "x4_scope": 161,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A53+",
+            "settings_source_url": "",
+            "dpi": 466,
+            "fire_button": 51,
+            "sensitivities": {
+                "review": 189,
+                "collimator": 157,
+                "x2_scope": 169,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A53",
+            "settings_source_url": "",
+            "dpi": 570,
+            "fire_button": 58,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 141,
+                "x2_scope": 162,
+                "x4_scope": 197,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A52 Lite",
+            "settings_source_url": "",
+            "dpi": 629,
+            "fire_button": 54,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 191,
+                "x2_scope": 180,
+                "x4_scope": 184,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A52",
+            "settings_source_url": "",
+            "dpi": 455,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 179,
+                "collimator": 121,
+                "x2_scope": 171,
+                "x4_scope": 151,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A51",
+            "settings_source_url": "",
+            "dpi": 476,
+            "fire_button": 46,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 131,
+                "x2_scope": 157,
+                "x4_scope": 157,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A50 Pro",
+            "settings_source_url": "",
+            "dpi": 477,
+            "fire_button": 48,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 144,
+                "x2_scope": 199,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
             "name": "Blade A34",
             "settings_source_url": "",
             "dpi": 0,
@@ -17,100 +242,79 @@
             }
         },
         {
-            "__id__": "47fnGZRsIGNkElOkx9Cz",
             "manufacturer": "ZTE",
-            "name": "Blade A31",
-        "settings_source_url": "https://youtu.be/0_b1M991raY",
-        "dpi": 0,
-        "fire_button": 52,
-        "sensitivities": {
-            "review": 96,
-            "x2_scope": 94,
-            "x4_scope": 94,
-            "sniper_scope": 60,
-            "free_review": 40,
-            "collimator": 92
+            "name": "Blade A33s",
+            "settings_source_url": "",
+            "dpi": 514,
+            "fire_button": 56,
+            "sensitivities": {
+                "review": 196,
+                "x2_scope": 186,
+                "x4_scope": 179,
+                "sniper_scope": 173,
+                "free_review": 200,
+                "collimator": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A33 Plus",
+            "settings_source_url": "",
+            "dpi": 637,
+            "fire_button": 58,
+            "sensitivities": {
+                "review": 182,
+                "x2_scope": 176,
+                "x4_scope": 198,
+                "sniper_scope": 155,
+                "free_review": 200,
+                "collimator": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A33 Core",
+            "settings_source_url": "",
+            "dpi": 501,
+            "fire_button": 41,
+            "sensitivities": {
+                "review": 187,
+                "x2_scope": 141,
+                "x4_scope": 142,
+                "sniper_scope": 165,
+                "free_review": 200,
+                "collimator": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A32 Dual SIM",
+            "settings_source_url": "",
+            "dpi": 593,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 195,
+                "x2_scope": 145,
+                "x4_scope": 191,
+                "sniper_scope": 180,
+                "free_review": 200,
+                "collimator": 200
+            }
+        },
+        {
+            "manufacturer": "ZTE",
+            "name": "Blade A32",
+            "settings_source_url": "",
+            "dpi": 511,
+            "fire_button": 42,
+            "sensitivities": {
+                "review": 192,
+                "x2_scope": 190,
+                "x4_scope": 143,
+                "sniper_scope": 167,
+                "free_review": 200,
+                "collimator": 200
+            }
         }
-    },
-    {
-        "__id__": "7QWDZO2eeqZnLa7sdhVf",
-        "manufacturer": "ZTE",
-        "name": "V30 Vita",
-        "settings_source_url": "",
-        "dpi": 471,
-        "fire_button": 43,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 89,
-            "x2_scope": 98,
-            "x4_scope": 92,
-            "sniper_scope": 24,
-            "free_review": 37
-        }
-    },
-    {
-        "__id__": "RlL6B5TYDg7MrjQqp1vr",
-        "manufacturer": "ZTE",
-        "name": "Blade A7",
-        "settings_source_url": "",
-        "dpi": 603,
-        "fire_button": 50,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 91,
-            "x2_scope": 90,
-            "x4_scope": 99,
-            "sniper_scope": 26,
-            "free_review": 33
-        }
-    },
-    {
-        "__id__": "UvqMcVwNSH8naf6yMyKP",
-        "manufacturer": "ZTE",
-        "name": "V10 Vita",
-        "settings_source_url": "",
-        "dpi": 558,
-        "fire_button": 41,
-        "sensitivities": {
-            "review": 95,
-            "collimator": 98,
-            "x2_scope": 90,
-            "x4_scope": 96,
-            "sniper_scope": 22,
-            "free_review": 51
-        }
-    },
-    {
-        "__id__": "WE1YKPqYtCLYexniCG6P",
-        "manufacturer": "ZTE",
-        "name": "V9 Vita",
-        "settings_source_url": "",
-        "dpi": 671,
-        "fire_button": 45,
-        "sensitivities": {
-            "review": 96,
-            "collimator": 98,
-            "x2_scope": 97,
-            "x4_scope": 92,
-            "sniper_scope": 37,
-            "free_review": 52
-        }
-    },
-    {
-        "__id__": "xk09hhajvuyu8fEkJPfL",
-        "manufacturer": "ZTE",
-        "name": "Blade A51",
-        "settings_source_url": "",
-        "dpi": 0,
-        "fire_button": 44,
-        "sensitivities": {
-            "review": 95,
-            "collimator": 97,
-            "x2_scope": 95,
-            "x4_scope": 98,
-            "sniper_scope": 32,
-            "free_review": 34
-        }
-    }
-]
+    ]
 }

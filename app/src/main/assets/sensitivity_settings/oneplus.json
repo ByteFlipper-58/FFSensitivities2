@@ -3,62 +3,257 @@
     "models": [
         {
             "manufacturer": "OnePlus",
-            "name": "10T",
+            "name": "9 Pro",
             "settings_source_url": "",
-            "dpi": 420,
-            "fire_button": 51,
+            "dpi": 557,
+            "fire_button": 61,
             "sensitivities": {
-              "review": 100,
-              "collimator": 100,
-              "x2_scope": 100,
-              "x4_scope": 100,
-              "sniper_scope": 100,
-              "free_review": 100
+              "review": 189,
+              "collimator": 178,
+              "x2_scope": 182,
+              "x4_scope": 183,
+              "sniper_scope": 200,
+              "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "9RT 5G",
+            "settings_source_url": "",
+            "dpi": 662,
+            "fire_button": 34,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 127,
+                "x2_scope": 162,
+                "x4_scope": 175,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "9R",
+            "settings_source_url": "",
+            "dpi": 630,
+            "fire_button": 46,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 143,
+                "x2_scope": 137,
+                "x4_scope": 156,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "9",
+            "settings_source_url": "",
+            "dpi": 844,
+            "fire_button": 48,
+            "sensitivities": {
+                "review": 187,
+                "collimator": 193,
+                "x2_scope": 186,
+                "x4_scope": 156,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "OnePlus",
             "name": "8 Pro",
             "settings_source_url": "",
-            "dpi": 380,
+            "dpi": 574,
             "fire_button": 54,
             "sensitivities": {
-                "review": 95,
-                "collimator": 100,
-                "x2_scope": 86,
-                "x4_scope": 90,
-                "sniper_scope": 65,
-                "free_review": 60
+                "review": 200,
+                "collimator": 194,
+                "x2_scope": 182,
+                "x4_scope": 184,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "8T",
+            "settings_source_url": "",
+            "dpi": 745,
+            "fire_button": 63,
+            "sensitivities": {
+                "review": 189,
+                "collimator": 133,
+                "x2_scope": 138,
+                "x4_scope": 153,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "OnePlus",
             "name": "8",
             "settings_source_url": "",
-            "dpi": 591,
-            "fire_button": 51,
+            "dpi": 507,
+            "fire_button": 33,
             "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 100,
-                "free_review": 100
+                "review": 183,
+                "collimator": 169,
+                "x2_scope": 138,
+                "x4_scope": 170,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "OnePlus",
-            "name": "Nord 12",
+            "name": "7T Pro",
             "settings_source_url": "",
-            "dpi": 900,
-            "fire_button": 50,
+            "dpi": 529,
+            "fire_button": 39,
             "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 50,
-                "free_review": 100
+                "review": 176,
+                "collimator": 189,
+                "x2_scope": 135,
+                "x4_scope": 152,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "7 Pro",
+            "settings_source_url": "",
+            "dpi": 579,
+            "fire_button": 37,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 171,
+                "x2_scope": 149,
+                "x4_scope": 158,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "7T",
+            "settings_source_url": "",
+            "dpi": 746,
+            "fire_button": 67,
+            "sensitivities": {
+                "review": 198,
+                "collimator": 124,
+                "x2_scope": 151,
+                "x4_scope": 182,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "7",
+            "settings_source_url": "",
+            "dpi": 767,
+            "fire_button": 64,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 185,
+                "x2_scope": 164,
+                "x4_scope": 189,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "6T",
+            "settings_source_url": "",
+            "dpi": 648,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 190,
+                "x2_scope": 148,
+                "x4_scope": 180,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "6",
+            "settings_source_url": "",
+            "dpi": 704,
+            "fire_button": 62,
+            "sensitivities": {
+                "review": 174,
+                "collimator": 125,
+                "x2_scope": 164,
+                "x4_scope": 177,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "5T",
+            "settings_source_url": "",
+            "dpi": 451,
+            "fire_button": 69,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 152,
+                "x2_scope": 148,
+                "x4_scope": 164,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "5",
+            "settings_source_url": "",
+            "dpi": 813,
+            "fire_button": 56,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 131,
+                "x2_scope": 160,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "3T",
+            "settings_source_url": "",
+            "dpi": 460,
+            "fire_button": 69,
+            "sensitivities": {
+                "review": 192,
+                "collimator": 154,
+                "x2_scope": 199,
+                "x4_scope": 196,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "OnePlus",
+            "name": "3",
+            "settings_source_url": "",
+            "dpi": 539,
+            "fire_button": 55,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 167,
+                "x2_scope": 174,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         }
     ]

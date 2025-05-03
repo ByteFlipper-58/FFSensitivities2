@@ -1,197 +1,725 @@
 {
     "manufacturer": "LG",
     "models": [
-    {
-        "__id__": "7Na7IXvYc8WVDCfxKBtH",
-        "manufacturer": "LG",
-        "name": "V30",
-        "settings_source_url": "",
-        "dpi": 573,
-        "fire_button": 44,
-        "sensitivities": {
-            "review": 94,
-            "collimator": 88,
-            "x2_scope": 98,
-            "x4_scope": 99,
-            "sniper_scope": 52,
-            "free_review": 31
+        {
+            "manufacturer": "LG",
+            "name": "V60",
+            "settings_source_url": "",
+            "dpi": 744,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 173,
+                "x2_scope": 190,
+                "x4_scope": 194,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "V50",
+            "settings_source_url": "",
+            "dpi": 834,
+            "fire_button": 61,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 129,
+                "x2_scope": 157,
+                "x4_scope": 183,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "V40",
+            "settings_source_url": "",
+            "dpi": 679,
+            "fire_button": 62,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 150,
+                "x2_scope": 198,
+                "x4_scope": 171,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "V35",
+            "settings_source_url": "",
+            "dpi": 576,
+            "fire_button": 47,
+            "sensitivities": {
+                "review": 176,
+                "collimator": 132,
+                "x2_scope": 155,
+                "x4_scope": 162,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "V30",
+            "settings_source_url": "",
+            "dpi": 546,
+            "fire_button": 37,
+            "sensitivities": {
+                "review": 189,
+                "collimator": 138,
+                "x2_scope": 169,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "V20",
+            "settings_source_url": "",
+            "dpi": 734,
+            "fire_button": 33,
+            "sensitivities": {
+                "review": 189,
+                "collimator": 159,
+                "x2_scope": 152,
+                "x4_scope": 194,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G8 ThingQ",
+            "settings_source_url": "",
+            "dpi": 560,
+            "fire_button": 59,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 123,
+                "x2_scope": 173,
+                "x4_scope": 171,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G7",
+            "settings_source_url": "",
+            "dpi": 539,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 177,
+                "collimator": 152,
+                "x2_scope": 154,
+                "x4_scope": 178,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G6",
+            "settings_source_url": "",
+            "dpi": 459,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 165,
+                "x2_scope": 192,
+                "x4_scope": 150,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G5",
+            "settings_source_url": "",
+            "dpi": 525,
+            "fire_button": 67,
+            "sensitivities": {
+                "review": 175,
+                "collimator": 157,
+                "x2_scope": 174,
+                "x4_scope": 165,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G4",
+            "settings_source_url": "",
+            "dpi": 723,
+            "fire_button": 64,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 130,
+                "x2_scope": 163,
+                "x4_scope": 200,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G3",
+            "settings_source_url": "",
+            "dpi": 716,
+            "fire_button": 68,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 159,
+                "x2_scope": 150,
+                "x4_scope": 171,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "G Stylus",
+            "settings_source_url": "",
+            "dpi": 459,
+            "fire_button": 70,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 143,
+                "x2_scope": 155,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q92 5G",
+            "settings_source_url": "",
+            "dpi": 724,
+            "fire_button": 36,
+            "sensitivities": {
+                "review": 188,
+                "collimator": 173,
+                "x2_scope": 195,
+                "x4_scope": 196,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q70",
+            "settings_source_url": "",
+            "dpi": 547,
+            "fire_button": 66,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 186,
+                "x2_scope": 166,
+                "x4_scope": 157,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q61",
+            "settings_source_url": "",
+            "dpi": 843,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 175,
+                "collimator": 190,
+                "x2_scope": 162,
+                "x4_scope": 179,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q60",
+            "settings_source_url": "",
+            "dpi": 769,
+            "fire_button": 32,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 182,
+                "x2_scope": 145,
+                "x4_scope": 197,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q52",
+            "settings_source_url": "",
+            "dpi": 793,
+            "fire_button": 59,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 136,
+                "x2_scope": 157,
+                "x4_scope": 150,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q51",
+            "settings_source_url": "",
+            "dpi": 712,
+            "fire_button": 70,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 141,
+                "x2_scope": 155,
+                "x4_scope": 151,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q31",
+            "settings_source_url": "",
+            "dpi": 835,
+            "fire_button": 52,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 150,
+                "x2_scope": 156,
+                "x4_scope": 162,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q9",
+            "settings_source_url": "",
+            "dpi": 813,
+            "fire_button": 33,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 138,
+                "x2_scope": 144,
+                "x4_scope": 167,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q8",
+            "settings_source_url": "",
+            "dpi": 727,
+            "fire_button": 49,
+            "sensitivities": {
+                "review": 198,
+                "collimator": 186,
+                "x2_scope": 159,
+                "x4_scope": 166,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q7",
+            "settings_source_url": "",
+            "dpi": 811,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 198,
+                "collimator": 173,
+                "x2_scope": 169,
+                "x4_scope": 180,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Q6",
+            "settings_source_url": "",
+            "dpi": 556,
+            "fire_button": 49,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 181,
+                "x2_scope": 195,
+                "x4_scope": 156,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K92 5G",
+            "settings_source_url": "",
+            "dpi": 677,
+            "fire_button": 32,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 125,
+                "x2_scope": 130,
+                "x4_scope": 198,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K71",
+            "settings_source_url": "",
+            "dpi": 732,
+            "fire_button": 59,
+            "sensitivities": {
+                "review": 184,
+                "collimator": 167,
+                "x2_scope": 178,
+                "x4_scope": 164,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K62",
+            "settings_source_url": "",
+            "dpi": 544,
+            "fire_button": 43,
+            "sensitivities": {
+                "review": 179,
+                "collimator": 192,
+                "x2_scope": 130,
+                "x4_scope": 183,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K61",
+            "settings_source_url": "",
+            "dpi": 638,
+            "fire_button": 60,
+            "sensitivities": {
+                "review": 184,
+                "collimator": 126,
+                "x2_scope": 190,
+                "x4_scope": 170,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K52",
+            "settings_source_url": "",
+            "dpi": 730,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 192,
+                "collimator": 133,
+                "x2_scope": 189,
+                "x4_scope": 165,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K51",
+            "settings_source_url": "",
+            "dpi": 665,
+            "fire_button": 33,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 160,
+                "x2_scope": 171,
+                "x4_scope": 180,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K51 S",
+            "settings_source_url": "",
+            "dpi": 671,
+            "fire_button": 66,
+            "sensitivities": {
+                "review": 185,
+                "collimator": 191,
+                "x2_scope": 161,
+                "x4_scope": 177,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K50s",
+            "settings_source_url": "",
+            "dpi": 507,
+            "fire_button": 37,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 165,
+                "x2_scope": 195,
+                "x4_scope": 200,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K50",
+            "settings_source_url": "",
+            "dpi": 631,
+            "fire_button": 67,
+            "sensitivities": {
+                "review": 187,
+                "collimator": 148,
+                "x2_scope": 196,
+                "x4_scope": 151,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K42",
+            "settings_source_url": "",
+            "dpi": 707,
+            "fire_button": 54,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 132,
+                "x2_scope": 136,
+                "x4_scope": 150,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K41s",
+            "settings_source_url": "",
+            "dpi": 540,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 187,
+                "collimator": 179,
+                "x2_scope": 156,
+                "x4_scope": 187,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K40s",
+            "settings_source_url": "",
+            "dpi": 535,
+            "fire_button": 47,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 121,
+                "x2_scope": 158,
+                "x4_scope": 171,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K40",
+            "settings_source_url": "",
+            "dpi": 580,
+            "fire_button": 67,
+            "sensitivities": {
+                "review": 180,
+                "collimator": 188,
+                "x2_scope": 173,
+                "x4_scope": 162,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K31",
+            "settings_source_url": "",
+            "dpi": 690,
+            "fire_button": 35,
+            "sensitivities": {
+                "review": 171,
+                "collimator": 155,
+                "x2_scope": 156,
+                "x4_scope": 160,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K30",
+            "settings_source_url": "",
+            "dpi": 600,
+            "fire_button": 42,
+            "sensitivities": {
+                "review": 171,
+                "collimator": 178,
+                "x2_scope": 168,
+                "x4_scope": 179,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K22",
+            "settings_source_url": "",
+            "dpi": 582,
+            "fire_button": 39,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 167,
+                "x2_scope": 152,
+                "x4_scope": 152,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K20 Plus",
+            "settings_source_url": "",
+            "dpi": 568,
+            "fire_button": 34,
+            "sensitivities": {
+                "review": 179,
+                "collimator": 179,
+                "x2_scope": 193,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K20",
+            "settings_source_url": "",
+            "dpi": 769,
+            "fire_button": 68,
+            "sensitivities": {
+                "review": 182,
+                "collimator": 186,
+                "x2_scope": 164,
+                "x4_scope": 189,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K12 MAX",
+            "settings_source_url": "",
+            "dpi": 798,
+            "fire_button": 36,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 164,
+                "x2_scope": 188,
+                "x4_scope": 166,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K12",
+            "settings_source_url": "",
+            "dpi": 597,
+            "fire_button": 60,
+            "sensitivities": {
+                "review": 199,
+                "collimator": 195,
+                "x2_scope": 133,
+                "x4_scope": 185,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K11",
+            "settings_source_url": "",
+            "dpi": 481,
+            "fire_button": 58,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 193,
+                "x2_scope": 198,
+                "x4_scope": 169,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "K10",
+            "settings_source_url": "",
+            "dpi": 524,
+            "fire_button": 59,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 170,
+                "x2_scope": 195,
+                "x4_scope": 160,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "Stylo 6",
+            "settings_source_url": "",
+            "dpi": 595,
+            "fire_button": 40,
+            "sensitivities": {
+                "review": 98,
+                "collimator": 96,
+                "x2_scope": 99,
+                "x4_scope": 93,
+                "sniper_scope": 49,
+                "free_review": 31
+            }
+        },
+        {
+            "manufacturer": "LG",
+            "name": "X Power",
+            "settings_source_url": "",
+            "dpi": 459,
+            "fire_button": 40,
+            "sensitivities": {
+                "review": 93,
+                "collimator": 98,
+                "x2_scope": 90,
+                "x4_scope": 97,
+                "sniper_scope": 43,
+                "free_review": 40
+            }
         }
-    },
-    {
-        "__id__": "8XHHhDPxvkd7l2O6KFr4",
-        "manufacturer": "LG",
-        "name": "X Power",
-        "settings_source_url": "",
-        "dpi": 459,
-        "fire_button": 40,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 98,
-            "x2_scope": 90,
-            "x4_scope": 97,
-            "sniper_scope": 43,
-            "free_review": 40
-        }
-    },
-    {
-        "__id__": "8nTtK9h6wccYhzWItGV5",
-        "manufacturer": "LG",
-        "name": "K12+",
-        "settings_source_url": "",
-        "dpi": 657,
-        "fire_button": 51,
-        "sensitivities": {
-            "review": 98,
-            "collimator": 91,
-            "x2_scope": 97,
-            "x4_scope": 96,
-            "sniper_scope": 38,
-            "free_review": 52
-        }
-    },
-    {
-        "__id__": "DshdRdH6V0ePqiE03eXl",
-        "manufacturer": "LG",
-        "name": "K12 Prime",
-        "settings_source_url": "",
-        "dpi": 501,
-        "fire_button": 48,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 93,
-            "x2_scope": 90,
-            "x4_scope": 92,
-            "sniper_scope": 32,
-            "free_review": 38
-        }
-    },
-    {
-        "__id__": "GvK3Y5xuFXcwAKx7BZal",
-        "manufacturer": "LG",
-        "name": "K40s",
-        "settings_source_url": "",
-        "dpi": 519,
-        "fire_button": 50,
-        "sensitivities": {
-            "review": 96,
-            "collimator": 93,
-            "x2_scope": 98,
-            "x4_scope": 97,
-            "sniper_scope": 34,
-            "free_review": 33
-        }
-    },
-    {
-        "__id__": "IqEj1ZsYIZ96WoJPW7sz",
-        "manufacturer": "LG",
-        "name": "Q60",
-        "settings_source_url": "",
-        "dpi": 594,
-        "fire_button": 43,
-        "sensitivities": {
-            "review": 98,
-            "collimator": 89,
-            "x2_scope": 93,
-            "x4_scope": 100,
-            "sniper_scope": 57,
-            "free_review": 35
-        }
-    },
-    {
-        "__id__": "J4MeKjdYIrMyT1DAtl2S",
-        "manufacturer": "LG",
-        "name": "K40s",
-        "settings_source_url": "",
-        "dpi": 519,
-        "fire_button": 50,
-        "sensitivities": {
-            "review": 96,
-            "collimator": 93,
-            "x2_scope": 98,
-            "x4_scope": 97,
-            "sniper_scope": 34,
-            "free_review": 33
-        }
-    },
-    {
-        "__id__": "SGsISwdM2amMmiiR3b25",
-        "manufacturer": "LG",
-        "name": "K11+",
-        "settings_source_url": "",
-        "dpi": 0,
-        "fire_button": 46,
-        "sensitivities": {
-            "review": 96,
-            "collimator": 90,
-            "x2_scope": 92,
-            "x4_scope": 90,
-            "sniper_scope": 58,
-            "free_review": 48
-        }
-    },
-    {
-        "__id__": "SkbnAzTMpgyMHZlRxRsI",
-        "manufacturer": "LG",
-        "name": "K41s",
-        "settings_source_url": "",
-        "dpi": 498,
-        "fire_button": 50,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 96,
-            "x2_scope": 90,
-            "x4_scope": 98,
-            "sniper_scope": 43,
-            "free_review": 33
-        }
-    },
-    {
-        "__id__": "VjjyxY5GdW78VoaBEivj",
-        "manufacturer": "LG",
-        "name": "Stylo 6",
-        "settings_source_url": "",
-        "dpi": 595,
-        "fire_button": 40,
-        "sensitivities": {
-            "review": 98,
-            "collimator": 96,
-            "x2_scope": 99,
-            "x4_scope": 93,
-            "sniper_scope": 49,
-            "free_review": 31
-        }
-    },
-    {
-        "__id__": "jMERUd94YeMdcBiNreGH",
-        "manufacturer": "LG",
-        "name": "G7 ThingQ",
-        "settings_source_url": "",
-        "dpi": 564,
-        "fire_button": 45,
-        "sensitivities": {
-            "review": 95,
-            "collimator": 96,
-            "x2_scope": 99,
-            "x4_scope": 92,
-            "sniper_scope": 50,
-            "free_review": 30
-        }
-    },
-    {
-        "__id__": "qLFi8byMQyLL0SJqcb3w",
-        "manufacturer": "LG",
-        "name": "K12 Max",
-        "settings_source_url": "",
-        "dpi": 502,
-        "fire_button": 46,
-        "sensitivities": {
-            "review": 93,
-            "collimator": 95,
-            "x2_scope": 92,
-            "x4_scope": 93,
-            "sniper_scope": 33,
-            "free_review": 37
-        }
-    }
-]
+    ]
 }

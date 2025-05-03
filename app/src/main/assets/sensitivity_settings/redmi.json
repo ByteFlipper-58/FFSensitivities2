@@ -3,6 +3,21 @@
     "models": [
         {
             "manufacturer": "Redmi",
+            "name": "Note 20",
+            "settings_source_url": "",
+            "dpi": 627,
+            "fire_button": 35,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 184,
+                "x2_scope": 132,
+                "x4_scope": 163,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
             "name": "Note 13",
             "settings_source_url": "",
             "dpi": 570,
@@ -18,7 +33,367 @@
         },
         {
             "manufacturer": "Redmi",
-            "name": "13c",
+            "name": "Note 12 Pro",
+            "settings_source_url": "",
+            "dpi": 522,
+            "fire_button": 72,
+            "sensitivities": {
+                "review": 182,
+                "collimator": 176,
+                "x2_scope": 141,
+                "x4_scope": 141,
+                "sniper_scope": 96,
+                "free_review": 108
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 12 4G",
+            "settings_source_url": "",
+            "dpi": 460,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 172,
+                "collimator": 186,
+                "x2_scope": 151,
+                "x4_scope": 152,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 12",
+            "settings_source_url": "",
+            "dpi": 519,
+            "fire_button": 43,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 182,
+                "x2_scope": 149,
+                "x4_scope": 163,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 11 Pro 5G",
+            "settings_source_url": "",
+            "dpi": 0,
+            "fire_button": 40,
+            "sensitivities": {
+                "review": 93,
+                "collimator": 98,
+                "x2_scope": 98,
+                "x4_scope": 100,
+                "sniper_scope": 49,
+                "free_review": 39
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 11 Pro",
+            "settings_source_url": "",
+            "dpi": 836,
+            "fire_button": 30,
+            "sensitivities": {
+                "review": 176,
+                "collimator": 185,
+                "x2_scope": 143,
+                "x4_scope": 162,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 11s",
+            "settings_source_url": "",
+            "dpi": 502,
+            "fire_button": 63,
+            "sensitivities": {
+                "review": 185,
+                "collimator": 187,
+                "x2_scope": 144,
+                "x4_scope": 184,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 11",
+            "settings_source_url": "",
+            "dpi": 476,
+            "fire_button": 66,
+            "sensitivities": {
+                "review": 174,
+                "collimator": 139,
+                "x2_scope": 147,
+                "x4_scope": 154,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 10s",
+            "settings_source_url": "",
+            "dpi": 628,
+            "fire_button": 53,
+            "sensitivities": {
+                "review": 184,
+                "collimator": 159,
+                "x2_scope": 170,
+                "x4_scope": 173,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 10 Pro",
+            "settings_source_url": "",
+            "dpi": 621,
+            "fire_button": 35,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 164,
+                "x2_scope": 174,
+                "x4_scope": 183,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 10 5G",
+            "settings_source_url": "",
+            "dpi": 579,
+            "fire_button": 68,
+            "sensitivities": {
+                "review": 193,
+                "collimator": 169,
+                "x2_scope": 154,
+                "x4_scope": 189,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 10",
+            "settings_source_url": "",
+            "dpi": 757,
+            "fire_button": 37,
+            "sensitivities": {
+                "review": 199,
+                "collimator": 148,
+                "x2_scope": 189,
+                "x4_scope": 151,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 9s",
+            "settings_source_url": "",
+            "dpi": 608,
+            "fire_button": 46,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 181,
+                "x2_scope": 158,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 9T",
+            "settings_source_url": "",
+            "dpi": 491,
+            "fire_button": 31,
+            "sensitivities": {
+                "review": 178,
+                "collimator": 173,
+                "x2_scope": 140,
+                "x4_scope": 161,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 9",
+            "settings_source_url": "",
+            "dpi": 746,
+            "fire_button": 33,
+            "sensitivities": {
+                "review": 187,
+                "collimator": 170,
+                "x2_scope": 175,
+                "x4_scope": 192,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 8 Pro",
+            "settings_source_url": "",
+            "dpi": 680,
+            "fire_button": 36,
+            "sensitivities": {
+                "review": 200,
+                "collimator": 156,
+                "x2_scope": 182,
+                "x4_scope": 158,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 8T",
+            "settings_source_url": "",
+            "dpi": 850,
+            "fire_button": 44,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 182,
+                "x2_scope": 198,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 8",
+            "settings_source_url": "",
+            "dpi": 682,
+            "fire_button": 44,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 173,
+                "x2_scope": 198,
+                "x4_scope": 175,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 7 Pro",
+            "settings_source_url": "",
+            "dpi": 779,
+            "fire_button": 36,
+            "sensitivities": {
+                "review": 183,
+                "collimator": 167,
+                "x2_scope": 188,
+                "x4_scope": 192,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 7",
+            "settings_source_url": "",
+            "dpi": 536,
+            "fire_button": 44,
+            "sensitivities": {
+                "review": 195,
+                "collimator": 155,
+                "x2_scope": 131,
+                "x4_scope": 155,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 6 Pro",
+            "settings_source_url": "",
+            "dpi": 631,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 190,
+                "collimator": 136,
+                "x2_scope": 178,
+                "x4_scope": 150,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 5",
+            "settings_source_url": "",
+            "dpi": 729,
+            "fire_button": 70,
+            "sensitivities": {
+                "review": 181,
+                "collimator": 164,
+                "x2_scope": 168,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 4 Pro",
+            "settings_source_url": "",
+            "dpi": 589,
+            "fire_button": 37,
+            "sensitivities": {
+                "review": 198,
+                "collimator": 126,
+                "x2_scope": 140,
+                "x4_scope": 154,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "Note 4",
+            "settings_source_url": "",
+            "dpi": 742,
+            "fire_button": 38,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 129,
+                "x2_scope": 165,
+                "x4_scope": 182,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "14C",
+            "settings_source_url": "",
+            "dpi": 536,
+            "fire_button": 44,
+            "sensitivities": {
+                "review": 196,
+                "collimator": 166,
+                "x2_scope": 143,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "13C",
             "settings_source_url": "",
             "dpi": 0,
             "fire_button": 70,
@@ -48,47 +423,17 @@
         },
         {
             "manufacturer": "Redmi",
-            "name": "Note 12 Pro",
-            "settings_source_url": "",
-            "dpi": 522,
-            "fire_button": 72,
-            "sensitivities": {
-                "review": 182,
-                "collimator": 176,
-                "x2_scope": 141,
-                "x4_scope": 141,
-                "sniper_scope": 96,
-                "free_review": 108
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 12",
-            "settings_source_url": "",
-            "dpi": 522,
-            "fire_button": 72,
-            "sensitivities": {
-                "review": 150,
-                "collimator": 164,
-                "x2_scope": 169,
-                "x4_scope": 180,
-                "sniper_scope": 121,
-                "free_review": 200
-            }
-        },
-        {
-            "manufacturer": "Redmi",
             "name": "12С",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 45,
+            "dpi": 723,
+            "fire_button": 46,
             "sensitivities": {
-                "review": 125,
-                "collimator": 170,
-                "x2_scope": 180,
-                "x4_scope": 160,
-                "sniper_scope": 100,
-                "free_review": 105
+                "review": 197,
+                "collimator": 185,
+                "x2_scope": 162,
+                "x4_scope": 198,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
@@ -103,51 +448,6 @@
                 "x2_scope": 170,
                 "x4_scope": 160,
                 "sniper_scope": 132,
-                "free_review": 200
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 11 Pro 5G",
-            "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 40,
-            "sensitivities": {
-                "review": 93,
-                "collimator": 98,
-                "x2_scope": 98,
-                "x4_scope": 100,
-                "sniper_scope": 49,
-                "free_review": 39
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 11 Pro",
-            "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 40,
-            "sensitivities": {
-                "review": 98,
-                "collimator": 91,
-                "x2_scope": 97,
-                "x4_scope": 91,
-                "sniper_scope": 56,
-                "free_review": 30
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 11",
-            "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 51,
-            "sensitivities": {
-                "review": 191,
-                "collimator": 170,
-                "x2_scope": 172,
-                "x4_scope": 165,
-                "sniper_scope": 144,
                 "free_review": 200
             }
         },
@@ -170,405 +470,405 @@
             "manufacturer": "Redmi",
             "name": "10S",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 43,
+            "dpi": 586,
+            "fire_button": 70,
             "sensitivities": {
-                "review": 93,
-                "collimator": 94,
-                "x2_scope": 100,
-                "x4_scope": 93,
-                "sniper_scope": 20,
-                "free_review": 50
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 10s",
-            "settings_source_url": "",
-            "dpi": 535,
-            "fire_button": 52,
-            "sensitivities": {
-                "review": 96,
-                "collimator": 93,
-                "x2_scope": 96,
-                "x4_scope": 91,
-                "sniper_scope": 60,
-                "free_review": 50
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 10 Pro",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108029498716720389",
-            "dpi": 553,
-            "fire_button": 50,
-            "sensitivities": {
-                "review": 95,
-                "collimator": 96,
-                "x2_scope": 91,
-                "x4_scope": 100,
-                "sniper_scope": 60,
-                "free_review": 32
+                "review": 171,
+                "collimator": 171,
+                "x2_scope": 174,
+                "x4_scope": 165,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "10A",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 47,
+            "dpi": 601,
+            "fire_button": 48,
             "sensitivities": {
-                "review": 98,
-                "collimator": 90,
-                "x2_scope": 98,
-                "x4_scope": 90,
-                "sniper_scope": 36,
-                "free_review": 45
+                "review": 183,
+                "collimator": 166,
+                "x2_scope": 171,
+                "x4_scope": 167,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "10 5G",
+            "settings_source_url": "",
+            "dpi": 493,
+            "fire_button": 50,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 144,
+                "x2_scope": 160,
+                "x4_scope": 165,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "10",
             "settings_source_url": "",
-            "dpi": 777,
-            "fire_button": 55,
+            "dpi": 588,
+            "fire_button": 54,
             "sensitivities": {
-                "review": 146,
-                "collimator": 181,
-                "x2_scope": 63,
-                "x4_scope": 200,
+                "review": 188,
+                "collimator": 151,
+                "x2_scope": 153,
+                "x4_scope": 186,
                 "sniper_scope": 200,
-                "free_review": 68
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "9T",
             "settings_source_url": "",
-            "dpi": 615,
-            "fire_button": 43,
+            "dpi": 653,
+            "fire_button": 57,
             "sensitivities": {
-                "review": 97,
-                "collimator": 94,
-                "x2_scope": 96,
-                "x4_scope": 95,
-                "sniper_scope": 55,
-                "free_review": 52
+                "review": 178,
+                "collimator": 139,
+                "x2_scope": 132,
+                "x4_scope": 194,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "9 NFC",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7108353009192619269",
-            "dpi": 430,
-            "fire_button": 48,
-            "sensitivities": {
-                "review": 95,
-                "collimator": 97,
-                "x2_scope": 92,
-                "x4_scope": 92,
-                "sniper_scope": 54,
-                "free_review": 47
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 9 Pro",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119490738747968773",
-            "dpi": 619,
-            "fire_button": 41,
-            "sensitivities": {
-                "review": 97,
-                "collimator": 93,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 45,
-                "free_review": 100
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 9",
+            "name": "9s",
             "settings_source_url": "",
-            "dpi": 570,
-            "fire_button": 41,
+            "dpi": 508,
+            "fire_button": 50,
             "sensitivities": {
-                "review": 95,
-                "collimator": 98,
-                "x2_scope": 93,
-                "x4_scope": 100,
-                "sniper_scope": 41,
-                "free_review": 35
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "9C NFC",
-            "settings_source_url": "",
-            "dpi": 731,
-            "fire_button": 48,
-            "sensitivities": {
-                "review": 95,
-                "collimator": 92,
-                "x2_scope": 93,
-                "x4_scope": 93,
-                "sniper_scope": 21,
-                "free_review": 52
+                "review": 183,
+                "collimator": 129,
+                "x2_scope": 134,
+                "x4_scope": 185,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "9C",
-            "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
-            "dpi": 730,
-            "fire_button": 53,
+            "settings_source_url": "",
+            "dpi": 551,
+            "fire_button": 32,
             "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 50,
-                "free_review": 50
+                "review": 177,
+                "collimator": 132,
+                "x2_scope": 151,
+                "x4_scope": 178,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "9AT",
+            "settings_source_url": "",
+            "dpi": 836,
+            "fire_button": 33,
+            "sensitivities": {
+                "review": 170,
+                "collimator": 147,
+                "x2_scope": 185,
+                "x4_scope": 190,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "9A",
-            "settings_source_url": "https://vm.tiktok.com/ZMNt4MXko/",
-            "dpi": 720,
-            "fire_button": 53,
+            "settings_source_url": "",
+            "dpi": 662,
+            "fire_button": 61,
             "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 50,
-                "free_review": 50
+                "review": 171,
+                "collimator": 141,
+                "x2_scope": 169,
+                "x4_scope": 161,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "Note 9s",
+            "name": "9i",
             "settings_source_url": "",
-            "dpi": 531,
-            "fire_button": 53,
+            "dpi": 669,
+            "fire_button": 41,
             "sensitivities": {
-                "review": 95,
-                "collimator": 96,
-                "x2_scope": 93,
-                "x4_scope": 98,
-                "sniper_scope": 33,
-                "free_review": 49
+                "review": 188,
+                "collimator": 128,
+                "x2_scope": 153,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "9",
-            "settings_source_url": "https://www.tiktok.com/@ipman.pvp/video/7125938633269415173",
-            "dpi": 720,
-            "fire_button": 70,
-            "sensitivities": {
-                "review": 95,
-                "collimator": 55,
-                "x2_scope": 70,
-                "x4_scope": 76,
-                "sniper_scope": 51,
-                "free_review": 100
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "8 Pro",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7119277761180519686",
-            "dpi": 540,
-            "fire_button": 48,
-            "sensitivities": {
-                "review": 100,
-                "collimator": 97,
-                "x2_scope": 94,
-                "x4_scope": 88,
-                "sniper_scope": 80,
-                "free_review": 100
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 8 Pro",
             "settings_source_url": "",
-            "dpi": 560,
-            "fire_button": 42,
+            "dpi": 748,
+            "fire_button": 31,
             "sensitivities": {
-                "review": 94,
-                "collimator": 88,
-                "x2_scope": 97,
-                "x4_scope": 97,
-                "sniper_scope": 49,
-                "free_review": 45
+                "review": 183,
+                "collimator": 162,
+                "x2_scope": 135,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "Note 8",
+            "name": "8T",
             "settings_source_url": "",
-            "dpi": 600,
-            "fire_button": 44,
+            "dpi": 564,
+            "fire_button": 49,
             "sensitivities": {
-                "review": 94,
-                "collimator": 93,
-                "x2_scope": 94,
-                "x4_scope": 95,
-                "sniper_scope": 24,
-                "free_review": 48
+                "review": 188,
+                "collimator": 192,
+                "x2_scope": 154,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "A8",
+            "name": "8A",
             "settings_source_url": "",
-            "dpi": 639,
-            "fire_button": 53,
+            "dpi": 533,
+            "fire_button": 40,
             "sensitivities": {
-                "review": 93,
-                "collimator": 95,
-                "x2_scope": 96,
-                "x4_scope": 91,
-                "sniper_scope": 18,
-                "free_review": 44
+                "review": 184,
+                "collimator": 144,
+                "x2_scope": 155,
+                "x4_scope": 154,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "8",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7123924103068798214",
-            "dpi": 540,
-            "fire_button": 57,
+            "settings_source_url": "",
+            "dpi": 634,
+            "fire_button": 68,
             "sensitivities": {
-                "review": 95,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 100,
-                "free_review": 100
+                "review": 195,
+                "collimator": 185,
+                "x2_scope": 153,
+                "x4_scope": 180,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "7A",
+            "settings_source_url": "",
+            "dpi": 641,
+            "fire_button": 41,
+            "sensitivities": {
+                "review": 173,
+                "collimator": 179,
+                "x2_scope": 142,
+                "x4_scope": 193,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "7",
-            "settings_source_url": "https://vm.tiktok.com/ZMNt4rJh1/",
-            "dpi": 420,
+            "settings_source_url": "",
+            "dpi": 628,
             "fire_button": 55,
             "sensitivities": {
-                "review": 100,
-                "collimator": 100,
-                "x2_scope": 100,
-                "x4_scope": 100,
-                "sniper_scope": 50,
-                "free_review": 50
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 7",
-            "settings_source_url": "",
-            "dpi": 536,
-            "fire_button": 45,
-            "sensitivities": {
-                "review": 98,
-                "collimator": 97,
-                "x2_scope": 97,
-                "x4_scope": 97,
-                "sniper_scope": 96,
-                "free_review": 53
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "Note 6 Pro",
-            "settings_source_url": "",
-            "dpi": 470,
-            "fire_button": 44,
-            "sensitivities": {
-                "review": 98,
-                "collimator": 93,
-                "x2_scope": 94,
-                "x4_scope": 94,
-                "sniper_scope": 27,
-                "free_review": 37
-            }
-        },
-        {
-            "manufacturer": "Redmi",
-            "name": "6 Pro",
-            "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 43,
-            "sensitivities": {
-                "review": 95,
-                "collimator": 88,
-                "x2_scope": 95,
-                "x4_scope": 95,
-                "sniper_scope": 28,
-                "free_review": 34
+                "review": 200,
+                "collimator": 167,
+                "x2_scope": 149,
+                "x4_scope": 155,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "6A",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 39,
+            "dpi": 591,
+            "fire_button": 36,
             "sensitivities": {
-                "review": 98,
-                "collimator": 94,
-                "x2_scope": 90,
-                "x4_scope": 96,
-                "sniper_scope": 36,
-                "free_review": 52
+                "review": 193,
+                "collimator": 172,
+                "x2_scope": 190,
+                "x4_scope": 192,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
             "name": "6",
             "settings_source_url": "",
-            "dpi": 0,
-            "fire_button": 39,
+            "dpi": 481,
+            "fire_button": 33,
             "sensitivities": {
-                "review": 94,
-                "collimator": 95,
-                "x2_scope": 93,
-                "x4_scope": 94,
-                "sniper_scope": 20,
-                "free_review": 42
+                "review": 200,
+                "collimator": 131,
+                "x2_scope": 149,
+                "x4_scope": 196,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "Note 5",
+            "name": "5 Plus",
             "settings_source_url": "",
-            "dpi": 551,
-            "fire_button": 43,
+            "dpi": 564,
+            "fire_button": 48,
             "sensitivities": {
-                "review": 98,
-                "collimator": 97,
-                "x2_scope": 99,
-                "x4_scope": 95,
-                "sniper_scope": 46,
-                "free_review": 54
+                "review": 200,
+                "collimator": 140,
+                "x2_scope": 194,
+                "x4_scope": 170,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
             "manufacturer": "Redmi",
-            "name": "Note 4",
-            "settings_source_url": "https://www.tiktok.com/@777_honour_777/video/7118534417764683013",
-            "dpi": 0,
-            "fire_button": 42,
+            "name": "5A",
+            "settings_source_url": "",
+            "dpi": 733,
+            "fire_button": 54,
             "sensitivities": {
-                "review": 99,
-                "collimator": 91,
-                "x2_scope": 96,
-                "x4_scope": 97,
-                "sniper_scope": 38,
-                "free_review": 100
+                "review": 184,
+                "collimator": 124,
+                "x2_scope": 198,
+                "x4_scope": 164,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "4X",
+            "settings_source_url": "",
+            "dpi": 738,
+            "fire_button": 45,
+            "sensitivities": {
+                "review": 186,
+                "collimator": 136,
+                "x2_scope": 143,
+                "x4_scope": 156,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "4A",
+            "settings_source_url": "",
+            "dpi": 735,
+            "fire_button": 51,
+            "sensitivities": {
+                "review": 199,
+                "collimator": 180,
+                "x2_scope": 146,
+                "x4_scope": 187,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "4",
+            "settings_source_url": "",
+            "dpi": 472,
+            "fire_button": 51,
+            "sensitivities": {
+                "review": 182,
+                "collimator": 157,
+                "x2_scope": 172,
+                "x4_scope": 156,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "A8",
+            "settings_source_url": "",
+            "dpi": 831,
+            "fire_button": 35,
+            "sensitivities": {
+                "review": 191,
+                "collimator": 147,
+                "x2_scope": 172,
+                "x4_scope": 196,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "A4",
+            "settings_source_url": "",
+            "dpi": 751,
+            "fire_button": 44,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 137,
+                "x2_scope": 145,
+                "x4_scope": 158,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "A2",
+            "settings_source_url": "",
+            "dpi": 667,
+            "fire_button": 48,
+            "sensitivities": {
+                "review": 197,
+                "collimator": 138,
+                "x2_scope": 153,
+                "x4_scope": 195,
+                "sniper_scope": 200,
+                "free_review": 200
+            }
+        },
+        {
+            "manufacturer": "Redmi",
+            "name": "A1",
+            "settings_source_url": "",
+            "dpi": 667,
+            "fire_button": 70,
+            "sensitivities": {
+                "review": 194,
+                "collimator": 155,
+                "x2_scope": 167,
+                "x4_scope": 199,
+                "sniper_scope": 200,
+                "free_review": 200
             }
         },
         {
