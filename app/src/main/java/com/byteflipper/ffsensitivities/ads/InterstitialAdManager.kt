@@ -21,7 +21,6 @@ class InterstitialAdManager(
 ) {
     private var interstitialAd: InterstitialAd? = null
     private var isLoadingAd = false
-    // lastLoadTime is not used in the provided show/load logic, but kept for potential future use
     private var lastLoadTime: Long = 0
     private val TAG = "InterstitialAdManager"
 
@@ -68,25 +67,21 @@ class InterstitialAdManager(
                     interstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                         override fun onAdDismissedFullScreenContent() {
                             interstitialAd = null
-                            isShowingAd = false // Reset flag
+                            isShowingAd = false
                             interstitialAdListener?.onAdDismissed()
                             Log.d(TAG, "Interstitial ad dismissed")
-                            // Preload the next ad (as per example logic)
-                            // ViewModel might handle this differently, but manager follows example
                             loadAd()
                         }
 
                         override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                             interstitialAd = null
-                            // isLoadingAd should remain false here unless a new load is triggered
-                            isShowingAd = false // Reset flag
+                            isShowingAd = false
                             interstitialAdListener?.onAdFailedToShowFullScreenContent(adError)
                             Log.e(TAG, "Interstitial ad failed to show: ${adError.message}")
-                            // Consider preloading next ad here too? Example doesn't, ViewModel handles retry.
                         }
 
                         override fun onAdShowedFullScreenContent() {
-                            isShowingAd = true // Set flag
+                            isShowingAd = true
                             interstitialAdListener?.onAdShowedFullScreenContent()
                             Log.d(TAG, "Interstitial ad showed successfully")
                         }
@@ -109,7 +104,6 @@ class InterstitialAdManager(
      * Check if ad is available
      */
     fun isAdAvailable(): Boolean {
-        // Check companion object flag as well? Example doesn't, relies on instance null check.
         return interstitialAd != null /* && !isShowingAd */ // isShowingAd check added in showAdIfAvailable
     }
 
@@ -126,7 +120,6 @@ class InterstitialAdManager(
 
         if (!isAdAvailable()) {
             Log.d(TAG, "The interstitial ad is not ready yet (checked via instance).")
-            // Only load if not already loading
             if (!isLoadingAd) {
                 loadAd()
             }

@@ -27,31 +27,24 @@ class InterstitialAdViewModel(
     private val _adState = MutableStateFlow<InterstitialAdState>(InterstitialAdState.Initial)
     val adState: StateFlow<InterstitialAdState> = _adState.asStateFlow()
 
-    // Track how many times user has performed actions that might trigger an ad
     private var actionCounter = 0
 
-    // Use the provided adFrequency
     private val showAdFrequency = adFrequency
 
     init {
-        // Set up the listener
         interstitialAdManager.interstitialAdListener = object : InterstitialAdManager.InterstitialAdListener {
             override fun onAdDismissed() {
                 _adState.value = InterstitialAdState.Dismissed
                 viewModelScope.launch {
-                    // Reset state after a delay
                     kotlinx.coroutines.delay(500)
-                    // Go back to Initial state, which might trigger a load if needed by logic
                     if (_adState.value == InterstitialAdState.Dismissed) {
                          _adState.value = InterstitialAdState.Initial
                     }
-                    // Preloading is handled by the manager on dismiss, but ViewModel could also trigger it.
                 }
             }
 
             override fun onAdShowedFullScreenContent() {
                 _adState.value = InterstitialAdState.Shown
-                // Reset action counter after showing an ad
                 actionCounter = 0
             }
 
@@ -78,7 +71,6 @@ class InterstitialAdViewModel(
             }
         }
 
-        // Pre-load an ad when ViewModel is created
         loadInterstitialAd()
     }
 
@@ -147,7 +139,6 @@ class InterstitialAdViewModel(
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(InterstitialAdViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                // Pass adFrequency to the ViewModel constructor
                 return InterstitialAdViewModel(application, adUnitId, adFrequency) as T
             }
             throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

@@ -3,14 +3,12 @@ package com.byteflipper.ffsensitivities.ads
 import android.app.Activity
 import android.content.Context
 import android.util.Log
-import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.utils.AdConstants
-import com.byteflipper.ffsensitivities.utils.NetworkUtils // Assuming NetworkUtils exists or will be created
+import com.byteflipper.ffsensitivities.utils.NetworkUtils
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.OnUserEarnedRewardListener
 import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
@@ -24,7 +22,7 @@ import javax.inject.Singleton
 @Singleton
 class RewardedAdManager @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val consentManager: ConsentManager // Inject ConsentManager
+    private val consentManager: ConsentManager
 ) {
     private companion object {
         private const val TAG = "RewardedAdManager"
@@ -37,7 +35,7 @@ class RewardedAdManager @Inject constructor(
         get() = consentManager.canRequestPersonalizedAds()
 
     init {
-        preloadAd() // Initial preload with default ID
+        preloadAd()
     }
 
     fun preloadAd(adUnitId: String? = null) {
@@ -57,7 +55,7 @@ class RewardedAdManager @Inject constructor(
         val adRequest = AdRequest.Builder().build()
         RewardedAd.load(
             context,
-            actualAdUnitId, // Use the determined ad unit ID
+            actualAdUnitId,
             adRequest,
             object : RewardedAdLoadCallback() {
                 override fun onAdLoaded(ad: RewardedAd) {
@@ -78,8 +76,8 @@ class RewardedAdManager @Inject constructor(
 
         if (ad == null) {
             Log.w(TAG, "Cannot show rewarded ad (Ad not loaded yet). Triggering preload with default ID.")
-            preloadAd() // Ensure a load is attempted for the next time using the default ID
-            onDismissed() // Ad not shown, dismiss immediately
+            preloadAd()
+            onDismissed()
             return
         }
 
@@ -93,25 +91,23 @@ class RewardedAdManager @Inject constructor(
             override fun onAdDismissedFullScreenContent() {
                 Log.d(TAG, "Rewarded ad dismissed")
                 _rewardedAd.value = null // Ad consumed
-                preloadAd() // Preload next one with default ID
+                preloadAd()
                 onDismissed()
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 Log.e(TAG, "Rewarded Ad Show Error - Code: ${adError.code}, Message: ${adError.message}, Domain: ${adError.domain}")
-                _rewardedAd.value = null // Ad failed, clear it
-                preloadAd() // Try preloading again with default ID
+                _rewardedAd.value = null
+                preloadAd()
                 onDismissed()
             }
 
              override fun onAdShowedFullScreenContent() {
                 Log.d(TAG, "Rewarded ad showed successfully.")
-                // Ad is now displayed.
             }
         }
 
         Log.d(TAG, "Showing Rewarded Ad...")
-        // Make sure to pass the OnUserEarnedRewardListener
         ad.show(activity) { rewardItem ->
             Log.d(TAG, "User earned reward: Amount=${rewardItem.amount}, Type=${rewardItem.type}")
             onRewardEarned(rewardItem)

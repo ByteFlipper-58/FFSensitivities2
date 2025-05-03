@@ -25,10 +25,9 @@ import javax.inject.Singleton
 @Singleton
 class BannerAdProvider @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val consentManager: ConsentManager // Inject ConsentManager
+    private val consentManager: ConsentManager
 ) {
 
-    // Check if ads can be shown based on consent
     private val canShowAds: Boolean
         get() = consentManager.canRequestPersonalizedAds()
 
@@ -66,7 +65,7 @@ class BannerAdProvider @Inject constructor(
                             adWidthDp
                         )
                     )
-                    this.adUnitId = actualAdUnitId // Use the determined ad unit ID
+                    this.adUnitId = actualAdUnitId
                     this.loadAd(AdRequest.Builder().build())
                 }
             }

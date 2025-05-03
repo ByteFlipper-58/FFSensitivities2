@@ -105,11 +105,9 @@ class ConsentManager @Inject constructor(
                 Log.d(TAG, "Google Mobile Ads initialized successfully. Status: ${initializationStatus.adapterStatusMap}")
                 isMobileAdsInitialized = true
                 onInitialized?.invoke()
-                // Interstitial preload logic removed - handled by ViewModel
             }
         } else {
             Log.d(TAG, "Google Mobile Ads SDK already initialized.")
-            // If SDK already initialized, still invoke callback if provided
             onInitialized?.invoke()
         }
     }

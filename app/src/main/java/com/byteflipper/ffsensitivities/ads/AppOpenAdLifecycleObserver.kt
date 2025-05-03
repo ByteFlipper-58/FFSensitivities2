@@ -18,21 +18,14 @@ class AppOpenAdLifecycleObserver(
 ) : DefaultLifecycleObserver, Application.ActivityLifecycleCallbacks {
 
     private var currentActivity: Activity? = null
-    // Removed isAppInForeground flag as ProcessLifecycleOwner handles this implicitly
 
     init {
-        // Register activity lifecycle callbacks
         application.registerActivityLifecycleCallbacks(this)
-        // Observe process lifecycle
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
     }
 
-    // --- DefaultLifecycleObserver Implementation ---
-
     override fun onStart(owner: LifecycleOwner) {
-        // App came to foreground
-        // Use lifecycleScope tied to ProcessLifecycleOwner for safety
-        owner.lifecycleScope.launch { // Use owner's scope
+        owner.lifecycleScope.launch {
             currentActivity?.let { activity ->
                 adMobViewModel.showAppOpenAd(activity)
             }
@@ -44,12 +37,10 @@ class AppOpenAdLifecycleObserver(
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
 
     override fun onActivityStarted(activity: Activity) {
-        // Always update the currentActivity when an activity starts
         currentActivity = activity
     }
 
     override fun onActivityResumed(activity: Activity) {
-        // Update currentActivity on resume as well, in case started wasn't called first (less likely but safe)
         currentActivity = activity
     }
 
@@ -60,16 +51,14 @@ class AppOpenAdLifecycleObserver(
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
     override fun onActivityDestroyed(activity: Activity) {
-        // Clear currentActivity if the destroyed activity was the current one
         if (currentActivity == activity) {
             currentActivity = null
         }
     }
 
-    // Optional: Method to unregister listeners if needed, e.g., for testing or specific scenarios
     fun unregister() {
         application.unregisterActivityLifecycleCallbacks(this)
         ProcessLifecycleOwner.get().lifecycle.removeObserver(this)
-        currentActivity = null // Clear reference
+        currentActivity = null
     }
 }

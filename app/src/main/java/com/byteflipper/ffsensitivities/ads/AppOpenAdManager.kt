@@ -127,7 +127,6 @@ class AppOpenAdManager(
         }
 
         Log.d(TAG, "Attempting to show AppOpenAd.")
-        // The fullScreenContentCallback is set during onAdLoaded
         appOpenAd?.show(activity)
         // isShowingAd will be set to true in onAdShowedFullScreenContent callback
     }
