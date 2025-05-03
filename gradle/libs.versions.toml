@@ -1,6 +1,6 @@
 [versions]
 activityKtx = "1.10.1"
-agp = "8.9.1"
+agp = "8.9.2"
 browser = "1.8.0"
 coilCompose = "2.7.0"
 firebaseBom = "33.12.0"

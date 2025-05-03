@@ -2,21 +2,17 @@ package com.byteflipper.ffsensitivities
 
 import android.app.Application
 import android.content.Context
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.byteflipper.ffsensitivities.ads.ConsentManager // Import ConsentManager
+// import com.byteflipper.ffsensitivities.ads.InterstitialAdManager // Remove InterstitialAdManager import
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.manager.AppLocaleManager // Import AppLocaleManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext // Import ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,12 +20,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppViewModel @Inject constructor(
-    @ApplicationContext private val context: Context, // Inject Context
+    @ApplicationContext private val context: Context,
     private val dataStoreManager: DataStoreManager,
-    val consentManager: ConsentManager // Inject and expose ConsentManager
-) : AndroidViewModel(context.applicationContext as Application) { // Pass Application to super
+    val consentManager: ConsentManager
+) : AndroidViewModel(context.applicationContext as Application) {
 
-    private val appLocaleManager = AppLocaleManager() // Create instance
+    private val appLocaleManager = AppLocaleManager()
 
     // StateFlow for the current language code
     private val _currentLanguageCode = MutableStateFlow(appLocaleManager.getCurrentLanguageCode())
@@ -56,20 +52,12 @@ class AppViewModel @Inject constructor(
             initialValue = false
         )
 
-    val visitCount: StateFlow<Int> = dataStoreManager.getVisitCount()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-            initialValue = 0
-        )
-
     val requestSent: StateFlow<Boolean> = dataStoreManager.getRequestSent()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
             initialValue = false
         )
-
 
     private val _settingsLoaded = MutableStateFlow(false)
     val isReady: StateFlow<Boolean> = _settingsLoaded.asStateFlow()
@@ -84,9 +72,9 @@ class AppViewModel @Inject constructor(
                 dataStoreManager.getTheme(),
                 dataStoreManager.getDynamicColor(),
                 dataStoreManager.getContrastTheme()
-            ) { _, _, _ -> // We only care that they emitted, values applied elsewhere
-                true // Indicate that loading is complete
-            }.first { it } // Collect the first emission where the value is true
+            ) { _, _, _ ->
+                true
+            }.first { it }
 
             // Mark settings as loaded
             _settingsLoaded.value = true
@@ -111,25 +99,15 @@ class AppViewModel @Inject constructor(
         }
     }
 
-    fun setVisitCount(count: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            dataStoreManager.setVisitCount(count)
-        }
-    }
-
     fun setRequestSent(status: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreManager.setRequestSent(status)
         }
     }
 
-    // Updated setLanguage: applies the locale AND saves to DataStore
-    // Uses AppLocaleManager to change the language
     fun setLanguage(languageCode: String?) { // languageCode is "en", "ru", "system", etc.
         appLocaleManager.changeLanguage(context, languageCode)
         // Update the state flow directly with the intended value ("system" if null)
         _currentLanguageCode.value = languageCode ?: "system"
     }
-
-    // Removed the old applyLanguage helper function
 }

@@ -17,8 +17,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
@@ -32,7 +30,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -40,14 +37,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.painterResource
+import android.app.Application
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.AdManagerHolder
+import com.byteflipper.ffsensitivities.ads.InterstitialAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
@@ -60,14 +59,22 @@ fun SensitivitiesScreen(
     navController: NavController,
     manufacturerArg: String?,
     modelNameArg: String?,
-    appViewModel: AppViewModel = hiltViewModel(),
     deviceViewModel: DeviceViewModel = hiltViewModel()
 ) {
     val manufacturer = remember(manufacturerArg) { manufacturerArg?.let { Uri.decode(it) } ?: "" }
     val modelName = remember(modelNameArg) { modelNameArg?.let { Uri.decode(it) } ?: "" }
+    val activity = LocalActivity.current as? Activity
+    val context = LocalContext.current
+    val application = context.applicationContext as Application
 
-    val activity = LocalActivity.current as Activity
-    val visitCountState by appViewModel.visitCount.collectAsState()
+    val interstitialViewModel: InterstitialAdViewModel = viewModel(
+        key = "interstitial_sensitivities",
+        factory = InterstitialAdViewModel.Factory(
+            application = application,
+            adUnitId = AdConstants.INTERSTITIAL_SENSITIVITIES_AD_UNIT_ID,
+            adFrequency = AdConstants.SENSITIVITIES_SCREEN_AD_FREQUENCY
+        )
+    )
 
     val deviceModelState by produceState<UiState<DeviceModel>>(initialValue = UiState.Loading, manufacturer, modelName, deviceViewModel) {
         deviceViewModel.uiState.collect { deviceListState ->
@@ -136,26 +143,6 @@ fun SensitivitiesScreen(
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 16.dp)
                 ) {
-                    LaunchedEffect(Unit) {
-                        val currentVisitCount = visitCountState
-                        val newVisitCount = currentVisitCount + 1
-                        appViewModel.setVisitCount(newVisitCount)
-
-                        if (newVisitCount % AdConstants.SENSITIVITIES_SCREEN_AD_FREQUENCY == 0) {
-                            AdManagerHolder.showInterstitialAd(
-                                activity = activity,
-                                // TODO: Consider if a specific Ad Unit ID is needed here or if AdManagerHolder handles it
-                                onShown = {
-                                    Log.d("SensitivitiesScreen", "Interstitial Ad shown via AdManagerHolder.")
-                                    appViewModel.setVisitCount(0) // Сбрасываем через ViewModel
-                                },
-                                onDismissed = {
-                                    Log.d("SensitivitiesScreen", "Interstitial Ad dismissed via AdManagerHolder.")
-                                }
-                            )
-                        }
-                    }
-
                     ElevatedCard(
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -292,6 +279,11 @@ fun SensitivitiesScreen(
                             FilledTonalButton(
                                 onClick = {
                                     clipboardManager.setText(AnnotatedString(settingsText))
+                                    // Track action and potentially show ad AFTER copying using the manually created ViewModel
+                                    activity?.let { act ->
+                                        Log.d("SensitivitiesScreen", "Tracking action (copy settings) for potential interstitial ad.")
+                                        interstitialViewModel.trackActionAndShowAdIfNeeded(act) // Use the created instance
+                                    } ?: Log.w("SensitivitiesScreen", "Activity is null, cannot show interstitial ad.")
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             ) {

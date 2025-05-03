@@ -29,26 +29,16 @@
                 android:value="true" />
         </service>
 
-        <meta-data
-            android:name="com.yandex.mobile.ads.AUTOMATIC_SDK_INITIALIZATION"
-            android:value="false" />
-
-        <!--meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-4346225518624754~7987012984" /-->
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9966962268328280~2237741011"/>
+            android:value="ca-app-pub-4346225518624754~7987012984"/>
 
         <!-- Consent Mode v2 default settings -->
-        <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="false" />
-        <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="false" />
-        <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="false" />
-        <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="false"/>
-
-        <meta-data android:name="applovin.sdk.key"
-            android:value="MmHLJLwlhhLwuWZiNeyeLte3zfmk4GImmOIOs6U5eCW31mzSvyzXbhJuoTTGhgAmLvAnTNibCSqHrppumwVLAW"/>
+        <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="true" />
+        <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="true" />
+        <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="true" />
+        <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="true"/>
 
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
@@ -65,12 +55,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.ui.ErrorActivity"
-            android:exported="false"
-            android:label="@string/error_occurred_title"
-            android:theme="@style/Theme.FFSensitivities.ErrorActivity" />
     </application>
 
 </manifest>

@@ -1,8 +1,8 @@
 package com.byteflipper.ffsensitivities.di
 
 import android.content.Context
-import com.byteflipper.ffsensitivities.ads.AppOpenAdManager
 import com.byteflipper.ffsensitivities.ads.ConsentManager
+import com.byteflipper.ffsensitivities.ads.InterstitialAdManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.utils.PreferencesManager
 import dagger.Module
@@ -18,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
+import javax.inject.Provider
 import javax.inject.Singleton
 
 
@@ -63,19 +64,10 @@ object AppModule {
     @Singleton
     fun provideConsentManager(
         @ApplicationContext context: Context,
-        @ApplicationScope coroutineScope: CoroutineScope,
-        appOpenAdManager: AppOpenAdManager
-    ): ConsentManager {
-        return ConsentManager(context, coroutineScope, appOpenAdManager)
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppOpenAdManager(
-        @ApplicationContext context: Context,
-        dataStoreManager: DataStoreManager,
         @ApplicationScope coroutineScope: CoroutineScope
-    ): AppOpenAdManager {
-        return AppOpenAdManager(context, dataStoreManager, coroutineScope)
+        // interstitialAdManagerProvider: Provider<InterstitialAdManager> // Remove InterstitialAdManager dependency
+    ): ConsentManager {
+        // Remove interstitialAdManagerProvider from constructor call
+        return ConsentManager(context, coroutineScope /*, interstitialAdManagerProvider */)
     }
 }
