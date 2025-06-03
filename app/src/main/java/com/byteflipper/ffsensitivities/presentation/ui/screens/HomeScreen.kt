@@ -13,13 +13,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.Button
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ShapeDefaults
@@ -50,9 +51,13 @@ import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
+import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorStateComponent
+import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorType
 import com.byteflipper.ffsensitivities.presentation.ui.dialogs.SensitivitiesRequestDialog
 import com.byteflipper.ffsensitivities.presentation.viewmodel.HomeScreenViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
+import com.byteflipper.ffsensitivities.utils.LazyListUtils.shimmerItems
+import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
 import io.ktor.client.HttpClient
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -123,7 +128,7 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = PaddingValues(10.dp)
                     ) {
-                        items(14) {
+                        shimmerItems(14) {
                             ShimmerLazyItem()
                         }
                     }
@@ -136,17 +141,31 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth(),
                         contentPadding = PaddingValues(10.dp)
                     ) {
-                        items(
+                        optimizedItems(
                             items = manufacturers,
-                            key = { manufacturer -> manufacturer.name }
+                            key = { manufacturer -> manufacturer.name },
+                            contentType = "manufacturer"
                         ) { manufacturer ->
                             ManufacturerCard(manufacturer, navController)
                         }
                     }
                 }
-                // TODO: Handle NoInternet and Error states appropriately, e.g., show a message or a retry button.
-                is UiState.NoInternet -> {}
-                is UiState.Error -> {}
+                
+                is UiState.NoInternet -> {
+                    ErrorStateComponent(
+                        errorType = ErrorType.NO_INTERNET,
+                        onRetry = { manufacturerViewModel.retry() },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+                
+                is UiState.Error -> {
+                    ErrorStateComponent(
+                        errorType = ErrorType.GENERAL_ERROR,
+                        onRetry = { manufacturerViewModel.retry() },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
         }
     }

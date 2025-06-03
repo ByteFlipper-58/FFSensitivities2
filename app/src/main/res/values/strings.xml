@@ -16,6 +16,7 @@
     <string name="open_link">Open Link</string>
     <string name="back">Back</string>
     <string name="try_again">Try again</string>
+    <string name="retry">Retry</string>
     <string name="action_retry">Retry</string>
     <string name="next">Next</string>
     <string name="error">Error</string>
@@ -215,9 +216,12 @@
     <string name="error_stacktrace_prefix">StackTrace:</string>
     <!-- No Internet -->
     <string name="no_internet_connection">No Internet Connection</string>
+    <string name="check_internet_and_retry">Please check your internet connection and try again.</string>
     <string name="error_no_internet_title">No Internet Connection</string>
     <string name="error_no_internet_message">Please check your internet connection and try again.</string>
     <!-- Generic Error Screen -->
+    <string name="error_occurred">An error occurred</string>
+    <string name="try_again_later">Please try again later.</string>
     <string name="error_occurred_title">An Error Occurred</string>
     <string name="error_occurred_message">Unfortunately, the application encountered an unexpected problem.</string>
     <string name="error_details_info">Error details have been sent to the developers. You can copy the details below.</string>

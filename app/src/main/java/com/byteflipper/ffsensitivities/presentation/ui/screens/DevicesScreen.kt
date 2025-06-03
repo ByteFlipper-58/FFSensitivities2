@@ -41,8 +41,15 @@ import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
+import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorStateComponent
+import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorType
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
 import com.byteflipper.ffsensitivities.utils.AdConstants
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -114,9 +121,30 @@ fun DevicesScreen(
                     }
                 }
                 is UiState.NoInternet -> {
+                    item(
+                        key = "no_internet",
+                        contentType = "error_state"
+                    ) {
+                        ErrorStateComponent(
+                            errorType = ErrorType.NO_INTERNET,
+                            onRetry = { 
+                                model?.let { deviceViewModel.fetchDevices(it) }
+                            }
+                        )
+                    }
                 }
                 is UiState.Error -> {
-                    // Optionally display an error message
+                    item(
+                        key = "error",
+                        contentType = "error_state"
+                    ) {
+                        ErrorStateComponent(
+                            errorType = ErrorType.GENERAL_ERROR,
+                            onRetry = { 
+                                model?.let { deviceViewModel.fetchDevices(it) }
+                            }
+                        )
+                    }
                 }
             }
         }

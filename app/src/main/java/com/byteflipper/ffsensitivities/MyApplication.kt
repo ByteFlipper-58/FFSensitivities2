@@ -24,13 +24,33 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        
+        initializeAdsSDK()
+        initializeCrashHandler()
+    }
 
+    /**
+     * Инициализирует рекламный SDK и связанные компоненты
+     */
+    private fun initializeAdsSDK() {
         consentManager.initializeMobileAdsSdk {
-            // This block executes after MobileAds.initialize() completes successfully
-            adMobViewModel = AdMobViewModel(this)
-            appOpenAdLifecycleObserver = AppOpenAdLifecycleObserver(this, adMobViewModel)
+            // Этот блок выполняется после успешной инициализации MobileAds.initialize()
+            initializeAdComponents()
         }
+    }
 
+    /**
+     * Инициализирует компоненты рекламы после инициализации SDK
+     */
+    private fun initializeAdComponents() {
+        adMobViewModel = AdMobViewModel(this)
+        appOpenAdLifecycleObserver = AppOpenAdLifecycleObserver(this, adMobViewModel)
+    }
+
+    /**
+     * Инициализирует обработчик аварийных ситуаций
+     */
+    private fun initializeCrashHandler() {
         val logsDir = File(getExternalFilesDir(null), "my_crash_logs")
 
         CrashHandler.init(this)
