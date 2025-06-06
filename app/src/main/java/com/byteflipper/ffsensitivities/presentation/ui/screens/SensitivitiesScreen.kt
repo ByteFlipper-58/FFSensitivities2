@@ -37,21 +37,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.res.painterResource
-import android.app.Application
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.InterstitialAdViewModel
+import com.byteflipper.ffsensitivities.ads.components.AdBanner
+import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
-import com.byteflipper.ffsensitivities.utils.AdConstants
+import com.byteflipper.ffsensitivities.ads.core.AdLocation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,22 +58,12 @@ fun SensitivitiesScreen(
     navController: NavController,
     manufacturerArg: String?,
     modelNameArg: String?,
-    deviceViewModel: DeviceViewModel = hiltViewModel()
+    deviceViewModel: DeviceViewModel = hiltViewModel(),
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
 ) {
     val manufacturer = remember(manufacturerArg) { manufacturerArg?.let { Uri.decode(it) } ?: "" }
     val modelName = remember(modelNameArg) { modelNameArg?.let { Uri.decode(it) } ?: "" }
     val activity = LocalActivity.current as? Activity
-    val context = LocalContext.current
-    val application = context.applicationContext as Application
-
-    val interstitialViewModel: InterstitialAdViewModel = viewModel(
-        key = "interstitial_sensitivities",
-        factory = InterstitialAdViewModel.Factory(
-            application = application,
-            adUnitId = AdConstants.INTERSTITIAL_SENSITIVITIES_AD_UNIT_ID,
-            adFrequency = AdConstants.SENSITIVITIES_SCREEN_AD_FREQUENCY
-        )
-    )
 
     val deviceModelState by produceState<UiState<DeviceModel>>(initialValue = UiState.Loading, manufacturer, modelName, deviceViewModel) {
         deviceViewModel.uiState.collect { deviceListState ->
@@ -114,6 +103,10 @@ fun SensitivitiesScreen(
                     }
                 }
             )
+        },
+        bottomBar = {
+            // Используем баннер для экрана настроек чувствительности
+            AdBanner(location = AdLocation.SENSITIVITIES_SCREEN)
         }
     ) { innerPadding ->
         when (val state = deviceModelState) {
@@ -128,9 +121,23 @@ fun SensitivitiesScreen(
             }
 
             is UiState.Error -> {
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(innerPadding).padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text("Ошибка: ${state.message}")
+                }
             }
 
             is UiState.NoInternet -> {
+                Column(
+                    modifier = Modifier.fillMaxSize().padding(innerPadding).padding(16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    Text(stringResource(R.string.no_internet_connection))
+                }
             }
 
             is UiState.Success<*> -> {
@@ -156,7 +163,7 @@ fun SensitivitiesScreen(
                             SliderView(
                                 label = R.string.review,
                                 initialValue = deviceModel.sensitivities?.review?.toFloat() ?: 0f,
-                                onValueChange = { },
+                                onValueChange = {},
                                 enabled = false
                             )
 
@@ -167,9 +174,8 @@ fun SensitivitiesScreen(
 
                             SliderView(
                                 label = R.string.collimator,
-                                initialValue = deviceModel.sensitivities?.collimator?.toFloat()
-                                    ?: 0f,
-                                onValueChange = { },
+                                initialValue = deviceModel.sensitivities?.collimator?.toFloat() ?: 0f,
+                                onValueChange = {},
                                 enabled = false
                             )
 
@@ -181,7 +187,7 @@ fun SensitivitiesScreen(
                             SliderView(
                                 label = R.string.x2_scope,
                                 initialValue = deviceModel.sensitivities?.x2_scope?.toFloat() ?: 0f,
-                                onValueChange = { },
+                                onValueChange = {},
                                 enabled = false
                             )
 
@@ -193,7 +199,7 @@ fun SensitivitiesScreen(
                             SliderView(
                                 label = R.string.x4_scope,
                                 initialValue = deviceModel.sensitivities?.x4_scope?.toFloat() ?: 0f,
-                                onValueChange = { },
+                                onValueChange = {},
                                 enabled = false
                             )
 
@@ -235,7 +241,7 @@ fun SensitivitiesScreen(
                                 )
 
                                 FilledTonalIconButton(
-                                    onClick = { /* Действие для первой иконки */ },
+                                    onClick = {},
                                     modifier = Modifier.size(40.dp)
                                 ) {
                                     Icon(
@@ -247,7 +253,7 @@ fun SensitivitiesScreen(
                                 Spacer(modifier = Modifier.width(8.dp))
 
                                 FilledTonalIconButton(
-                                    onClick = { /* Действие для второй иконки */ },
+                                    onClick = {},
                                     modifier = Modifier.size(40.dp)
                                 ) {
                                     Icon(
@@ -256,7 +262,6 @@ fun SensitivitiesScreen(
                                     )
                                 }
                             }
-
 
                             HorizontalDivider(
                                 modifier = Modifier.padding(vertical = 16.dp),
@@ -279,11 +284,6 @@ fun SensitivitiesScreen(
                             FilledTonalButton(
                                 onClick = {
                                     clipboardManager.setText(AnnotatedString(settingsText))
-                                    // Track action and potentially show ad AFTER copying using the manually created ViewModel
-                                    activity?.let { act ->
-                                        Log.d("SensitivitiesScreen", "Tracking action (copy settings) for potential interstitial ad.")
-                                        interstitialViewModel.trackActionAndShowAdIfNeeded(act) // Use the created instance
-                                    } ?: Log.w("SensitivitiesScreen", "Activity is null, cannot show interstitial ad.")
                                 },
                                 modifier = Modifier.fillMaxWidth()
                             ) {

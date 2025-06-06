@@ -45,7 +45,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.activity.compose.LocalActivity
+import android.app.Activity
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.ads.components.AdBanner
+import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
 import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.navigation.Screen
@@ -59,6 +63,7 @@ import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewMo
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.shimmerItems
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
 import io.ktor.client.HttpClient
+import com.byteflipper.ffsensitivities.ads.core.AdLocation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -68,11 +73,13 @@ fun HomeScreen(
     homeViewModel: HomeScreenViewModel = hiltViewModel(),
     manufacturerViewModel: ManufacturerViewModel = viewModel(
         factory = ManufacturerViewModel.Factory(repository)
-    )
+    ),
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
 ) {
 
     val uiState = manufacturerViewModel.uiState.collectAsState()
     val isRequestSent by homeViewModel.isRequestSent.collectAsState()
+    val activity = LocalActivity.current as? Activity
 
     var showDialog by remember { mutableStateOf(false) }
 
@@ -81,11 +88,15 @@ fun HomeScreen(
             TopAppBar(
                 title = { Text(stringResource(R.string.app_name)) },
                 actions = {
-                    IconButton(onClick = { navController.navigate(Screen.Settings.route) }) { // Use Screen object
+                    IconButton(onClick = { navController.navigate(Screen.Settings.route) }) {
                         Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings))
                     }
                 }
             )
+        },
+        bottomBar = {
+            // Используем баннер для главного экрана
+            AdBanner(location = AdLocation.HOME_SCREEN)
         }
     ) { innerPadding ->
         Column(
@@ -99,6 +110,10 @@ fun HomeScreen(
                     .padding(14.dp, 8.dp, 14.dp, 0.dp)
                     .clickable(enabled = !isRequestSent) {
                         showDialog = true
+                        // Трекинг открытия диалога запроса
+                        activity?.let { 
+                            adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
+                        }
                     },
                 shape = ShapeDefaults.Large,
             ) {
@@ -117,6 +132,10 @@ fun HomeScreen(
                     onRequestSent = {
                         showDialog = false
                         homeViewModel.setRequestSent(true)
+                        // Трекинг отправки запроса
+                        activity?.let { 
+                            adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
+                        }
                     }
                 )
             }
@@ -146,7 +165,11 @@ fun HomeScreen(
                             key = { manufacturer -> manufacturer.name },
                             contentType = "manufacturer"
                         ) { manufacturer ->
-                            ManufacturerCard(manufacturer, navController)
+                            ManufacturerCard(
+                                manufacturer = manufacturer, 
+                                navController = navController,
+                                adViewModel = adViewModel
+                            )
                         }
                     }
                 }
@@ -172,16 +195,25 @@ fun HomeScreen(
 }
 
 @Composable
-fun ManufacturerCard(manufacturer: Manufacturer, navController: NavHostController) {
+fun ManufacturerCard(
+    manufacturer: Manufacturer, 
+    navController: NavHostController,
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
+) {
+    val activity = LocalActivity.current as? Activity
+    
     OutlinedCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            // Encode the device name to handle special characters in the route
-            // val encodedDeviceName = Uri.encode(devices.name) // Encoding might not be needed when using Screen object, but let's keep it for safety if model/name can have special chars
-            // Navigate using the Screen object
+            // Трекинг выбора производителя
+            activity?.let { 
+                adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
+            }
+            
+            // Навигация к экрану устройств
             navController.navigate(
                 Screen.Devices(name = manufacturer.name, model = manufacturer.model).route
             )

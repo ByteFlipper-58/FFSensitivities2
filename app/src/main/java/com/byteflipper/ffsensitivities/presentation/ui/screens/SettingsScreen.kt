@@ -85,6 +85,14 @@ fun SettingsScreen(
                     onClick = { navController.navigate(Screen.PrivacySettings.route) }
                 )
             }
+
+            // --- Ad Test Card (только для разработки) ---
+            SettingsCategoryCard(
+                title = "Тест рекламы",
+                description = "Тестирование работы рекламных блоков",
+                iconRes = R.drawable.palette_24px, // Используем временную иконку
+                onClick = { navController.navigate("ad_test") }
+            )
         }
     }
 }

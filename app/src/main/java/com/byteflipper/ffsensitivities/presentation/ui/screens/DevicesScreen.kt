@@ -27,16 +27,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import android.app.Application
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.InterstitialAdViewModel
+import com.byteflipper.ffsensitivities.ads.components.AdBanner
+import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
@@ -44,12 +43,6 @@ import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyIte
 import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorStateComponent
 import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorType
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
-import com.byteflipper.ffsensitivities.utils.AdConstants
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -57,22 +50,12 @@ fun DevicesScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
     name: String?,
-    model: String?
+    model: String?,
+    deviceViewModel: DeviceViewModel = hiltViewModel(),
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
 ) {
-    val deviceViewModel: DeviceViewModel = hiltViewModel()
     val uiState by deviceViewModel.uiState.collectAsState()
     val activity = LocalActivity.current as? Activity
-    val context = LocalContext.current
-    val application = context.applicationContext as Application
-
-    val interstitialViewModel: InterstitialAdViewModel = viewModel(
-        key = "interstitial_devices",
-        factory = InterstitialAdViewModel.Factory(
-            application = application,
-            adUnitId = AdConstants.INTERSTITIAL_DEVICES_AD_UNIT_ID,
-            adFrequency = AdConstants.DEVICES_SCREEN_AD_FREQUENCY
-        )
-    )
 
     LaunchedEffect(model) {
         model?.let {
@@ -90,6 +73,9 @@ fun DevicesScreen(
                     }
                 }
             )
+        },
+        bottomBar = {
+            AdBanner(location = AdLocation.DEVICES_SCREEN)
         }
     ) { innerPadding ->
         LazyVerticalGrid(
@@ -106,7 +92,7 @@ fun DevicesScreen(
                     }
                 }
                 is UiState.Success<*> -> {
-                    val devices = state.data as? List<DeviceModel> ?: emptyList() // Safe cast
+                    val devices = state.data as? List<DeviceModel> ?: emptyList()
                     items(
                         count = devices.size,
                         key = { index -> "${devices[index].manufacturer}_${devices[index].name}" },
@@ -115,7 +101,7 @@ fun DevicesScreen(
                         DevicesCard(
                             devices = devices[index],
                             navController = navController,
-                            interstitialViewModel = interstitialViewModel,
+                            adViewModel = adViewModel,
                             activity = activity
                         )
                     }
@@ -155,7 +141,7 @@ fun DevicesScreen(
 fun DevicesCard(
     devices: DeviceModel,
     navController: NavHostController,
-    interstitialViewModel: InterstitialAdViewModel,
+    adViewModel: UnifiedAdViewModel,
     activity: Activity?
 ) {
     OutlinedCard (
@@ -165,11 +151,18 @@ fun DevicesCard(
         shape = ShapeDefaults.Large,
         onClick = {
             val encodedManufacturer = Uri.encode(devices.manufacturer)
-            activity?.let { act ->
-                Log.d("DevicesCard", "Tracking action for potential interstitial ad.")
-                interstitialViewModel.trackActionAndShowAdIfNeeded(act)
-            } ?: Log.w("DevicesCard", "Activity is null, cannot show interstitial ad.")
             val encodedDeviceName = Uri.encode(devices.name)
+            
+            activity?.let { act ->
+                Log.d("DevicesCard", "Трекинг выбора устройства для показа рекламы")
+                adViewModel.trackActionAndShowInterstitial(AdLocation.DEVICES_SCREEN, act) { result ->
+                    if (result.success) {
+                        Log.d("DevicesCard", "Реклама показана после выбора устройства")
+                    }
+                }
+            } ?: Log.w("DevicesCard", "Activity is null, cannot show ad.")
+            
+            // Навигация к экрану настроек чувствительности
             navController.navigate(
                 Screen.Sensitivities(manufacturer = encodedManufacturer, modelName = encodedDeviceName).route
             ) {

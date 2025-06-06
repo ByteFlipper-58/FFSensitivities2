@@ -24,9 +24,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.byteflipper.ffsensitivities" />
-                  <option name="mobileSdkAppId" value="1:000000000000:android:00000000000000000000000000" />
-                  <option name="projectId" value="temp-project-id" />
-                  <option name="projectNumber" value="000000000000" />
+                  <option name="mobileSdkAppId" value="1:577931377282:android:fe8aaca76f8b5df06c929b" />
+                  <option name="projectId" value="ffsensitivities" />
+                  <option name="projectNumber" value="577931377282" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

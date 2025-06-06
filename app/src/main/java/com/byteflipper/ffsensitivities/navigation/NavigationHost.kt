@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.AdTestScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
@@ -264,6 +265,17 @@ fun NavigationHost(
             }
         ) {
             BugReportScreen(navController = navController)
+        }
+        
+        // Тестовый экран рекламы
+        composable(
+            route = "ad_test",
+            enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
+            popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },
+            popExitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) }
+        ) {
+            AdTestScreen(navController = navController)
         }
     }
 }

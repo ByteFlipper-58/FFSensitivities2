@@ -10,8 +10,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.byteflipper.ffsensitivities.AppViewModel
-import com.byteflipper.ffsensitivities.ads.AdMobViewModel
 import com.byteflipper.ffsensitivities.ads.ConsentManager
+import com.byteflipper.ffsensitivities.ads.repository.AdRepository
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.navigation.RootAppNavigation
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
@@ -28,9 +28,9 @@ class MainActivity : ComponentActivity() {
 
     @Inject lateinit var consentManager: ConsentManager
     @Inject lateinit var dataStoreManager: DataStoreManager
+    @Inject lateinit var adRepository: AdRepository
     private lateinit var appUpdateManagerWrapper: AppUpdateManagerWrapper
     private val viewModel: AppViewModel by viewModels()
-    private val adMobViewModel: AdMobViewModel by viewModels() // Inject AdMobViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -39,14 +39,9 @@ class MainActivity : ComponentActivity() {
         appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
 
         consentManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
-            Log.d(TAG, "UMP Consent resolved in MainActivity. Can request personalized ads: $canRequestPersonalizedAds")
-            // Attempt initial App Open Ad load after consent is resolved
-            // Note: ConsentManager already attempts Interstitial preload internally
-            // if canRequestPersonalizedAds is true and SDK is initialized.
-            // We trigger AppOpenAd load here regardless of canRequestPersonalizedAds
-            // as per AdMob guidance (load can happen even if showing is restricted).
-            // AppOpenAdManager itself might have internal checks.
-            // appOpenAdManager.loadInitialAd() // Remove this line - AdMobViewModel handles initial load
+            Log.d(TAG, "UMP согласие получено в MainActivity. Можно запрашивать персонализированную рекламу: $canRequestPersonalizedAds")
+            // AdRepository автоматически начнет предзагрузку рекламы после получения согласия
+            // через свой механизм отслеживания состояния ConsentManager
         }
 
         splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }

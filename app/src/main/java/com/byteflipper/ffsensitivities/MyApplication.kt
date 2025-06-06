@@ -2,9 +2,9 @@ package com.byteflipper.ffsensitivities
 
 import android.app.Application
 import com.byteflipper.crashhandler.CrashHandler
-import com.byteflipper.ffsensitivities.ads.AdMobViewModel
-import com.byteflipper.ffsensitivities.ads.AppOpenAdLifecycleObserver
 import com.byteflipper.ffsensitivities.ads.ConsentManager
+import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
+import com.byteflipper.ffsensitivities.ads.repository.AdRepository
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import dagger.hilt.android.HiltAndroidApp
@@ -17,15 +17,15 @@ class MyApplication : Application() {
 
     @Inject lateinit var dataStoreManager: DataStoreManager
     @Inject lateinit var consentManager: ConsentManager
+    @Inject lateinit var adRepository: AdRepository
+    @Inject lateinit var appOpenAdObserver: AppOpenAdLifecycleObserver
     @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
-
-    private lateinit var adMobViewModel: AdMobViewModel
-    private lateinit var appOpenAdLifecycleObserver: AppOpenAdLifecycleObserver
 
     override fun onCreate() {
         super.onCreate()
         
         initializeAdsSDK()
+        initializeAppOpenAds()
         initializeCrashHandler()
     }
 
@@ -34,17 +34,16 @@ class MyApplication : Application() {
      */
     private fun initializeAdsSDK() {
         consentManager.initializeMobileAdsSdk {
-            // Этот блок выполняется после успешной инициализации MobileAds.initialize()
-            initializeAdComponents()
+            // SDK инициализирован, AdRepository автоматически начнет предзагрузку рекламы
+            // через свой init блок
         }
     }
 
     /**
-     * Инициализирует компоненты рекламы после инициализации SDK
+     * Инициализирует App Open рекламу при запуске приложения
      */
-    private fun initializeAdComponents() {
-        adMobViewModel = AdMobViewModel(this)
-        appOpenAdLifecycleObserver = AppOpenAdLifecycleObserver(this, adMobViewModel)
+    private fun initializeAppOpenAds() {
+        appOpenAdObserver.initialize(this)
     }
 
     /**
