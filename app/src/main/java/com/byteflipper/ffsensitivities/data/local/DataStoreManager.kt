@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_prefs")
@@ -22,6 +23,12 @@ class DataStoreManager(private val context: Context) {
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
         val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed")
         val APP_LAUNCH_COUNT_KEY = intPreferencesKey("app_launch_count")
+        
+        // Счетчики рекламы для каждой локации
+        val AD_COUNTER_HOME_SCREEN = intPreferencesKey("ad_counter_home_screen")
+        val AD_COUNTER_DEVICES_SCREEN = intPreferencesKey("ad_counter_devices_screen")
+        val AD_COUNTER_SENSITIVITIES_SCREEN = intPreferencesKey("ad_counter_sensitivities_screen")
+        val AD_COUNTER_SETTINGS_SCREEN = intPreferencesKey("ad_counter_settings_screen")
     }
 
     suspend fun <T> save(key: Preferences.Key<T>, value: T) {
@@ -85,4 +92,38 @@ class DataStoreManager(private val context: Context) {
     }
 
     fun getAppLaunchCount(): Flow<Int> = read(PreferencesKeys.APP_LAUNCH_COUNT_KEY, 0)
+
+    // Методы для управления счетчиками рекламы
+    suspend fun setAdCounter(location: String, count: Int) {
+        val key = when (location) {
+            "HOME_SCREEN" -> PreferencesKeys.AD_COUNTER_HOME_SCREEN
+            "DEVICES_SCREEN" -> PreferencesKeys.AD_COUNTER_DEVICES_SCREEN
+            "SENSITIVITIES_SCREEN" -> PreferencesKeys.AD_COUNTER_SENSITIVITIES_SCREEN
+            "SETTINGS_SCREEN" -> PreferencesKeys.AD_COUNTER_SETTINGS_SCREEN
+            else -> return
+        }
+        save(key, count)
+    }
+
+    suspend fun getAdCounter(location: String): Int {
+        val key = when (location) {
+            "HOME_SCREEN" -> PreferencesKeys.AD_COUNTER_HOME_SCREEN
+            "DEVICES_SCREEN" -> PreferencesKeys.AD_COUNTER_DEVICES_SCREEN
+            "SENSITIVITIES_SCREEN" -> PreferencesKeys.AD_COUNTER_SENSITIVITIES_SCREEN
+            "SETTINGS_SCREEN" -> PreferencesKeys.AD_COUNTER_SETTINGS_SCREEN
+            else -> return 0
+        }
+        return context.dataStore.data.map { prefs -> prefs[key] ?: 0 }.first()
+    }
+
+    suspend fun incrementAdCounter(location: String): Int {
+        val currentCount = getAdCounter(location)
+        val newCount = currentCount + 1
+        setAdCounter(location, newCount)
+        return newCount
+    }
+
+    suspend fun resetAdCounter(location: String) {
+        setAdCounter(location, 0)
+    }
 }

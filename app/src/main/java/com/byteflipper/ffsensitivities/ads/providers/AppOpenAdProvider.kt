@@ -27,6 +27,7 @@ class AppOpenAdProvider(
     private companion object {
         private const val TAG = "AppOpenAdProvider"
         private const val AD_TIMEOUT_MS = 4 * 60 * 60 * 1000L // 4 часа
+        private const val MIN_AD_INTERVAL = 30_000L // 30 секунд между показами
         @Volatile
         private var isShowingAd = false
     }
@@ -37,6 +38,7 @@ class AppOpenAdProvider(
     private var appOpenAd: AppOpenAd? = null
     private var loadTime: Long = 0
     private var isLoading = false
+    private var lastAdShowTime = 0L
 
     override suspend fun load() {
         if (isLoading || isReady()) {
@@ -100,6 +102,12 @@ class AppOpenAdProvider(
             return AdResult(config.adType, false, error = IllegalStateException("Ad already showing"))
         }
 
+        // Проверка дебаунсинга
+        if (!canShowAd()) {
+            Log.d(TAG, "App open ad blocked by debouncing (${System.currentTimeMillis() - lastAdShowTime}ms since last show)")
+            return AdResult(config.adType, false, error = IllegalStateException("Ad shown too recently"))
+        }
+
         val ad = appOpenAd
         if (ad == null || !isReady()) {
             Log.w(TAG, "App open ad not ready or expired")
@@ -121,6 +129,7 @@ class AppOpenAdProvider(
                         isShowingAd = false
                         appOpenAd = null
                         loadTime = 0
+                        lastAdShowTime = System.currentTimeMillis() // Обновляем время последнего показа
                         _adState.value = AdState.Dismissed
                         
                         if (continuation.isActive) {
@@ -179,7 +188,14 @@ class AppOpenAdProvider(
         return true
     }
 
-    override fun canShow(): Boolean = isReady() && consentManager.canRequestPersonalizedAds()
+    override fun canShow(): Boolean = isReady() && consentManager.canRequestPersonalizedAds() && canShowAd()
+
+    /**
+     * Проверяет, можно ли показать рекламу (дебаунсинг)
+     */
+    private fun canShowAd(): Boolean {
+        return System.currentTimeMillis() - lastAdShowTime > MIN_AD_INTERVAL
+    }
 
     override fun destroy() {
         appOpenAd?.fullScreenContentCallback = null
@@ -187,6 +203,7 @@ class AppOpenAdProvider(
         loadTime = 0
         isLoading = false
         isShowingAd = false
+        lastAdShowTime = 0L
         _adState.value = AdState.Initial
     }
 

@@ -32,8 +32,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.byteflipper.ui_components.R
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -83,7 +85,7 @@ fun OnboardingBottomBar(
                 ) {
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back" // TODO: Add string resource
+                        contentDescription = stringResource(R.string.onboarding_back)
                     )
                 }
             }
@@ -101,7 +103,7 @@ fun OnboardingBottomBar(
                 ) { isFinish ->
                     Icon(
                         imageVector = if (isFinish) Icons.Default.Done else Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = if (isFinish) "Finish" else "Next" // TODO: Add string resource
+                        contentDescription = if (isFinish) stringResource(R.string.onboarding_finish) else stringResource(R.string.onboarding_next)
                     )
                 }
             }

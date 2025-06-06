@@ -29,6 +29,12 @@ class MyApplication : Application() {
         initializeCrashHandler()
     }
 
+    override fun onTerminate() {
+        super.onTerminate()
+        // Полная очистка AdRepository при уничтожении приложения
+        adRepository.fullCleanup()
+    }
+
     /**
      * Инициализирует рекламный SDK и связанные компоненты
      */

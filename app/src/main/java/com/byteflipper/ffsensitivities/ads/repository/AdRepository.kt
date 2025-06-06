@@ -11,6 +11,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +24,8 @@ import javax.inject.Singleton
 class AdRepository @Inject constructor(
     @ApplicationContext private val context: Context,
     private val consentManager: ConsentManager,
-    private val coroutineScope: CoroutineScope
+    private val coroutineScope: CoroutineScope,
+    private val dataStoreManager: com.byteflipper.ffsensitivities.data.local.DataStoreManager
 ) {
     private companion object {
         private const val TAG = "AdRepository"
@@ -39,8 +41,8 @@ class AdRepository @Inject constructor(
     private val _adReadyState = MutableStateFlow<Map<AdLocation, Boolean>>(emptyMap())
     val adReadyState: StateFlow<Map<AdLocation, Boolean>> = _adReadyState.asStateFlow()
 
-    // Счетчики действий для различных экранов
-    private val actionCounters = mutableMapOf<AdLocation, Int>()
+    // Счетчики действий теперь хранятся в DataStore
+    // private val actionCounters убран - теперь используем DataStoreManager
 
     init {
         // Инициализируем провайдеры для всех локаций
@@ -206,6 +208,7 @@ class AdRepository @Inject constructor(
 
     /**
      * Отслеживает действия пользователя и показывает рекламу по частоте
+     * Использует персистентное хранение счетчиков
      */
     suspend fun trackActionAndShowAd(
         location: AdLocation,
@@ -216,15 +219,16 @@ class AdRepository @Inject constructor(
         val provider = getProvider(adType, location) ?: return false
         val frequency = provider.config.frequency
         
-        val currentCount = actionCounters.getOrDefault(location, 0) + 1
-        actionCounters[location] = currentCount
+        // Получаем текущий счетчик из DataStore вместо памяти
+        val locationKey = location.name
+        val currentCount = dataStoreManager.incrementAdCounter(locationKey)
         
         Log.d(TAG, "Action tracked for $location: $currentCount/$frequency")
         
         if (currentCount >= frequency) {
             val shown = showAd(adType, location, activity, onResult)
             if (shown) {
-                actionCounters[location] = 0
+                dataStoreManager.resetAdCounter(locationKey)
                 Log.d(TAG, "Action counter reset for $location")
             }
             return shown
@@ -265,12 +269,74 @@ class AdRepository @Inject constructor(
     }
 
     /**
-     * Освобождает ресурсы
+     * Освобождает ресурсы и предотвращает утечки памяти
      */
     fun destroy() {
         Log.d(TAG, "Destroying AdRepository")
-        providersByLocation.values.forEach { it.destroy() }
-        actionCounters.clear()
+        
+        try {
+            // Останавливаем все активные корутины
+            coroutineScope.coroutineContext.cancelChildren()
+            
+            // Очищаем провайдеры
+            providersByLocation.values.forEach { provider ->
+                try {
+                    provider.destroy()
+                } catch (e: Exception) {
+                    Log.w(TAG, "Error destroying provider: ${provider.config.adType}", e)
+                }
+            }
+            
+            // Очищаем коллекции
+            providersByLocation.clear()
+            providersByTypeAndLocation.clear()
+            // actionCounters.clear() - убрано, счетчики в DataStore
+            
+            // Сбрасываем состояние
+            _adReadyState.value = emptyMap()
+            
+            Log.d(TAG, "AdRepository destroyed successfully")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error during AdRepository destruction", e)
+        }
+    }
+
+    /**
+     * Легкая очистка только активных операций без сброса счетчиков
+     * Счетчики теперь в DataStore, поэтому не сбрасываются
+     */
+    fun cleanup() {
+        Log.d(TAG, "Light cleanup of AdRepository - no action needed")
+        
+        try {
+            // Больше ничего не делаем - счетчики в DataStore, провайдеры - Singleton
+            Log.d(TAG, "AdRepository light cleanup completed")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error during AdRepository light cleanup", e)
+        }
+    }
+
+    /**
+     * Полная очистка AdRepository при уничтожении приложения
+     * Вызывается только из MyApplication.onTerminate() или аналогичных мест
+     */
+    fun fullCleanup() {
+        Log.d(TAG, "Full cleanup of AdRepository resources")
+        
+        try {
+            // Отменяем все pending операции
+            coroutineScope.coroutineContext.cancelChildren()
+            
+            // Счетчики теперь в DataStore, не очищаем их
+            // actionCounters.clear() - убрано
+            
+            // Сбрасываем состояние готовности
+            _adReadyState.value = emptyMap()
+            
+            Log.d(TAG, "AdRepository full cleanup completed")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error during AdRepository full cleanup", e)
+        }
     }
 
     // Методы для обратной совместимости

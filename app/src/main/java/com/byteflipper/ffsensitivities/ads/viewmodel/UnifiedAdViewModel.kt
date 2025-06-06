@@ -137,4 +137,14 @@ class UnifiedAdViewModel @Inject constructor(
     fun clearLastAdResult() {
         _lastAdResult.value = null
     }
+
+    /**
+     * Очистка только локальных ресурсов ViewModel
+     * AdRepository - Singleton и не должен очищаться при пересоздании ViewModel
+     */
+    override fun onCleared() {
+        super.onCleared()
+        _lastAdResult.value = null
+        // НЕ вызываем adRepository.cleanup() - это приводит к сбросу счетчиков
+    }
 }
