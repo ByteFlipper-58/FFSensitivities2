@@ -1,26 +1,16 @@
 package com.byteflipper.ffsensitivities.presentation.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import android.content.Intent
+import android.net.Uri
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,28 +20,24 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import android.content.Intent
-import android.net.Uri
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
-import androidx.activity.ComponentActivity
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
 import com.byteflipper.ui_components.components.AnimatedActionItem
+import com.byteflipper.ui_components.components.AppInfoCard
 import com.byteflipper.ui_components.components.ExpandableSection
+import com.byteflipper.ui_components.components.InfoCard
+import com.byteflipper.ui_components.components.VersionInfoCard
 import com.google.android.play.core.review.ReviewManagerFactory
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -65,7 +51,7 @@ fun AboutScreen(
     val context = LocalContext.current
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
-    val primaryColorArgb = MaterialTheme.colorScheme.primary.toArgb() // Get color in Composable scope
+    val primaryColorArgb = MaterialTheme.colorScheme.primary.toArgb()
     val reviewManager = remember { ReviewManagerFactory.create(context) }
 
     fun launchReviewFlow() {
@@ -117,7 +103,11 @@ fun AboutScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            AppInfoHeader()
+            AppInfoCard(
+                appName = stringResource(R.string.app_name),
+                developerName = "ByteFlipper",
+                appIcon = painterResource(id = R.drawable.ic_launcher_foreground)
+            )
 
             ExpandableSection(
                 title = stringResource(R.string.support_feedback_category_title),
@@ -125,14 +115,12 @@ fun AboutScreen(
                 expandedContentDescription = stringResource(R.string.expandable_section_expand),
                 collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
+                Column {
                     AnimatedActionItem(
                         title = stringResource(R.string.bug_report_title),
                         subtitle = stringResource(R.string.bug_report_subtitle),
                         icon = painterResource(id = R.drawable.bug_report_24px),
-                        onClick = { navController.navigate(Screen.BugReport.route) } // Use Screen object
+                        onClick = { navController.navigate(Screen.BugReport.route) }
                     )
 
                     AnimatedActionItem(
@@ -150,7 +138,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = context.getString(R.string.google_play_store),
-                                primaryColor = primaryColorArgb // Use variable
+                                primaryColor = primaryColorArgb
                             )
                         },
                         showDivider = false
@@ -164,9 +152,7 @@ fun AboutScreen(
                 expandedContentDescription = stringResource(R.string.expandable_section_expand),
                 collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
+                Column {
                     AnimatedActionItem(
                         title = stringResource(R.string.website_title),
                         subtitle = stringResource(R.string.website_subtitle),
@@ -175,7 +161,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://byteflipper.web.app",
-                                primaryColor = primaryColorArgb // Use variable
+                                primaryColor = primaryColorArgb
                             )
                         }
                     )
@@ -188,7 +174,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://vk.com/byteflipper",
-                                primaryColor = primaryColorArgb // Use variable
+                                primaryColor = primaryColorArgb
                             )
                         }
                     )
@@ -201,7 +187,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://t.me/byteflipper",
-                                primaryColor = primaryColorArgb // Use variable
+                                primaryColor = primaryColorArgb
                             )
                         },
                         showDivider = false
@@ -215,9 +201,7 @@ fun AboutScreen(
                 expandedContentDescription = stringResource(R.string.expandable_section_expand),
                 collapsedContentDescription = stringResource(R.string.expandable_section_collapse)
             ) {
-                Column(
-                    modifier = Modifier.fillMaxWidth()
-                ) {
+                Column {
                     AnimatedActionItem(
                         title = stringResource(R.string.github_title),
                         subtitle = stringResource(R.string.github_subtitle),
@@ -226,7 +210,7 @@ fun AboutScreen(
                             ChromeCustomTabUtil.openUrl(
                                 context = context,
                                 url = "https://github.com/ByteFlipper-58",
-                                primaryColor = primaryColorArgb // Use variable
+                                primaryColor = primaryColorArgb
                             )
                         }
                     )
@@ -247,135 +231,15 @@ fun AboutScreen(
                 }
             }
 
-            VersionInfoCard()
+            VersionInfoCard(
+                versionTitle = stringResource(R.string.version),
+                versionInfo = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                icon = painterResource(id = R.drawable.update_24px)
+            )
 
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHighest
-        ),
-        shape = RoundedCornerShape(16.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = stringResource(R.string.made_with_love),
-                        style = MaterialTheme.typography.bodyMedium,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun AppInfoHeader() {
-    ElevatedCard(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.elevatedCardElevation(
-            defaultElevation = 6.dp
-        ),
-        shape = RoundedCornerShape(24.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
-        )
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(86.dp)
-                        .clip(CircleShape),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                        contentDescription = "App Icon",
-                        modifier = Modifier.size(128.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-
-                Spacer(modifier = Modifier.width(16.dp))
-
-                Column {
-                    Text(
-                        text = stringResource(R.string.app_name),
-                        style = MaterialTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-
-                    Text(
-                        text = "ByteFlipper",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.secondary
-                    )
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun VersionInfoCard() {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerHigh
-        ),
-        shape = RoundedCornerShape(16.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.2f)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.update_24px),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(28.dp)
-                )
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column {
-                Text(
-                    text = stringResource(R.string.version),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.SemiBold
-                )
-
-                Text(
-                    text = BuildConfig.VERSION_NAME + " (" + BuildConfig.VERSION_CODE + ")",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            }
+            InfoCard(
+                text = stringResource(R.string.made_with_love)
+            )
         }
     }
 }
