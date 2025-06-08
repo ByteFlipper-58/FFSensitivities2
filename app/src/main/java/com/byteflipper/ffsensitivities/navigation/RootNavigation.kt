@@ -36,12 +36,10 @@ import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
-import com.byteflipper.ffsensitivities.presentation.ui.screens.onboarding.WelcomeAgreementContent
 import com.byteflipper.ui_components.PolicyScreen
-import com.byteflipper.ui_components.onboarding.OnboardingPage
-import com.byteflipper.ui_components.onboarding.OnboardingPager
-import com.byteflipper.ui_components.onboarding.screens.OnboardingInfoScreen
-import com.byteflipper.ui_components.onboarding.screens.OnboardingPermissionsScreen
+import com.byteflipper.ui_components.onboarding.SimpleOnboarding
+import com.byteflipper.ui_components.onboarding.buildOnboardingSteps
+import com.byteflipper.ui_components.onboarding.rememberOnboardingConditions
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
@@ -113,7 +111,6 @@ private fun OnboardingScreen(
     rootNavController: NavHostController
 ) {
     val context = LocalContext.current
-    val coroutineScope = rememberCoroutineScope()
     var isChecked by remember { mutableStateOf(false) }
     var hasNotificationPermission by remember { mutableStateOf(hasNotificationPermission(context)) }
 
@@ -122,24 +119,54 @@ private fun OnboardingScreen(
         onResult = { isGranted -> hasNotificationPermission = isGranted }
     )
 
-    val onboardingPages = listOf(
-        OnboardingPage { _, padding ->
-            OnboardingInfoScreen(
-                navController = rootNavController,
-                paddingValues = padding,
+    // Создание условий завершения с помощью новой системы
+    val conditions = rememberOnboardingConditions(
+        "notification_permission" to "Разрешение на уведомления",
+        "terms_accepted" to "Принятие условий"
+    )
+
+    // Обновление условий при изменении состояний
+    LaunchedEffect(hasNotificationPermission) {
+        conditions.find { it.id == "notification_permission" }?.isMet?.value = hasNotificationPermission
+    }
+
+    LaunchedEffect(isChecked) {
+        conditions.find { it.id == "terms_accepted" }?.isMet?.value = isChecked
+    }
+
+    val onboardingInfoTitle = stringResource(R.string.onboarding_info_title)
+    val onboardingInfoDescription = stringResource(R.string.onboarding_info_description)
+    val onboardingImageDesc = stringResource(R.string.onboarding_image_desc)
+    val onboardingPermissionsTitle = stringResource(R.string.onboarding_permissions_title)
+    val onboardingPermissionsDescription = stringResource(R.string.onboarding_permissions_description)
+    val grantPermissionText = stringResource(R.string.grant_permission)
+    val permissionGrantedText = stringResource(R.string.permission_granted)
+    val welcomeScreenTitle = stringResource(R.string.welcome_screen_title)
+
+    val steps = buildOnboardingSteps {
+        step(
+            id = "welcome",
+            title = onboardingInfoTitle,
+            isSkippable = false
+        ) {
+            OnboardingInfoStepContent(
                 logoPainter = painterResource(id = R.drawable.logo),
-                title = stringResource(R.string.onboarding_info_title),
-                description = stringResource(R.string.onboarding_info_description),
-                imageContentDescription = stringResource(R.string.onboarding_image_desc)
+                title = onboardingInfoTitle,
+                description = onboardingInfoDescription,
+                imageContentDescription = onboardingImageDesc
             )
-        },
-        OnboardingPage { _, padding ->
-            OnboardingPermissionsScreen(
-                paddingValues = padding,
-                title = stringResource(R.string.onboarding_permissions_title),
-                description = stringResource(R.string.onboarding_permissions_description),
-                grantButtonText = stringResource(R.string.grant_permission),
-                grantedButtonText = stringResource(R.string.permission_granted),
+        }
+        
+        step(
+            id = "permissions",
+            title = onboardingPermissionsTitle,
+            isSkippable = true
+        ) {
+            OnboardingPermissionsStepContent(
+                title = onboardingPermissionsTitle,
+                description = onboardingPermissionsDescription,
+                grantButtonText = grantPermissionText,
+                grantedButtonText = permissionGrantedText,
                 isPermissionGranted = hasNotificationPermission,
                 onGrantPermissionClick = {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -149,30 +176,28 @@ private fun OnboardingScreen(
                     }
                 }
             )
-        },
-        OnboardingPage { _, padding ->
-            WelcomeAgreementContent(
+        }
+        
+        step(
+            id = "agreement",
+            title = welcomeScreenTitle,
+            isSkippable = false
+        ) {
+            WelcomeAgreementStepContent(
                 navController = rootNavController,
                 isChecked = isChecked,
-                onCheckedChange = { isChecked = it },
-                paddingValues = padding
+                onCheckedChange = { isChecked = it }
             )
         }
-    )
-
-    val isFinishButtonEnabled by remember(hasNotificationPermission, isChecked) {
-        mutableStateOf(hasNotificationPermission && isChecked)
     }
 
-    OnboardingPager(
-        pages = onboardingPages,
-        navController = rootNavController,
-        isFinishEnabled = isFinishButtonEnabled,
-        onFinish = {
-            coroutineScope.launch {
-                dataStoreManager.setFirstLaunchCompleted(true)
-                onFinishOnboarding()
-            }
+    // Использование новой системы OnBoarding    
+    SimpleOnboarding(
+        steps = steps,
+        conditions = conditions,
+        onComplete = suspend {
+            dataStoreManager.setFirstLaunchCompleted(true)
+            onFinishOnboarding()
         }
     )
 }

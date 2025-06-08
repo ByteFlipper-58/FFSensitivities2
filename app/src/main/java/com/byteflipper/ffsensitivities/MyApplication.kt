@@ -1,6 +1,7 @@
 package com.byteflipper.ffsensitivities
 
 import android.app.Application
+import android.util.Log
 import com.byteflipper.crashhandler.CrashHandler
 import com.byteflipper.ffsensitivities.ads.ConsentManager
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
@@ -31,8 +32,7 @@ class MyApplication : Application() {
 
     override fun onTerminate() {
         super.onTerminate()
-        // Полная очистка AdRepository при уничтожении приложения
-        adRepository.fullCleanup()
+        Log.d("MyApplication", "App terminated - AdRepository state preserved")
     }
 
     /**
@@ -40,8 +40,6 @@ class MyApplication : Application() {
      */
     private fun initializeAdsSDK() {
         consentManager.initializeMobileAdsSdk {
-            // SDK инициализирован, AdRepository автоматически начнет предзагрузку рекламы
-            // через свой init блок
         }
     }
 

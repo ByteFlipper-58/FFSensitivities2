@@ -221,32 +221,43 @@ class AdRepository @Inject constructor(
         
         // Получаем текущий счетчик из DataStore вместо памяти
         val locationKey = location.name
+        
+        // Добавляем больше логирования для диагностики
+        val beforeCount = dataStoreManager.getAdCounter(locationKey)
+        Log.d(TAG, "Before increment - $location counter: $beforeCount")
+        
         val currentCount = dataStoreManager.incrementAdCounter(locationKey)
         
-        Log.d(TAG, "Action tracked for $location: $currentCount/$frequency")
+        Log.d(TAG, "Action tracked for $location: $currentCount/$frequency (incremented from $beforeCount)")
         
         if (currentCount >= frequency) {
+            Log.d(TAG, "Frequency reached for $location, attempting to show $adType ad")
             val shown = showAd(adType, location, activity, onResult)
             if (shown) {
                 dataStoreManager.resetAdCounter(locationKey)
-                Log.d(TAG, "Action counter reset for $location")
+                Log.d(TAG, "Ad shown successfully, counter reset for $location")
+            } else {
+                Log.w(TAG, "Failed to show ad for $location, counter NOT reset")
             }
             return shown
         }
         
         // Предзагружаем рекламу когда приближаемся к показу
         if (currentCount == frequency - 1 && !provider.isReady()) {
-            Log.d(TAG, "Preloading ad for upcoming show: $adType at $location")
+            Log.d(TAG, "Preloading ad for upcoming show: $adType at $location (next action will trigger)")
             coroutineScope.launch {
                 try {
                     withContext(Dispatchers.Main) {
                         provider.load()
                     }
                     updateReadyState()
+                    Log.d(TAG, "Preload completed for $adType at $location")
                 } catch (e: Exception) {
                     Log.e(TAG, "Failed to preload ad: $adType at $location", e)
                 }
             }
+        } else if (currentCount == frequency - 1) {
+            Log.d(TAG, "Next action will trigger ad show for $location (ad already ready: ${provider.isReady()})")
         }
         
         return false
@@ -270,13 +281,15 @@ class AdRepository @Inject constructor(
 
     /**
      * Освобождает ресурсы и предотвращает утечки памяти
+     * ВНИМАНИЕ: Этот метод НЕ должен вызываться для Singleton AdRepository!
+     * Используется только в критических случаях при полном завершении приложения
      */
     fun destroy() {
-        Log.d(TAG, "Destroying AdRepository")
+        Log.d(TAG, "Destroying AdRepository - CRITICAL ACTION")
         
         try {
-            // Останавливаем все активные корутины
-            coroutineScope.coroutineContext.cancelChildren()
+            // ВНИМАНИЕ: НЕ отменяем корутины для Singleton - это ломает работу
+            // coroutineScope.coroutineContext.cancelChildren() - УБРАНО
             
             // Очищаем провайдеры
             providersByLocation.values.forEach { provider ->
@@ -287,15 +300,14 @@ class AdRepository @Inject constructor(
                 }
             }
             
-            // Очищаем коллекции
-            providersByLocation.clear()
-            providersByTypeAndLocation.clear()
-            // actionCounters.clear() - убрано, счетчики в DataStore
+            // НЕ очищаем коллекции для Singleton - это ломает работу
+            // providersByLocation.clear() - УБРАНО
+            // providersByTypeAndLocation.clear() - УБРАНО
             
-            // Сбрасываем состояние
-            _adReadyState.value = emptyMap()
+            // НЕ сбрасываем состояние для Singleton - это ломает работу  
+            // _adReadyState.value = emptyMap() - УБРАНО
             
-            Log.d(TAG, "AdRepository destroyed successfully")
+            Log.d(TAG, "AdRepository destroy completed - minimal destruction applied")
         } catch (e: Exception) {
             Log.e(TAG, "Error during AdRepository destruction", e)
         }
@@ -324,16 +336,16 @@ class AdRepository @Inject constructor(
         Log.d(TAG, "Full cleanup of AdRepository resources")
         
         try {
-            // Отменяем все pending операции
-            coroutineScope.coroutineContext.cancelChildren()
+            // НЕ отменяем корутины - они управляются ApplicationScope
+            // coroutineScope.coroutineContext.cancelChildren() - УБРАНО
             
             // Счетчики теперь в DataStore, не очищаем их
             // actionCounters.clear() - убрано
             
-            // Сбрасываем состояние готовности
-            _adReadyState.value = emptyMap()
+            // НЕ сбрасываем состояние готовности - это приводит к проблемам
+            // _adReadyState.value = emptyMap() - УБРАНО
             
-            Log.d(TAG, "AdRepository full cleanup completed")
+            Log.d(TAG, "AdRepository full cleanup completed - minimal cleanup applied")
         } catch (e: Exception) {
             Log.e(TAG, "Error during AdRepository full cleanup", e)
         }
