@@ -12,14 +12,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -33,6 +26,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.ads.components.AdBanner
+import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.playcore.UpdateState
@@ -191,7 +188,6 @@ private fun OnboardingScreen(
         }
     }
 
-    // Использование новой системы OnBoarding    
     SimpleOnboarding(
         steps = steps,
         conditions = conditions,
@@ -211,13 +207,12 @@ private fun MainAppScaffold(
     val context = LocalContext.current
     val coroutineScope = rememberCoroutineScope()
     val updateState by appUpdateManagerWrapper.updateState.collectAsState()
-    val snackbarHostState = remember { SnackbarHostState() } // Add SnackbarHostState
+    val snackbarHostState = remember { SnackbarHostState() }
 
     val mainAppNavController = rememberNavController()
     val navBackStackEntry by mainAppNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    // Hide bottom bar on settings screens (main and sub-screens) and bug report screen
-    val isBottomBarVisible = currentRoute?.startsWith("settings") != true && currentRoute != "bug_report"
+    val isBottomBarVisible = currentRoute?.startsWith("settings") != true && currentRoute != "bug_report" && currentRoute != "ad_test"
 
     LaunchedEffect(Unit) { coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() } }
     LaunchedEffect(updateState) {
@@ -244,8 +239,12 @@ private fun MainAppScaffold(
         modifier = Modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         bottomBar = {
-            Column(modifier = Modifier.fillMaxWidth()) {
-                if (isBottomBarVisible) {
+            if (isBottomBarVisible) {
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    AdBannerContainer(
+                        currentRoute = currentRoute,
+                        navController = mainAppNavController
+                    )
                     BottomNavigationBar(navController = mainAppNavController)
                 }
             }
@@ -254,7 +253,7 @@ private fun MainAppScaffold(
             NavigationHost(
                 navController = mainAppNavController,
                 modifier = Modifier.fillMaxSize(),
-                appViewModel = appViewModel // Pass AppViewModel here
+                appViewModel = appViewModel
             )
         }
     )
@@ -267,3 +266,32 @@ private fun hasNotificationPermission(context: android.content.Context): Boolean
         true
     }
 }
+
+/**
+ * Контейнер для отображения рекламных баннеров в зависимости от текущего экрана
+ */
+@Composable
+private fun AdBannerContainer(
+    currentRoute: String?,
+    navController: NavHostController,
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
+) {
+    val adLocation = when {
+        currentRoute == "home" -> AdLocation.HOME_SCREEN
+        currentRoute?.startsWith("devices/") == true -> AdLocation.DEVICES_SCREEN
+        currentRoute?.startsWith("sensitivities/") == true -> AdLocation.SENSITIVITIES_SCREEN
+        currentRoute == "ad_test" -> AdLocation.SETTINGS_SCREEN
+        else -> null
+    }
+    
+    val adReadyState by adViewModel.adReadyState.collectAsState()
+    
+    adLocation?.let { location ->
+        val isAdReady = adReadyState[location] ?: false
+        if (isAdReady) {
+            AdBanner(location = location)
+        }
+    }
+}
+
+

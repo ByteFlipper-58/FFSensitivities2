@@ -48,7 +48,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.activity.compose.LocalActivity
 import android.app.Activity
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
 import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
@@ -64,6 +63,7 @@ import com.byteflipper.ffsensitivities.utils.LazyListUtils.shimmerItems
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
 import io.ktor.client.HttpClient
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -93,10 +93,6 @@ fun HomeScreen(
                     }
                 }
             )
-        },
-        bottomBar = {
-            // Используем баннер для главного экрана
-            AdBanner(location = AdLocation.HOME_SCREEN)
         }
     ) { innerPadding ->
         Column(
@@ -145,7 +141,12 @@ fun HomeScreen(
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(2),
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(10.dp)
+                        contentPadding = PaddingValues(
+                            start = 10.dp,
+                            end = 10.dp,
+                            top = 10.dp,
+                            bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
+                        )
                     ) {
                         shimmerItems(14) {
                             ShimmerLazyItem()
@@ -158,7 +159,12 @@ fun HomeScreen(
                     LazyVerticalGrid(
                         columns = GridCells.Fixed(2),
                         modifier = Modifier.fillMaxWidth(),
-                        contentPadding = PaddingValues(10.dp)
+                        contentPadding = PaddingValues(
+                            start = 10.dp,
+                            end = 10.dp,
+                            top = 10.dp,
+                            bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
+                        )
                     ) {
                         optimizedItems(
                             items = manufacturers,

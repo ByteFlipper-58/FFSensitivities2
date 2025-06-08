@@ -267,7 +267,6 @@ fun NavigationHost(
             BugReportScreen(navController = navController)
         }
         
-        // Тестовый экран рекламы
         composable(
             route = "ad_test",
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },

@@ -40,8 +40,6 @@ class MainActivity : ComponentActivity() {
 
         consentManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
             Log.d(TAG, "UMP согласие получено в MainActivity. Можно запрашивать персонализированную рекламу: $canRequestPersonalizedAds")
-            // AdRepository автоматически начнет предзагрузку рекламы после получения согласия
-            // через свой механизм отслеживания состояния ConsentManager
         }
 
         splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }

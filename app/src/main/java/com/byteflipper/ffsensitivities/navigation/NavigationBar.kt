@@ -31,10 +31,9 @@ fun BottomNavigationBar(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
-    // List of navigation items to be displayed in the bottom navigation bar
     val items = listOf(
-        NavigationItem.Home,  // Home navigation item
-        NavigationItem.About  // About navigation item
+        NavigationItem.Home,
+        NavigationItem.About
     )
 
     // Get the current back stack entry to determine the selected item
@@ -107,12 +106,9 @@ fun BottomNavigationBar(
                              if (currentDestination?.route != NavigationItem.Home.route) {
                                  navController.popBackStack(NavigationItem.Home.route, inclusive = false, saveState = false)
                              }
-                             // If already selected AND on the root Home screen, do nothing.
                         }
-                        return@NavigationBarItem // Exit after handling Home click
+                        return@NavigationBarItem
                     }
-
-                    // Add else if for other future top-level items if needed
                 }
             )
         }

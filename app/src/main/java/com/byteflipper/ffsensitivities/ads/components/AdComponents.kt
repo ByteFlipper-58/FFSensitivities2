@@ -11,6 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
@@ -41,22 +42,21 @@ fun AdBanner(
     }
 
     if (bannerProvider == null) {
-        // Fallback если провайдер недоступен
-        PreviewAdBanner(modifier, isError = true)
+        // Если провайдер недоступен, не показываем ничего
         return
     }
 
-    AndroidView(
-        modifier = modifier.fillMaxWidth(),
-        factory = { context ->
-            bannerProvider.createAdView(context as android.app.Activity)
-                ?: android.widget.TextView(context).apply {
-                    text = "Реклама недоступна"
-                    textAlignment = android.view.View.TEXT_ALIGNMENT_CENTER
-                    setPadding(16, 16, 16, 16)
-                }
-        }
-    )
+    val adView = remember(bannerProvider, context) {
+        bannerProvider.createAdView(context as android.app.Activity)
+    }
+
+    if (adView != null) {
+        AndroidView(
+            modifier = modifier.fillMaxWidth(),
+            factory = { adView }
+        )
+    }
+    // Если adView == null, не показываем ничего (пустой компонент)
 }
 
 /**
@@ -119,4 +119,22 @@ fun AdStatusIndicator(
             )
         }
     }
-} 
+}
+
+/**
+ * Динамический отступ снизу в зависимости от готовности рекламы
+ */
+@Composable
+fun getDynamicBottomPadding(
+    location: AdLocation,
+    adViewModel: UnifiedAdViewModel = hiltViewModel()
+): Dp {
+    val adReadyState by adViewModel.adReadyState.collectAsState()
+    val isAdReady = adReadyState[location] ?: false
+    
+    return if (isAdReady) {
+        150.dp // Отступ когда баннер видим
+    } else {
+        80.dp // Минимальный отступ для навигации
+    }
+}

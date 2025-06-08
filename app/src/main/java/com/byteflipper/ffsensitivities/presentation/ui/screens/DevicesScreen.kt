@@ -33,9 +33,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
@@ -73,9 +73,6 @@ fun DevicesScreen(
                     }
                 }
             )
-        },
-        bottomBar = {
-            AdBanner(location = AdLocation.DEVICES_SCREEN)
         }
     ) { innerPadding ->
         LazyVerticalGrid(
@@ -83,7 +80,12 @@ fun DevicesScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            contentPadding = PaddingValues(8.dp)
+            contentPadding = PaddingValues(
+                start = 8.dp,
+                end = 8.dp,
+                top = 8.dp,
+                bottom = getDynamicBottomPadding(AdLocation.DEVICES_SCREEN, adViewModel)
+            )
         ) {
             when (val state = uiState) {
                 is UiState.Loading -> {
@@ -180,3 +182,5 @@ fun DevicesCard(
         }
     }
 }
+
+

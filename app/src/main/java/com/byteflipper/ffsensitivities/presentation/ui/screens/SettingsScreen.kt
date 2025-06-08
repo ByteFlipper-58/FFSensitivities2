@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.AppViewModel
+import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.navigation.Screen
 
@@ -59,7 +60,7 @@ fun SettingsScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // --- Theme Settings Card ---
+
             SettingsCategoryCard(
                 title = stringResource(R.string.theme_settings_category_title),
                 description = stringResource(R.string.theme_settings_card_description),
@@ -67,7 +68,6 @@ fun SettingsScreen(
                 onClick = { navController.navigate(Screen.ThemeSettings.route) }
             )
 
-            // --- Language Settings Card ---
              SettingsCategoryCard(
                 title = stringResource(R.string.change_language),
                 description = stringResource(R.string.language_settings_card_description),
@@ -75,8 +75,6 @@ fun SettingsScreen(
                 onClick = { navController.navigate(Screen.LanguageSettings.route) }
             )
 
-            // --- Privacy Settings Card ---
-            // Show only if privacy options are potentially needed
             if (privacyOptionsRequired) {
                 SettingsCategoryCard(
                     title = stringResource(R.string.privacy_settings_category_title),
@@ -86,13 +84,14 @@ fun SettingsScreen(
                 )
             }
 
-            // --- Ad Test Card (только для разработки) ---
-            SettingsCategoryCard(
-                title = "Тест рекламы",
-                description = "Тестирование работы рекламных блоков",
-                iconRes = R.drawable.palette_24px, // Используем временную иконку
-                onClick = { navController.navigate("ad_test") }
-            )
+            if (BuildConfig.DEBUG) {
+                SettingsCategoryCard(
+                    title = "Тест рекламы",
+                    description = "Тестирование работы рекламных блоков",
+                    iconRes = R.drawable.palette_24px,
+                    onClick = { navController.navigate("ad_test") }
+                )
+            }
         }
     }
 }

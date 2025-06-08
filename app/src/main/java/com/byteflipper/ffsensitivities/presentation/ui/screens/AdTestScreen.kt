@@ -28,10 +28,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,9 +67,7 @@ fun AdTestScreen(
                 )
             )
         },
-        bottomBar = {
-            AdBanner(location = AdLocation.SETTINGS_SCREEN)
-        },
+
         containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
         Column(
@@ -77,7 +75,8 @@ fun AdTestScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(horizontal = 8.dp)
-                .verticalScroll(rememberScrollState()),
+                .verticalScroll(rememberScrollState())
+                .padding(bottom = getDynamicBottomPadding(AdLocation.SETTINGS_SCREEN, adViewModel)),
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             Spacer(modifier = Modifier.height(8.dp))

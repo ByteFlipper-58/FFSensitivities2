@@ -44,13 +44,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.components.AdBanner
+import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
-import com.byteflipper.ffsensitivities.ads.core.AdLocation
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,7 +63,6 @@ fun SensitivitiesScreen(
 ) {
     val manufacturer = remember(manufacturerArg) { manufacturerArg?.let { Uri.decode(it) } ?: "" }
     val modelName = remember(modelNameArg) { modelNameArg?.let { Uri.decode(it) } ?: "" }
-    val activity = LocalActivity.current as? Activity
 
     val deviceModelState by produceState<UiState<DeviceModel>>(initialValue = UiState.Loading, manufacturer, modelName, deviceViewModel) {
         deviceViewModel.uiState.collect { deviceListState ->
@@ -103,10 +102,6 @@ fun SensitivitiesScreen(
                     }
                 }
             )
-        },
-        bottomBar = {
-            // Используем баннер для экрана настроек чувствительности
-            AdBanner(location = AdLocation.SENSITIVITIES_SCREEN)
         }
     ) { innerPadding ->
         when (val state = deviceModelState) {
@@ -148,7 +143,11 @@ fun SensitivitiesScreen(
                         .fillMaxSize()
                         .padding(innerPadding)
                         .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 16.dp)
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            bottom = getDynamicBottomPadding(AdLocation.SENSITIVITIES_SCREEN, adViewModel)
+                        )
                 ) {
                     ElevatedCard(
                         modifier = Modifier
