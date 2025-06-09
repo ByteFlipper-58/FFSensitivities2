@@ -2,7 +2,7 @@
 activityKtx = "1.10.1"
 agp = "8.10.1"
 browser = "1.8.0"
-coilCompose = "2.7.0"
+
 firebaseBom = "33.12.0"
 kotlin = "2.1.10"
 coreKtx = "1.16.0"
@@ -20,20 +20,55 @@ firebaseInappmessagingDisplay = "21.0.2"
 googleGmsGoogleServices = "4.4.2"
 material = "1.12.0"
 
+# New BOM and dependency versions
+hilt = "2.55"
+ktorBom = "2.3.4"
+androidxDatastore = "1.0.0"
+appcompat = "1.7.1"
+googlePlayServices = "24.3.0"
+
+playCore = "2.1.0"
+playReview = "2.0.2"
+coroutinesPlayServices = "1.8.1"
+splashScreen = "1.0.1"
+ump = "3.2.0"
+unityAds = "4.15.0"
+unityMediationAds = "4.15.0.0"
+
 [libraries]
+# AndroidX Core
 androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashScreen" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+
+# Firebase BOM and related
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics-ktx = { module = "com.google.firebase:firebase-crashlytics-ktx" }
 firebase-messaging-ktx = { module = "com.google.firebase:firebase-messaging-ktx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
+
+# Hilt dependencies (no BOM available)
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version = "1.2.0" }
+
+# Ktor BOM and related
+ktor-bom = { module = "io.ktor:ktor-bom", version.ref = "ktorBom" }
+ktor-client-core = { module = "io.ktor:ktor-client-core" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json" }
+
+# Lifecycle dependencies (using standard version)
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+
+# Compose BOM and related
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
@@ -42,11 +77,48 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation" }
+androidx-compose-animation = { module = "androidx.compose.animation:animation" }
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+
+# Navigation
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+
+# Activity Compose
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# DataStore
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidxDatastore" }
+
+# Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+# Google Play Services and Ads
+google-play-services-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "googlePlayServices" }
+google-ump = { module = "com.google.android.ump:user-messaging-platform", version.ref = "ump" }
+
+# Unity Ads for AdMob mediation
+unity-ads = { module = "com.unity3d.ads:unity-ads", version.ref = "unityAds" }
+unity-mediation-ads = { module = "com.google.ads.mediation:unity", version.ref = "unityMediationAds" }
+
+# Play Core
+google-play-app-update = { module = "com.google.android.play:app-update", version.ref = "playCore" }
+google-play-app-update-ktx = { module = "com.google.android.play:app-update-ktx", version.ref = "playCore" }
+google-play-review-ktx = { module = "com.google.android.play:review-ktx", version.ref = "playReview" }
+
+# Coroutines
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutinesPlayServices" }
+
+
+
+# Other libraries
 library = { module = "me.zhanghai.compose.preference:library", version.ref = "library" }
-firebase-inappmessaging-display = { group = "com.google.firebase", name = "firebase-inappmessaging-display", version.ref = "firebaseInappmessagingDisplay" }
+
+# Test dependencies
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

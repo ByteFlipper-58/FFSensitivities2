@@ -107,68 +107,83 @@ dependencies {
     implementation(project(":ui-components"))
     implementation(project(":Crash Handler"))
 
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation(platform(libs.androidx.compose.bom))
+    // AndroidX Core
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.browser)
 
+    // Compose BOM and related
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity.compose)
+
+    // Firebase BOM and related
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.crashlytics.ktx)
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.messaging.ktx)
     implementation(libs.firebase.inappmessaging.display)
 
-    implementation("com.google.android.gms:play-services-ads:24.3.0")
-    implementation("com.google.android.ump:user-messaging-platform:3.2.0")
+    // Google Play Services and Ads
+    implementation(libs.google.play.services.ads)
+    implementation(libs.google.ump)
 
-    implementation("com.unity3d.ads:unity-ads:4.14.2")
-    implementation("com.google.ads.mediation:unity:4.15.0.0")
+    // Unity Ads for AdMob mediation
+    implementation(libs.unity.ads)
+    implementation(libs.unity.mediation.ads)
 
-    implementation("com.google.android.play:app-update:2.1.0")
-    implementation("com.google.android.play:app-update-ktx:2.1.0")
-    implementation("com.google.android.play:review-ktx:2.0.2")
+    // Play Core
+    implementation(libs.google.play.app.update)
+    implementation(libs.google.play.app.update.ktx)
+    implementation(libs.google.play.review.ktx)
 
+    // Hilt dependencies
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation("com.google.dagger:hilt-android:2.55")
-    ksp("com.google.dagger:hilt-compiler:2.55")
-    ksp("com.google.dagger:hilt-android-compiler:2.55")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
 
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.material3)
+    // Navigation
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation("androidx.core:core-splashscreen:1.0.1")
 
-    implementation("androidx.lifecycle:lifecycle-process:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
-    implementation("com.google.code.gson:gson:2.11.0")
+    // Lifecycle dependencies
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.process)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    // Serialization
     implementation(libs.kotlinx.serialization.json)
-    implementation("io.ktor:ktor-client-core:2.3.4")
-    implementation("io.ktor:ktor-client-cio:2.3.4")
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.4")
 
-    implementation(libs.coil.compose)
-    implementation(libs.kotlinx.serialization.json)
+    // Ktor BOM and related
+    implementation(platform(libs.ktor.bom))
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+
+    // Coroutines
+    implementation(libs.kotlinx.coroutines.play.services)
+
+    // Other libraries
     implementation(libs.library)
-    implementation(libs.androidx.browser)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 
+    // Test dependencies
     testImplementation(libs.junit)
-
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.ui.test.junit4)
 
+    // Debug dependencies
     debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
 }

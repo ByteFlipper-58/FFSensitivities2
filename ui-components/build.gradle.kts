@@ -43,24 +43,30 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
 
+    // Compose BOM and related
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.compose.animation:animation")
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.animation)
 
+    // Navigation
     implementation(libs.androidx.navigation.compose)
 
+    // Lifecycle and Activity
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
+    // Test dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    
+    // Debug dependencies
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }

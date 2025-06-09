@@ -34,7 +34,7 @@ class SendSensitivitiesRequestMessageToBot {
 
                 val response: Response = client.newCall(request).execute()
                 if (!response.isSuccessful) {
-                    Log.e(TAG, "Ошибка отправки сообщения: ${response.code}")
+                    Log.e(TAG, "Ошибка отправки сообщения: ${response.code()}")
                     return@withContext "Ошибка отправки сообщения"
                 }
 
