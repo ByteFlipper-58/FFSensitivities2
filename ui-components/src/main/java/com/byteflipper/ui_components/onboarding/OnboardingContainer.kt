@@ -29,6 +29,8 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.byteflipper.ui_components.R
 import kotlinx.coroutines.launch
 
 /**
@@ -172,8 +174,8 @@ private fun OnboardingTopBar(
             style = MaterialTheme.typography.headlineSmall,
             color = MaterialTheme.colorScheme.onSurface
         )
-        Text(
-            text = "$currentStep из $totalSteps",
+                    Text(
+                text = stringResource(R.string.onboarding_step_indicator, currentStep, totalSteps),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
         )

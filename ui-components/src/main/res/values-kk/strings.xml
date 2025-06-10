@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Артқа</string>
+    <string name="onboarding_next">Келесі</string>
+    <string name="onboarding_finish">Аяқтау</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Хабарландыру рұқсаты</string>
+    <string name="onboarding_permission_description">Жаңа сезімталдық параметрлері туралы маңызды жаңартулар мен хабарландыруларды алу үшін хабарландырулар жіберуге рұқсат беріңіз.</string>
+    <string name="onboarding_terms_title">Қызмет көрсету шарттары</string>
+    <string name="onboarding_terms_description">Біздің қызмет көрсету шарттары мен құпиялылық саясатын оқып, қабылдаңыз.</string>
+    <string name="onboarding_step_indicator">%2$d-дің %1$d қадамы</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Geri</string>
+    <string name="onboarding_next">İleri</string>
+    <string name="onboarding_finish">Bitir</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Bildirim İzni</string>
+    <string name="onboarding_permission_description">Yeni hassasiyet ayarları hakkında önemli güncellemeler ve bildirimler almak için bildirimlerin gönderilmesine izin verin.</string>
+    <string name="onboarding_terms_title">Hizmet Şartları</string>
+    <string name="onboarding_terms_description">Lütfen hizmet şartlarımızı ve gizlilik politikamızı okuyun ve kabul edin.</string>
+    <string name="onboarding_step_indicator">Adım %1$d / %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

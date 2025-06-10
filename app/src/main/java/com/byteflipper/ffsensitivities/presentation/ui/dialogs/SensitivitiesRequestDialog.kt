@@ -86,7 +86,7 @@ fun SensitivitiesRequestDialog(onDismiss: () -> Unit, onRequestSent: () -> Unit)
                 }
             ) {
                 Text(
-                    text = if (isLoading) "Отправка..." 
+                    text = if (isLoading) context.getString(R.string.request_sensitivities_settings_button_sending)
                           else context.getString(R.string.request_sensitivities_settings_button)
                 )
             }
@@ -96,7 +96,7 @@ fun SensitivitiesRequestDialog(onDismiss: () -> Unit, onRequestSent: () -> Unit)
                 enabled = !isLoading,
                 onClick = onDismiss
             ) {
-                Text(text = "Отмена")
+                Text(text = context.getString(R.string.request_sensitivities_settings_cancel))
             }
         }
     )

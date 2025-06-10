@@ -16,6 +16,7 @@
     <string name="open_link">Link öffnen</string>
     <string name="back">Zurück</string>
     <string name="try_again">Erneut versuchen</string>
+    <string name="retry">Wiederholen</string>
     <string name="action_retry">Wiederholen</string>
     <string name="next">Weiter</string>
     <string name="error">Fehler</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Informationen, die an den Entwickler gesendet werden</string>
     <string name="request_sensitivities_settings_message_two">Klicke auf die Schaltfläche "Anfordern", um eine Einstellungsanfrage zu senden. Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="request_sensitivities_settings_button">Anfordern</string>
+    <string name="request_sensitivities_settings_button_sending">Wird gesendet...</string>
+    <string name="request_sensitivities_settings_cancel">Abbrechen</string>
     <string name="request_sensitivities_settings_success">Anfrage erfolgreich gesendet!\nWir werden bald neue Einstellungen hinzufügen.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Visuellen Fehler melden</string>
     <string name="bug_category_request_settings">Einstellungen anfordern</string>
     <string name="bug_category_settings_not_working">Einstellungen funktionieren nicht</string>
+    <string name="bug_category_feature_request">Feature-Anfrage</string>
     <string name="bug_category_other">Sonstiges</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Bericht wird gesendet…</string>
@@ -214,8 +218,11 @@
     <string name="no_internet_connection">Keine Internetverbindung</string>
     <string name="error_no_internet_title">Keine Internetverbindung</string>
     <string name="error_no_internet_message">Bitte überprüfe deine Internetverbindung und versuche es erneut.</string>
+    <string name="check_internet_and_retry">Bitte überprüfe deine Internetverbindung und versuche es erneut.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Ein Fehler ist aufgetreten</string>
+    <string name="error_occurred">Ein Fehler ist aufgetreten</string>
+    <string name="try_again_later">Bitte versuche es später erneut.</string>
     <string name="error_occurred_message">Leider ist in der Anwendung ein unerwartetes Problem aufgetreten.</string>
     <string name="error_details_info">Fehlerdetails wurden an die Entwickler gesendet. Du kannst die Details unten kopieren.</string>
     <string name="error_details_label">Fehlerdetails</string>

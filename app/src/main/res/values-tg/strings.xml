@@ -16,6 +16,7 @@
     <string name="open_link">Кушодани истинод</string>
     <string name="back">Бозгашт</string>
     <string name="try_again">Бори дигар кӯшиш кунед</string>
+    <string name="retry">Такрор</string>
     <string name="action_retry">Такрор</string>
     <string name="next">Оянда</string>
     <string name="error">Хато</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Маълумоте, ки ба таҳиягар фиристода мешавад</string>
     <string name="request_sensitivities_settings_message_two">Барои фиристодани дархости танзимот тугмаи "Дархост"-ро пахш кунед, ин амалро бекор кардан мумкин нест.</string>
     <string name="request_sensitivities_settings_button">Дархост</string>
+    <string name="request_sensitivities_settings_button_sending">Фиристода мешавад...</string>
+    <string name="request_sensitivities_settings_cancel">Бекор кардан</string>
     <string name="request_sensitivities_settings_success">Дархост бомуваффақият фиристода шуд!\nМо ба зудӣ танзимоти навро илова хоҳем кард.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Гузориш додани хатои визуалӣ</string>
     <string name="bug_category_request_settings">Дархости танзимот</string>
     <string name="bug_category_settings_not_working">Танзимот кор намекунанд</string>
+    <string name="bug_category_feature_request">Дархости хусусият</string>
     <string name="bug_category_other">Дигар</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Ирсоли гузориш…</string>
@@ -214,6 +218,9 @@
     <string name="no_internet_connection">Пайвастшавӣ ба Интернет нест</string>
     <string name="error_no_internet_title">Пайвастшавӣ ба Интернет нест</string>
     <string name="error_no_internet_message">Лутфан, пайвастшавии интернетии худро санҷед ва бори дигар кӯшиш кунед.</string>
+    <string name="check_internet_and_retry">Лутфан, пайвастшавии интернетии худро санҷед ва бори дигар кӯшиш кунед.</string>
+    <string name="error_occurred">Хато рух дод</string>
+    <string name="try_again_later">Лутфан, дертар бори дигар кӯшиш кунед.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Хато рух дод</string>
     <string name="error_occurred_message">Мутаассифона, барнома ба мушкилоти ғайричашмдошт дучор шуд.</string>

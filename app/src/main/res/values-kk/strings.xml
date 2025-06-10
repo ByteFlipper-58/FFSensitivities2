@@ -16,6 +16,7 @@
     <string name="open_link">Сілтемені ашу</string>
     <string name="back">Артқа</string>
     <string name="try_again">Қайта байқап көріңіз</string>
+    <string name="retry">Қайталау</string>
     <string name="action_retry">Қайталау</string>
     <string name="next">Келесі</string>
     <string name="error">Қате</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Әзірлеушіге жіберілетін ақпарат</string>
     <string name="request_sensitivities_settings_message_two">Баптауларға сұрау салу үшін "Сұрау салу" түймесін басыңыз, бұл әрекетті болдырмау мүмкін емес.</string>
     <string name="request_sensitivities_settings_button">Сұрау салу</string>
+    <string name="request_sensitivities_settings_button_sending">Жіберілуде...</string>
+    <string name="request_sensitivities_settings_cancel">Болдырмау</string>
     <string name="request_sensitivities_settings_success">Сұрау сәтті жіберілді!\nЖақын арада жаңа баптау қосамыз.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Көрнекі қате туралы хабарлау</string>
     <string name="bug_category_request_settings">Баптауларды сұрау</string>
     <string name="bug_category_settings_not_working">Баптаулар жұмыс істемейді</string>
+    <string name="bug_category_feature_request">Мүмкіндік сұрауы</string>
     <string name="bug_category_other">Басқа</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Есеп жіберілуде…</string>
@@ -214,8 +218,11 @@
     <string name="no_internet_connection">Интернет байланысы жоқ</string>
     <string name="error_no_internet_title">Интернет байланысы жоқ</string>
     <string name="error_no_internet_message">Интернет байланысыңызды тексеріп, қайталап көріңіз.</string>
+    <string name="check_internet_and_retry">Интернет байланысыңызды тексеріп, қайталап көріңіз.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Қате пайда болды</string>
+    <string name="error_occurred">Қате пайда болды</string>
+    <string name="try_again_later">Кейінірек қайталап көріңіз.</string>
     <string name="error_occurred_message">Өкінішке орай, қолданба күтпеген мәселеге тап болды.</string>
     <string name="error_details_info">Қате туралы мәліметтер әзірлеушілерге жіберілді. Төмендегі мәліметтерді көшіре аласыз.</string>
     <string name="error_details_label">Қате туралы мәліметтер</string>

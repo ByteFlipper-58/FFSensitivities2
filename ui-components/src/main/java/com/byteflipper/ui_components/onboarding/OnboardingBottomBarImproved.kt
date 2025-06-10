@@ -45,6 +45,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import com.byteflipper.ui_components.R
 
 /**
@@ -212,12 +213,12 @@ private fun OnboardingProgressBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Шаг ${currentStep + 1} из $totalSteps",
+                text = stringResource(R.string.onboarding_step_indicator, currentStep + 1, totalSteps),
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
             Text(
-                text = "${((currentStep + 1) * 100 / totalSteps)}%",
+                text = stringResource(R.string.onboarding_progress_percent, (currentStep + 1) * 100 / totalSteps),
                 style = MaterialTheme.typography.bodySmall,
                 fontWeight = FontWeight.Medium,
                 color = MaterialTheme.colorScheme.primary

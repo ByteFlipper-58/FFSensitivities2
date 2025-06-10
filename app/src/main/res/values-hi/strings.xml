@@ -16,6 +16,7 @@
     <string name="open_link">लिंक खोलें</string>
     <string name="back">वापस</string>
     <string name="try_again">पुनः प्रयास करें</string>
+    <string name="retry">पुनः प्रयास</string>
     <string name="action_retry">पुनः प्रयास</string>
     <string name="next">अगला</string>
     <string name="error">त्रुटि</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">जानकारी जो डेवलपर को भेजी जाएगी</string>
     <string name="request_sensitivities_settings_message_two">सेटिंग्स अनुरोध सबमिट करने के लिए अनुरोध बटन पर क्लिक करें, यह क्रिया पूर्ववत नहीं की जा सकती है।</string>
     <string name="request_sensitivities_settings_button">अनुरोध</string>
+    <string name="request_sensitivities_settings_button_sending">भेजा जा रहा है...</string>
+    <string name="request_sensitivities_settings_cancel">रद्द करें</string>
     <string name="request_sensitivities_settings_success">अनुरोध सफलतापूर्वक भेजा गया!\nहम जल्द ही एक नई सेटिंग जोड़ देंगे।</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">दृश्य त्रुटि की रिपोर्ट करें</string>
     <string name="bug_category_request_settings">सेटिंग्स का अनुरोध करें</string>
     <string name="bug_category_settings_not_working">सेटिंग्स काम नहीं कर रही हैं</string>
+    <string name="bug_category_feature_request">फीचर अनुरोध</string>
     <string name="bug_category_other">अन्य</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">रिपोर्ट भेजी जा रही है…</string>
@@ -214,6 +218,9 @@
     <string name="no_internet_connection">कोई इंटरनेट कनेक्शन नहीं</string>
     <string name="error_no_internet_title">कोई इंटरनेट कनेक्शन नहीं</string>
     <string name="error_no_internet_message">कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।</string>
+    <string name="check_internet_and_retry">कृपया अपना इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।</string>
+    <string name="error_occurred">त्रुटि हुई</string>
+    <string name="try_again_later">कृपया बाद में पुनः प्रयास करें।</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">एक त्रुटि हुई</string>
     <string name="error_occurred_message">दुर्भाग्य से, एप्लिकेशन को एक अप्रत्याशित समस्या का सामना करना पड़ा।</string>

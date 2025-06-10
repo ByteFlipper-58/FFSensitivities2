@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_finish">Завершить</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Разрешение на уведомления</string>
+    <string name="onboarding_permission_description">Для получения важных обновлений и уведомлений о новых настройках чувствительности, разрешите отправку уведомлений.</string>
+    <string name="onboarding_terms_title">Условия использования</string>
+    <string name="onboarding_terms_description">Пожалуйста, ознакомьтесь и примите наши условия использования и политику конфиденциальности.</string>
+    <string name="onboarding_step_indicator">Шаг %1$d из %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

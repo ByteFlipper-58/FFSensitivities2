@@ -16,6 +16,7 @@
     <string name="open_link">Відкрити посилання</string>
     <string name="back">Назад</string>
     <string name="try_again">Спробувати ще раз</string>
+    <string name="retry">Повторити</string>
     <string name="action_retry">Повторити</string>
     <string name="next">Далі</string>
     <string name="error">Помилка</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Інформація, яка буде надіслана розробнику</string>
     <string name="request_sensitivities_settings_message_two">Натисніть кнопку "Запросити", щоб надіслати запит на налаштування, цю дію не можна скасувати.</string>
     <string name="request_sensitivities_settings_button">Запросити</string>
+    <string name="request_sensitivities_settings_button_sending">Надсилання...</string>
+    <string name="request_sensitivities_settings_cancel">Скасувати</string>
     <string name="request_sensitivities_settings_success">Запит успішно надіслано!\nМи незабаром додамо нові налаштування.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Повідомити про візуальну помилку</string>
     <string name="bug_category_request_settings">Запросити налаштування</string>
     <string name="bug_category_settings_not_working">Налаштування не працюють</string>
+    <string name="bug_category_feature_request">Запит функції</string>
     <string name="bug_category_other">Інше</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Надсилання звіту…</string>
@@ -214,8 +218,11 @@
     <string name="no_internet_connection">Немає підключення до Інтернету</string>
     <string name="error_no_internet_title">Немає підключення до Інтернету</string>
     <string name="error_no_internet_message">Будь ласка, перевірте ваше інтернет-з\'єднання та спробуйте ще раз.</string>
+    <string name="check_internet_and_retry">Будь ласка, перевірте ваше інтернет-з\'єднання та спробуйте ще раз.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Сталася помилка</string>
+    <string name="error_occurred">Сталася помилка</string>
+    <string name="try_again_later">Будь ласка, спробуйте пізніше.</string>
     <string name="error_occurred_message">На жаль, застосунок зіткнувся з неочікуваною проблемою.</string>
     <string name="error_details_info">Деталі помилки надіслано розробникам. Ви можете скопіювати деталі нижче.</string>
     <string name="error_details_label">Деталі помилки</string>

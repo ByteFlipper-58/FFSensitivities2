@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">वापस</string>
+    <string name="onboarding_next">अगला</string>
+    <string name="onboarding_finish">समाप्त</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">सूचना अनुमति</string>
+    <string name="onboarding_permission_description">नई संवेदनशीलता सेटिंग्स के बारे में महत्वपूर्ण अपडेट और सूचनाएं प्राप्त करने के लिए, सूचनाएं भेजने की अनुमति दें।</string>
+    <string name="onboarding_terms_title">सेवा की शर्तें</string>
+    <string name="onboarding_terms_description">कृपया हमारी सेवा की शर्तों और गोपनीयता नीति को पढ़ें और स्वीकार करें।</string>
+    <string name="onboarding_step_indicator">चरण %1$d का %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

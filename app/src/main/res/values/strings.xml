@@ -66,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Information that will be sent to the developer</string>
     <string name="request_sensitivities_settings_message_two">Click the Request button to submit a settings request, this action cannot be undone.</string>
     <string name="request_sensitivities_settings_button">Request</string>
+    <string name="request_sensitivities_settings_button_sending">Sending...</string>
+    <string name="request_sensitivities_settings_cancel">Cancel</string>
     <string name="request_sensitivities_settings_success">Request sent successfully!\nWe will add a new setting soon.</string>
 
     <!-- Devices List Screen -->

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далі</string>
+    <string name="onboarding_finish">Завершити</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Дозвіл на сповіщення</string>
+    <string name="onboarding_permission_description">Для отримання важливих оновлень та сповіщень про нові налаштування чутливості, дозвольте надсилання сповіщень.</string>
+    <string name="onboarding_terms_title">Умови використання</string>
+    <string name="onboarding_terms_description">Будь ласка, ознайомтесь та прийміть наші умови використання та політику конфіденційності.</string>
+    <string name="onboarding_step_indicator">Крок %1$d з %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

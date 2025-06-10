@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Бозгашт</string>
+    <string name="onboarding_next">Навбатӣ</string>
+    <string name="onboarding_finish">Анҷом додан</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Иҷозаи огоҳӣ</string>
+    <string name="onboarding_permission_description">Барои гирифтани навсозиҳои муҳим ва огоҳиҳо дар бораи танзимоти нави ҳассосият, иҷозат диҳед, ки огоҳиҳо ирсол карда шаванд.</string>
+    <string name="onboarding_terms_title">Шартҳои хизматрасонӣ</string>
+    <string name="onboarding_terms_description">Лутфан шартҳои хизматрасонӣ ва сиёсати махфияти моро хонда, қабул кунед.</string>
+    <string name="onboarding_step_indicator">Қадами %1$d аз %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

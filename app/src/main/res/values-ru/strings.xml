@@ -16,6 +16,7 @@
     <string name="open_link">Открыть ссылку</string>
     <string name="back">Назад</string>
     <string name="try_again">Попробовать снова</string>
+    <string name="retry">Повторить</string>
     <string name="action_retry">Повторить</string>
     <string name="next">Далее</string>
     <string name="error">Ошибка</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Информация, которая будет отправлена разработчику</string>
     <string name="request_sensitivities_settings_message_two">Нажмите кнопку «Запросить», чтобы отправить запрос настроек, это действие нельзя отменить.</string>
     <string name="request_sensitivities_settings_button">Запросить</string>
+    <string name="request_sensitivities_settings_button_sending">Отправка...</string>
+    <string name="request_sensitivities_settings_cancel">Отмена</string>
     <string name="request_sensitivities_settings_success">Запрос успешно отправлен!\nМы скоро добавим новые настройки.</string>
 
     <!-- Devices List Screen  -->
@@ -217,8 +220,11 @@
     <string name="no_internet_connection">Нет подключения к Интернету</string>
     <string name="error_no_internet_title">Нет подключения к Интернету</string>
     <string name="error_no_internet_message">Пожалуйста, проверьте ваше интернет-соединение и попробуйте снова.</string>
+    <string name="check_internet_and_retry">Пожалуйста, проверьте ваше интернет-соединение и попробуйте снова.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Произошла ошибка</string>
+    <string name="error_occurred">Произошла ошибка</string>
+    <string name="try_again_later">Пожалуйста, попробуйте позже.</string>
     <string name="error_occurred_message">К сожалению, приложение столкнулось с непредвиденной проблемой.</string>
     <string name="error_details_info">Сведения об ошибке отправлены разработчикам. Вы можете скопировать детали ниже.</string>
     <string name="error_details_label">Детали ошибки</string>

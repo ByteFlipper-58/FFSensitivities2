@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Wstecz</string>
+    <string name="onboarding_next">Dalej</string>
+    <string name="onboarding_finish">Zakończ</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Uprawnienie do powiadomień</string>
+    <string name="onboarding_permission_description">Aby otrzymywać ważne aktualizacje i powiadomienia o nowych ustawieniach czułości, zezwól na wysyłanie powiadomień.</string>
+    <string name="onboarding_terms_title">Warunki korzystania z usługi</string>
+    <string name="onboarding_terms_description">Proszę przeczytać i zaakceptować nasze warunki korzystania z usługi i politykę prywatności.</string>
+    <string name="onboarding_step_indicator">Krok %1$d z %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

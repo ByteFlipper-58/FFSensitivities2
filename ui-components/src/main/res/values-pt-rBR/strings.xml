@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Voltar</string>
+    <string name="onboarding_next">Próximo</string>
+    <string name="onboarding_finish">Finalizar</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Permissão de Notificação</string>
+    <string name="onboarding_permission_description">Para receber atualizações importantes e notificações sobre novas configurações de sensibilidade, permita o envio de notificações.</string>
+    <string name="onboarding_terms_title">Termos de Serviço</string>
+    <string name="onboarding_terms_description">Por favor, leia e aceite nossos termos de serviço e política de privacidade.</string>
+    <string name="onboarding_step_indicator">Passo %1$d de %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

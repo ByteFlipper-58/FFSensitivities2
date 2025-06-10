@@ -16,6 +16,7 @@
     <string name="open_link">Ouvrir le lien</string>
     <string name="back">Retour</string>
     <string name="try_again">Réessayer</string>
+    <string name="retry">Réessayer</string>
     <string name="action_retry">Réessayer</string>
     <string name="next">Suivant</string>
     <string name="error">Erreur</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Informations qui seront envoyées au développeur</string>
     <string name="request_sensitivities_settings_message_two">Cliquez sur le bouton Demander pour soumettre une demande de paramètres, cette action ne peut pas être annulée.</string>
     <string name="request_sensitivities_settings_button">Demander</string>
+    <string name="request_sensitivities_settings_button_sending">Envoi...</string>
+    <string name="request_sensitivities_settings_cancel">Annuler</string>
     <string name="request_sensitivities_settings_success">Demande envoyée avec succès !nNous ajouterons bientôt un nouveau paramètre.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Signaler une erreur visuelle</string>
     <string name="bug_category_request_settings">Demander des paramètres</string>
     <string name="bug_category_settings_not_working">Les paramètres ne fonctionnent pas</string>
+    <string name="bug_category_feature_request">Demande de fonctionnalité</string>
     <string name="bug_category_other">Autre</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Envoi du rapport…</string>
@@ -214,8 +218,11 @@
     <string name="no_internet_connection">Pas de connexion Internet</string>
     <string name="error_no_internet_title">Pas de connexion Internet</string>
     <string name="error_no_internet_message">Veuillez vérifier votre connexion Internet et réessayer.</string>
+    <string name="check_internet_and_retry">Veuillez vérifier votre connexion Internet et réessayer.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Une erreur s\'est produite</string>
+    <string name="error_occurred">Une erreur s\'est produite</string>
+    <string name="try_again_later">Veuillez réessayer plus tard.</string>
     <string name="error_occurred_message">Malheureusement, l\'application a rencontré un problème inattendu.</string>
     <string name="error_details_info">Les détails de l\'erreur ont été envoyés aux développeurs. Vous pouvez copier les détails ci-dessous.</string>
     <string name="error_details_label">Détails de l\'erreur</string>

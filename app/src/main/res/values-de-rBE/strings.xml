@@ -17,6 +17,7 @@
     <string name="open_link">Link öffnen</string>
     <string name="back">Zurück</string>
     <string name="try_again">Erneut versuchen</string>
+    <string name="retry">Wiederholen</string>
     <string name="action_retry">Wiederholen</string>
     <string name="next">Weiter</string>
     <string name="error">Fehler</string>
@@ -66,6 +67,8 @@
     <string name="request_sensitivities_settings_message">Informationen, die an den Entwickler gesendet werden</string>
     <string name="request_sensitivities_settings_message_two">Klicke auf die Schaltfläche "Anfordern", um eine Einstellungsanfrage zu senden. Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="request_sensitivities_settings_button">Anfordern</string>
+    <string name="request_sensitivities_settings_button_sending">Wird gesendet...</string>
+    <string name="request_sensitivities_settings_cancel">Abbrechen</string>
     <string name="request_sensitivities_settings_success">Anfrage erfolgreich gesendet!\nWir werden bald neue Einstellungen hinzufügen.</string>
 
     <!-- Devices List Screen  -->

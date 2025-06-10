@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_next">Далей</string>
+    <string name="onboarding_finish">Скончыць</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Дазвол на апавяшчэнні</string>
+    <string name="onboarding_permission_description">Каб атрымліваць важныя абнаўленні і апавяшчэнні пра новыя налады адчувальнасці, дазвольце адпраўку апавяшчэнняў.</string>
+    <string name="onboarding_terms_title">Умовы выкарыстання</string>
+    <string name="onboarding_terms_description">Калі ласка, азнаёмцеся і прыміце нашы ўмовы выкарыстання і палітыку прыватнасці.</string>
+    <string name="onboarding_step_indicator">Крок %1$d з %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

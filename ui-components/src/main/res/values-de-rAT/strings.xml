@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Onboarding Navigation -->
+    <string name="onboarding_back">Zurück</string>
+    <string name="onboarding_next">Weiter</string>
+    <string name="onboarding_finish">Fertigstellen</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Benachrichtigungsberechtigung</string>
+    <string name="onboarding_permission_description">Um wichtige Updates und Benachrichtigungen über neue Empfindlichkeitseinstellungen zu erhalten, erlauben Sie das Senden von Benachrichtigungen.</string>
+    <string name="onboarding_terms_title">Nutzungsbedingungen</string>
+    <string name="onboarding_terms_description">Bitte lesen und akzeptieren Sie unsere Nutzungsbedingungen und Datenschutzrichtlinie.</string>
+    <string name="onboarding_step_indicator">Schritt %1$d von %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
+</resources> 

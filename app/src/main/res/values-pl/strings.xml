@@ -16,6 +16,7 @@
     <string name="open_link">Otwórz link</string>
     <string name="back">Wstecz</string>
     <string name="try_again">Spróbuj ponownie</string>
+    <string name="retry">Ponów</string>
     <string name="action_retry">Ponów</string>
     <string name="next">Dalej</string>
     <string name="error">Błąd</string>
@@ -65,6 +66,8 @@
     <string name="request_sensitivities_settings_message">Informacje, które zostaną wysłane do dewelopera</string>
     <string name="request_sensitivities_settings_message_two">Kliknij przycisk Poproś, aby przesłać żądanie ustawień, tej akcji nie można cofnąć.</string>
     <string name="request_sensitivities_settings_button">Poproś</string>
+    <string name="request_sensitivities_settings_button_sending">Wysyłanie...</string>
+    <string name="request_sensitivities_settings_cancel">Anuluj</string>
     <string name="request_sensitivities_settings_success">Żądanie wysłane pomyślnie!\nWkrótce dodamy nowe ustawienia.</string>
 
     <!-- Devices List Screen  -->
@@ -167,6 +170,7 @@
     <string name="bug_category_visual_error">Zgłoś błąd wizualny</string>
     <string name="bug_category_request_settings">Poproś o ustawienia</string>
     <string name="bug_category_settings_not_working">Ustawienia nie działają</string>
+    <string name="bug_category_feature_request">Żądanie funkcji</string>
     <string name="bug_category_other">Inne</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Wysyłanie raportu…</string>
@@ -214,8 +218,11 @@
     <string name="no_internet_connection">Brak połączenia z Internetem</string>
     <string name="error_no_internet_title">Brak połączenia z Internetem</string>
     <string name="error_no_internet_message">Sprawdź połączenie internetowe i spróbuj ponownie.</string>
+    <string name="check_internet_and_retry">Sprawdź połączenie internetowe i spróbuj ponownie.</string>
     <!-- Generic Error Screen -->
     <string name="error_occurred_title">Wystąpił błąd</string>
+    <string name="error_occurred">Wystąpił błąd</string>
+    <string name="try_again_later">Spróbuj ponownie później.</string>
     <string name="error_occurred_message">Niestety, aplikacja napotkała nieoczekiwany problem.</string>
     <string name="error_details_info">Szczegóły błędu zostały wysłane do deweloperów. Możesz skopiować szczegóły poniżej.</string>
     <string name="error_details_label">Szczegóły błędu</string>

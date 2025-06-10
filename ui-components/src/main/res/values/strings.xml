@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Onboarding Navigation -->
-    <string name="onboarding_back">Назад</string>
-    <string name="onboarding_next">Далее</string>
-    <string name="onboarding_finish">Завершить</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_finish">Finish</string>
+    <!-- Onboarding Content -->
+    <string name="onboarding_permission_title">Permission Notification</string>
+    <string name="onboarding_permission_description">To receive important updates and notifications about new sensitivity settings, allow sending notifications.</string>
+    <string name="onboarding_terms_title">Terms of Service</string>
+    <string name="onboarding_terms_description">Please read and accept our terms of service and privacy policy.</string>
+    <string name="onboarding_step_indicator">Step %1$d of %2$d</string>
+    <string name="onboarding_progress_percent">%1$d%%</string>
 </resources> 

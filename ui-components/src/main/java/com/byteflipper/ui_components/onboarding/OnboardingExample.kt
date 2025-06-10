@@ -16,11 +16,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.byteflipper.ui_components.R
 
 /**
  * Пример использования улучшенного OnBoarding с новой архитектурой
@@ -141,16 +143,16 @@ private fun PermissionsStepContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = "Разрешение на уведомления",
+                        Text(
+                    text = stringResource(R.string.onboarding_permission_title),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center
         )
         
         Spacer(modifier = Modifier.height(16.dp))
         
-        Text(
-            text = "Для получения важных обновлений и уведомлений о новых настройках чувствительности, разрешите отправку уведомлений.",
+                        Text(
+                    text = stringResource(R.string.onboarding_permission_description),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
@@ -179,16 +181,16 @@ private fun TermsStepContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = "Условия использования",
+                        Text(
+                    text = stringResource(R.string.onboarding_terms_title),
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center
         )
         
         Spacer(modifier = Modifier.height(16.dp))
         
-        Text(
-            text = "Пожалуйста, ознакомьтесь и примите наши условия использования и политику конфиденциальности.",
+                        Text(
+                    text = stringResource(R.string.onboarding_terms_description),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)

@@ -73,12 +73,12 @@ suspend fun sendBugReport(tag: String, message: String): Result<ApiResponse> {
     // Проверяем ограничения API
     if (message.length > 4096) {
         Log.w(TAG, "Message too long: ${message.length} characters (max 4096)")
-        return Result.failure(Exception("Сообщение слишком длинное (${message.length} символов, максимум 4096)"))
+        return Result.failure(Exception("Message too long (${message.length} characters, maximum 4096)"))
     }
     
     if (tag.isBlank()) {
         Log.w(TAG, "Tag is blank")
-        return Result.failure(Exception("Тег не может быть пустым"))
+        return Result.failure(Exception("Tag cannot be empty"))
     }
     
     val client = createHttpClient()
