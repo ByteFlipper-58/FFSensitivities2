@@ -169,6 +169,7 @@
     <string name="bug_category_visual_error">Сообщить о визуальной ошибке</string>
     <string name="bug_category_request_settings">Запросить настройки</string>
     <string name="bug_category_settings_not_working">Настройки не работают</string>
+    <string name="bug_category_feature_request">Запрос функции</string>
     <string name="bug_category_other">Другое</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Отправка отчета…</string>

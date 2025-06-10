@@ -171,6 +171,7 @@
     <string name="bug_category_visual_error">Report a visual error</string>
     <string name="bug_category_request_settings">Request settings</string>
     <string name="bug_category_settings_not_working">Settings not working</string>
+    <string name="bug_category_feature_request">Feature request</string>
     <string name="bug_category_other">Other</string>
     <!-- Submission Status -->
     <string name="bug_report_submitting_title">Sending report...</string>

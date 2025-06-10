@@ -12,16 +12,22 @@ import android.util.Log
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
+// API v1 models
 @Serializable
-data class RequestPayload(val tag: String, val message: String)
-
-private const val TAG = "BugReportApi" // Define TAG for logging
+data class ForwardRequest(val tag: String, val message: String)
 
 @Serializable
-data class ResponseData(val status: String? = null, val message: String? = null, val error: String? = null)
+data class FeedbackRequest(val name: String, val email: String, val text: String)
 
-suspend fun sendBugReport(tag: String, message: String, serverUrl: String = "https://byteflipper-feedback-bot.onrender.com/forward"): Result<ResponseData> {
-    val client = HttpClient(CIO) {
+@Serializable
+data class ApiResponse(val status: String, val message: String? = null)
+
+private const val TAG = "BugReportApi"
+private const val BASE_URL = "https://backend-test-om5p.onrender.com/api/v1"
+
+// Create HTTP client
+private fun createHttpClient(): HttpClient {
+    return HttpClient(CIO) {
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
@@ -33,23 +39,79 @@ suspend fun sendBugReport(tag: String, message: String, serverUrl: String = "htt
             requestTimeout = 15_000
         }
     }
+}
 
-    val payload = RequestPayload(tag = tag, message = message)
-    Log.d(TAG, "Sending bug report. Tag: $tag, Payload size: ${message.length}")
-
+// Send feedback (general feedback endpoint)
+suspend fun sendFeedback(name: String, email: String, text: String): Result<ApiResponse> {
+    val client = createHttpClient()
+    val payload = FeedbackRequest(name = name, email = email, text = text)
+    
     return try {
-        val response: HttpResponse = client.post(serverUrl) {
+        val response: HttpResponse = client.post("$BASE_URL/feedback") {
             contentType(ContentType.Application.Json)
             setBody(payload)
         }
-
-        val responseBody: ResponseData = response.body()
-        Log.i(TAG, "Bug report response status: ${response.status}, Body: $responseBody")
-
+        
+        val responseBody: ApiResponse = response.body()
+        Log.i(TAG, "Feedback response: $responseBody")
+        
         if (response.status.isSuccess()) {
             Result.success(responseBody)
         } else {
-            Result.failure(Exception("Server error: ${response.status.value} - ${responseBody.error ?: responseBody.message ?: "Unknown error"}"))
+            Result.failure(Exception("Failed to send feedback: ${response.status.value} - ${responseBody.message}"))
+        }
+    } catch (e: Exception) {
+        Log.e(TAG, "Error sending feedback", e)
+        Result.failure(e)
+    } finally {
+        client.close()
+    }
+}
+
+// Forward message (bug report)
+suspend fun sendBugReport(tag: String, message: String): Result<ApiResponse> {
+    // Проверяем ограничения API
+    if (message.length > 4096) {
+        Log.w(TAG, "Message too long: ${message.length} characters (max 4096)")
+        return Result.failure(Exception("Сообщение слишком длинное (${message.length} символов, максимум 4096)"))
+    }
+    
+    if (tag.isBlank()) {
+        Log.w(TAG, "Tag is blank")
+        return Result.failure(Exception("Тег не может быть пустым"))
+    }
+    
+    val client = createHttpClient()
+    val payload = ForwardRequest(tag = tag, message = message)
+    
+    Log.d(TAG, "Sending bug report. Tag: '$tag', Message length: ${message.length}")
+    Log.d(TAG, "Request payload: $payload")
+    Log.d(TAG, "Request URL: $BASE_URL/forward")
+    
+    return try {
+        val response: HttpResponse = client.post("$BASE_URL/forward") {
+            contentType(ContentType.Application.Json)
+            setBody(payload)
+        }
+        
+        val responseBody = try {
+            response.body<ApiResponse>()
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to parse response body", e)
+            // Попробуем получить raw response
+            val rawBody = response.bodyAsText()
+            Log.e(TAG, "Raw response body: $rawBody")
+            ApiResponse(status = "error", message = "Failed to parse response: $rawBody")
+        }
+        
+        Log.i(TAG, "Bug report response status: ${response.status.value}, Body: $responseBody")
+        
+        if (response.status.isSuccess()) {
+            Result.success(responseBody)
+        } else {
+            val errorMessage = "Server error: ${response.status.value} - ${responseBody.message ?: "Unknown error"}"
+            Log.e(TAG, errorMessage)
+            Result.failure(Exception(errorMessage))
         }
     } catch (e: Exception) {
         Log.e(TAG, "Error sending bug report", e)

@@ -1,49 +1,50 @@
 package com.byteflipper.ffsensitivities.data.remote
 
 import android.util.Log
-import com.byteflipper.ffsensitivities.BuildConfig
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.FormBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.Response
 
 class SendSensitivitiesRequestMessageToBot {
 
-    private val TAG = "SendMessageToGroupTask"
-
-    private val BOT_TOKEN = BuildConfig.TELEGRAM_BOT_TOKEN
-    private val GROUP_CHAT_ID = BuildConfig.BYTEFLIPPER_CHANNEL_ID
+    private val TAG = "SendSensitivitiesRequest"
 
     suspend fun sendMessageToGroup(message: String, onSuccess: () -> Unit): String {
         return withContext(Dispatchers.IO) {
             try {
-                val client = OkHttpClient()
+                // Сначала попробуем отправить с тегом settings_request
+                Log.i(TAG, "Пробуем отправить с тегом 'settings_request'")
+                var result = BugReportApiService.submitBugReport(
+                    tag = "settings_request",
+                    message = message
+                )
 
-                val formBody: RequestBody = FormBody.Builder()
-                    .add("chat_id", GROUP_CHAT_ID)
-                    .add("text", message)
-                    .build()
-
-                val request = Request.Builder()
-                    .url("https://api.telegram.org/bot$BOT_TOKEN/sendMessage")
-                    .post(formBody)
-                    .build()
-
-                val response: Response = client.newCall(request).execute()
-                if (!response.isSuccessful) {
-                    Log.e(TAG, "Ошибка отправки сообщения: ${response.code()}")
-                    return@withContext "Ошибка отправки сообщения"
+                if (result.isSuccess) {
+                    Log.i(TAG, "Settings request sent successfully with tag 'settings_request'")
+                    onSuccess()
+                    return@withContext "Запрос настроек успешно отправлен"
                 }
 
-                onSuccess()
+                // Если не получилось, попробуем с тегом other
+                Log.w(TAG, "Не удалось отправить с 'settings_request', пробуем 'other'")
+                val errorFromSettingsRequest = result.exceptionOrNull()?.message ?: "Неизвестная ошибка"
+                
+                result = BugReportApiService.submitBugReport(
+                    tag = "other",
+                    message = "ЗАПРОС НАСТРОЕК:\n\n$message"
+                )
 
-                "Сообщение успешно отправлено в группу"
+                if (result.isSuccess) {
+                    Log.i(TAG, "Settings request sent successfully with tag 'other'")
+                    onSuccess()
+                    "Запрос настроек отправлен (через общий канал)"
+                } else {
+                    val errorFromOther = result.exceptionOrNull()?.message ?: "Неизвестная ошибка"
+                    Log.e(TAG, "Обе попытки неудачны. settings_request: $errorFromSettingsRequest, other: $errorFromOther")
+                    "Ошибка отправки запроса настроек: $errorFromOther"
+                }
             } catch (e: Exception) {
-                Log.e(TAG, "Ошибка отправки сообщения: ${e.message}")
-                "Ошибка отправки сообщения"
+                Log.e(TAG, "Ошибка отправки запроса настроек: ${e.message}")
+                "Ошибка отправки запроса настроек: ${e.message}"
             }
         }
     }

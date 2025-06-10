@@ -34,7 +34,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.data.remote.sendBugReport
+import com.byteflipper.ffsensitivities.data.remote.BugReportApiService
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.BugReportHeader
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.CategorySelector
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.DescriptionInput
@@ -70,9 +70,9 @@ fun BugReportScreen(navController: NavController) {
     val categories = listOf(
         stringResource(id = R.string.bug_category_support),
         stringResource(id = R.string.bug_category_report_bug),
-        stringResource(id = R.string.bug_category_visual_error),
         stringResource(id = R.string.bug_category_request_settings),
         stringResource(id = R.string.bug_category_settings_not_working),
+        stringResource(id = R.string.bug_category_feature_request),
         stringResource(id = R.string.bug_category_other)
     )
 
@@ -192,7 +192,7 @@ fun BugReportScreen(navController: NavController) {
                                 |$ticketId
                             """.trimMargin()
 
-                            val result = sendBugReport(tag, formattedMessage)
+                            val result = BugReportApiService.submitBugReport(tag, formattedMessage)
 
                             result.onSuccess {
                                 Log.i(TAG, "Bug report submitted successfully. Ticket: $ticketId")
