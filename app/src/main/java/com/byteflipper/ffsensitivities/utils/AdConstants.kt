@@ -4,8 +4,8 @@ object AdConstants {
     object Interstitial {
         const val DEVICES_SCREEN = "ca-app-pub-4346225518624754/1656811533"
         const val SENSITIVITIES_SCREEN = "ca-app-pub-4346225518624754/9596813057"
-        const val HOME_SCREEN = "ca-app-pub-4346225518624754/1656811533" // Можно указать отдельный ID
-        const val SETTINGS_SCREEN = "ca-app-pub-4346225518624754/9596813057" // Можно указать отдельный ID
+        const val HOME_SCREEN = "ca-app-pub-4346225518624754/1656811533"
+        const val SETTINGS_SCREEN = "ca-app-pub-4346225518624754/9596813057"
     }
 
     object Banner {

@@ -19,8 +19,8 @@ android {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
         targetSdk = 35
-        versionCode = 85
-        versionName = "v3.0.3"
+        versionCode = 86
+        versionName = "v3.0.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

@@ -23,7 +23,7 @@ data class FeedbackRequest(val name: String, val email: String, val text: String
 data class ApiResponse(val status: String, val message: String? = null)
 
 private const val TAG = "BugReportApi"
-private const val BASE_URL = "https://backend-test-om5p.onrender.com/api/v1"
+private const val BASE_URL = "https://byteflipper-feedback-bot.onrender.com/api/v1"
 
 // Create HTTP client
 private fun createHttpClient(): HttpClient {
