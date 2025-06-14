@@ -35,6 +35,7 @@ import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.navigation.Screen
+import android.util.Log
 
 /**
  * Компонент информационного шага для новой системы OnBoarding
@@ -187,7 +188,10 @@ fun WelcomeAgreementStepContent(
         ) {
             Checkbox(
                 checked = isChecked,
-                onCheckedChange = onCheckedChange
+                onCheckedChange = { newValue ->
+                    Log.d("WelcomeAgreementStep", "Checkbox изменен: $isChecked -> $newValue")
+                    onCheckedChange(newValue)
+                }
             )
             Spacer(modifier = Modifier.width(4.dp))
             AcceptanceText(

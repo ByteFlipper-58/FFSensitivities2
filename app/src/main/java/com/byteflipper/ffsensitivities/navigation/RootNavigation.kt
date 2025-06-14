@@ -24,6 +24,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import android.util.Log
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.components.AdBanner
@@ -49,23 +50,28 @@ fun RootAppNavigation(
     appViewModel: AppViewModel,
     appUpdateManagerWrapper: AppUpdateManagerWrapper
 ) {
-    val onboardingCompleted by dataStoreManager.getFirstLaunchCompleted().collectAsState(initial = null)
-
-    if (onboardingCompleted == null) {
-        return
-    }
+    Log.d("RootNavigation", "RootAppNavigation: Функция вызвана")
+    val onboardingCompleted by dataStoreManager.getFirstLaunchCompleted().collectAsState(initial = false)
+    
+    Log.d("RootNavigation", "onboardingCompleted: $onboardingCompleted")
 
     val rootNavController = rememberNavController()
     val startDestination = if (onboardingCompleted == false) "onboarding" else "main_app"
+    
+    Log.d("RootNavigation", "startDestination: $startDestination")
 
+    Log.d("RootNavigation", "Создание NavHost с startDestination: $startDestination")
+    
     NavHost(
         navController = rootNavController,
         startDestination = startDestination
     ) {
         composable("onboarding") {
+            Log.d("RootNavigation", "Composable 'onboarding' выполняется")
             OnboardingScreen(
                 dataStoreManager = dataStoreManager,
                 onFinishOnboarding = {
+                    Log.d("RootNavigation", "onFinishOnboarding вызван")
                     rootNavController.navigate("main_app") {
                         popUpTo("onboarding") { inclusive = true }
                     }
@@ -107,14 +113,20 @@ private fun OnboardingScreen(
     onFinishOnboarding: () -> Unit,
     rootNavController: NavHostController
 ) {
+    Log.d("OnboardingScreen", "OnboardingScreen: Функция вызвана")
     val context = LocalContext.current
+    Log.d("OnboardingScreen", "Получили context: $context")
+    
     var isChecked by remember { mutableStateOf(false) }
+    Log.d("OnboardingScreen", "isChecked инициализирован: $isChecked")
+    
+    // Добавляем логирование изменения isChecked
+    LaunchedEffect(isChecked) {
+        Log.d("OnboardingScreen", "isChecked изменился на: $isChecked")
+    }
+    
     var hasNotificationPermission by remember { mutableStateOf(hasNotificationPermission(context)) }
-
-    val notificationPermissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestPermission(),
-        onResult = { isGranted -> hasNotificationPermission = isGranted }
-    )
+    Log.d("OnboardingScreen", "hasNotificationPermission инициализировано: $hasNotificationPermission")
 
     // Создание условий завершения с помощью новой системы
     val conditions = rememberOnboardingConditions(
@@ -122,12 +134,30 @@ private fun OnboardingScreen(
         "terms_accepted" to "Принятие условий"
     )
 
-    // Обновление условий при изменении состояний
-    LaunchedEffect(hasNotificationPermission) {
-        conditions.find { it.id == "notification_permission" }?.isMet?.value = hasNotificationPermission
-    }
+    val notificationPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission(),
+        onResult = { isGranted -> 
+            hasNotificationPermission = isGranted 
+            Log.d("OnboardingScreen", "Результат запроса разрешения: $isGranted")
+            // Обновляем условие напрямую
+            conditions.find { it.id == "notification_permission" }?.isMet?.value = isGranted
+        }
+    )
 
+    // Инициализация и обновление условий
+    LaunchedEffect(conditions, hasNotificationPermission, isChecked) {
+        Log.d("OnboardingScreen", "Обновление условий: hasNotificationPermission=$hasNotificationPermission, isChecked=$isChecked")
+        conditions.find { it.id == "notification_permission" }?.isMet?.value = hasNotificationPermission
+        conditions.find { it.id == "terms_accepted" }?.let { condition ->
+            Log.d("OnboardingScreen", "Устанавливаем terms_accepted: ${condition.isMet.value} -> $isChecked")
+            condition.isMet.value = isChecked
+        }
+        Log.d("OnboardingScreen", "Условия установлены")
+    }
+    
+    // Дополнительное обновление при изменении isChecked
     LaunchedEffect(isChecked) {
+        Log.d("OnboardingScreen", "Дополнительное обновление isChecked: $isChecked")
         conditions.find { it.id == "terms_accepted" }?.isMet?.value = isChecked
     }
 
@@ -170,6 +200,9 @@ private fun OnboardingScreen(
                         notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
                     } else {
                         hasNotificationPermission = true
+                        // Прямое обновление через OnboardingManager
+                        Log.d("OnboardingScreen", "Обновляем разрешение через manager")
+                        manager.updateCondition("notification_permission", true)
                     }
                 }
             )
@@ -183,7 +216,15 @@ private fun OnboardingScreen(
             WelcomeAgreementStepContent(
                 navController = rootNavController,
                 isChecked = isChecked,
-                onCheckedChange = { isChecked = it }
+                onCheckedChange = { newValue ->
+                    Log.d("OnboardingScreen", "onCheckedChange вызван: $isChecked -> $newValue")
+                    isChecked = newValue
+                    // Прямое обновление через OnboardingManager
+                    Log.d("OnboardingScreen", "Обновляем условие через manager")
+                    manager.updateCondition("terms_accepted", newValue)
+                    // Также обновляем условие напрямую
+                    conditions.find { it.id == "terms_accepted" }?.isMet?.value = newValue
+                }
             )
         }
     }
@@ -192,6 +233,7 @@ private fun OnboardingScreen(
         steps = steps,
         conditions = conditions,
         onComplete = suspend {
+            Log.d("OnboardingScreen", "OnBoarding завершен, сохраняем состояние")
             dataStoreManager.setFirstLaunchCompleted(true)
             onFinishOnboarding()
         }

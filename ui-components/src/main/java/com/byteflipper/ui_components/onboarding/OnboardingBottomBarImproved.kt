@@ -3,12 +3,17 @@ package com.byteflipper.ui_components.onboarding
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,6 +39,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -47,6 +53,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import com.byteflipper.ui_components.R
+import android.util.Log
 
 /**
  * Улучшенная нижняя панель навигации для OnBoarding с дополнительными возможностями
@@ -81,96 +88,117 @@ fun OnboardingBottomBarImproved(
             )
         }
         
-        // Индикаторы
+        // Индикаторы шагов с красивой анимацией
         OnboardingIndicators(
             totalSteps = totalSteps,
             currentStep = currentStep,
             modifier = Modifier.padding(bottom = 16.dp)
         )
         
-        // Кнопки навигации
+        // Кнопки навигации в правом нижнем углу
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Левая сторона - кнопка "Назад" или "Пропустить"
-            Row {
-                // Кнопка "Назад"
+            // Контейнер для обеих кнопок с фиксированным размером
+            Row(
+                modifier = Modifier.width(124.dp), // Фиксированная ширина: 56 + 12 + 56
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                // Кнопка "Назад" с улучшенной анимацией
                 AnimatedVisibility(
                     visible = currentStep > 0 && (currentOnboardingStep?.showBackButton != false),
-                    enter = fadeIn(animationSpec = tween(200)),
-                    exit = fadeOut(animationSpec = tween(200))
+                    enter = slideInHorizontally(
+                        initialOffsetX = { -it / 2 },
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy,
+                            stiffness = Spring.StiffnessVeryLow
+                        )
+                    ) + fadeIn(
+                        animationSpec = tween(500, delayMillis = 100)
+                    ) + scaleIn(
+                        initialScale = 0.7f,
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioLowBouncy,
+                            stiffness = Spring.StiffnessVeryLow
+                        )
+                    ),
+                    exit = slideOutHorizontally(
+                        targetOffsetX = { -it / 2 },
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioNoBouncy,
+                            stiffness = Spring.StiffnessMedium
+                        )
+                    ) + fadeOut(
+                        animationSpec = tween(250)
+                    ) + scaleOut(
+                        targetScale = 0.8f,
+                        animationSpec = spring(
+                            dampingRatio = Spring.DampingRatioNoBouncy,
+                            stiffness = Spring.StiffnessMedium
+                        )
+                    )
                 ) {
-                    OutlinedButton(
+                    FloatingActionButton(
                         onClick = { manager.previousStep() },
-                        modifier = Modifier.padding(end = 8.dp)
+                        modifier = Modifier.size(56.dp),
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                        contentColor = MaterialTheme.colorScheme.onSurfaceVariant
                     ) {
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp)
+                            contentDescription = stringResource(R.string.onboarding_back),
+                            modifier = Modifier.size(24.dp)
                         )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(stringResource(R.string.onboarding_back))
                     }
                 }
                 
-                // Кнопка "Пропустить"
-                if (showSkipButton && currentOnboardingStep?.isSkippable == true && currentStep < totalSteps - 1) {
-                    TextButton(
-                        onClick = { manager.goToStep(totalSteps - 1) }
-                    ) {
-                        Text("Пропустить")
-                    }
+                // Отступ между кнопками
+                if (currentStep > 0 && (currentOnboardingStep?.showBackButton != false)) {
+                    Spacer(modifier = Modifier.width(12.dp))
                 }
-            }
-            
-            // Правая сторона - кнопка "Далее" или "Завершить"
-            if (currentStep == totalSteps - 1) {
-                // Кнопка "Завершить"
-                FilledIconButton(
-                    onClick = onFinish,
-                    enabled = canFinish,
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.size(width = 120.dp, height = 48.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                
+                // Кнопка "Далее" или "Завершить" - всегда справа
+                if (currentStep == totalSteps - 1) {
+                    // Кнопка "Завершить"
+                    FloatingActionButton(
+                        onClick = {
+                            Log.d("OnboardingBottomBar", "Клик на кнопку Done: canFinish=$canFinish")
+                            if (canFinish) {
+                                Log.d("OnboardingBottomBar", "Вызываем onFinish()")
+                                onFinish()
+                            } else {
+                                Log.d("OnboardingBottomBar", "canFinish=false, не вызываем onFinish()")
+                            }
+                        },
+                        modifier = Modifier.size(56.dp),
+                        containerColor = if (canFinish) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surfaceVariant,
+                        contentColor = if (canFinish) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
                     ) {
                         Icon(
                             Icons.Default.Done,
                             contentDescription = stringResource(R.string.onboarding_finish),
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            stringResource(R.string.onboarding_finish),
-                            fontWeight = FontWeight.Medium
+                            modifier = Modifier.size(24.dp),
+                            tint = if (canFinish) 
+                                MaterialTheme.colorScheme.onPrimary 
+                            else 
+                                MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
                         )
                     }
-                }
-            } else if (currentOnboardingStep?.showNextButton != false) {
-                // Кнопка "Далее"
-                FilledIconButton(
-                    onClick = { manager.nextStep() },
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier.size(width = 100.dp, height = 48.dp)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                } else if (currentOnboardingStep?.showNextButton != false) {
+                    // Кнопка "Далее"
+                    FloatingActionButton(
+                        onClick = { manager.nextStep() },
+                        modifier = Modifier.size(56.dp),
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary
                     ) {
-                        Text(
-                            stringResource(R.string.onboarding_next),
-                            fontWeight = FontWeight.Medium
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
                         Icon(
                             Icons.AutoMirrored.Filled.ArrowForward,
                             contentDescription = stringResource(R.string.onboarding_next),
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(24.dp)
                         )
                     }
                 }

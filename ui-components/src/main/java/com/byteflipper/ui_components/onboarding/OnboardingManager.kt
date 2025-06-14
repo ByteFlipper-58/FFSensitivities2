@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import android.util.Log
 
 /**
  * Централизованный менеджер для управления OnBoarding flow
@@ -90,9 +91,13 @@ class OnboardingManager {
      * Завершение онбординга
      */
     suspend fun finish(onComplete: suspend () -> Unit) {
+        Log.d("OnboardingManager", "finish() вызван, canFinish=${_canFinish.value}")
         if (_canFinish.value) {
+            Log.d("OnboardingManager", "Условия выполнены, завершаем OnBoarding")
             _isCompleted.value = true
             onComplete()
+        } else {
+            Log.w("OnboardingManager", "Условия НЕ выполнены, завершение отменено")
         }
     }
     
@@ -110,18 +115,47 @@ class OnboardingManager {
      */
     private fun updateFinishCondition() {
         val isLastStep = _currentStep.value == _steps.size - 1
-        val allConditionsMet = _finishConditions.all { it.isMet.value }
-        _canFinish.value = isLastStep && allConditionsMet
+        
+        if (isLastStep) {
+            // На последнем шаге проверяем только условия, которые должны быть выполнены для завершения
+            val relevantConditions = _finishConditions.filter { condition ->
+                // Для последнего шага проверяем только условие принятия условий
+                condition.id == "terms_accepted"
+            }
+            val allConditionsMet = relevantConditions.all { it.isMet.value }
+            
+            Log.d("OnboardingManager", "updateFinishCondition: isLastStep=$isLastStep")
+            relevantConditions.forEach { condition ->
+                Log.d("OnboardingManager", "Условие ${condition.id}: ${condition.isMet.value}")
+            }
+            Log.d("OnboardingManager", "canFinish устанавливается в: $allConditionsMet")
+            
+            _canFinish.value = allConditionsMet
+        } else {
+            _canFinish.value = false
+        }
     }
     
     /**
      * Обновление условия (например, при изменении разрешений)
      */
     fun updateCondition(conditionId: String, isMet: Boolean) {
+        Log.d("OnboardingManager", "updateCondition: conditionId=$conditionId, isMet=$isMet")
         _finishConditions.find { it.id == conditionId }?.let { condition ->
+            Log.d("OnboardingManager", "Условие найдено, старое значение: ${condition.isMet.value}")
             condition.isMet.value = isMet
+            Log.d("OnboardingManager", "Условие обновлено на: ${condition.isMet.value}")
             updateFinishCondition()
+        } ?: run {
+            Log.w("OnboardingManager", "Условие с id=$conditionId не найдено")
         }
+    }
+    
+    /**
+     * Принудительное обновление условий завершения
+     */
+    fun forceUpdateFinishCondition() {
+        updateFinishCondition()
     }
 }
 

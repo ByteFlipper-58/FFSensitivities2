@@ -42,7 +42,9 @@ class MainActivity : ComponentActivity() {
             Log.d(TAG, "UMP согласие получено в MainActivity. Можно запрашивать персонализированную рекламу: $canRequestPersonalizedAds")
         }
 
-        splashScreen.setKeepOnScreenCondition { !viewModel.isReady.value }
+        splashScreen.setKeepOnScreenCondition { 
+            !viewModel.isReady.value
+        }
 
         setContent {
             val themeSetting by viewModel.theme.collectAsState()

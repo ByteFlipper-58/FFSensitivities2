@@ -32,6 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import com.byteflipper.ui_components.R
 import kotlinx.coroutines.launch
+import android.util.Log
+import androidx.compose.runtime.remember
 
 /**
  * Улучшенный контейнер для OnBoarding с централизованным управлением
@@ -79,7 +81,6 @@ fun OnboardingContainer(
     if (steps.isEmpty()) {
         return
     }
-    
     Surface(
         modifier = modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -104,7 +105,9 @@ fun OnboardingContainer(
                         coroutineScope.launch {
                             manager.finish(onComplete)
                         }
-                    }
+                    },
+                    showProgress = false,
+                    showSkipButton = false
                 )
             }
         ) { paddingValues ->
@@ -212,16 +215,23 @@ fun SimpleOnboarding(
     modifier: Modifier = Modifier,
     onComplete: suspend () -> Unit = {}
 ) {
-    val manager = rememberOnboardingManager()
+    // Создаем менеджер и сразу инициализируем его
+    val manager = remember {
+        OnboardingManager().apply {
+            setupSteps(steps)
+            setFinishConditions(conditions)
+        }
+    }
     
-    LaunchedEffect(steps, conditions) {
-        manager.setupSteps(steps)
-        manager.setFinishConditions(conditions)
+    // Принудительно обновляем условия завершения при изменении условий
+    LaunchedEffect(conditions.hashCode()) {
+        manager.forceUpdateFinishCondition()
     }
     
     OnboardingContainer(
         manager = manager,
         modifier = modifier,
+        showTitle = false, // Отключаем заголовок с прогрессом
         onComplete = onComplete
     )
 }
