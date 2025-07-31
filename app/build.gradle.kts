@@ -3,46 +3,26 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.google.gms.google.services)
-    id("kotlinx-serialization")
-    id("kotlin-parcelize")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
     id("com.google.firebase.crashlytics")
-    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
+    kotlin("plugin.serialization")
 }
 
 android {
     namespace = "com.byteflipper.ffsensitivities"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.byteflipper.ffsensitivities"
         minSdk = 27
-        targetSdk = 35
-        versionCode = 86
-        versionName = "v3.0.8"
+        targetSdk = 36
+        versionCode = 87
+        versionName = "v3.0.9"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
-        }
-    }
-
-    signingConfigs {
-        create("release") {
-            val keystoreFile = System.getenv("SIGNING_KEYSTORE_PATH")
-            val keystorePassword = System.getenv("SIGNING_KEYSTORE_PASSWORD")
-            val keyAlias = System.getenv("SIGNING_KEY_ALIAS")
-            val keyPassword = System.getenv("SIGNING_KEY_PASSWORD")
-
-            if (keystoreFile != null && File(keystoreFile).exists()) {
-                storeFile = File(keystoreFile)
-                storePassword = keystorePassword
-                this.keyAlias = keyAlias
-                this.keyPassword = keyPassword
-            } else {
-                println("Keystore file not found at path specified by SIGNING_KEYSTORE_PATH or variable not set.")
-            }
         }
     }
 
@@ -54,7 +34,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
         }
         debug {
             //applicationIdSuffix = ".debug"
@@ -65,15 +44,14 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
     }
     buildFeatures {
         compose = true
         buildConfig = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "2.0.0"
     }
     packaging {
         resources {
@@ -88,12 +66,6 @@ android {
     lint {
         checkReleaseBuilds = false
         abortOnError = false
-    }
-
-    secrets {
-        propertiesFileName = "secrets.properties"
-        defaultPropertiesFileName = "local.defaults.properties"
-        ignoreList.add("sdk.*")
     }
 
     bundle {
