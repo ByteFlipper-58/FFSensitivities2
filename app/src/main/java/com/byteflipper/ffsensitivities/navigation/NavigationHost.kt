@@ -11,13 +11,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.AppViewModel
-import com.byteflipper.ffsensitivities.presentation.ui.screens.AboutScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.AdTestScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.about.AboutScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.AdTestScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.DevicesScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.HomeScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.SensitivitiesScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.SettingsScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.devices.DevicesScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.home.HomeScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.sensitivities.SensitivitiesScreen
+import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.SettingsScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.LanguageSettingsScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.PrivacySettingsScreen
 import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.ThemeSettingsScreen
@@ -106,7 +106,7 @@ fun NavigationHost(
                 )
             }
         ) {
-            AboutScreen(navController = navController, modifier = modifier)
+            AboutScreen(navController = navController)
         }
         composable(
             route = NavigationItem.Settings.route,
@@ -135,7 +135,7 @@ fun NavigationHost(
                 )
             }
         ) {
-            SettingsScreen(navController = navController, modifier = modifier, appViewModel = appViewModel)
+            SettingsScreen(navController = navController, appViewModel = appViewModel)
         }
         composable(
             route = Screen.ThemeSettings.route,
@@ -195,7 +195,6 @@ fun NavigationHost(
             val name = backStackEntry.arguments?.getString(Screen.Devices.ArgName).orEmpty()
             val model = backStackEntry.arguments?.getString(Screen.Devices.ArgModel).orEmpty()
             DevicesScreen(
-                modifier = modifier,
                 navController = navController,
                 name = name,
                 model = model

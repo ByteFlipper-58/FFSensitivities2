@@ -107,8 +107,12 @@
     <string name="switch_dynamic_colors_are_not_supported">Dynamic colors are not supported</string>
     <!-- Language -->
     <string name="change_language">Change language</string>
+    <string name="change_language_description">Select interface language</string>
     <string name="selected">Selected</string>
     <string name="privacy_settings_card_description">Manage your advertising consent options</string> <!-- New -->
+    <!-- Ad Test -->
+    <string name="ad_test_title">Ad Test</string>
+    <string name="ad_test_description">Testing advertising blocks functionality</string>
     <!-- Other Settings -->
     <string name="improve_translation">Improve Translation</string>
 

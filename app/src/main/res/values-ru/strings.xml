@@ -107,7 +107,11 @@
     <string name="switch_dynamic_colors_are_not_supported">Динамические цвета не поддерживаются</string>
     <!-- Language -->
     <string name="change_language">Сменить язык</string>
+    <string name="change_language_description">Выбрать язык интерфейса</string>
     <string name="selected">Выбрано</string>
+    <!-- Ad Test -->
+    <string name="ad_test_title">Тест рекламы</string>
+    <string name="ad_test_description">Тестирование работы рекламных блоков</string>
     <!-- Other Settings -->
     <string name="improve_translation">Улучшить перевод</string>
 
