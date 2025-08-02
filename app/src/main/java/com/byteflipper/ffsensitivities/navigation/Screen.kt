@@ -7,7 +7,6 @@ import androidx.navigation.navArgument
  * Sealed class to define navigation routes for better type safety and organization.
  */
 sealed class Screen(val route: String) {
-    // Bottom Navigation Items (referencing NavigationItem for consistency)
     object Home : Screen(NavigationItem.Home.route)
     object About : Screen(NavigationItem.About.route)
     object Settings : Screen(NavigationItem.Settings.route)

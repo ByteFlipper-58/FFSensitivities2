@@ -36,11 +36,9 @@ fun BottomNavigationBar(
         NavigationItem.About
     )
 
-    // Get the current back stack entry to determine the selected item
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    // Build the bottom navigation bar UI
     NavigationBar {
         items.forEach { item ->
             val isSelected = currentDestination?.hierarchy?.any {
@@ -77,31 +75,28 @@ fun BottomNavigationBar(
                                 restoreState = true
                             }
                         }
-                        return@NavigationBarItem // Exit after handling this specific case
+                        return@NavigationBarItem
                     }
 
-                    // --- Handle clicking the ABOUT icon ---
                     if (item == NavigationItem.About) {
-                        if (currentDestination?.route != NavigationItem.About.route) { // Avoid re-navigating if already on About
+                        if (currentDestination?.route != NavigationItem.About.route) {
                             navController.navigate(NavigationItem.About.route) {
                                 launchSingleTop = true
-                                restoreState = false // Show fresh
-                                // No popUpTo, preserve back stack
+                                restoreState = false
                             }
                         }
-                        return@NavigationBarItem // Exit after handling About click
+                        return@NavigationBarItem
                     }
 
                     // --- Standard Home click behavior (not from About) ---
                     if (item == NavigationItem.Home) {
                         if (!isSelected) {
-                             // Navigate TO Home tab (from other future tabs)
                              navController.navigate(NavigationItem.Home.route) {
                                  launchSingleTop = true
                                  popUpTo(startDestinationId) { saveState = true }
                                  restoreState = true
                              }
-                        } else { // Home tab is already selected
+                        } else {
                              // If not already on the root Home screen (e.g., on Devices/Sens), pop back to the root Home screen.
                              if (currentDestination?.route != NavigationItem.Home.route) {
                                  navController.popBackStack(NavigationItem.Home.route, inclusive = false, saveState = false)

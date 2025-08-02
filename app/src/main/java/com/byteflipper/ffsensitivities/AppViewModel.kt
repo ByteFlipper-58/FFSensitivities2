@@ -22,7 +22,7 @@ import android.util.Log
 @HiltViewModel
 class AppViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
-    private val dataStoreManager: DataStoreManager,
+    val dataStoreManager: DataStoreManager,
     val consentManager: ConsentManager
 ) : AndroidViewModel(context.applicationContext as Application) {
 
@@ -64,11 +64,7 @@ class AppViewModel @Inject constructor(
     val isReady: StateFlow<Boolean> = _settingsLoaded.asStateFlow()
 
     init {
-        // Coroutine to wait for actual settings load
         viewModelScope.launch {
-            // No need to load/apply language here, AppLocalesMetadataHolderService handles it.
-
-            // Wait for other settings
             combine(
                 dataStoreManager.getTheme(),
                 dataStoreManager.getDynamicColor(),
@@ -77,7 +73,6 @@ class AppViewModel @Inject constructor(
                 true
             }.first { it }
 
-            // Mark settings as loaded
             _settingsLoaded.value = true
         }
     }
@@ -106,9 +101,8 @@ class AppViewModel @Inject constructor(
         }
     }
 
-    fun setLanguage(languageCode: String?) { // languageCode is "en", "ru", "system", etc.
+    fun setLanguage(languageCode: String?) {
         appLocaleManager.changeLanguage(context, languageCode)
-        // Update the state flow directly with the intended value ("system" if null)
         _currentLanguageCode.value = languageCode ?: "system"
     }
 }
