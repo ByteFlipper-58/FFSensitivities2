@@ -3,9 +3,8 @@ package com.byteflipper.ffsensitivities
 import android.app.Application
 import android.util.Log
 import com.byteflipper.crashhandler.CrashHandler
-import com.byteflipper.ffsensitivities.ads.ConsentManager
+import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
-import com.byteflipper.ffsensitivities.ads.repository.AdRepository
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import dagger.hilt.android.HiltAndroidApp
@@ -17,8 +16,7 @@ import javax.inject.Inject
 class MyApplication : Application() {
 
     @Inject lateinit var dataStoreManager: DataStoreManager
-    @Inject lateinit var consentManager: ConsentManager
-    @Inject lateinit var adRepository: AdRepository
+    @Inject lateinit var adManager: AdManager
     @Inject lateinit var appOpenAdObserver: AppOpenAdLifecycleObserver
     @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
 
@@ -32,14 +30,14 @@ class MyApplication : Application() {
 
     override fun onTerminate() {
         super.onTerminate()
-        Log.d("MyApplication", "App terminated - AdRepository state preserved")
+        Log.d("MyApplication", "App terminated - AdManager state preserved")
     }
 
     /**
      * Инициализирует рекламный SDK и связанные компоненты
      */
     private fun initializeAdsSDK() {
-        consentManager.initializeMobileAdsSdk {
+        adManager.initializeMobileAdsSdk {
         }
     }
 

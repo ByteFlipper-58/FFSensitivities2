@@ -14,14 +14,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
 import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorStateComponent
 import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorType
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.components.HomeScreenHeader
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.components.ManufacturerGrid
+import com.byteflipper.ffsensitivities.presentation.home.components.HomeScreenHeader
+import com.byteflipper.ffsensitivities.presentation.home.components.ManufacturerGrid
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.shimmerItems
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
@@ -37,7 +37,7 @@ fun HomeScreenContent(
     onRequestSent: () -> Unit,
     onRetry: () -> Unit,
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
     // Заголовок с карточкой запроса

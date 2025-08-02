@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdType
-import com.byteflipper.ffsensitivities.ads.repository.AdRepository
+import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +24,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class AppOpenAdLifecycleObserver @Inject constructor(
-    private val adRepository: AdRepository,
+    private val adManager: AdManager,
     @ApplicationScope private val coroutineScope: CoroutineScope
 ) : DefaultLifecycleObserver, Application.ActivityLifecycleCallbacks {
 
@@ -73,12 +73,12 @@ class AppOpenAdLifecycleObserver @Inject constructor(
         }
 
         // Проверяем, готова ли реклама
-        if (!adRepository.isAdReady(AdType.APP_OPEN, AdLocation.APP_STARTUP)) {
+        if (!adManager.isAdReady(AdType.APP_OPEN, AdLocation.APP_STARTUP)) {
             Log.d(TAG, "App Open ad not ready")
             // Пытаемся предзагрузить в фоновом потоке
             coroutineScope.launch {
                 try {
-                    adRepository.loadAd(AdType.APP_OPEN, AdLocation.APP_STARTUP)
+                    adManager.loadAd(AdType.APP_OPEN, AdLocation.APP_STARTUP)
                 } catch (e: Exception) {
                     Log.e(TAG, "Failed to load App Open ad", e)
                 }
@@ -93,7 +93,7 @@ class AppOpenAdLifecycleObserver @Inject constructor(
         coroutineScope.launch {
             try {
                 withContext(Dispatchers.Main) {
-                    adRepository.showAd(
+                    adManager.showAd(
                         adType = AdType.APP_OPEN,
                         location = AdLocation.APP_STARTUP,
                         activity = activity

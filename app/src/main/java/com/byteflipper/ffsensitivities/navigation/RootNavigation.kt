@@ -29,7 +29,7 @@ import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
@@ -316,7 +316,7 @@ private fun hasNotificationPermission(context: android.content.Context): Boolean
 private fun AdBannerContainer(
     currentRoute: String?,
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+            adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val adLocation = when {
         currentRoute == "home" -> AdLocation.HOME_SCREEN

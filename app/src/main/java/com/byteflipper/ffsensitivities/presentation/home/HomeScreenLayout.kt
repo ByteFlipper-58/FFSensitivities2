@@ -11,11 +11,11 @@ import android.app.Activity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.home.HomeScreenViewModel
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.dialogs.HomeScreenDialogs
+import com.byteflipper.ffsensitivities.presentation.home.dialogs.HomeScreenDialogs
 import io.ktor.client.HttpClient
 
 @Composable
@@ -26,7 +26,7 @@ fun HomeScreenLayout(
     manufacturerViewModel: ManufacturerViewModel = viewModel(
         factory = ManufacturerViewModel.Factory(repository)
     ),
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val uiState = manufacturerViewModel.uiState.collectAsState()
     val isRequestSent by homeViewModel.isRequestSent.collectAsState()

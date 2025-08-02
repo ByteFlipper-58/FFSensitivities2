@@ -27,17 +27,17 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
-import com.byteflipper.ffsensitivities.presentation.ui.screens.sensitivities.components.SensitivitiesCard
+import com.byteflipper.ffsensitivities.presentation.sensitivities.components.SensitivitiesCard
 
 @Composable
 fun SensitivitiesScreenContent(
     deviceModelState: UiState<DeviceModel>,
-    adViewModel: UnifiedAdViewModel
+    adViewModel: SimpleAdViewModel
 ) {
     when (deviceModelState) {
         is UiState.Loading -> {

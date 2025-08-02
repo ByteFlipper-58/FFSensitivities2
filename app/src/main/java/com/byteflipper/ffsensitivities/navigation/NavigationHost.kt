@@ -11,16 +11,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.AppViewModel
-import com.byteflipper.ffsensitivities.presentation.ui.screens.about.AboutScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.AdTestScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.BugReportScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.devices.DevicesScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.HomeScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.sensitivities.SensitivitiesScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.SettingsScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.LanguageSettingsScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.PrivacySettingsScreen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.ThemeSettingsScreen
+import com.byteflipper.ffsensitivities.presentation.about.AboutScreen
+import com.byteflipper.ffsensitivities.presentation.adtest.AdTestScreen
+import com.byteflipper.ffsensitivities.presentation.bugreport.BugReportScreen
+import com.byteflipper.ffsensitivities.presentation.devices.DevicesScreen
+import com.byteflipper.ffsensitivities.presentation.home.HomeScreen
+import com.byteflipper.ffsensitivities.presentation.sensitivities.SensitivitiesScreen
+import com.byteflipper.ffsensitivities.presentation.settings.SettingsScreen
+import com.byteflipper.ffsensitivities.presentation.settings.LanguageSettingsScreen
+import com.byteflipper.ffsensitivities.presentation.settings.PrivacySettingsScreen
+import com.byteflipper.ffsensitivities.presentation.settings.ThemeSettingsScreen
 
 
 /**

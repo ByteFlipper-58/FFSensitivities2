@@ -2,7 +2,7 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel.bugreport
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.events.BugReportScreenEvent
+import com.byteflipper.ffsensitivities.presentation.bugreport.events.BugReportScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

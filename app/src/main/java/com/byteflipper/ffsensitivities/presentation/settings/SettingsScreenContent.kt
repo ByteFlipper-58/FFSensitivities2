@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.navigation.Screen
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.components.SettingsCategoryCard
+import com.byteflipper.ffsensitivities.presentation.settings.components.SettingsCategoryCard
 
 @Composable
 fun SettingsScreenContent(

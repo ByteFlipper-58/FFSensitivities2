@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
@@ -19,7 +19,7 @@ import android.app.Activity
 fun ManufacturerGrid(
     manufacturers: List<Manufacturer>,
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
     LazyVerticalGrid(

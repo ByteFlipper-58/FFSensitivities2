@@ -4,12 +4,11 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.ads.ConsentManager // Import ConsentManager
-// import com.byteflipper.ffsensitivities.ads.InterstitialAdManager // Remove InterstitialAdManager import
+import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
-import com.byteflipper.ffsensitivities.manager.AppLocaleManager // Import AppLocaleManager
+import com.byteflipper.ffsensitivities.manager.AppLocaleManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext // Import ApplicationContext
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.*
@@ -18,12 +17,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import android.util.Log
 
-
 @HiltViewModel
 class AppViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     val dataStoreManager: DataStoreManager,
-    val consentManager: ConsentManager
+    val adManager: AdManager
 ) : AndroidViewModel(context.applicationContext as Application) {
 
     private val appLocaleManager = AppLocaleManager()

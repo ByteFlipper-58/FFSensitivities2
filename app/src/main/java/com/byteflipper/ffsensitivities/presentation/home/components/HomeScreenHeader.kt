@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.components.IconWithTextRow
+import com.byteflipper.ffsensitivities.presentation.home.components.IconWithTextRow
 
 @Composable
 fun HomeScreenHeader(

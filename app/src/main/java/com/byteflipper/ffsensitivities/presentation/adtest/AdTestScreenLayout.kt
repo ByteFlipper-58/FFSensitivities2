@@ -8,12 +8,12 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 
 @Composable
 fun AdTestScreenLayout(
     navController: NavController,
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val activity = LocalActivity.current as? Activity
     val adReadyState by adViewModel.adReadyState.collectAsState()

@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.navigation.Screen
 
@@ -24,7 +24,7 @@ import com.byteflipper.ffsensitivities.navigation.Screen
 fun DeviceCard(
     device: DeviceModel,
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
     OutlinedCard(

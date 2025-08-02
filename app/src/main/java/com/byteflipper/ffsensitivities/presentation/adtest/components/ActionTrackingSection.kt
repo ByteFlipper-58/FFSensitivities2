@@ -15,11 +15,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 
 @Composable
 fun ActionTrackingSection(
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
     AdSectionCard(

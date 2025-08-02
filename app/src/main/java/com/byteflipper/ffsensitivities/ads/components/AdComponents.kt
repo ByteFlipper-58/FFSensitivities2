@@ -17,7 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.core.BannerAdProvider
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 
 /**
  * Компонент баннерной рекламы для Compose
@@ -26,7 +26,7 @@ import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
 fun AdBanner(
     location: AdLocation = AdLocation.MAIN_BANNER,
     modifier: Modifier = Modifier,
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val isInEditMode = LocalInspectionMode.current
     val context = LocalContext.current
@@ -89,7 +89,7 @@ private fun PreviewAdBanner(
 fun AdStatusIndicator(
     location: AdLocation,
     modifier: Modifier = Modifier,
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val adReadyState by adViewModel.adReadyState.collectAsState()
     val isReady = adReadyState[location] ?: false
@@ -127,7 +127,7 @@ fun AdStatusIndicator(
 @Composable
 fun getDynamicBottomPadding(
     location: AdLocation,
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ): Dp {
     val adReadyState by adViewModel.adReadyState.collectAsState()
     val isAdReady = adReadyState[location] ?: false

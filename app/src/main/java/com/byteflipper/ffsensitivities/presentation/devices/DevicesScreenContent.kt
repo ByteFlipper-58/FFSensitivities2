@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.ShimmerLazyItem
@@ -18,14 +18,14 @@ import com.byteflipper.ffsensitivities.presentation.ui.components.ErrorType
 import com.byteflipper.ffsensitivities.presentation.viewmodel.devices.DevicesScreenViewModel
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
-import com.byteflipper.ffsensitivities.presentation.ui.screens.devices.components.DeviceCard
+import com.byteflipper.ffsensitivities.presentation.devices.components.DeviceCard
 import android.app.Activity
 
 @Composable
 fun DevicesScreenContent(
     uiState: UiState<List<DeviceModel>>,
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?,
     model: String?,
     deviceViewModel: DevicesScreenViewModel

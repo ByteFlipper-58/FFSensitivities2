@@ -2,7 +2,7 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.presentation.ui.screens.settings.events.SettingsScreenEvent
+import com.byteflipper.ffsensitivities.presentation.settings.events.SettingsScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

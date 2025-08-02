@@ -43,10 +43,10 @@ fun PrivacySettingsScreen(
 ) {
     val context = LocalContext.current
     val activity = context as? Activity
-    val consentManager = appViewModel.consentManager
+    val adManager = appViewModel.adManager
 
     // State to potentially update UI based on form dismissal, though the button visibility is primary
-    var privacyOptionsRequired by remember { mutableStateOf(activity != null && consentManager.isPrivacyOptionsRequired) }
+    var privacyOptionsRequired by remember { mutableStateOf(activity != null && adManager.isPrivacyOptionsRequired) }
 
     Scaffold(
         topBar = {
@@ -88,14 +88,14 @@ fun PrivacySettingsScreen(
                             .padding(horizontal = 16.dp) // Add padding to match other items if needed
                             .clip(MaterialTheme.shapes.medium) // Optional: Add clipping for ripple effect
                             .clickable {
-                                consentManager.showPrivacyOptionsForm(activity) { formError ->
+                                adManager.showPrivacyOptionsForm(activity) { formError ->
                                     if (formError != null) {
                                         // Handle error, e.g., show a Snackbar
                                         // Log.e("PrivacySettingsScreen", "Error showing privacy options form: ${formError.message}")
                                     } else {
-                                        // Form dismissed, ConsentManager already updated SDKs.
-                                        // Re-check requirement status after dismissal if necessary for UI updates.
-                                        privacyOptionsRequired = consentManager.isPrivacyOptionsRequired
+                                        // Form dismissed, AdManager already updated SDKs.
+// Re-check requirement status after dismissal if necessary for UI updates.
+privacyOptionsRequired = adManager.isPrivacyOptionsRequired
                                     }
                                 }
                             }

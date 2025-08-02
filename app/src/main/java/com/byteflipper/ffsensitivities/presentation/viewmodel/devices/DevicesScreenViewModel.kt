@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.byteflipper.ffsensitivities.data.repository.DevicesRepository
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
-import com.byteflipper.ffsensitivities.presentation.ui.screens.devices.events.DevicesScreenEvent
+import com.byteflipper.ffsensitivities.presentation.devices.events.DevicesScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

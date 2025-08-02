@@ -17,10 +17,10 @@ fun SettingsScreenLayout(
     val context = LocalContext.current
     val activity = context as? Activity
 
-    val consentManager = appViewModel.consentManager
-    val privacyOptionsRequired = remember(activity, consentManager) {
-        activity != null && consentManager.isPrivacyOptionsRequired
-    }
+    val adManager = appViewModel.adManager
+    val privacyOptionsRequired = remember(activity, adManager) {
+    activity != null && adManager.isPrivacyOptionsRequired
+}
 
     SettingsScreenScaffold(
         navController = navController

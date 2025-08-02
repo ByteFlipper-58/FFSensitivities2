@@ -9,7 +9,7 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.viewmodel.DeviceViewModel
@@ -20,7 +20,7 @@ fun SensitivitiesScreenLayout(
     manufacturerArg: String?,
     modelNameArg: String?,
     deviceViewModel: DeviceViewModel = hiltViewModel(),
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val manufacturer = remember(manufacturerArg) { manufacturerArg?.let { Uri.decode(it) } ?: "" }
     val modelName = remember(modelNameArg) { modelNameArg?.let { Uri.decode(it) } ?: "" }

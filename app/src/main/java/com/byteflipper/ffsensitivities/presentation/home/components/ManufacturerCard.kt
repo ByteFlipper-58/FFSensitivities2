@@ -13,7 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
@@ -23,7 +23,7 @@ import android.app.Activity
 fun ManufacturerCard(
     manufacturer: Manufacturer, 
     navController: NavHostController,
-    adViewModel: UnifiedAdViewModel = hiltViewModel(),
+    adViewModel: SimpleAdViewModel = hiltViewModel(),
     activity: Activity?
 ) {
     OutlinedCard(

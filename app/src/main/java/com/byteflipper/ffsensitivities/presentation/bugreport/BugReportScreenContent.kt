@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.BugReportHeader
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.CategorySelector
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.DescriptionInput
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.InfoNote
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.SubmissionStatusOverlay
-import com.byteflipper.ffsensitivities.presentation.ui.screens.bugreport.components.SubmitButton
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.BugReportHeader
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.CategorySelector
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.DescriptionInput
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.InfoNote
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.SubmissionStatusOverlay
+import com.byteflipper.ffsensitivities.presentation.bugreport.components.SubmitButton
 
 @Composable
 fun BugReportScreenContent(

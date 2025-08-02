@@ -3,7 +3,7 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
-import com.byteflipper.ffsensitivities.presentation.ui.screens.home.events.HomeScreenEvent
+import com.byteflipper.ffsensitivities.presentation.home.events.HomeScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

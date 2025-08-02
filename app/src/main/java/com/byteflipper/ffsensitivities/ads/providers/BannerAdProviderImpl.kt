@@ -4,53 +4,36 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.View
-import com.byteflipper.ffsensitivities.ads.ConsentManager
 import com.byteflipper.ffsensitivities.ads.core.*
+import com.byteflipper.ffsensitivities.ads.AdManager
 import com.google.android.gms.ads.*
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 
 class BannerAdProviderImpl(
-    private val context: Context,
-    override val config: AdConfig,
-    private val consentManager: ConsentManager
-) : BannerAdProvider {
+    context: Context,
+    config: AdConfig,
+    adManager: AdManager
+) : BaseAdProvider<AdView>(context, config, adManager), BannerAdProvider {
     
-    private companion object {
-        private const val TAG = "BannerAdProvider"
-    }
+    override val TAG = "BannerAdProvider"
 
-    private val _adState = MutableStateFlow<AdState>(AdState.Initial)
-    override val adState: StateFlow<AdState> = _adState.asStateFlow()
-
-    override suspend fun load() {
+    override suspend fun loadAdInternal() {
         // Баннерная реклама загружается при создании AdView
         Log.d(TAG, "Banner ad loading handled by AdView creation")
     }
 
-    override suspend fun show(activity: Activity): AdResult {
+    override suspend fun showAdInternal(activity: Activity): AdResult {
         // Баннерная реклама показывается через createAdView
         Log.d(TAG, "Banner ad showing handled by AdView")
         return AdResult(config.adType, true)
     }
 
-    override fun isReady(): Boolean {
-        return consentManager.canRequestPersonalizedAds()
-    }
-
-    override fun destroy() {
-        _adState.value = AdState.Initial
-        Log.d(TAG, "Banner ad provider destroyed")
-    }
-
     override fun createAdView(activity: Activity): View? {
-        if (!consentManager.canRequestPersonalizedAds()) {
+        if (!adManager.canRequestPersonalizedAds()) {
             Log.w(TAG, "Cannot create banner ad - no consent")
             return null
         }
 
-        _adState.value = AdState.Loading
+        updateAdState(AdState.Loading)
 
         try {
             val displayMetrics = activity.resources.displayMetrics
@@ -70,22 +53,22 @@ class BannerAdProviderImpl(
                 adListener = object : AdListener() {
                     override fun onAdLoaded() {
                         Log.d(TAG, "Banner ad loaded successfully")
-                        _adState.value = AdState.Loaded
+                        updateAdState(AdState.Loaded)
                     }
 
                     override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                         Log.e(TAG, "Failed to load banner ad: ${loadAdError.message}")
-                        _adState.value = AdState.LoadFailed(loadAdError)
+                        updateAdState(AdState.LoadFailed(loadAdError))
                     }
 
                     override fun onAdOpened() {
                         Log.d(TAG, "Banner ad opened")
-                        _adState.value = AdState.Showing
+                        updateAdState(AdState.Showing)
                     }
 
                     override fun onAdClosed() {
                         Log.d(TAG, "Banner ad closed")
-                        _adState.value = AdState.Dismissed
+                        updateAdState(AdState.Dismissed)
                     }
 
                     override fun onAdClicked() {
@@ -97,13 +80,13 @@ class BannerAdProviderImpl(
                     }
                 }
 
-                loadAd(AdRequest.Builder().build())
+                loadAd(createAdRequest())
             }
 
             return adView
         } catch (e: Exception) {
             Log.e(TAG, "Error creating banner ad view", e)
-            _adState.value = AdState.Initial
+            updateAdState(AdState.Initial)
             return null
         }
     }

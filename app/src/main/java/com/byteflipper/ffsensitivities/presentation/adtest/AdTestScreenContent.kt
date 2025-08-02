@@ -15,18 +15,18 @@ import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdResult
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.AdStatusCard
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.AdResultCard
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.AppOpenAdSection
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.InterstitialAdSection
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.RewardedAdSection
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.ActionTrackingSection
-import com.byteflipper.ffsensitivities.presentation.ui.screens.adtest.components.FrequencyInfoCard
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
+import com.byteflipper.ffsensitivities.presentation.adtest.components.AdStatusCard
+import com.byteflipper.ffsensitivities.presentation.adtest.components.AdResultCard
+import com.byteflipper.ffsensitivities.presentation.adtest.components.AppOpenAdSection
+import com.byteflipper.ffsensitivities.presentation.adtest.components.InterstitialAdSection
+import com.byteflipper.ffsensitivities.presentation.adtest.components.RewardedAdSection
+import com.byteflipper.ffsensitivities.presentation.adtest.components.ActionTrackingSection
+import com.byteflipper.ffsensitivities.presentation.adtest.components.FrequencyInfoCard
 
 @Composable
 fun AdTestScreenContent(
-    adViewModel: UnifiedAdViewModel,
+    adViewModel: SimpleAdViewModel,
     activity: Activity?,
     adReadyState: Map<AdLocation, Boolean>,
     lastAdResult: AdResult?

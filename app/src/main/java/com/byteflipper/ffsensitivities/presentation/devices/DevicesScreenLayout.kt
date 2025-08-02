@@ -8,7 +8,7 @@ import androidx.activity.compose.LocalActivity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import android.app.Activity
-import com.byteflipper.ffsensitivities.ads.viewmodel.UnifiedAdViewModel
+import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.devices.DevicesScreenViewModel
 
 @Composable
@@ -17,7 +17,7 @@ fun DevicesScreenLayout(
     name: String?,
     model: String?,
     deviceViewModel: DevicesScreenViewModel = hiltViewModel(),
-    adViewModel: UnifiedAdViewModel = hiltViewModel()
+    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val uiState by deviceViewModel.uiState.collectAsState()
     val activity = LocalActivity.current as? Activity
