@@ -280,7 +280,6 @@ private fun MainAppScaffold(
     }
 
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         bottomBar = {
             if (isBottomBarVisible) {
@@ -292,15 +291,14 @@ private fun MainAppScaffold(
                     BottomNavigationBar(navController = mainAppNavController)
                 }
             }
-        },
-        content = { innerPadding: PaddingValues ->
-            NavigationHost(
-                navController = mainAppNavController,
-                modifier = Modifier.fillMaxSize(),
-                appViewModel = appViewModel
-            )
         }
-    )
+    ) { innerPadding: PaddingValues ->
+        NavigationHost(
+            navController = mainAppNavController,
+            modifier = Modifier.fillMaxSize(),
+            appViewModel = appViewModel
+        )
+    }
 }
 
 private fun hasNotificationPermission(context: android.content.Context): Boolean {

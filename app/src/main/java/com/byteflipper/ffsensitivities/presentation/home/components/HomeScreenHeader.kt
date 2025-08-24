@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ShapeDefaults
+import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -24,6 +25,12 @@ fun HomeScreenHeader(
                 onCardClick()
             },
         shape = ShapeDefaults.Large,
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = androidx.compose.material3.MaterialTheme.colorScheme.surfaceContainer
+        ),
+        elevation = CardDefaults.elevatedCardElevation(
+            defaultElevation = 2.dp
+        )
     ) {
         IconWithTextRow(
             text = if (isRequestSent) 

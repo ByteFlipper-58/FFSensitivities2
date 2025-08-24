@@ -2,9 +2,9 @@ package com.byteflipper.ffsensitivities.presentation.home.components
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -15,9 +15,9 @@ import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import android.app.Activity
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 
 @Composable
 fun ManufacturerGrid(
@@ -27,14 +27,14 @@ fun ManufacturerGrid(
     activity: Activity?,
     header: (@Composable () -> Unit)? = null
 ) {
-    val topPadding = if (header != null) 0.dp else 10.dp
+    val topPadding = if (header != null) 0.dp else 16.dp
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxWidth(),
         contentPadding = PaddingValues(
-            start = 10.dp,
-            end = 10.dp,
+            start = 16.dp,
+            end = 16.dp,
             top = topPadding,
             bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
         )

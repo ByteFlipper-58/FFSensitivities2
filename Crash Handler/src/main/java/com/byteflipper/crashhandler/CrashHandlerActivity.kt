@@ -6,13 +6,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.view.WindowCompat
 import java.io.PrintWriter
 import java.io.StringWriter
 
 class CrashHandlerActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Включаем Edge-to-Edge дизайн
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        
+        // Настраиваем Window для правильной работы с системными панелями
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         val crashInfo = intent.getStringExtra(EXTRA_CRASH_INFO) ?: "Unknown error occurred"
         val crashStackTrace = intent.getStringExtra(EXTRA_STACK_TRACE) ?: ""

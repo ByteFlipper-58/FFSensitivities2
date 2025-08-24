@@ -2,9 +2,7 @@ package com.byteflipper.ffsensitivities.presentation.home
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -22,7 +20,9 @@ import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import android.app.Activity
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 
 @Composable
 fun HomeScreenContent(
@@ -43,8 +43,8 @@ fun HomeScreenContent(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = PaddingValues(
-                    start = 10.dp,
-                    end = 10.dp,
+                    start = 16.dp,
+                    end = 16.dp,
                     top = 0.dp,
                     bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
                 )
@@ -65,7 +65,7 @@ fun HomeScreenContent(
                     }
                 }
                 item(span = { GridItemSpan(maxLineSpan) }) {
-                    androidx.compose.foundation.layout.Spacer(modifier = androidx.compose.ui.Modifier.padding(top = 16.dp))
+                    androidx.compose.foundation.layout.Spacer(modifier = Modifier.padding(top = 16.dp))
                 }
                 shimmerItems(14) {
                     ShimmerLazyItem()

@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
@@ -33,7 +34,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        
+        // Включаем Edge-to-Edge дизайн
         enableEdgeToEdge()
+        
+        // Настраиваем Window для правильной работы с системными панелями
+        // Это особенно важно для Android 15+ (API 35)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        
         appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
 
         adManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
