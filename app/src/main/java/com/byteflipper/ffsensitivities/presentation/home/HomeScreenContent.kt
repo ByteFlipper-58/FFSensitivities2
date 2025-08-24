@@ -1,19 +1,14 @@
 package com.byteflipper.ffsensitivities.presentation.home
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ShapeDefaults
+import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
@@ -27,6 +22,7 @@ import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import android.app.Activity
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 
 @Composable
 fun HomeScreenContent(
@@ -40,17 +36,6 @@ fun HomeScreenContent(
     adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
-    // Заголовок с карточкой запроса
-    HomeScreenHeader(
-        isRequestSent = isRequestSent,
-        onCardClick = {
-            onShowDialogChange(true)
-            activity?.let { 
-                adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
-            }
-        }
-    )
-
     // Основной контент в зависимости от состояния
     when (uiState) {
         is UiState.Loading -> {
@@ -60,10 +45,28 @@ fun HomeScreenContent(
                 contentPadding = PaddingValues(
                     start = 10.dp,
                     end = 10.dp,
-                    top = 10.dp,
+                    top = 0.dp,
                     bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
                 )
             ) {
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    androidx.compose.foundation.layout.Box(
+                        modifier = Modifier.padding(horizontal = 4.dp)
+                    ) {
+                        HomeScreenHeader(
+                            isRequestSent = isRequestSent,
+                            onCardClick = {
+                                onShowDialogChange(true)
+                                activity?.let { 
+                                    adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
+                                }
+                            }
+                        )
+                    }
+                }
+                item(span = { GridItemSpan(maxLineSpan) }) {
+                    androidx.compose.foundation.layout.Spacer(modifier = androidx.compose.ui.Modifier.padding(top = 16.dp))
+                }
                 shimmerItems(14) {
                     ShimmerLazyItem()
                 }
@@ -76,7 +79,18 @@ fun HomeScreenContent(
                 manufacturers = manufacturers,
                 navController = navController,
                 adViewModel = adViewModel,
-                activity = activity
+                activity = activity,
+                header = {
+                    HomeScreenHeader(
+                        isRequestSent = isRequestSent,
+                        onCardClick = {
+                            onShowDialogChange(true)
+                            activity?.let { 
+                                adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
+                            }
+                        }
+                    )
+                }
             )
         }
         

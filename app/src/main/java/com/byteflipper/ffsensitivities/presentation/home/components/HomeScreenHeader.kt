@@ -20,7 +20,6 @@ fun HomeScreenHeader(
     ElevatedCard(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(14.dp, 8.dp, 14.dp, 0.dp)
             .clickable(enabled = !isRequestSent) {
                 onCardClick()
             },
