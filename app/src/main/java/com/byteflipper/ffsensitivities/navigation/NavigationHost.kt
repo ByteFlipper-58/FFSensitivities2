@@ -43,7 +43,7 @@ fun NavigationHost(
 
     NavHost(
         navController = navController,
-        startDestination = NavigationItem.Home.route,
+        startDestination = Screen.Home.route,
         modifier = modifier,
         enterTransition = { EnterTransition.None },
         exitTransition = { ExitTransition.None },
@@ -51,7 +51,7 @@ fun NavigationHost(
         popExitTransition = { ExitTransition.None }
     ) {
         composable(
-            route = NavigationItem.Home.route,
+            route = Screen.Home.route,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -80,7 +80,7 @@ fun NavigationHost(
             HomeScreen(navController)
         }
         composable(
-            route = NavigationItem.About.route,
+            route = Screen.About.route,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -109,7 +109,7 @@ fun NavigationHost(
             AboutScreen(navController = navController)
         }
         composable(
-            route = NavigationItem.Settings.route,
+            route = Screen.Settings.route,
             enterTransition = {
                 slideIntoContainer(
                     AnimatedContentTransitionScope.SlideDirection.Start,
@@ -267,7 +267,7 @@ fun NavigationHost(
         }
         
         composable(
-            route = "ad_test",
+            route = Route.AD_TEST,
             enterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             exitTransition = { slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec) },
             popEnterTransition = { slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec) },

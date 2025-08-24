@@ -77,7 +77,7 @@ android {
 
 dependencies {
     implementation(project(":ui-components"))
-    implementation(project(":Crash Handler"))
+    implementation(project(":crash-handler"))
 
     // AndroidX Core
     implementation(libs.androidx.appcompat)

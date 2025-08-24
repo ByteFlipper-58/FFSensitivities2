@@ -9,23 +9,17 @@ import androidx.compose.runtime.setValue
 import androidx.activity.compose.LocalActivity
 import android.app.Activity
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
-import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.home.HomeScreenViewModel
 import com.byteflipper.ffsensitivities.presentation.home.dialogs.HomeScreenDialogs
-import io.ktor.client.HttpClient
 
 @Composable
 fun HomeScreenLayout(
     navController: NavHostController,
-    repository: ManufacturerRepository = ManufacturerRepository(HttpClient()),
     homeViewModel: HomeScreenViewModel = hiltViewModel(),
-    manufacturerViewModel: ManufacturerViewModel = viewModel(
-        factory = ManufacturerViewModel.Factory(repository)
-    ),
+    manufacturerViewModel: ManufacturerViewModel = hiltViewModel(),
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val uiState = manufacturerViewModel.uiState.collectAsState()

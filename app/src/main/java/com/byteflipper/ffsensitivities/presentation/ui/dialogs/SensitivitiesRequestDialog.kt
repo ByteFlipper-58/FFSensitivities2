@@ -16,6 +16,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.data.remote.SendSensitivitiesRequestMessageToBot
+import com.byteflipper.ffsensitivities.di.NetworkEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.launch
 
 @Composable
@@ -57,7 +59,10 @@ fun SensitivitiesRequestDialog(onDismiss: () -> Unit, onRequestSent: () -> Unit)
                     isLoading = true
                     scope.launch {
                         try {
-                            val sendMessageToBot = SendSensitivitiesRequestMessageToBot()
+                            val appContext = context.applicationContext
+                            val entryPoint = EntryPointAccessors.fromApplication(appContext, NetworkEntryPoint::class.java)
+                            val apiClient = entryPoint.bugReportApiClient()
+                            val sendMessageToBot = SendSensitivitiesRequestMessageToBot(apiClient)
                             val result = sendMessageToBot.sendMessageToGroup(requestBuffer.toString()) {
                                 // Callback вызывается при успехе
                             }

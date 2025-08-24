@@ -1,17 +1,19 @@
 package com.byteflipper.ffsensitivities.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.data.repository.ManufacturerRepository
+import com.byteflipper.ffsensitivities.domain.usecase.FetchManufacturersUseCase
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class ManufacturerViewModel(
-    private val repository: ManufacturerRepository
+@HiltViewModel
+class ManufacturerViewModel @Inject constructor(
+    private val fetchManufacturers: FetchManufacturersUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UiState<List<Manufacturer>>>(UiState.Loading)
@@ -24,7 +26,7 @@ class ManufacturerViewModel(
     private fun loadManufacturers() {
         viewModelScope.launch {
             try {
-                val manufacturersState = repository.fetchManufacturers()
+                val manufacturersState = fetchManufacturers()
                 _uiState.value = manufacturersState
             } catch (e: Exception) {
                 _uiState.value = UiState.NoInternet
@@ -37,14 +39,5 @@ class ManufacturerViewModel(
         loadManufacturers()
     }
 
-    class Factory(private val repository: ManufacturerRepository) :
-        ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(ManufacturerViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return ManufacturerViewModel(repository) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-    }
+    // Hilt используется для создания экземпляра, фабрика не требуется
 }

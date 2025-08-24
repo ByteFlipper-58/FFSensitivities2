@@ -90,11 +90,8 @@ fun LanguageSettingsScreen(
                             selected = currentLanguageCode == language.code,
                             onClick = {
                                 appViewModel.setLanguage(language.code)
-                                
-                                activity?.let { act ->
-                                    act.recreate()
-                                    act.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-                                }
+                                // Избегаем полного recreate(), чтобы не сбрасывать граф корневой навигации
+                                // Показываем плавную перерисовку без смены стартового экрана
                             },
                             label = { Text(language.displayLanguage) },
                             shape = RoundedCornerShape(16.dp),

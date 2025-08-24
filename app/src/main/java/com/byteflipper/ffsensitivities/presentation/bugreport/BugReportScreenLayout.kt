@@ -12,7 +12,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.byteflipper.ffsensitivities.R
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.byteflipper.ffsensitivities.data.remote.BugReportApiService
+import com.byteflipper.ffsensitivities.presentation.viewmodel.bugreport.BugReportScreenViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.File
@@ -23,7 +26,8 @@ import java.util.Locale
 
 @Composable
 fun BugReportScreenLayout(
-    navController: NavController
+    navController: NavController,
+    viewModel: BugReportScreenViewModel = hiltViewModel()
 ) {
     val TAG = "BugReportScreen" // Define TAG for logging
     var selectedCategory by remember { mutableStateOf("") }
@@ -118,7 +122,7 @@ fun BugReportScreenLayout(
                         |$ticketId
                     """.trimMargin()
 
-                    val result = BugReportApiService.submitBugReport(tag, formattedMessage)
+                    val result = viewModel.submitBugReport(tag, formattedMessage)
 
                     result.onSuccess {
                         android.util.Log.i(TAG, "Bug report submitted successfully. Ticket: $ticketId")

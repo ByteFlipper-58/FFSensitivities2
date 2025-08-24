@@ -6,6 +6,7 @@ import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.utils.CacheManager
 import com.byteflipper.ffsensitivities.utils.ErrorHandler
 import com.byteflipper.ffsensitivities.utils.ErrorState
+import com.byteflipper.ffsensitivities.di.GitHubClient
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -19,7 +20,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class DevicesRepository @Inject constructor(
-    private val client: HttpClient,
+    @GitHubClient private val client: HttpClient,
     private val errorHandler: ErrorHandler,
     private val cacheManager: CacheManager
 ) {

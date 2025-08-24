@@ -23,6 +23,7 @@ class DataStoreManager(private val context: Context) {
         val REQUEST_SENT_KEY = booleanPreferencesKey("request_sent")
         val FIRST_LAUNCH_COMPLETED_KEY = booleanPreferencesKey("first_launch_completed")
         val APP_LAUNCH_COUNT_KEY = intPreferencesKey("app_launch_count")
+        val SELECTED_LANGUAGE_KEY = stringPreferencesKey("selected_language")
         
         // Счетчики рекламы для каждой локации
         val AD_COUNTER_HOME_SCREEN = intPreferencesKey("ad_counter_home_screen")
@@ -94,6 +95,18 @@ class DataStoreManager(private val context: Context) {
     fun getAppLaunchCount(): Flow<Int> = read(PreferencesKeys.APP_LAUNCH_COUNT_KEY, 0)
 
     // Методы для управления счетчиками рекламы
+    suspend fun setLanguage(languageCode: String?) {
+        context.dataStore.edit { settings ->
+            if (languageCode != null) {
+                settings[PreferencesKeys.SELECTED_LANGUAGE_KEY] = languageCode
+            } else {
+                settings.remove(PreferencesKeys.SELECTED_LANGUAGE_KEY)
+            }
+        }
+    }
+
+    fun getLanguage(): Flow<String?> = context.dataStore.data
+        .map { preferences -> preferences[PreferencesKeys.SELECTED_LANGUAGE_KEY] }
     suspend fun setAdCounter(location: String, count: Int) {
         val key = when (location) {
             "HOME_SCREEN" -> PreferencesKeys.AD_COUNTER_HOME_SCREEN

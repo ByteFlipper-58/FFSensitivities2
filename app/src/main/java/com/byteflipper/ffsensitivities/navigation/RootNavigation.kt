@@ -40,6 +40,7 @@ import com.byteflipper.ui_components.onboarding.buildOnboardingSteps
 import com.byteflipper.ui_components.onboarding.rememberOnboardingConditions
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.first
 
 /**
  * Корневой граф навигации, управляющий переключением между онбордингом и основным приложением.
@@ -51,35 +52,36 @@ fun RootAppNavigation(
     appUpdateManagerWrapper: AppUpdateManagerWrapper
 ) {
     Log.d("RootNavigation", "RootAppNavigation: Функция вызвана")
-    val onboardingCompleted by dataStoreManager.getFirstLaunchCompleted().collectAsState(initial = false)
-    
-    Log.d("RootNavigation", "onboardingCompleted: $onboardingCompleted")
-
     val rootNavController = rememberNavController()
-    val startDestination = if (onboardingCompleted == false) "onboarding" else "main_app"
-    
-    Log.d("RootNavigation", "startDestination: $startDestination")
 
-    Log.d("RootNavigation", "Создание NavHost с startDestination: $startDestination")
-    
+    // Фикс: используем промежуточный экран загрузки, чтобы корректно определить стартовый маршрут
     NavHost(
         navController = rootNavController,
-        startDestination = startDestination
+        startDestination = Route.LOADING
     ) {
-        composable("onboarding") {
+        composable(Route.LOADING) {
+            LaunchedEffect(Unit) {
+                val completed = dataStoreManager.getFirstLaunchCompleted().first()
+                val target = if (completed) Route.MAIN_APP else Route.ONBOARDING
+                rootNavController.navigate(target) {
+                    popUpTo(Route.LOADING) { inclusive = true }
+                }
+            }
+        }
+        composable(Route.ONBOARDING) {
             Log.d("RootNavigation", "Composable 'onboarding' выполняется")
             OnboardingScreen(
                 dataStoreManager = dataStoreManager,
                 onFinishOnboarding = {
                     Log.d("RootNavigation", "onFinishOnboarding вызван")
-                    rootNavController.navigate("main_app") {
-                        popUpTo("onboarding") { inclusive = true }
+                    rootNavController.navigate(Route.MAIN_APP) {
+                        popUpTo(Route.ONBOARDING) { inclusive = true }
                     }
                 },
                 rootNavController = rootNavController
             )
         }
-        composable("main_app") {
+        composable(Route.MAIN_APP) {
             MainAppScaffold(
                 appViewModel = appViewModel,
                 appUpdateManagerWrapper = appUpdateManagerWrapper
@@ -254,7 +256,7 @@ private fun MainAppScaffold(
     val mainAppNavController = rememberNavController()
     val navBackStackEntry by mainAppNavController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val isBottomBarVisible = currentRoute?.startsWith("settings") != true && currentRoute != "bug_report" && currentRoute != "ad_test"
+    val isBottomBarVisible = currentRoute?.startsWith("settings") != true && currentRoute != Route.BUG_REPORT && currentRoute != Route.AD_TEST
 
     LaunchedEffect(Unit) { coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() } }
     LaunchedEffect(updateState) {
@@ -319,10 +321,10 @@ private fun AdBannerContainer(
             adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val adLocation = when {
-        currentRoute == "home" -> AdLocation.HOME_SCREEN
+        currentRoute == Route.HOME -> AdLocation.HOME_SCREEN
         currentRoute?.startsWith("devices/") == true -> AdLocation.DEVICES_SCREEN
         currentRoute?.startsWith("sensitivities/") == true -> AdLocation.SENSITIVITIES_SCREEN
-        currentRoute == "ad_test" -> AdLocation.SETTINGS_SCREEN
+        currentRoute == Route.AD_TEST -> AdLocation.SETTINGS_SCREEN
         else -> null
     }
     

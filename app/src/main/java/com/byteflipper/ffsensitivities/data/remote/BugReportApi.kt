@@ -1,17 +1,21 @@
 package com.byteflipper.ffsensitivities.data.remote
 
+import com.byteflipper.ffsensitivities.di.ApiClient
+import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
  * Main API client for bug reports and feedback
  */
-class BugReportApiClient {
-    private val httpClient = HttpClientFactory.createHttpClient()
+class BugReportApiClient @Inject constructor(
+    @ApiClient private val httpClient: HttpClient
+) {
     
     /**
      * Send bug report with improved error handling and validation

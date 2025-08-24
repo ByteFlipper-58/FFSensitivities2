@@ -2,7 +2,7 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.data.repository.DevicesRepository
+import com.byteflipper.ffsensitivities.domain.usecase.FetchDevicesUseCase
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DeviceViewModel @Inject constructor(
-    private val repository: DevicesRepository
+    private val fetchDevicesUseCase: FetchDevicesUseCase
 ) : ViewModel() {
 
     private companion object {
@@ -35,7 +35,7 @@ class DeviceViewModel @Inject constructor(
         lastManufacturer = manufacturer // Store the last fetched manufacturer
         viewModelScope.launch {
             _uiState.value = UiState.Loading
-            when (val result = repository.fetchDevices(manufacturer)) { // Use the correct parameter
+            when (val result = fetchDevicesUseCase(manufacturer)) { // Use the correct parameter
                 is UiState.Success<*> -> {
                     @Suppress("UNCHECKED_CAST")
                     val devices = result.data as? List<DeviceModel> ?: emptyList()
@@ -56,7 +56,7 @@ class DeviceViewModel @Inject constructor(
         lastManufacturer?.let { manu ->
              viewModelScope.launch { // Ensure retry is also within a coroutine scope
                  _uiState.value = UiState.Loading
-                 when (val result = repository.fetchDevices(manu)) {
+                  when (val result = fetchDevicesUseCase(manu)) {
                      is UiState.Success<*> -> {
                          @Suppress("UNCHECKED_CAST")
                          val devices = result.data as? List<DeviceModel> ?: emptyList()

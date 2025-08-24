@@ -7,6 +7,7 @@ import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import java.io.File
@@ -23,6 +24,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         
+        initializeTimber()
         initializeAdsSDK()
         initializeAppOpenAds()
         initializeCrashHandler()
@@ -59,5 +61,20 @@ class MyApplication : Application() {
             .enableCrashActivity(true)
             .enableLogSaving(true)
             .enableFirebaseCrashlytics(true)
+    }
+
+    private fun initializeTimber() {
+        try {
+            // If you later add Timber dependency, you can plant CrashlyticsTree here
+            // Timber.plant(object : Timber.Tree() {
+            //     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+            //         if (priority >= Log.WARN && t != null) {
+            //             FirebaseCrashlytics.getInstance().recordException(t)
+            //         }
+            //     }
+            // })
+            FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
+        } catch (_: Exception) {
+        }
     }
 }

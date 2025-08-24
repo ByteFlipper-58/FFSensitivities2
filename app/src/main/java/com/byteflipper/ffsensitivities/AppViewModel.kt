@@ -73,6 +73,17 @@ class AppViewModel @Inject constructor(
 
             _settingsLoaded.value = true
         }
+
+        // Apply saved language on startup if present
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                dataStoreManager.getLanguage().first()?.let { savedLang ->
+                    appLocaleManager.changeLanguage(context, savedLang)
+                    _currentLanguageCode.value = savedLang
+                }
+            } catch (_: Exception) {
+            }
+        }
     }
 
     fun setTheme(theme: String) {
@@ -102,5 +113,9 @@ class AppViewModel @Inject constructor(
     fun setLanguage(languageCode: String?) {
         appLocaleManager.changeLanguage(context, languageCode)
         _currentLanguageCode.value = languageCode ?: "system"
+        viewModelScope.launch(Dispatchers.IO) {
+            // Persist preference
+            dataStoreManager.setLanguage(languageCode)
+        }
     }
 }

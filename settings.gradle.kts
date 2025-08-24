@@ -23,4 +23,5 @@ dependencyResolutionManagement {
 rootProject.name = "FF Sensitivities"
 include(":app")
 include(":ui-components")
-include(":Crash Handler")
+include(":crash-handler")
+project(":crash-handler").projectDir = file("Crash Handler")

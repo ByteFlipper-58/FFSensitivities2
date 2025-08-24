@@ -3,15 +3,17 @@ package com.byteflipper.ffsensitivities.data.remote
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class SendSensitivitiesRequestMessageToBot {
+class SendSensitivitiesRequestMessageToBot @Inject constructor(
+    private val apiClient: BugReportApiClient
+) {
 
     private val TAG = "SendSensitivitiesRequest"
 
     suspend fun sendMessageToGroup(message: String, onSuccess: () -> Unit): String {
         return withContext(Dispatchers.IO) {
             try {
-                val apiClient = BugReportApiClient()
                 
                 Log.i(TAG, "Пробуем отправить с тегом 'settings_request'")
                 val settingsResult = apiClient.sendBugReport("settings_request", message)

@@ -2,14 +2,19 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel.bugreport
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.byteflipper.ffsensitivities.data.remote.ApiResponse
+import com.byteflipper.ffsensitivities.data.remote.BugReportApiService
 import com.byteflipper.ffsensitivities.presentation.bugreport.events.BugReportScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import javax.inject.Inject
+import kotlinx.coroutines.launch
 
 @HiltViewModel
-class BugReportScreenViewModel @Inject constructor() : ViewModel() {
+class BugReportScreenViewModel @Inject constructor(
+    private val bugReportApiService: BugReportApiService
+) : ViewModel() {
 
     private val _navigationEvent = MutableStateFlow<BugReportScreenEvent?>(null)
     val navigationEvent: StateFlow<BugReportScreenEvent?> = _navigationEvent
@@ -42,5 +47,9 @@ class BugReportScreenViewModel @Inject constructor() : ViewModel() {
 
     fun clearNavigationEvent() {
         _navigationEvent.value = null
+    }
+
+    suspend fun submitBugReport(tag: String, message: String): Result<ApiResponse> {
+        return bugReportApiService.submitBugReport(tag, message)
     }
 } 
