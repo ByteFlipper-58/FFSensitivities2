@@ -107,7 +107,7 @@ fun AppNavHost(
             startDestination = Route.LOADING,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                //.padding(innerPadding)
         ) {
             composable(Route.LOADING) {
                 LaunchedEffect(Unit) {

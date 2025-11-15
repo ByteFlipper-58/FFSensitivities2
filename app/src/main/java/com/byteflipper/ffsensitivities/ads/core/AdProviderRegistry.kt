@@ -65,9 +65,9 @@ class AdProviderRegistry @Inject constructor(
         return adProviders[adType to location]
     }
 
-    fun readinessSnapshot(): Map<AdLocation, Boolean> {
-        return adProviders.entries
-            .groupBy { it.key.second }
-            .mapValues { entry -> entry.value.any { it.value.isReady() } }
+    fun readinessSnapshot(): Map<AdReadyKey, Boolean> {
+        return adProviders.map { (typeLocation, provider) ->
+            AdReadyKey(typeLocation.first, typeLocation.second) to provider.isReady()
+        }.toMap()
     }
 }

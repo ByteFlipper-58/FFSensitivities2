@@ -35,8 +35,8 @@ fun InterstitialAdSection(
             ModernAdButton(
                 text = "Главная",
                 icon = painterResource(id = R.drawable.home_24px),
-                enabled = adReadyState[AdLocation.HOME_SCREEN] == true,
-                isReady = adReadyState[AdLocation.HOME_SCREEN] == true,
+            enabled = adReadyState[AdReadyKey(AdType.INTERSTITIAL, AdLocation.HOME_SCREEN)] == true,
+            isReady = adReadyState[AdReadyKey(AdType.INTERSTITIAL, AdLocation.HOME_SCREEN)] == true,
                 modifier = Modifier.weight(1f),
                 onClick = {
                     activity?.let {
@@ -48,8 +48,8 @@ fun InterstitialAdSection(
             ModernAdButton(
                 text = "Устройства",
                 icon = painterResource(id = R.drawable.phone_android_24px),
-                enabled = adReadyState[AdLocation.DEVICES_SCREEN] == true,
-                isReady = adReadyState[AdLocation.DEVICES_SCREEN] == true,
+            enabled = adReadyState[AdReadyKey(AdType.INTERSTITIAL, AdLocation.DEVICES_SCREEN)] == true,
+            isReady = adReadyState[AdReadyKey(AdType.INTERSTITIAL, AdLocation.DEVICES_SCREEN)] == true,
                 modifier = Modifier.weight(1f),
                 onClick = {
                     activity?.let {

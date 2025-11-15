@@ -29,7 +29,7 @@ fun AppOpenAdSection(
         icon = painterResource(id = R.drawable.rocket_24px),
         containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.7f)
     ) {
-        val isReady = adReadyState[AdLocation.APP_STARTUP] == true
+        val isReady = adReadyState[AdReadyKey(AdType.APP_OPEN, AdLocation.APP_STARTUP)] == true
 
         ModernAdButton(
             text = "Показать App Open",

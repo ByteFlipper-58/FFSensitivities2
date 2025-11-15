@@ -28,9 +28,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
+import com.byteflipper.ffsensitivities.ads.core.AdType
 
 @Composable
-fun AdStatusCard(adReadyState: Map<AdLocation, Boolean>) {
+fun AdStatusCard(adReadyState: Map<AdReadyKey, Boolean>) {
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 8.dp),
@@ -62,8 +64,8 @@ fun AdStatusCard(adReadyState: Map<AdLocation, Boolean>) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            adReadyState.forEach { (location, isReady) ->
-                AdStatusRow(location = location, isReady = isReady)
+            adReadyState.forEach { (key, isReady) ->
+                AdStatusRow(type = key.type, location = key.location, isReady = isReady)
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }
@@ -71,7 +73,7 @@ fun AdStatusCard(adReadyState: Map<AdLocation, Boolean>) {
 }
 
 @Composable
-private fun AdStatusRow(location: AdLocation, isReady: Boolean) {
+private fun AdStatusRow(type: AdType, location: AdLocation, isReady: Boolean) {
     val animatedAlpha by animateFloatAsState(
         targetValue = if (isReady) 1f else 0.6f,
         animationSpec = tween(300)
@@ -92,7 +94,7 @@ private fun AdStatusRow(location: AdLocation, isReady: Boolean) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = getLocationDisplayName(location),
+            text = "${type.name}: ${getLocationDisplayName(location)}",
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.weight(1f)

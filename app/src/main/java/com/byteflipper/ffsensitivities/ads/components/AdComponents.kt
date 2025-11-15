@@ -92,7 +92,7 @@ fun AdStatusIndicator(
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val adReadyState by adViewModel.adReadyState.collectAsState()
-    val isReady = adReadyState[location] ?: false
+    val isReady = adReadyState[AdType.BANNER to location] ?: false
 
     Card(
         modifier = modifier,
@@ -130,7 +130,7 @@ fun getDynamicBottomPadding(
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ): Dp {
     val adReadyState by adViewModel.adReadyState.collectAsState()
-    val isAdReady = adReadyState[location] ?: false
+    val isAdReady = adReadyState[AdType.BANNER to location] ?: false
     
     return if (isAdReady) {
         150.dp // Отступ когда баннер видим

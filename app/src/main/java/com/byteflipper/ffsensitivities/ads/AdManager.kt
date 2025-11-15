@@ -7,6 +7,7 @@ import com.byteflipper.ffsensitivities.ads.consent.ConsentManager
 import com.byteflipper.ffsensitivities.ads.consent.ConsentState
 import com.byteflipper.ffsensitivities.ads.core.AdProvider
 import com.byteflipper.ffsensitivities.ads.core.AdProviderRegistry
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
 import com.byteflipper.ffsensitivities.ads.core.AdResult
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
@@ -40,8 +41,8 @@ class AdManager @Inject constructor(
 
     val consentState: StateFlow<ConsentState> = consentManager.consentState
 
-    private val _adReadyState = MutableStateFlow<Map<AdLocation, Boolean>>(emptyMap())
-    val adReadyState: StateFlow<Map<AdLocation, Boolean>> = _adReadyState.asStateFlow()
+    private val _adReadyState = MutableStateFlow<Map<AdReadyKey, Boolean>>(emptyMap())
+    val adReadyState: StateFlow<Map<AdReadyKey, Boolean>> = _adReadyState.asStateFlow()
 
     init {
         updateReadyState()

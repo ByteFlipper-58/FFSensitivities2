@@ -32,8 +32,8 @@ fun RewardedAdSection(
         ModernAdButton(
             text = "Получить награду",
             icon = painterResource(id = R.drawable.redeem_24px),
-            enabled = adReadyState[AdLocation.PREMIUM_FEATURES] == true,
-            isReady = adReadyState[AdLocation.PREMIUM_FEATURES] == true,
+            enabled = adReadyState[AdReadyKey(AdType.REWARDED, AdLocation.PREMIUM_FEATURES)] == true,
+            isReady = adReadyState[AdReadyKey(AdType.REWARDED, AdLocation.PREMIUM_FEATURES)] == true,
             onClick = {
                 activity?.let {
                     adViewModel.showRewardedAd(AdLocation.PREMIUM_FEATURES, it) { result ->
