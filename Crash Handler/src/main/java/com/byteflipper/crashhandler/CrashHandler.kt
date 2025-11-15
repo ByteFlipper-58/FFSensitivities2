@@ -8,7 +8,9 @@ import java.io.FileOutputStream
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
+import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
 
 class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
@@ -18,9 +20,10 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
     private var crashLogsDir: File? = null
     private var enableCrashActivity = true
     private var enableLogSaving = true
-    private var enableFirebaseCrashlytics = false
-    private var firebaseCrashlyticsClass: Class<*>? = null
     private var customCrashActivityClass: Class<*>? = null
+    private var crashReporter: CrashReporter? = null
+    private var maxLogFiles: Int = 20
+    private var maxLogRetentionMs: Long = TimeUnit.DAYS.toMillis(7)
 
     // Методы конфигурации на уровне экземпляра с возвратом this для цепочки
     fun configureCrashLogsDir(directory: File): CrashHandler {
@@ -38,13 +41,19 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
         return this
     }
 
-    fun enableFirebaseCrashlytics(enable: Boolean): CrashHandler {
-        enableFirebaseCrashlytics = enable
+    fun setCustomCrashActivity(activityClass: Class<*>): CrashHandler {
+        customCrashActivityClass = activityClass
         return this
     }
 
-    fun setCustomCrashActivity(activityClass: Class<*>): CrashHandler {
-        customCrashActivityClass = activityClass
+    fun setCrashReporter(reporter: CrashReporter?): CrashHandler {
+        crashReporter = reporter
+        return this
+    }
+
+    fun configureLogRetention(maxFiles: Int = 20, maxAgeDays: Int = 7): CrashHandler {
+        maxLogFiles = maxFiles.coerceAtLeast(1)
+        maxLogRetentionMs = TimeUnit.DAYS.toMillis(maxAgeDays.coerceAtLeast(1).toLong())
         return this
     }
 
@@ -56,9 +65,7 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
             }
 
             // Send crash to Firebase Crashlytics if enabled
-            if (enableFirebaseCrashlytics) {
-                sendCrashToFirebase(throwable)
-            }
+            crashReporter?.recordException(throwable)
 
             // Start crash activity if enabled
             if (enableCrashActivity) {
@@ -77,25 +84,6 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
             // Otherwise, terminate the app
             Process.killProcess(Process.myPid())
             exitProcess(10)
-        }
-    }
-
-    private fun sendCrashToFirebase(throwable: Throwable) {
-        try {
-            // Use reflection to call Firebase Crashlytics
-            // This is needed because Firebase is an optional dependency
-            firebaseCrashlyticsClass?.let { crashlyticsClass ->
-                // Get the Crashlytics instance
-                val getInstanceMethod = crashlyticsClass.getMethod("getInstance")
-                val crashlyticsInstance = getInstanceMethod.invoke(null)
-
-                // Record the exception
-                val recordExceptionMethod = crashlyticsClass.getMethod("recordException", Throwable::class.java)
-                recordExceptionMethod.invoke(crashlyticsInstance, throwable)
-            }
-        } catch (e: Exception) {
-            // Silently fail if Firebase implementation is not available
-            e.printStackTrace()
         }
     }
 
@@ -118,9 +106,23 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
                     throwable.printStackTrace(PrintWriter(stackTraceWriter))
                     fos.write(stackTraceWriter.toString().toByteArray())
                 }
+
+                cleanupOldLogs(dir)
             }
         } catch (e: Exception) {
             e.printStackTrace()
+        }
+    }
+
+    private fun cleanupOldLogs(directory: File) {
+        val files = directory.listFiles() ?: return
+        val cutoff = System.currentTimeMillis() - maxLogRetentionMs
+
+        files.filter { it.lastModified() < cutoff }.forEach { it.delete() }
+
+        val remaining = directory.listFiles()?.sortedByDescending { it.lastModified() } ?: return
+        if (remaining.size > maxLogFiles) {
+            remaining.drop(maxLogFiles).forEach { it.delete() }
         }
     }
 
@@ -149,13 +151,6 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
 
                 // Default crash logs directory
                 crashLogsDir = File(application.getExternalFilesDir(null), "crash_logs")
-
-                // Check if Firebase Crashlytics is available in the classpath
-                try {
-                    firebaseCrashlyticsClass = Class.forName("com.google.firebase.crashlytics.FirebaseCrashlytics")
-                } catch (e: ClassNotFoundException) {
-                    // Firebase Crashlytics is not available, which is fine (it's optional)
-                }
             }
         }
     }

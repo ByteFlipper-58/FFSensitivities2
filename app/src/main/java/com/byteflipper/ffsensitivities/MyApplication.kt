@@ -5,6 +5,7 @@ import android.util.Log
 import com.byteflipper.crashhandler.CrashHandler
 import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
+import com.byteflipper.ffsensitivities.crash.FirebaseCrashReporter
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
@@ -58,9 +59,10 @@ class MyApplication : Application() {
 
         CrashHandler.init(this)
             .configureCrashLogsDir(logsDir)
+            .configureLogRetention(maxFiles = 20, maxAgeDays = 7)
             .enableCrashActivity(true)
             .enableLogSaving(true)
-            .enableFirebaseCrashlytics(true)
+            .setCrashReporter(FirebaseCrashReporter())
     }
 
     private fun initializeTimber() {
