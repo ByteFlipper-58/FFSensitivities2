@@ -10,9 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource // Import painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.byteflipper.ffsensitivities.navigation.navigateSafe
 
 /**
  * Отображает нижнюю панель навигации приложения.
@@ -39,7 +39,7 @@ fun BottomNavigationBar(
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    NavigationBar {
+    NavigationBar(modifier = modifier) {
         items.forEach { item ->
             val isSelected = currentDestination?.hierarchy?.any {
                 isRouteSelected(it.route, item)
@@ -55,54 +55,14 @@ fun BottomNavigationBar(
                 label = { Text(stringResource(item.resourceId)) },
                 selected = isSelected,
                 onClick = {
-                    val currentBackStackEntry = navController.currentBackStackEntry
-                    val currentDestination = currentBackStackEntry?.destination
-                    val startDestinationId = navController.graph.findStartDestination().id
-
-                    if (item == NavigationItem.Home && currentDestination?.route == NavigationItem.About.route) {
-                        // Get the entry *before* About
-                        val previousBackStackEntry = navController.previousBackStackEntry
-                        val previousRoute = previousBackStackEntry?.destination?.route
-                        // Check if the screen before About was part of the Home hierarchy (Devices/Sens)
-                        if (previousRoute != null && (previousRoute.startsWith("devices/") || previousRoute.startsWith("sensitivities/") || previousRoute == NavigationItem.Home.route)) {
-                            // If yes, just pop About to return to Devices/Sens (like system back)
-                            navController.popBackStack()
-                        } else {
-                            // Otherwise (e.g., came from root Home or somewhere else), use standard Home navigation
-                            navController.navigate(NavigationItem.Home.route) {
-                                launchSingleTop = true
-                                popUpTo(startDestinationId) { saveState = true }
-                                restoreState = true
-                            }
+                    if (item == NavigationItem.Home && isSelected) {
+                        navController.popBackStack(NavigationItem.Home.route, inclusive = false, saveState = false)
+                    } else {
+                        navController.navigateSafe(item.route) {
+                            launchSingleTop = true
+                            popUpTo(NavigationItem.Home.route) { saveState = true }
+                            restoreState = true
                         }
-                        return@NavigationBarItem
-                    }
-
-                    if (item == NavigationItem.About) {
-                        if (currentDestination?.route != NavigationItem.About.route) {
-                            navController.navigate(NavigationItem.About.route) {
-                                launchSingleTop = true
-                                restoreState = false
-                            }
-                        }
-                        return@NavigationBarItem
-                    }
-
-                    // --- Standard Home click behavior (not from About) ---
-                    if (item == NavigationItem.Home) {
-                        if (!isSelected) {
-                             navController.navigate(NavigationItem.Home.route) {
-                                 launchSingleTop = true
-                                 popUpTo(startDestinationId) { saveState = true }
-                                 restoreState = true
-                             }
-                        } else {
-                             // If not already on the root Home screen (e.g., on Devices/Sens), pop back to the root Home screen.
-                             if (currentDestination?.route != NavigationItem.Home.route) {
-                                 navController.popBackStack(NavigationItem.Home.route, inclusive = false, saveState = false)
-                             }
-                        }
-                        return@NavigationBarItem
                     }
                 }
             )

@@ -44,6 +44,7 @@ sealed class Screen(val route: String) {
     }
 
     object BugReport : Screen("bug_report")
+    object AdTest : Screen("ad_test")
 
     data class Policy(val documentType: String) : Screen("policy/$documentType") {
          companion object {

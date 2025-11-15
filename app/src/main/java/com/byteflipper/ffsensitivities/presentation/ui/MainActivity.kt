@@ -13,7 +13,7 @@ import androidx.core.view.WindowCompat
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
-import com.byteflipper.ffsensitivities.navigation.RootAppNavigation
+import com.byteflipper.ffsensitivities.navigation.AppNavHost
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
                 dynamicColorSetting = dynamicColorSetting,
                 contrastThemeSetting = contrastThemeSetting
             ) {
-                RootAppNavigation(
+                AppNavHost(
                     dataStoreManager = dataStoreManager,
                     appViewModel = viewModel,
                     appUpdateManagerWrapper = appUpdateManagerWrapper
