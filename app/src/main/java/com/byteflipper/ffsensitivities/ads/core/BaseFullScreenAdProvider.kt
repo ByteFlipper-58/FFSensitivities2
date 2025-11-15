@@ -11,8 +11,8 @@ import com.byteflipper.ffsensitivities.ads.AdManager
 abstract class BaseFullScreenAdProvider<T : Any>(
     context: Context,
     config: AdConfig,
-    adManager: AdManager
-) : BaseAdProvider<T>(context, config, adManager) {
+    consentProvider: AdConsentProvider
+) : BaseAdProvider<T>(context, config, consentProvider) {
     
     protected var isShowingAd = false
     
@@ -32,5 +32,5 @@ abstract class BaseFullScreenAdProvider<T : Any>(
         super.destroy()
     }
     
-    override fun canShow(): Boolean = isReady() && !isShowingAd && adManager.canRequestPersonalizedAds()
-} 
+    override fun canShow(): Boolean = isReady() && !isShowingAd && consentProvider.canRequestPersonalizedAds()
+}

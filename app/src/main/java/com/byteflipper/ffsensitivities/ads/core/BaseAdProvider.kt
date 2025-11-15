@@ -27,7 +27,7 @@ import kotlin.coroutines.resume
 abstract class BaseAdProvider<T : Any>(
     protected val context: Context,
     override val config: AdConfig,
-    protected val adManager: AdManager
+    protected val consentProvider: AdConsentProvider
 ) : FullScreenAdProvider<AdState> {
 
     protected abstract val TAG: String
@@ -44,7 +44,7 @@ abstract class BaseAdProvider<T : Any>(
             return
         }
 
-        if (!adManager.canRequestPersonalizedAds()) {
+        if (!consentProvider.canRequestPersonalizedAds()) {
             Log.w(TAG, "Cannot load ad - no consent")
             return
         }
@@ -80,7 +80,7 @@ abstract class BaseAdProvider<T : Any>(
 
     override fun isReady(): Boolean = adInstance != null && !isLoading
 
-    override fun canShow(): Boolean = isReady() && adManager.canRequestPersonalizedAds()
+    override fun canShow(): Boolean = isReady() && consentProvider.canRequestPersonalizedAds()
 
     override fun destroy() {
         adInstance = null

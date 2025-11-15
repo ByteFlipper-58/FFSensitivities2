@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.byteflipper.ffsensitivities.ads.core.*
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
@@ -15,8 +14,8 @@ import kotlin.coroutines.resume
 class AppOpenAdProvider(
     context: Context,
     config: AdConfig,
-    adManager: AdManager
-) : BaseFullScreenAdProvider<AppOpenAd>(context, config, adManager) {
+    consentProvider: AdConsentProvider
+) : BaseFullScreenAdProvider<AppOpenAd>(context, config, consentProvider) {
     
     override val TAG = "AppOpenAdProvider"
     

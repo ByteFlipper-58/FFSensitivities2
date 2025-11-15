@@ -3,7 +3,6 @@ package com.byteflipper.ffsensitivities.ads.providers
 import android.app.Activity
 import android.content.Context
 import android.util.Log
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.core.*
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
@@ -15,8 +14,8 @@ import kotlin.coroutines.resume
 class InterstitialAdProvider(
     context: Context,
     config: AdConfig,
-    adManager: AdManager
-) : BaseFullScreenAdProvider<InterstitialAd>(context, config, adManager) {
+    consentProvider: AdConsentProvider
+) : BaseFullScreenAdProvider<InterstitialAd>(context, config, consentProvider) {
     
     override val TAG = "InterstitialAdProvider"
 

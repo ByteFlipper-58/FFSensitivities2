@@ -5,14 +5,13 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import com.byteflipper.ffsensitivities.ads.core.*
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.google.android.gms.ads.*
 
 class BannerAdProviderImpl(
     context: Context,
     config: AdConfig,
-    adManager: AdManager
-) : BaseAdProvider<AdView>(context, config, adManager), BannerAdProvider {
+    consentProvider: AdConsentProvider
+) : BaseAdProvider<AdView>(context, config, consentProvider), BannerAdProvider {
     
     override val TAG = "BannerAdProvider"
 
@@ -28,7 +27,7 @@ class BannerAdProviderImpl(
     }
 
     override fun createAdView(activity: Activity): View? {
-        if (!adManager.canRequestPersonalizedAds()) {
+        if (!consentProvider.canRequestPersonalizedAds()) {
             Log.w(TAG, "Cannot create banner ad - no consent")
             return null
         }

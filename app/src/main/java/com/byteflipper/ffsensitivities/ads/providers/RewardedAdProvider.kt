@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import com.byteflipper.ffsensitivities.ads.core.*
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.rewarded.RewardedAd
@@ -15,8 +14,8 @@ import kotlin.coroutines.resume
 class RewardedAdProvider(
     context: Context,
     config: AdConfig,
-    adManager: AdManager
-) : BaseFullScreenAdProvider<RewardedAd>(context, config, adManager) {
+    consentProvider: AdConsentProvider
+) : BaseFullScreenAdProvider<RewardedAd>(context, config, consentProvider) {
     
     override val TAG = "RewardedAdProvider"
 
