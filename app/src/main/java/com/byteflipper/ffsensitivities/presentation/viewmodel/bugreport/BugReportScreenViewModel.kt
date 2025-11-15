@@ -2,8 +2,8 @@ package com.byteflipper.ffsensitivities.presentation.viewmodel.bugreport
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.data.remote.ApiResponse
 import com.byteflipper.ffsensitivities.data.remote.BugReportApiService
+import com.byteflipper.ffsensitivities.data.remote.SubmissionResult
 import com.byteflipper.ffsensitivities.presentation.bugreport.events.BugReportScreenEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -49,7 +49,7 @@ class BugReportScreenViewModel @Inject constructor(
         _navigationEvent.value = null
     }
 
-    suspend fun submitBugReport(tag: String, message: String): Result<ApiResponse> {
+    suspend fun submitBugReport(tag: String, message: String): SubmissionResult {
         return bugReportApiService.submitBugReport(tag, message)
     }
 } 

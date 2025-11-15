@@ -6,87 +6,59 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Service class for Bug Report API operations
- * Provides a centralized way to interact with the feedback API
+ * Service class for Bug Report API operations.
+ * Delegates networking work to [BugReportApiClient] and exposes typed results.
  */
 class BugReportApiService @Inject constructor(
     private val apiClient: BugReportApiClient
 ) {
+
     companion object {
         private const val TAG = "BugReportApiService"
     }
 
-    /**
-     * Submit a bug report with automatic retry logic
-     */
     suspend fun submitBugReport(
         tag: String,
-        message: String,
-        maxRetries: Int = 2
-    ): Result<ApiResponse> = withContext(Dispatchers.IO) {
-
-        var lastException: Exception? = null
-
-        repeat(maxRetries) { attempt ->
-            try {
-                Log.i(TAG, "Attempting to send bug report (attempt ${attempt + 1}/$maxRetries)")
-                val result = apiClient.sendBugReport(tag, message)
-
-                when (result) {
-                    is ApiResult.Success -> {
-                        Log.i(
-                            TAG,
-                            "Bug report submitted successfully on attempt ${attempt + 1}"
-                        )
-                        return@withContext Result.success(result.data)
-                    }
-
-                    is ApiResult.Error -> {
-                        lastException = result.exception ?: Exception(result.message)
-                        Log.w(
-                            TAG,
-                            "Bug report submission failed on attempt ${attempt + 1}: ${lastException?.message}"
-                        )
-                    }
-                }
-            } catch (e: Exception) {
-                lastException = e
-                Log.w(TAG, "Bug report submission attempt ${attempt + 1} failed", e)
+        message: String
+    ): SubmissionResult = withContext(Dispatchers.IO) {
+        when (val result = apiClient.sendBugReport(tag, message)) {
+            is ApiResult.Success -> {
+                Log.i(TAG, "Bug report submitted successfully")
+                SubmissionResult.Success(result.data)
             }
-
-            // Wait before retry (but not after last attempt)
-            if (attempt < maxRetries - 1) {
-                Log.d(TAG, "Waiting before retry...")
-                kotlinx.coroutines.delay(2000L)
-            }
+            is ApiResult.Error -> SubmissionResult.Failure(mapError(result.message, result.exception))
         }
-
-        Log.e(TAG, "All $maxRetries attempts failed")
-        Result.failure(
-            lastException ?: Exception("Не удалось отправить запрос после $maxRetries попыток")
-        )
     }
 
-    /**
-     * Submit general feedback (not categorized bug report)
-     */
     suspend fun submitFeedback(
         name: String,
         email: String,
         text: String
-    ): Result<ApiResponse> = withContext(Dispatchers.IO) {
-        return@withContext try {
-            val result = apiClient.sendFeedback(name, email, text)
-
-            when (result) {
-                is ApiResult.Success -> Result.success(result.data)
-                is ApiResult.Error -> Result.failure(
-                    result.exception ?: Exception(result.message)
-                )
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Failed to submit feedback", e)
-            Result.failure(e)
+    ): SubmissionResult = withContext(Dispatchers.IO) {
+        when (val result = apiClient.sendFeedback(name, email, text)) {
+            is ApiResult.Success -> SubmissionResult.Success(result.data)
+            is ApiResult.Error -> SubmissionResult.Failure(mapError(result.message, result.exception))
         }
     }
+
+    private fun mapError(message: String, exception: Exception?): SubmissionError {
+        return when (exception) {
+            is ValidationException -> SubmissionError.Validation(exception.message ?: message)
+            is NetworkException -> SubmissionError.Network(exception.message ?: message)
+            is ApiException -> SubmissionError.Server(exception.statusCode, exception.message ?: message)
+            else -> SubmissionError.Unknown(message)
+        }
+    }
+}
+
+sealed class SubmissionResult {
+    data class Success(val response: ApiResponse) : SubmissionResult()
+    data class Failure(val error: SubmissionError) : SubmissionResult()
+}
+
+sealed class SubmissionError(open val reason: String) {
+    data class Validation(override val reason: String) : SubmissionError(reason)
+    data class Network(override val reason: String) : SubmissionError(reason)
+    data class Server(val statusCode: Int?, override val reason: String) : SubmissionError(reason)
+    data class Unknown(override val reason: String) : SubmissionError(reason)
 }
