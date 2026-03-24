@@ -241,4 +241,7 @@
     <string name="theme_settings_card_description">Көріністі, динамикалық түстерді және контрастты баптаңыз</string>
     <string name="selected">Таңдалды</string>
 
+    <string name="change_language_description">Интерфейс тілін таңдаңыз</string>
+    <string name="ad_test_title">Жарнама сынағы</string>
+    <string name="ad_test_description">Жарнама блоктарының жұмысын тексеру</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
 import com.byteflipper.ffsensitivities.ads.core.AdResult
 import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
@@ -28,7 +29,7 @@ import com.byteflipper.ffsensitivities.presentation.adtest.components.FrequencyI
 fun AdTestScreenContent(
     adViewModel: SimpleAdViewModel,
     activity: Activity?,
-    adReadyState: Map<AdLocation, Boolean>,
+    adReadyState: Map<AdReadyKey, Boolean>,
     lastAdResult: AdResult?
 ) {
     Column(

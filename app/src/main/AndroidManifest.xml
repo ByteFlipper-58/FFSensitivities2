@@ -23,7 +23,7 @@
 
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="false">
             <meta-data
                 android:name="autoStoreLocales"
@@ -35,6 +35,10 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4346225518624754~7987012984"/>
 
+        <meta-data
+            android:name="android.webkit.WebView.EnableSafeBrowsing"
+            android:value="true" />
+
         <!-- Consent Mode v2 default settings -->
         <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="true" />
         <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="true" />
@@ -43,8 +47,7 @@
 
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/gma_ad_services_config"
-            tools:replace="android:resource" />
+            android:resource="@xml/gma_ad_services_config" />
 
         <activity
             android:name=".presentation.ui.MainActivity"

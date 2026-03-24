@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,7 +15,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,10 +33,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navigation
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
+import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
@@ -60,7 +63,7 @@ fun AppNavHost(
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
-    val updateState by appUpdateManagerWrapper.updateState.collectAsState()
+    val updateState by appUpdateManagerWrapper.updateState.collectAsStateWithLifecycle()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val shouldShowBottomBar = currentRoute?.let { route ->
@@ -107,7 +110,8 @@ fun AppNavHost(
             startDestination = Route.LOADING,
             modifier = Modifier
                 .fillMaxSize()
-                //.padding(innerPadding)
+                .padding(innerPadding)
+                .consumeWindowInsets(innerPadding)
         ) {
             composable(Route.LOADING) {
                 LaunchedEffect(Unit) {
@@ -182,7 +186,7 @@ private fun OnboardingScreen(
         hasNotificationPermission = granted
     }
 
-    val consentState by adViewModel.consentState.collectAsState()
+    val consentState by adViewModel.consentState.collectAsStateWithLifecycle()
     LaunchedEffect(consentState) {
         Log.d("OnboardingScreen", "Consent State: $consentState")
     }
@@ -292,9 +296,9 @@ private fun AdBannerContainer(
         else -> null
     }
 
-    val adReadyState by adViewModel.adReadyState.collectAsState()
+    val adReadyState by adViewModel.adReadyState.collectAsStateWithLifecycle()
     adLocation?.let { location ->
-        if (adReadyState[location] == true) {
+        if (adReadyState[AdReadyKey(AdType.BANNER, location)] == true) {
             AdBanner(location = location)
         }
     }

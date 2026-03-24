@@ -1,7 +1,6 @@
 package com.byteflipper.ffsensitivities.presentation.home
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -9,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.activity.compose.LocalActivity
 import android.app.Activity
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
@@ -22,8 +22,8 @@ fun HomeScreenLayout(
     manufacturerViewModel: ManufacturerViewModel = hiltViewModel(),
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
-    val uiState = manufacturerViewModel.uiState.collectAsState()
-    val isRequestSent by homeViewModel.isRequestSent.collectAsState()
+    val uiState = manufacturerViewModel.uiState.collectAsStateWithLifecycle()
+    val isRequestSent by homeViewModel.isRequestSent.collectAsStateWithLifecycle()
     val activity = LocalActivity.current as? Activity
 
     var showDialog by remember { mutableStateOf(false) }

@@ -15,13 +15,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
+import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 
 @Composable
 fun AppOpenAdSection(
     adViewModel: SimpleAdViewModel,
     activity: Activity?,
-    adReadyState: Map<AdLocation, Boolean>
+    adReadyState: Map<AdReadyKey, Boolean>
 ) {
     AdSectionCard(
         title = "🚀 App Open реклама",

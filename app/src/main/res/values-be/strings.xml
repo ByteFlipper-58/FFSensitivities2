@@ -242,4 +242,7 @@
     <string name="error_details_clipboard_label">Дэталі памылкі</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">Не знойдзены браўзер для адкрыцця гэтага URL</string>
+    <string name="change_language_description">Выберыце мову інтэрфейсу</string>
+    <string name="ad_test_title">Тэст рэкламы</string>
+    <string name="ad_test_description">Праверка працы рэкламных блокаў</string>
 </resources>

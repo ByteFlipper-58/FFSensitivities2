@@ -1,6 +1,9 @@
 package com.byteflipper.ui_components
 
+import android.net.Uri
 import android.webkit.WebView
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,7 +17,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.webkit.WebViewAssetLoader
+import androidx.webkit.WebViewClientCompat
 
 /**
  * A reusable screen to display web content, typically for policies or terms.
@@ -34,6 +40,10 @@ fun PolicyScreen(
     backContentDescription: String,
     modifier: Modifier = Modifier
 ) {
+    val assetLoader = WebViewAssetLoader.Builder()
+        .addPathHandler("/assets/", WebViewAssetLoader.AssetsPathHandler(LocalContext.current))
+        .build()
+
     Scaffold(
         modifier = modifier,
         topBar = {
@@ -57,21 +67,51 @@ fun PolicyScreen(
         ) {
             AndroidView(
                 factory = { context ->
+                    val safeUrl = contentUrl.toSafeWebViewUrl()
                     WebView(context).apply {
-                        // Basic settings, consider adding more security settings if loading external URLs
-                        settings.javaScriptEnabled = true // Be cautious with JS from untrusted sources
-                        // Consider disabling file access and content access for external URLs:
-                        // settings.allowFileAccess = false
-                        // settings.allowContentAccess = false
-                        loadUrl(contentUrl)
+                        settings.javaScriptEnabled = false
+                        settings.allowFileAccess = false
+                        settings.allowContentAccess = false
+                        settings.allowFileAccessFromFileURLs = false
+                        settings.allowUniversalAccessFromFileURLs = false
+
+                        webViewClient = object : WebViewClientCompat() {
+                            override fun shouldInterceptRequest(
+                                view: WebView?,
+                                request: WebResourceRequest
+                            ): WebResourceResponse? {
+                                return assetLoader.shouldInterceptRequest(request.url)
+                            }
+
+                            override fun shouldInterceptRequest(
+                                view: WebView?,
+                                url: String?
+                            ): WebResourceResponse? {
+                                return url?.let { assetLoader.shouldInterceptRequest(Uri.parse(it)) }
+                            }
+                        }
+
+                        loadUrl(safeUrl)
                     }
                 },
                 update = { webView ->
-                    // Can be used to reload if the url changes, though not typical for this use case
-                    // webView.loadUrl(contentUrl)
+                    val safeUrl = contentUrl.toSafeWebViewUrl()
+                    if (webView.url != safeUrl) {
+                        webView.loadUrl(safeUrl)
+                    }
                 },
                 modifier = Modifier.fillMaxSize()
             )
         }
+    }
+}
+
+private fun String.toSafeWebViewUrl(): String {
+    val assetPrefix = "file:///android_asset/"
+    return if (startsWith(assetPrefix)) {
+        val assetPath = removePrefix(assetPrefix)
+        "https://appassets.androidplatform.net/assets/$assetPath"
+    } else {
+        this
     }
 }

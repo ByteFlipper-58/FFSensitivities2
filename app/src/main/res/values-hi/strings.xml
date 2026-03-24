@@ -242,4 +242,7 @@
     <string name="theme_settings_card_description">रूप, डायनामिक रंग और कंट्रास्ट को अनुकूलित करें</string>
     <string name="selected">चयनित</string>
 
+    <string name="change_language_description">इंटरफ़ेस भाषा चुनें</string>
+    <string name="ad_test_title">विज्ञापन परीक्षण</string>
+    <string name="ad_test_description">विज्ञापन ब्लॉकों की कार्यक्षमता का परीक्षण</string>
 </resources>

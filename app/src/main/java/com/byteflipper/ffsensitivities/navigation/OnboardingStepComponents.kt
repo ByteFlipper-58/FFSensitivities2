@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
@@ -26,8 +25,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withLink
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -213,47 +215,60 @@ private fun AcceptanceText(
 ) {
     val fullText = stringResource(id = R.string.accept_terms_and_policy)
     val parsedText = HtmlCompat.fromHtml(fullText, HtmlCompat.FROM_HTML_MODE_LEGACY)
+    val plainText = parsedText.toString()
+    val linkSpans = parsedText.getSpans(0, parsedText.length, android.text.style.URLSpan::class.java)
+        .sortedBy { parsedText.getSpanStart(it) }
 
     val annotatedString = buildAnnotatedString {
-        append(parsedText)
-        parsedText.getSpans(0, parsedText.length, android.text.style.URLSpan::class.java)
-            .forEach { span ->
-                val start = parsedText.getSpanStart(span)
-                val end = parsedText.getSpanEnd(span)
-                addStyle(
-                    style = SpanStyle(
-                        color = MaterialTheme.colorScheme.primary,
-                        textDecoration = TextDecoration.Underline
-                    ),
-                    start = start,
-                    end = end
-                )
-                val tag = when (span.url) {
-                    "privacy" -> "PRIVACY_POLICY"
-                    "terms" -> "TERMS_OF_USE"
-                    else -> "UNKNOWN"
-                }
-                addStringAnnotation(
-                    tag = tag,
-                    annotation = span.url,
-                    start = start,
-                    end = end
-                )
+        var currentIndex = 0
+
+        linkSpans.forEach { span ->
+            val start = parsedText.getSpanStart(span)
+            val end = parsedText.getSpanEnd(span)
+
+            if (currentIndex < start) {
+                append(plainText.substring(currentIndex, start))
             }
+
+            val documentType = when (span.url) {
+                "privacy" -> "privacy_policy"
+                "terms" -> "terms"
+                else -> null
+            }
+
+            if (documentType != null) {
+                withLink(
+                    LinkAnnotation.Clickable(
+                        tag = documentType,
+                        styles = TextLinkStyles(
+                            style = SpanStyle(
+                                color = MaterialTheme.colorScheme.primary,
+                                textDecoration = TextDecoration.Underline
+                            )
+                        )
+                    ) {
+                        onShowPolicyClick(documentType)
+                    }
+                ) {
+                    append(plainText.substring(start, end))
+                }
+            } else {
+                append(plainText.substring(start, end))
+            }
+
+            currentIndex = end
+        }
+
+        if (currentIndex < plainText.length) {
+            append(plainText.substring(currentIndex))
+        }
     }
 
-    ClickableText(
+    Text(
         text = annotatedString,
         style = MaterialTheme.typography.bodySmall.copy(
             color = MaterialTheme.colorScheme.onSurface
         ),
-        modifier = modifier,
-        onClick = { offset ->
-            annotatedString.getStringAnnotations(tag = "PRIVACY_POLICY", start = offset, end = offset)
-                .firstOrNull()?.let { onShowPolicyClick("privacy_policy") }
-
-            annotatedString.getStringAnnotations(tag = "TERMS_OF_USE", start = offset, end = offset)
-                .firstOrNull()?.let { onShowPolicyClick("terms") }
-        }
+        modifier = modifier
     )
 } 

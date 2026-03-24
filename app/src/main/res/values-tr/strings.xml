@@ -242,4 +242,7 @@
     <string name="theme_settings_card_description">Görünümü, dinamik renkleri ve kontrastı özelleştirin</string>
     <string name="selected">Seçildi</string>
 
+    <string name="change_language_description">Arayüz dilini seçin</string>
+    <string name="ad_test_title">Reklam testi</string>
+    <string name="ad_test_description">Reklam bloklarının işlevselliğini test etme</string>
 </resources>

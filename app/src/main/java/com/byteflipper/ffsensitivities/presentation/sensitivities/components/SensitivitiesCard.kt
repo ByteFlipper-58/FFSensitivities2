@@ -1,5 +1,6 @@
 package com.byteflipper.ffsensitivities.presentation.sensitivities.components
 
+import android.content.ClipData
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,21 +16,26 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
+import kotlinx.coroutines.launch
 
 @Composable
 fun SensitivitiesCard(
     deviceModel: DeviceModel
 ) {
+    val clipboard = LocalClipboard.current
+    val scope = rememberCoroutineScope()
+
     ElevatedCard(
         modifier = Modifier.fillMaxWidth(),
         shape = ShapeDefaults.ExtraLarge
@@ -145,8 +151,6 @@ fun SensitivitiesCard(
                 thickness = 1.dp
             )
 
-            val clipboardManager = LocalClipboardManager.current
-
             val settingsText = buildString {
                 append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi}\n")
                 append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities?.review}\n")
@@ -160,7 +164,11 @@ fun SensitivitiesCard(
 
             FilledTonalButton(
                 onClick = {
-                    clipboardManager.setText(AnnotatedString(settingsText))
+                    scope.launch {
+                        clipboard.setClipEntry(
+                            ClipEntry(ClipData.newPlainText("sensitivities", settingsText))
+                        )
+                    }
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {

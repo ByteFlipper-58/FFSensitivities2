@@ -64,7 +64,7 @@ fun CompactSlider(
             )
         }
 
-        BoxWithConstraints(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(thumbRadius * 2) // Height accommodates thumb
@@ -89,9 +89,8 @@ fun CompactSlider(
                         }
                     )
                  }
-         ) { // BoxWithConstraintsScope provides constraints
-             // Calculations moved inside Canvas where size is available
-             Canvas(modifier = Modifier.fillMaxSize()) { // DrawScope provides size
+         ) {
+             Canvas(modifier = Modifier.fillMaxSize()) {
                  val width = size.width // Use Canvas's width
                  val sliderStart = thumbRadiusPx
                  val sliderEnd = width - thumbRadiusPx

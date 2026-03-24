@@ -22,7 +22,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.snapshotFlow
@@ -30,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.byteflipper.ui_components.R
 import kotlinx.coroutines.launch
 import android.util.Log
@@ -48,8 +48,8 @@ fun OnboardingContainer(
     animationDurationMs: Int = 300,
     onComplete: suspend () -> Unit = {}
 ) {
-    val currentStep by manager.currentStep.collectAsState()
-    val canFinish by manager.canFinish.collectAsState()
+    val currentStep by manager.currentStep.collectAsStateWithLifecycle()
+    val canFinish by manager.canFinish.collectAsStateWithLifecycle()
     val steps = manager.steps
     val coroutineScope = rememberCoroutineScope()
     

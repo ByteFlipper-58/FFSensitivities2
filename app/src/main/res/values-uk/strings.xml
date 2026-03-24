@@ -242,4 +242,7 @@
     <string name="theme_settings_card_description">Налаштуйте вигляд, динамічні кольори та контраст</string>
     <string name="selected">Обрано</string>
 
+    <string name="change_language_description">Виберіть мову інтерфейсу</string>
+    <string name="ad_test_title">Тест реклами</string>
+    <string name="ad_test_description">Тестування роботи рекламних блоків</string>
 </resources>

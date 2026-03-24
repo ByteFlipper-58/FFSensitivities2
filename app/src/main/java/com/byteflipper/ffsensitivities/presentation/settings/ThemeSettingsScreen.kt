@@ -15,13 +15,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
@@ -37,9 +37,9 @@ fun ThemeSettingsScreen(
     modifier: Modifier = Modifier,
     appViewModel: AppViewModel = hiltViewModel()
 ) {
-    val dynamicColorState by appViewModel.dynamicColor.collectAsState()
-    val contrastThemeState by appViewModel.contrastTheme.collectAsState()
-    val selectedTheme by appViewModel.theme.collectAsState()
+    val dynamicColorState by appViewModel.dynamicColor.collectAsStateWithLifecycle()
+    val contrastThemeState by appViewModel.contrastTheme.collectAsStateWithLifecycle()
+    val selectedTheme by appViewModel.theme.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {

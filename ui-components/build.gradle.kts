@@ -58,7 +58,9 @@ dependencies {
 
     // Lifecycle and Activity
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.webkit)
 
     // Test dependencies
     testImplementation(libs.junit)

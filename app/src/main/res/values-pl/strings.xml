@@ -242,4 +242,7 @@
     <string name="theme_settings_card_description">Dostosuj wygląd, dynamiczne kolory i kontrast</string>
     <string name="selected">Wybrano</string>
 
+    <string name="change_language_description">Wybierz język interfejsu</string>
+    <string name="ad_test_title">Test reklam</string>
+    <string name="ad_test_description">Testowanie działania bloków reklam</string>
 </resources>

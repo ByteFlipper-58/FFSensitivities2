@@ -14,7 +14,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.core.BannerAdProvider
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
@@ -91,8 +93,8 @@ fun AdStatusIndicator(
     modifier: Modifier = Modifier,
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
-    val adReadyState by adViewModel.adReadyState.collectAsState()
-    val isReady = adReadyState[AdType.BANNER to location] ?: false
+    val adReadyState by adViewModel.adReadyState.collectAsStateWithLifecycle()
+    val isReady = adReadyState[AdReadyKey(AdType.BANNER, location)] ?: false
 
     Card(
         modifier = modifier,
@@ -129,8 +131,8 @@ fun getDynamicBottomPadding(
     location: AdLocation,
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ): Dp {
-    val adReadyState by adViewModel.adReadyState.collectAsState()
-    val isAdReady = adReadyState[AdType.BANNER to location] ?: false
+    val adReadyState by adViewModel.adReadyState.collectAsStateWithLifecycle()
+    val isAdReady = adReadyState[AdReadyKey(AdType.BANNER, location)] ?: false
     
     return if (isAdReady) {
         150.dp // Отступ когда баннер видим

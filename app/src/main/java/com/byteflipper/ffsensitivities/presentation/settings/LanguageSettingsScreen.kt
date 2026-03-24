@@ -21,16 +21,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
@@ -38,7 +36,6 @@ import com.byteflipper.ffsensitivities.manager.Language
 import com.byteflipper.ffsensitivities.manager.appLanguages
 import com.byteflipper.ffsensitivities.presentation.ui.findActivity
 import com.byteflipper.ui_components.preferences.PreferenceCategory
-import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -75,7 +72,7 @@ fun LanguageSettingsScreen(
                 val systemLanguageOption = Language("system", stringResource(R.string.system_default))
                 val availableLanguages = listOf(systemLanguageOption) + appLanguages
 
-                val currentLanguageCode by appViewModel.currentLanguageCode.collectAsState()
+                val currentLanguageCode by appViewModel.currentLanguageCode.collectAsStateWithLifecycle()
 
                 FlowRow(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),

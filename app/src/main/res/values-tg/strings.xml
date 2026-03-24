@@ -241,4 +241,7 @@
     <string name="theme_settings_card_description">Намудор, рангҳои динамикӣ ва контрастро танзим кунед</string>
     <string name="selected">Интихобшуда</string>
 
+    <string name="change_language_description">Забони интерфейсро интихоб кунед</string>
+    <string name="ad_test_title">Санҷиши таблиғот</string>
+    <string name="ad_test_description">Санҷиши кори блокҳои таблиғотӣ</string>
 </resources>

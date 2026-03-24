@@ -242,4 +242,7 @@
     <string name="theme_settings_card_description">Personalize a aparência, as cores dinâmicas e o contraste</string>
     <string name="selected">Selecionado</string>
 
+    <string name="change_language_description">Selecione o idioma da interface</string>
+    <string name="ad_test_title">Teste de anúncios</string>
+    <string name="ad_test_description">Testando o funcionamento dos blocos de anúncios</string>
 </resources>

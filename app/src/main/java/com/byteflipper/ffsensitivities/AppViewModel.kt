@@ -1,28 +1,23 @@
 package com.byteflipper.ffsensitivities
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.manager.AppLocaleManager
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import android.util.Log
 
 @HiltViewModel
 class AppViewModel @Inject constructor(
-    @ApplicationContext private val context: Context,
     val dataStoreManager: DataStoreManager,
     val adManager: AdManager
-) : AndroidViewModel(context.applicationContext as Application) {
+) : ViewModel() {
 
     private val appLocaleManager = AppLocaleManager()
 
@@ -74,16 +69,6 @@ class AppViewModel @Inject constructor(
             _settingsLoaded.value = true
         }
 
-        // Apply saved language on startup if present
-        viewModelScope.launch(Dispatchers.IO) {
-            try {
-                dataStoreManager.getLanguage().first()?.let { savedLang ->
-                    appLocaleManager.changeLanguage(context, savedLang)
-                    _currentLanguageCode.value = savedLang
-                }
-            } catch (_: Exception) {
-            }
-        }
     }
 
     fun setTheme(theme: String) {
@@ -111,7 +96,7 @@ class AppViewModel @Inject constructor(
     }
 
     fun setLanguage(languageCode: String?) {
-        appLocaleManager.changeLanguage(context, languageCode)
+        appLocaleManager.changeLanguage(languageCode)
         _currentLanguageCode.value = languageCode ?: "system"
         viewModelScope.launch(Dispatchers.IO) {
             // Persist preference

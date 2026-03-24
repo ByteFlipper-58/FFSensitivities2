@@ -1,5 +1,6 @@
 package com.byteflipper.crashhandler
 
+import android.content.ClipData
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -66,9 +67,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.ClipEntry
+import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -88,7 +89,7 @@ fun CrashScreen(
 ) {
     var selectedTabIndex by remember { mutableStateOf(0) }
     var showCopyConfirmation by remember { mutableStateOf(false) }
-    val clipboardManager = LocalClipboardManager.current
+    val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
     val unknownErrorString = stringResource(id = R.string.crash_handler_unknown_error)
     val errorFallbackString = stringResource(id = R.string.crash_handler_error_fallback)
@@ -207,7 +208,7 @@ fun CrashScreen(
                         containerColor = MaterialTheme.colorScheme.surface,
                         contentColor = MaterialTheme.colorScheme.primary,
                         indicator = { tabPositions ->
-                            TabRowDefaults.Indicator(
+                            TabRowDefaults.SecondaryIndicator(
                                 Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                                 color = MaterialTheme.colorScheme.primary,
                                 height = 3.dp
@@ -360,10 +361,12 @@ fun CrashScreen(
                                 } else {
                                     stackTrace
                                 }
-                                clipboardManager.setText(AnnotatedString(textToCopy))
-                                showCopyConfirmation = true
-                                // Hide confirmation after delay
                                 scope.launch {
+                                    clipboard.setClipEntry(
+                                        ClipEntry(ClipData.newPlainText("crash-details", textToCopy))
+                                    )
+                                    showCopyConfirmation = true
+                                    // Hide confirmation after delay
                                     delay(2000)
                                     showCopyConfirmation = false
                                 }

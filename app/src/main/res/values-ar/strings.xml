@@ -242,4 +242,7 @@
     <string name="error_details_clipboard_label">تفاصيل الخطأ</string>
     <!-- Specific Errors -->
     <string name="error_no_browser_found">لم يتم العثور على متصفح لفتح هذا الرابط</string>
+    <string name="change_language_description">اختر لغة الواجهة</string>
+    <string name="ad_test_title">اختبار الإعلانات</string>
+    <string name="ad_test_description">اختبار وظائف كتل الإعلانات</string>
 </resources>

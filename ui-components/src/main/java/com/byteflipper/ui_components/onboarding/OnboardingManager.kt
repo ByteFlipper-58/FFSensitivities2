@@ -2,7 +2,6 @@ package com.byteflipper.ui_components.onboarding
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -15,6 +14,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import android.util.Log
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 /**
  * Централизованный менеджер для управления OnBoarding flow
@@ -229,5 +229,5 @@ fun rememberOnboardingConditions(
  */
 @Composable
 fun OnboardingCondition.collectAsState(): State<Boolean> {
-    return isMet.collectAsState()
-} 
+    return isMet.collectAsStateWithLifecycle()
+}
