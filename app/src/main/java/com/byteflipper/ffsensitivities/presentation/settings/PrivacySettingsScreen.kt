@@ -19,9 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
@@ -29,8 +26,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ui_components.preferences.PreferenceCategory
 
@@ -39,14 +36,11 @@ import com.byteflipper.ui_components.preferences.PreferenceCategory
 fun PrivacySettingsScreen(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    appViewModel: AppViewModel = hiltViewModel()
+    privacyViewModel: PrivacyViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val activity = context as? Activity
-    val adManager = appViewModel.adManager
-
-    // State to potentially update UI based on form dismissal, though the button visibility is primary
-    var privacyOptionsRequired by remember { mutableStateOf(activity != null && adManager.isPrivacyOptionsRequired) }
+    val privacyOptionsRequired by privacyViewModel.privacyOptionsRequired.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
@@ -88,14 +82,10 @@ fun PrivacySettingsScreen(
                             .padding(horizontal = 16.dp) // Add padding to match other items if needed
                             .clip(MaterialTheme.shapes.medium) // Optional: Add clipping for ripple effect
                             .clickable {
-                                adManager.showPrivacyOptionsForm(activity) { formError ->
+                                privacyViewModel.showPrivacyOptionsForm(activity) { formError ->
                                     if (formError != null) {
                                         // Handle error, e.g., show a Snackbar
                                         // Log.e("PrivacySettingsScreen", "Error showing privacy options form: ${formError.message}")
-                                    } else {
-                                        // Form dismissed, AdManager already updated SDKs.
-// Re-check requirement status after dismissal if necessary for UI updates.
-privacyOptionsRequired = adManager.isPrivacyOptionsRequired
                                     }
                                 }
                             }

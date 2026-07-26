@@ -9,15 +9,13 @@ import androidx.activity.compose.LocalActivity
 import android.app.Activity
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
-import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
-import com.byteflipper.ffsensitivities.presentation.viewmodel.home.HomeScreenViewModel
 import com.byteflipper.ffsensitivities.presentation.home.dialogs.HomeScreenDialogs
 
 @Composable
 fun HomeScreenLayout(
-    navController: NavHostController,
+    onOpenSettings: () -> Unit,
+    onOpenDevices: (String, String) -> Unit,
     homeViewModel: HomeScreenViewModel = hiltViewModel(),
     manufacturerViewModel: ManufacturerViewModel = hiltViewModel(),
     adViewModel: SimpleAdViewModel = hiltViewModel()
@@ -29,16 +27,15 @@ fun HomeScreenLayout(
     var showDialog by remember { mutableStateOf(false) }
 
     HomeScreenScaffold(
-        navController = navController
+        onOpenSettings = onOpenSettings
     ) {
         HomeScreenContent(
             uiState = uiState.value,
             isRequestSent = isRequestSent,
             showDialog = showDialog,
             onShowDialogChange = { showDialog = it },
-            onRequestSent = { homeViewModel.setRequestSent(true) },
             onRetry = { manufacturerViewModel.retry() },
-            navController = navController,
+            onOpenDevices = onOpenDevices,
             adViewModel = adViewModel,
             activity = activity
         )

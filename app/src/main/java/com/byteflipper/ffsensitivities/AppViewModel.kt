@@ -2,12 +2,10 @@ package com.byteflipper.ffsensitivities
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.ads.AdManager
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.data.repository.SettingsRepository
 import com.byteflipper.ffsensitivities.manager.AppLocaleManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -15,8 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AppViewModel @Inject constructor(
-    val dataStoreManager: DataStoreManager,
-    val adManager: AdManager
+    private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
     private val appLocaleManager = AppLocaleManager()
@@ -25,28 +22,21 @@ class AppViewModel @Inject constructor(
     private val _currentLanguageCode = MutableStateFlow(appLocaleManager.getCurrentLanguageCode())
     val currentLanguageCode: StateFlow<String> = _currentLanguageCode.asStateFlow()
 
-    val theme: StateFlow<String> = dataStoreManager.getTheme()
+    val theme: StateFlow<String> = settingsRepository.getTheme()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
             initialValue = "system"
         )
 
-    val dynamicColor: StateFlow<Boolean> = dataStoreManager.getDynamicColor()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.Eagerly,
-        initialValue = false
-    )
-
-    val contrastTheme: StateFlow<Boolean> = dataStoreManager.getContrastTheme()
+    val dynamicColor: StateFlow<Boolean> = settingsRepository.getDynamicColor()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
             initialValue = false
         )
 
-    val requestSent: StateFlow<Boolean> = dataStoreManager.getRequestSent()
+    val contrastTheme: StateFlow<Boolean> = settingsRepository.getContrastTheme()
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.Eagerly,
@@ -59,39 +49,32 @@ class AppViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             combine(
-                dataStoreManager.getTheme(),
-                dataStoreManager.getDynamicColor(),
-                dataStoreManager.getContrastTheme()
+                settingsRepository.getTheme(),
+                settingsRepository.getDynamicColor(),
+                settingsRepository.getContrastTheme()
             ) { _, _, _ ->
                 true
             }.first { it }
 
             _settingsLoaded.value = true
         }
-
     }
 
     fun setTheme(theme: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            dataStoreManager.setTheme(theme)
+            settingsRepository.setTheme(theme)
         }
     }
 
     fun setDynamicColor(dynamicColor: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            dataStoreManager.setDynamicColor(dynamicColor)
+            settingsRepository.setDynamicColor(dynamicColor)
         }
     }
 
     fun setContrastTheme(contrast: Boolean) {
         viewModelScope.launch(Dispatchers.IO) {
-            dataStoreManager.setContrastTheme(contrast)
-        }
-    }
-
-    fun setRequestSent(status: Boolean) {
-        viewModelScope.launch(Dispatchers.IO) {
-            dataStoreManager.setRequestSent(status)
+            settingsRepository.setContrastTheme(contrast)
         }
     }
 
@@ -99,8 +82,7 @@ class AppViewModel @Inject constructor(
         appLocaleManager.changeLanguage(languageCode)
         _currentLanguageCode.value = languageCode ?: "system"
         viewModelScope.launch(Dispatchers.IO) {
-            // Persist preference
-            dataStoreManager.setLanguage(languageCode)
+            settingsRepository.setLanguage(languageCode)
         }
     }
 }

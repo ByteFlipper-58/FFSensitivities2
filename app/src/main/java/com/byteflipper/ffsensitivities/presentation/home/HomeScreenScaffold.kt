@@ -17,16 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.navigation.Screen
-import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreenScaffold(
-    navController: NavHostController,
+    onOpenSettings: () -> Unit,
     content: @Composable () -> Unit
 ) {
     Scaffold(
@@ -40,7 +36,7 @@ fun HomeScreenScaffold(
                     )
                 },
                 actions = {
-                    IconButton(onClick = { navController.navigate(Screen.Settings.route) }) {
+                    IconButton(onClick = onOpenSettings) {
                         Icon(
                             Icons.Default.Settings, 
                             contentDescription = stringResource(R.string.settings)

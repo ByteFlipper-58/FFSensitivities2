@@ -20,7 +20,6 @@ android {
         versionCode = 87
         versionName = "v3.0.9"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -149,14 +148,6 @@ dependencies {
     // Other libraries
     implementation(libs.library)
 
-    // Test dependencies
-    testImplementation(libs.junit)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-
     // Debug dependencies
-    debugImplementation(libs.androidx.ui.test.manifest)
     debugImplementation(libs.androidx.ui.tooling)
 }

@@ -8,13 +8,17 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "app_prefs")
 
-class DataStoreManager(private val context: Context) {
+class DataStoreManager @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
     private object PreferencesKeys {
         val THEME_KEY = stringPreferencesKey("app_theme")
         val DYNAMIC_COLOR_KEY = booleanPreferencesKey("dynamic_colors")
@@ -107,6 +111,7 @@ class DataStoreManager(private val context: Context) {
 
     fun getLanguage(): Flow<String?> = context.dataStore.data
         .map { preferences -> preferences[PreferencesKeys.SELECTED_LANGUAGE_KEY] }
+
     suspend fun setAdCounter(location: String, count: Int) {
         val key = when (location) {
             "HOME_SCREEN" -> PreferencesKeys.AD_COUNTER_HOME_SCREEN

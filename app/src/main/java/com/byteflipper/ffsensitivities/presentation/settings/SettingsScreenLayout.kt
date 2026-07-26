@@ -1,34 +1,32 @@
 package com.byteflipper.ffsensitivities.presentation.settings
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.BuildConfig
-import android.app.Activity
+import com.byteflipper.ffsensitivities.navigation.navigateToAdTest
+import com.byteflipper.ffsensitivities.navigation.navigateToLanguageSettings
+import com.byteflipper.ffsensitivities.navigation.navigateToPrivacySettings
+import com.byteflipper.ffsensitivities.navigation.navigateToThemeSettings
 
 @Composable
 fun SettingsScreenLayout(
     navController: NavHostController,
-    appViewModel: AppViewModel = hiltViewModel()
+    privacyViewModel: PrivacyViewModel = hiltViewModel()
 ) {
-    val context = LocalContext.current
-    val activity = context as? Activity
-
-    val adManager = appViewModel.adManager
-    val privacyOptionsRequired = remember(activity, adManager) {
-    activity != null && adManager.isPrivacyOptionsRequired
-}
+    val privacyOptionsRequired = privacyViewModel.privacyOptionsRequired.collectAsStateWithLifecycle()
 
     SettingsScreenScaffold(
         navController = navController
     ) {
         SettingsScreenContent(
-            navController = navController,
-            privacyOptionsRequired = privacyOptionsRequired,
+            onOpenThemeSettings = { navController.navigateToThemeSettings() },
+            onOpenLanguageSettings = { navController.navigateToLanguageSettings() },
+            onOpenPrivacySettings = { navController.navigateToPrivacySettings() },
+            onOpenAdTest = { navController.navigateToAdTest() },
+            privacyOptionsRequired = privacyOptionsRequired.value,
             isDebugMode = BuildConfig.DEBUG
         )
     }
-} 
+}

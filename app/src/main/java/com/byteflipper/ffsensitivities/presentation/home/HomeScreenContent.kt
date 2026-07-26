@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
@@ -30,9 +29,8 @@ fun HomeScreenContent(
     isRequestSent: Boolean,
     showDialog: Boolean,
     onShowDialogChange: (Boolean) -> Unit,
-    onRequestSent: () -> Unit,
     onRetry: () -> Unit,
-    navController: NavHostController,
+    onOpenDevices: (String, String) -> Unit,
     adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
@@ -77,7 +75,7 @@ fun HomeScreenContent(
             val manufacturers = uiState.data as? List<Manufacturer> ?: emptyList()
             ManufacturerGrid(
                 manufacturers = manufacturers,
-                navController = navController,
+                onOpenDevices = onOpenDevices,
                 adViewModel = adViewModel,
                 activity = activity,
                 header = {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.FFSensitivities" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.FFSensitivities" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Set a dark background to prevent white flash during theme/language changes -->
         <item name="android:windowBackground">#FF0A0F0C</item>
     </style>
@@ -12,6 +12,7 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenIconBackgroundColor">#EBEBEB</item>
         <item name="windowSplashScreenAnimationDuration">2000</item>
+        <item name="postSplashScreenTheme">@style/Theme.FFSensitivities</item>
     </style>
 
     <!-- Theme for ErrorActivity to avoid white flash -->

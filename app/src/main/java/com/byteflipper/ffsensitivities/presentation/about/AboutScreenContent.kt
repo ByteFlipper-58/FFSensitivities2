@@ -13,10 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ffsensitivities.utils.ChromeCustomTabUtil
 import com.byteflipper.ui_components.components.AnimatedActionItem
 import com.byteflipper.ui_components.components.AppInfoCard
@@ -26,9 +24,9 @@ import com.byteflipper.ui_components.components.VersionInfoCard
 
 @Composable
 fun AboutScreenContent(
-    navController: NavHostController,
     context: Context,
     primaryColorArgb: Int,
+    onOpenBugReport: () -> Unit,
     launchReviewFlow: () -> Unit
 ) {
     val scrollState = rememberScrollState()
@@ -58,7 +56,7 @@ fun AboutScreenContent(
                     title = stringResource(R.string.bug_report_title),
                     subtitle = stringResource(R.string.bug_report_subtitle),
                     icon = painterResource(id = R.drawable.bug_report_24px),
-                    onClick = { navController.navigate(Screen.BugReport.route) }
+                    onClick = onOpenBugReport
                 )
 
                 AnimatedActionItem(

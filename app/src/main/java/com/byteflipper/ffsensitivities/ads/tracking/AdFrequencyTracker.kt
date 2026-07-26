@@ -1,7 +1,7 @@
 package com.byteflipper.ffsensitivities.ads.tracking
 
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.data.repository.AdCounterRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -10,15 +10,15 @@ import javax.inject.Singleton
  */
 @Singleton
 class AdFrequencyTracker @Inject constructor(
-    private val dataStoreManager: DataStoreManager
+    private val adCounterRepository: AdCounterRepository
 ) {
 
     suspend fun increment(location: AdLocation): Int {
-        return key(location)?.let { dataStoreManager.incrementAdCounter(it) } ?: 0
+        return key(location)?.let { adCounterRepository.incrementCounter(it) } ?: 0
     }
 
     suspend fun reset(location: AdLocation) {
-        key(location)?.let { dataStoreManager.resetAdCounter(it) }
+        key(location)?.let { adCounterRepository.resetCounter(it) }
     }
 
     private fun key(location: AdLocation): String? {

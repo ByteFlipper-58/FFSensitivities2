@@ -11,10 +11,10 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.appcompat.app.AppCompatActivity
 import com.byteflipper.ffsensitivities.AppViewModel
-import com.byteflipper.ffsensitivities.ads.AdManager
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
+import com.byteflipper.ffsensitivities.core.monetization.MonetizationCoordinator
+import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinator
+import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinatorFactory
 import com.byteflipper.ffsensitivities.navigation.AppNavHost
-import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
 import com.byteflipper.ffsensitivities.presentation.ui.theme.FFSensitivitiesTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
     }
 
-    @Inject lateinit var adManager: AdManager
-    @Inject lateinit var dataStoreManager: DataStoreManager
-    private lateinit var appUpdateManagerWrapper: AppUpdateManagerWrapper
+    @Inject lateinit var monetizationCoordinator: MonetizationCoordinator
+    @Inject lateinit var appUpdateCoordinatorFactory: AppUpdateCoordinatorFactory
+    private lateinit var appUpdateCoordinator: AppUpdateCoordinator
     private val viewModel: AppViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         // Это особенно важно для Android 15+ (API 35)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         
-        appUpdateManagerWrapper = AppUpdateManagerWrapper(this)
+        appUpdateCoordinator = appUpdateCoordinatorFactory.create(this)
 
-        adManager.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
+        monetizationCoordinator.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
             Log.d(TAG, "UMP согласие получено в MainActivity. Можно запрашивать персонализированную рекламу: $canRequestPersonalizedAds")
         }
 
@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity() {
                 contrastThemeSetting = contrastThemeSetting
             ) {
                 AppNavHost(
-                    dataStoreManager = dataStoreManager,
                     appViewModel = viewModel,
-                    appUpdateManagerWrapper = appUpdateManagerWrapper
+                    appUpdateCoordinator = appUpdateCoordinator
                 )
             }
         }

@@ -41,29 +41,28 @@ import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
-import com.byteflipper.ffsensitivities.playcore.AppUpdateManagerWrapper
+import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinator
 import com.byteflipper.ffsensitivities.playcore.UpdateState
+import com.byteflipper.ffsensitivities.presentation.ui.AppStartupViewModel
 import com.byteflipper.ui_components.PolicyScreen
 import com.byteflipper.ui_components.onboarding.OnboardingContainer
 import com.byteflipper.ui_components.onboarding.OnboardingManager
 import com.byteflipper.ui_components.onboarding.buildOnboardingSteps
 import com.byteflipper.ui_components.onboarding.rememberOnboardingConditions
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 @Composable
 fun AppNavHost(
-    dataStoreManager: DataStoreManager,
     appViewModel: AppViewModel,
-    appUpdateManagerWrapper: AppUpdateManagerWrapper
+    appUpdateCoordinator: AppUpdateCoordinator,
+    startupViewModel: AppStartupViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
-    val updateState by appUpdateManagerWrapper.updateState.collectAsStateWithLifecycle()
+    val updateState by appUpdateCoordinator.updateState.collectAsStateWithLifecycle()
+    val startRoute by startupViewModel.startRoute.collectAsStateWithLifecycle()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val shouldShowBottomBar = currentRoute?.let { route ->
@@ -74,7 +73,7 @@ fun AppNavHost(
     } ?: false
 
     LaunchedEffect(Unit) {
-        coroutineScope.launch { appUpdateManagerWrapper.checkForUpdate() }
+        coroutineScope.launch { appUpdateCoordinator.checkForUpdate() }
     }
 
     LaunchedEffect(updateState) {
@@ -90,7 +89,7 @@ fun AppNavHost(
 
     LaunchedEffect(updateState) {
         if (updateState == UpdateState.AVAILABLE) {
-            appUpdateManagerWrapper.startUpdate()
+            appUpdateCoordinator.startUpdate()
         }
     }
 
@@ -114,18 +113,18 @@ fun AppNavHost(
                 .consumeWindowInsets(innerPadding)
         ) {
             composable(Route.LOADING) {
-                LaunchedEffect(Unit) {
-                    val completed = dataStoreManager.getFirstLaunchCompleted().first()
-                    val target = if (completed) Route.MAIN_APP else Route.ONBOARDING
+                LaunchedEffect(startRoute) {
+                    startRoute?.let { target ->
                     navController.navigate(target) {
                         popUpTo(Route.LOADING) { inclusive = true }
+                    }
                     }
                 }
             }
             composable(Route.ONBOARDING) {
                 OnboardingScreen(
-                    dataStoreManager = dataStoreManager,
                     onFinishOnboarding = {
+                        startupViewModel.completeOnboarding()
                         navController.navigate(Route.MAIN_APP) {
                             popUpTo(Route.ONBOARDING) { inclusive = true }
                         }
@@ -163,7 +162,6 @@ fun AppNavHost(
 
 @Composable
 private fun OnboardingScreen(
-    dataStoreManager: DataStoreManager,
     onFinishOnboarding: () -> Unit,
     rootNavController: NavHostController,
     adViewModel: SimpleAdViewModel = hiltViewModel()
@@ -269,7 +267,6 @@ private fun OnboardingScreen(
     OnboardingContainer(
         manager = onboardingManager,
         onComplete = suspend {
-            dataStoreManager.setFirstLaunchCompleted(true)
             onFinishOnboarding()
         }
     )

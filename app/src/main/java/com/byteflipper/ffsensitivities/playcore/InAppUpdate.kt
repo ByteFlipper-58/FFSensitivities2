@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.byteflipper.ffsensitivities.BuildConfig
+import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinator
 import com.google.android.play.core.appupdate.AppUpdateInfo
 import com.google.android.play.core.appupdate.AppUpdateManager
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
@@ -28,13 +29,13 @@ enum class UpdateState {
     CHECKING, AVAILABLE, DOWNLOADING, DOWNLOADED, INSTALLING, INSTALLED, FAILED
 }
 
-class AppUpdateManagerWrapper(private val activity: ComponentActivity) : DefaultLifecycleObserver {
+class AppUpdateManagerWrapper(private val activity: ComponentActivity) : DefaultLifecycleObserver, AppUpdateCoordinator {
 
     private val appUpdateManager: AppUpdateManager = AppUpdateManagerFactory.create(activity)
     private var updateInfo: AppUpdateInfo? = null
     private var updateType: Int = AppUpdateType.FLEXIBLE
     private val _updateState = MutableStateFlow(UpdateState.CHECKING)
-    val updateState: StateFlow<UpdateState> = _updateState.asStateFlow()
+    override val updateState: StateFlow<UpdateState> = _updateState.asStateFlow()
 
     private var updateDialogLauncher: ActivityResultLauncher<Intent>? = null
     private val installStateUpdatedListener = InstallStateUpdatedListener { installState ->
@@ -75,7 +76,7 @@ class AppUpdateManagerWrapper(private val activity: ComponentActivity) : Default
     }
 
     // Public method to be called from Activity's onResume
-    fun resumeUpdate() {
+    override fun resumeUpdate() {
          // Check for ongoing updates or downloaded updates that need installation
         appUpdateManager.appUpdateInfo.addOnSuccessListener { info ->
             if (info.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
@@ -101,7 +102,7 @@ class AppUpdateManagerWrapper(private val activity: ComponentActivity) : Default
         updateDialogLauncher?.unregister()
     }
 
-    suspend fun checkForUpdate() {
+    override suspend fun checkForUpdate() {
         val currentVersionCode = BuildConfig.VERSION_CODE
 
         // Set state to CHECKING before starting
@@ -166,7 +167,7 @@ class AppUpdateManagerWrapper(private val activity: ComponentActivity) : Default
     }
 
 
-     fun startUpdate() {
+    override fun startUpdate() {
         updateInfo?.let { info ->
             try {
                 val updateOptions = AppUpdateOptions.newBuilder(updateType).build()
@@ -191,7 +192,7 @@ class AppUpdateManagerWrapper(private val activity: ComponentActivity) : Default
     }
 
     // Public method to complete the update (renamed from promptToCompleteUpdate)
-    fun completeUpdate() {
+    override fun completeUpdate() {
         // Only attempt completion if downloaded
         if (_updateState.value == UpdateState.DOWNLOADED) {
             appUpdateManager.completeUpdate().addOnFailureListener {

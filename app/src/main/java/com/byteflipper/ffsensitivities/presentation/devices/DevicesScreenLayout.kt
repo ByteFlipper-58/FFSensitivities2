@@ -9,13 +9,13 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import android.app.Activity
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
-import com.byteflipper.ffsensitivities.presentation.viewmodel.devices.DevicesScreenViewModel
 
 @Composable
 fun DevicesScreenLayout(
     navController: NavHostController,
     name: String?,
     model: String?,
+    onOpenSensitivities: (String, String) -> Unit,
     deviceViewModel: DevicesScreenViewModel = hiltViewModel(),
     adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
@@ -34,11 +34,10 @@ fun DevicesScreenLayout(
     ) {
         DevicesScreenContent(
             uiState = uiState,
-            navController = navController,
+            onOpenSensitivities = onOpenSensitivities,
             adViewModel = adViewModel,
             activity = activity,
-            model = model,
-            deviceViewModel = deviceViewModel
+            onRetry = { model?.let(deviceViewModel::fetchDevices) }
         )
     }
 } 

@@ -3,11 +3,11 @@ package com.byteflipper.ffsensitivities.ads.viewmodel
 import android.app.Activity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
+import com.byteflipper.ffsensitivities.ads.core.AdProvider
 import com.byteflipper.ffsensitivities.ads.core.AdResult
 import com.byteflipper.ffsensitivities.ads.core.AdType
-import com.byteflipper.ffsensitivities.ads.core.AdProvider
+import com.byteflipper.ffsensitivities.core.monetization.MonetizationCoordinator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +21,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class SimpleAdViewModel @Inject constructor(
-    private val adManager: AdManager
+    private val monetizationCoordinator: MonetizationCoordinator
 ) : ViewModel() {
 
     // Состояние последнего результата показа рекламы
@@ -29,10 +29,10 @@ class SimpleAdViewModel @Inject constructor(
     val lastAdResult: StateFlow<AdResult?> = _lastAdResult.asStateFlow()
 
     // Состояние готовности рекламы
-    val adReadyState = adManager.adReadyState
+    val adReadyState = monetizationCoordinator.adReadyState
 
     // Состояние согласия
-    val consentState = adManager.consentState
+    val consentState = monetizationCoordinator.consentState
 
     /**
      * Показывает интерстициальную рекламу в указанной локации
@@ -43,7 +43,7 @@ class SimpleAdViewModel @Inject constructor(
         onResult: (AdResult) -> Unit = {}
     ) {
         viewModelScope.launch {
-            adManager.showAd(AdType.INTERSTITIAL, location, activity) { adResult ->
+            monetizationCoordinator.showAd(AdType.INTERSTITIAL, location, activity) { adResult ->
                 _lastAdResult.value = adResult
                 onResult(adResult)
             }
@@ -59,7 +59,7 @@ class SimpleAdViewModel @Inject constructor(
         onResult: (AdResult) -> Unit = {}
     ) {
         viewModelScope.launch {
-            adManager.showAd(AdType.REWARDED, location, activity) { adResult ->
+            monetizationCoordinator.showAd(AdType.REWARDED, location, activity) { adResult ->
                 _lastAdResult.value = adResult
                 onResult(adResult)
             }
@@ -75,7 +75,7 @@ class SimpleAdViewModel @Inject constructor(
         onResult: (AdResult) -> Unit = {}
     ) {
         viewModelScope.launch {
-            adManager.showAd(AdType.BANNER, location, activity) { adResult ->
+            monetizationCoordinator.showAd(AdType.BANNER, location, activity) { adResult ->
                 _lastAdResult.value = adResult
                 onResult(adResult)
             }
@@ -87,7 +87,7 @@ class SimpleAdViewModel @Inject constructor(
      */
     fun showAppOpenAd(activity: Activity, onResult: (AdResult) -> Unit = {}) {
         viewModelScope.launch {
-            adManager.showAd(AdType.APP_OPEN, AdLocation.APP_STARTUP, activity) { adResult ->
+            monetizationCoordinator.showAd(AdType.APP_OPEN, AdLocation.APP_STARTUP, activity) { adResult ->
                 _lastAdResult.value = adResult
                 onResult(adResult)
             }
@@ -103,7 +103,7 @@ class SimpleAdViewModel @Inject constructor(
         onResult: (AdResult) -> Unit = {}
     ) {
         viewModelScope.launch {
-            adManager.trackActionAndShowAd(
+            monetizationCoordinator.trackActionAndShowAd(
                 location = location,
                 adType = AdType.INTERSTITIAL,
                 activity = activity
@@ -118,14 +118,14 @@ class SimpleAdViewModel @Inject constructor(
      * Проверяет готовность рекламы определенного типа в указанной локации
      */
     fun isAdReady(adType: AdType, location: AdLocation): Boolean {
-        return adManager.isAdReady(adType, location)
+        return monetizationCoordinator.isAdReady(adType, location)
     }
 
     /**
      * Обновляет состояние готовности рекламы
      */
     fun updateAdReadyState() {
-        adManager.updateReadyState()
+        monetizationCoordinator.updateReadyState()
     }
 
     /**
@@ -139,14 +139,14 @@ class SimpleAdViewModel @Inject constructor(
      * Проверяет согласие пользователя
      */
     fun checkAndRequestConsent(activity: Activity, onConsentResolved: (Boolean) -> Unit) {
-        adManager.checkAndRequestConsent(activity, onConsentResolved)
+        monetizationCoordinator.checkAndRequestConsent(activity, onConsentResolved)
     }
 
     /**
      * Инициализирует Mobile Ads SDK
      */
     fun initializeMobileAdsSdk(onInitialized: (() -> Unit)? = null) {
-        adManager.initializeMobileAdsSdk(onInitialized)
+        monetizationCoordinator.initializeMobileAdsSdk(onInitialized)
     }
 
     /**
@@ -156,14 +156,14 @@ class SimpleAdViewModel @Inject constructor(
         activity: Activity, 
         onDismissed: (formError: com.google.android.ump.FormError?) -> Unit
     ) {
-        adManager.showPrivacyOptionsForm(activity, onDismissed)
+        monetizationCoordinator.showPrivacyOptionsForm(activity, onDismissed)
     }
 
     /**
      * Получает провайдер рекламы для указанного типа и локации
      */
     fun getAdProvider(adType: AdType, location: AdLocation): AdProvider<*>? {
-        return adManager.getAdProvider(adType, location)
+        return monetizationCoordinator.getAdProvider(adType, location)
     }
 
     /**

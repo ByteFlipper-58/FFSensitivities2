@@ -3,10 +3,9 @@ package com.byteflipper.ffsensitivities
 import android.app.Application
 import android.util.Log
 import com.byteflipper.crashhandler.CrashHandler
-import com.byteflipper.ffsensitivities.ads.AdManager
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
+import com.byteflipper.ffsensitivities.core.monetization.MonetizationCoordinator
 import com.byteflipper.ffsensitivities.crash.FirebaseCrashReporter
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.HiltAndroidApp
@@ -17,8 +16,7 @@ import javax.inject.Inject
 @HiltAndroidApp
 class MyApplication : Application() {
 
-    @Inject lateinit var dataStoreManager: DataStoreManager
-    @Inject lateinit var adManager: AdManager
+    @Inject lateinit var monetizationCoordinator: MonetizationCoordinator
     @Inject lateinit var appOpenAdObserver: AppOpenAdLifecycleObserver
     @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
 
@@ -40,7 +38,7 @@ class MyApplication : Application() {
      * Инициализирует рекламный SDK и связанные компоненты
      */
     private fun initializeAdsSDK() {
-        adManager.initializeMobileAdsSdk {
+        monetizationCoordinator.initializeMobileAdsSdk {
         }
     }
 

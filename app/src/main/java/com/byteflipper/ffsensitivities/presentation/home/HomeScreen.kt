@@ -3,8 +3,8 @@ package com.byteflipper.ffsensitivities.presentation.home
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import com.byteflipper.ffsensitivities.presentation.viewmodel.ManufacturerViewModel
-import com.byteflipper.ffsensitivities.presentation.viewmodel.home.HomeScreenViewModel
+import com.byteflipper.ffsensitivities.navigation.navigateToDevices
+import com.byteflipper.ffsensitivities.navigation.navigateToSettings
 
 @Composable
 fun HomeScreen(
@@ -13,7 +13,8 @@ fun HomeScreen(
     manufacturerViewModel: ManufacturerViewModel = hiltViewModel()
 ) {
     HomeScreenLayout(
-        navController = navController,
+        onOpenSettings = navController::navigateToSettings,
+        onOpenDevices = navController::navigateToDevices,
         homeViewModel = homeViewModel,
         manufacturerViewModel = manufacturerViewModel
     )

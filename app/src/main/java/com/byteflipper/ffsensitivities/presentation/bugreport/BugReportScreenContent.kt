@@ -29,7 +29,6 @@ fun BugReportScreenContent(
     isSuccess: Boolean,
     submissionError: String?,
     categories: List<String>,
-    categories_tags: List<String>,
     onCategorySelected: (String) -> Unit,
     onDescriptionChange: (String) -> Unit,
     onExpandedChange: (Boolean) -> Unit,

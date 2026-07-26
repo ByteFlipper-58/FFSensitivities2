@@ -14,16 +14,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
-import com.byteflipper.ffsensitivities.navigation.Screen
 
 @Composable
 fun DeviceCard(
     device: DeviceModel,
-    navController: NavHostController,
+    onOpenSensitivities: (String, String) -> Unit,
     adViewModel: SimpleAdViewModel,
     activity: Activity?
 ) {
@@ -46,11 +44,7 @@ fun DeviceCard(
             } ?: Log.w("DeviceCard", "Activity is null, cannot show ad.")
             
             // Навигация к экрану настроек чувствительности
-            navController.navigate(
-                Screen.Sensitivities(manufacturer = encodedManufacturer, modelName = encodedDeviceName).route
-            ) {
-                launchSingleTop = true
-            }
+            onOpenSensitivities(encodedManufacturer, encodedDeviceName)
         }
     ) {
         Column(

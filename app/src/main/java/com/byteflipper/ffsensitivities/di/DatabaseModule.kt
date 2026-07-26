@@ -1,7 +1,6 @@
 package com.byteflipper.ffsensitivities.di
 
 import android.content.Context
-import com.byteflipper.ffsensitivities.data.local.DataStoreManager
 import com.byteflipper.ffsensitivities.utils.CacheManager
 import dagger.Module
 import dagger.Provides
@@ -14,12 +13,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
-    @Provides
-    @Singleton
-    fun provideDataStoreManager(@ApplicationContext context: Context): DataStoreManager {
-        return DataStoreManager(context)
-    }
 
     @Provides
     @Singleton

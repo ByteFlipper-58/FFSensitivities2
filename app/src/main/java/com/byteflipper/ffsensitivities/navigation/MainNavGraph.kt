@@ -59,7 +59,7 @@ fun NavGraphBuilder.mainAppGraph(
         popEnterTransition = { defaultEnter(AnimatedContentTransitionScope.SlideDirection.End) },
         popExitTransition = { defaultExit(AnimatedContentTransitionScope.SlideDirection.End) }
     ) {
-        SettingsScreen(navController = navController, appViewModel = appViewModel)
+        SettingsScreen(navController = navController)
     }
 
     composable(
