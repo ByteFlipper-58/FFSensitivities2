@@ -114,6 +114,29 @@ class SimpleAdViewModel @Inject constructor(
         }
     }
 
+    fun showInterstitialAfterCompletedSensitivityView(
+        activity: Activity,
+        onResult: (AdResult) -> Unit = {}
+    ) {
+        viewModelScope.launch {
+            var callbackDelivered = false
+            val shown = monetizationCoordinator.showInterstitialAfterCompletedSensitivityView(activity) { result ->
+                callbackDelivered = true
+                _lastAdResult.value = result
+                onResult(result)
+            }
+            if (!shown && !callbackDelivered) {
+                onResult(AdResult(AdType.INTERSTITIAL, false))
+            }
+        }
+    }
+
+    fun preloadRewardedAd(location: AdLocation) {
+        viewModelScope.launch {
+            monetizationCoordinator.loadAd(AdType.REWARDED, location)
+        }
+    }
+
     /**
      * Проверяет готовность рекламы определенного типа в указанной локации
      */

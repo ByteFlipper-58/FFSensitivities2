@@ -35,4 +35,8 @@ interface MonetizationCoordinator {
         activity: Activity,
         onResult: (AdResult) -> Unit = {}
     ): Boolean
+    suspend fun showInterstitialAfterCompletedSensitivityView(
+        activity: Activity,
+        onResult: (AdResult) -> Unit = {}
+    ): Boolean
 }

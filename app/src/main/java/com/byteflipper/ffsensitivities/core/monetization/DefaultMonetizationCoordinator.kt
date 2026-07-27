@@ -70,4 +70,9 @@ class DefaultMonetizationCoordinator @Inject constructor(
     ): Boolean {
         return adManager.trackActionAndShowAd(location, adType, activity, onResult)
     }
+
+    override suspend fun showInterstitialAfterCompletedSensitivityView(
+        activity: Activity,
+        onResult: (AdResult) -> Unit
+    ): Boolean = adManager.showInterstitialAfterCompletedSensitivityView(activity, onResult)
 }

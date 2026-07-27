@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,6 +30,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.R
+import com.byteflipper.ffsensitivities.navigation.Screen
 import com.byteflipper.ui_components.preferences.PreferenceCategory
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,6 +43,10 @@ fun PrivacySettingsScreen(
     val context = LocalContext.current
     val activity = context as? Activity
     val privacyOptionsRequired by privacyViewModel.privacyOptionsRequired.collectAsStateWithLifecycle()
+
+    LaunchedEffect(Unit) {
+        privacyViewModel.refresh()
+    }
 
     Scaffold(
         topBar = {
@@ -61,8 +67,27 @@ fun PrivacySettingsScreen(
         ) {
             item {
                 PreferenceCategory(
-                    title = stringResource(R.string.privacy_settings_category_title),
+                    title = stringResource(R.string.advertising_and_privacy_title),
                     icon = painterResource(id = R.drawable.privacy_tip_24px)
+                )
+            }
+
+            item {
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.privacy_policy)) },
+                    supportingContent = { Text(stringResource(R.string.privacy_policy_description)) },
+                    leadingContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.privacy_tip_24px),
+                            contentDescription = null
+                        )
+                    },
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .clip(MaterialTheme.shapes.medium)
+                        .clickable {
+                            navController.navigate(Screen.Policy("privacy_policy").route)
+                        }
                 )
             }
 
@@ -92,13 +117,12 @@ fun PrivacySettingsScreen(
                     )
                     Spacer(modifier = Modifier.height(8.dp)) // Add space after the item
                 } else {
-                    // Optionally show a message if privacy options are not available/required
-                     ListItem( // Use ListItem for consistent appearance
-                         headlineContent = { Text(stringResource(R.string.privacy_settings_not_required_title)) }, // Add this string
-                         supportingContent = { Text(stringResource(R.string.privacy_settings_not_required_description)) }, // Add this string
+                     ListItem(
+                         headlineContent = { Text(stringResource(R.string.privacy_settings_not_required_title)) },
+                         supportingContent = { Text(stringResource(R.string.privacy_settings_not_required_description)) },
                          leadingContent = {
                              Icon(
-                                 painter = painterResource(id = R.drawable.info_24px), // Use an info icon
+                                painter = painterResource(id = R.drawable.info_24px),
                                  contentDescription = null
                              )
                          },

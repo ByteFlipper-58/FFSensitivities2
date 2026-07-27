@@ -55,6 +55,8 @@
     <string name="sniper_scope">Снайперский прицел</string>
     <string name="free_review">Свободный обзор</string>
     <string name="dpi">DPI</string>
+    <string name="unlock_dpi">Смотреть рекламу</string>
+    <string name="dpi_locked">Скрыто</string>
     <string name="fire_button">Кнопка огня</string>
     <string name="source">Источник</string>
     <!-- Review/Feedback -->
@@ -239,6 +241,9 @@
     <string name="error_no_browser_found">Не найден браузер для открытия этой ссылки</string>
 
     <!-- Privacy Settings -->
+    <string name="advertising_and_privacy_title">Реклама и конфиденциальность</string>
+    <string name="advertising_and_privacy_description">Управляйте настройками рекламы и ознакомьтесь с политикой конфиденциальности</string>
+    <string name="privacy_policy_description">Как мы обрабатываем информацию и показываем рекламу</string>
     <string name="privacy_settings_category_title">Конфиденциальность</string>
     <string name="privacy_settings_card_description">Управляйте параметрами согласия на рекламу</string>
     <string name="privacy_settings_button_title">Настройки конфиденциальности</string>

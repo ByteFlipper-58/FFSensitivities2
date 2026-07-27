@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import com.byteflipper.crashhandler.CrashHandler
 import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
+import com.byteflipper.ffsensitivities.ads.policy.AdDisplayPolicy
 import com.byteflipper.ffsensitivities.core.monetization.MonetizationCoordinator
 import com.byteflipper.ffsensitivities.crash.FirebaseCrashReporter
 import com.byteflipper.ffsensitivities.di.ApplicationScope
@@ -18,11 +19,12 @@ class MyApplication : Application() {
 
     @Inject lateinit var monetizationCoordinator: MonetizationCoordinator
     @Inject lateinit var appOpenAdObserver: AppOpenAdLifecycleObserver
+    @Inject lateinit var adDisplayPolicy: AdDisplayPolicy
     @Inject @ApplicationScope lateinit var applicationScope: CoroutineScope
 
     override fun onCreate() {
         super.onCreate()
-        
+        adDisplayPolicy.registerAppLaunch()
         initializeTimber()
         initializeAdsSDK()
         initializeAppOpenAds()

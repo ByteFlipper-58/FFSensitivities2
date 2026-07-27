@@ -11,18 +11,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
-import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import android.app.Activity
 
 @Composable
 fun ManufacturerCard(
     manufacturer: Manufacturer, 
-    onOpenDevices: (String, String) -> Unit,
-    adViewModel: SimpleAdViewModel = hiltViewModel(),
-    activity: Activity?
+    onOpenDevices: (String, String) -> Unit
 ) {
     OutlinedCard(
         modifier = Modifier
@@ -30,11 +24,6 @@ fun ManufacturerCard(
             .padding(4.dp),
         shape = ShapeDefaults.Large,
         onClick = {
-            // Трекинг выбора производителя
-            activity?.let { 
-                adViewModel.trackActionAndShowInterstitial(AdLocation.HOME_SCREEN, it)
-            }
-
             onOpenDevices(manufacturer.name, manufacturer.model)
         }
     ) {

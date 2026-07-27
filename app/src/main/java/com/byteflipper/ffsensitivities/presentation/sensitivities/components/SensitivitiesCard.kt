@@ -2,6 +2,7 @@ package com.byteflipper.ffsensitivities.presentation.sensitivities.components
 
 import android.content.ClipData
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.res.painterResource
@@ -31,7 +33,10 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SensitivitiesCard(
-    deviceModel: DeviceModel
+    deviceModel: DeviceModel,
+    isDpiUnlocked: Boolean,
+    isUnlockingDpi: Boolean,
+    onUnlockDpi: () -> Unit
 ) {
     val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
@@ -93,18 +98,38 @@ fun SensitivitiesCard(
                 thickness = 1.dp
             )
 
-            Row {
-                if (deviceModel.dpi == null || deviceModel.dpi == 0) {
+            val hasDpi = deviceModel.dpi?.let { it != 0 } == true
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                if (hasDpi) {
                     Text(
-                        text = stringResource(id = R.string.fire_button) + ": " + deviceModel.fire_button,
-                        modifier = Modifier.weight(1f)
+                        text = stringResource(id = R.string.dpi),
+                        style = androidx.compose.material3.MaterialTheme.typography.labelLarge
                     )
-                } else {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = deviceModel.dpi.toString(),
+                            style = androidx.compose.material3.MaterialTheme.typography.headlineMedium,
+                            modifier = Modifier.weight(1f).then(
+                                if (isDpiUnlocked) Modifier else Modifier.blur(8.dp)
+                            )
+                        )
+                        if (!isDpiUnlocked) {
+                            FilledTonalButton(onClick = onUnlockDpi, enabled = !isUnlockingDpi) {
+                                Text(stringResource(if (isUnlockingDpi) R.string.loading_device_data else R.string.unlock_dpi))
+                            }
+                        }
+                    }
+                    HorizontalDivider()
+                }
+
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     Text(
-                        text = stringResource(id = R.string.dpi) + ": " + deviceModel.dpi + " | " + stringResource(
-                            id = R.string.fire_button
-                        ) + ": " + deviceModel.fire_button,
-                        modifier = Modifier.weight(1f)
+                        text = stringResource(id = R.string.fire_button),
+                        style = androidx.compose.material3.MaterialTheme.typography.labelLarge
+                    )
+                    Text(
+                        text = deviceModel.fire_button.toString(),
+                        style = androidx.compose.material3.MaterialTheme.typography.headlineSmall
                     )
                 }
             }
@@ -152,7 +177,11 @@ fun SensitivitiesCard(
             )
 
             val settingsText = buildString {
-                append("${stringResource(id = R.string.dpi)}: ${deviceModel.dpi}\n")
+                if (hasDpi) {
+                    append("${stringResource(id = R.string.dpi)}: ")
+                    append(if (isDpiUnlocked) deviceModel.dpi else stringResource(id = R.string.dpi_locked))
+                    append('\n')
+                }
                 append("${stringResource(id = R.string.review)}: ${deviceModel.sensitivities?.review}\n")
                 append("${stringResource(id = R.string.collimator)}: ${deviceModel.sensitivities?.collimator}\n")
                 append("${stringResource(id = R.string.x2_scope)}: ${deviceModel.sensitivities?.x2_scope}\n")

@@ -11,6 +11,7 @@ import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.appcompat.app.AppCompatActivity
 import com.byteflipper.ffsensitivities.AppViewModel
+import com.byteflipper.ffsensitivities.ads.lifecycle.AppOpenAdLifecycleObserver
 import com.byteflipper.ffsensitivities.core.monetization.MonetizationCoordinator
 import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinator
 import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinatorFactory
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Inject lateinit var monetizationCoordinator: MonetizationCoordinator
+    @Inject lateinit var appOpenAdObserver: AppOpenAdLifecycleObserver
     @Inject lateinit var appUpdateCoordinatorFactory: AppUpdateCoordinatorFactory
     private lateinit var appUpdateCoordinator: AppUpdateCoordinator
     private val viewModel: AppViewModel by viewModels()
@@ -46,6 +48,9 @@ class MainActivity : AppCompatActivity() {
 
         monetizationCoordinator.checkAndRequestConsent(this) { canRequestPersonalizedAds ->
             Log.d(TAG, "UMP согласие получено в MainActivity. Можно запрашивать персонализированную рекламу: $canRequestPersonalizedAds")
+            if (canRequestPersonalizedAds) {
+                appOpenAdObserver.preloadAfterConsent()
+            }
         }
 
         splashScreen.setKeepOnScreenCondition { 

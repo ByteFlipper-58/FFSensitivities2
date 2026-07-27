@@ -8,12 +8,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.domain.model.Manufacturer
 import com.byteflipper.ffsensitivities.utils.LazyListUtils.optimizedItems
-import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
-import android.app.Activity
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -22,8 +18,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 fun ManufacturerGrid(
     manufacturers: List<Manufacturer>,
     onOpenDevices: (String, String) -> Unit,
-    adViewModel: SimpleAdViewModel,
-    activity: Activity?,
     header: (@Composable () -> Unit)? = null
 ) {
     val topPadding = if (header != null) 0.dp else 16.dp
@@ -35,7 +29,7 @@ fun ManufacturerGrid(
             start = 16.dp,
             end = 16.dp,
             top = topPadding,
-            bottom = getDynamicBottomPadding(AdLocation.HOME_SCREEN, adViewModel)
+            bottom = 16.dp
         )
     ) {
         if (header != null) {
@@ -57,9 +51,7 @@ fun ManufacturerGrid(
         ) { manufacturer ->
             ManufacturerCard(
                 manufacturer = manufacturer, 
-                onOpenDevices = onOpenDevices,
-                adViewModel = adViewModel,
-                activity = activity
+                onOpenDevices = onOpenDevices
             )
         }
     }

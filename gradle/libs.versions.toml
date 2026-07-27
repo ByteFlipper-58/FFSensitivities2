@@ -28,6 +28,8 @@ splashScreen = "1.0.1"
 ump = "3.2.0"
 unityAds = "4.16.0"
 unityMediationAds = "4.16.0.0"
+yandexMobileAds = "8.2.0"
+yandexAdMobAdapter = "8.0.0.0"
 
 [libraries]
 # AndroidX Core
@@ -96,6 +98,10 @@ google-ump = { module = "com.google.android.ump:user-messaging-platform", versio
 # Unity Ads for AdMob mediation
 unity-ads = { module = "com.unity3d.ads:unity-ads", version.ref = "unityAds" }
 unity-mediation-ads = { module = "com.google.ads.mediation:unity", version.ref = "unityMediationAds" }
+
+# Yandex Advertising Network for AdMob mediation custom events
+yandex-mobile-ads = { module = "com.yandex.android:mobileads", version.ref = "yandexMobileAds" }
+yandex-admob-adapter = { module = "com.yandex.ads.adapter:admob-mobileads", version.ref = "yandexAdMobAdapter" }
 
 # Play Core
 google-play-app-update = { module = "com.google.android.play:app-update", version.ref = "playCore" }

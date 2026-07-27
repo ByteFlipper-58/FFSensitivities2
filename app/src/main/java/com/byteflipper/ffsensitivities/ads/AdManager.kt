@@ -12,6 +12,7 @@ import com.byteflipper.ffsensitivities.ads.core.AdResult
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.tracking.AdFrequencyTracker
+import com.byteflipper.ffsensitivities.ads.policy.AdDisplayPolicy
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import com.byteflipper.ffsensitivities.utils.NetworkUtils
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -32,7 +33,8 @@ class AdManager @Inject constructor(
     @ApplicationScope private val coroutineScope: CoroutineScope,
     private val consentManager: ConsentManager,
     private val adProviderRegistry: AdProviderRegistry,
-    private val adFrequencyTracker: AdFrequencyTracker
+    private val adFrequencyTracker: AdFrequencyTracker,
+    private val adDisplayPolicy: AdDisplayPolicy
 ) {
 
     private companion object {
@@ -92,6 +94,9 @@ class AdManager @Inject constructor(
             onResult(result)
 
             if (result.success) {
+                if (adType == AdType.APP_OPEN || adType == AdType.INTERSTITIAL) {
+                    adDisplayPolicy.recordFullScreenShown(adType)
+                }
                 coroutineScope.launch {
                     try {
                         provider.load()
@@ -108,6 +113,14 @@ class AdManager @Inject constructor(
             onResult(AdResult(adType, false, error = e))
             false
         }
+    }
+
+    suspend fun showInterstitialAfterCompletedSensitivityView(
+        activity: Activity,
+        onResult: (AdResult) -> Unit = {}
+    ): Boolean {
+        if (!adDisplayPolicy.recordCompletedSensitivityView()) return false
+        return showAd(AdType.INTERSTITIAL, AdLocation.SENSITIVITIES_SCREEN, activity, onResult)
     }
 
     suspend fun trackActionAndShowAd(

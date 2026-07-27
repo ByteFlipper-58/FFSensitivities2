@@ -108,6 +108,10 @@ dependencies {
     implementation(libs.unity.ads)
     implementation(libs.unity.mediation.ads)
 
+    // Yandex Advertising Network for AdMob mediation custom events
+    implementation(libs.yandex.mobile.ads)
+    implementation(libs.yandex.admob.adapter)
+
     // Play Core
     implementation(libs.google.play.app.update)
     implementation(libs.google.play.app.update.ktx)

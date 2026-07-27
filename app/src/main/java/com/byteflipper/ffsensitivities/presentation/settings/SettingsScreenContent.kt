@@ -16,7 +16,6 @@ fun SettingsScreenContent(
     onOpenLanguageSettings: () -> Unit,
     onOpenPrivacySettings: () -> Unit,
     onOpenAdTest: () -> Unit,
-    privacyOptionsRequired: Boolean,
     isDebugMode: Boolean
 ) {
     Column(
@@ -37,14 +36,12 @@ fun SettingsScreenContent(
             onClick = onOpenLanguageSettings
         )
 
-        if (privacyOptionsRequired) {
-            SettingsCategoryCard(
-                title = stringResource(id = R.string.privacy_settings_category_title),
-                description = stringResource(id = R.string.privacy_settings_card_description),
-                iconRes = R.drawable.privacy_tip_24px,
-                onClick = onOpenPrivacySettings
-            )
-        }
+        SettingsCategoryCard(
+            title = stringResource(id = R.string.advertising_and_privacy_title),
+            description = stringResource(id = R.string.advertising_and_privacy_description),
+            iconRes = R.drawable.privacy_tip_24px,
+            onClick = onOpenPrivacySettings
+        )
 
         if (isDebugMode) {
             SettingsCategoryCard(

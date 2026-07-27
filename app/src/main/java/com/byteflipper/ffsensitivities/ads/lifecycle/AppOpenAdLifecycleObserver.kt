@@ -10,6 +10,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
 import com.byteflipper.ffsensitivities.ads.core.AdType
 import com.byteflipper.ffsensitivities.ads.AdManager
+import com.byteflipper.ffsensitivities.ads.policy.AdDisplayPolicy
 import com.byteflipper.ffsensitivities.di.ApplicationScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,8 @@ import javax.inject.Singleton
 @Singleton
 class AppOpenAdLifecycleObserver @Inject constructor(
     private val adManager: AdManager,
-    @ApplicationScope private val coroutineScope: CoroutineScope
+    @ApplicationScope private val coroutineScope: CoroutineScope,
+    private val adDisplayPolicy: AdDisplayPolicy
 ) : DefaultLifecycleObserver, Application.ActivityLifecycleCallbacks {
 
     private companion object {
@@ -34,7 +36,7 @@ class AppOpenAdLifecycleObserver @Inject constructor(
 
     private var currentActivity: Activity? = null
     private var isShowingAd = false
-    private var isAppJustStarted = true
+    private var backgroundedAtMs = 0L
 
     /**
      * Инициализирует observer и регистрирует его в ProcessLifecycle
@@ -52,12 +54,24 @@ class AppOpenAdLifecycleObserver @Inject constructor(
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         Log.d(TAG, "App moved to foreground")
-        showAppOpenAdIfAvailable()
+        val backgroundDurationMs = if (backgroundedAtMs == 0L) 0L else {
+            System.currentTimeMillis() - backgroundedAtMs
+        }
+        if (adDisplayPolicy.canShowAppOpen(backgroundDurationMs)) {
+            showAppOpenAdIfAvailable()
+        }
     }
 
     override fun onStop(owner: LifecycleOwner) {
         super.onStop(owner)
         Log.d(TAG, "App moved to background")
+        backgroundedAtMs = System.currentTimeMillis()
+    }
+
+    fun preloadAfterConsent() {
+        coroutineScope.launch {
+            adManager.loadAd(AdType.APP_OPEN, AdLocation.APP_STARTUP)
+        }
     }
 
     private fun showAppOpenAdIfAvailable() {
@@ -100,7 +114,6 @@ class AppOpenAdLifecycleObserver @Inject constructor(
                     ) { result ->
                         Log.d(TAG, "App Open ad result: success=${result.success}")
                         isShowingAd = false
-                        isAppJustStarted = false
                     }
                 }
             } catch (e: Exception) {
@@ -143,4 +156,4 @@ class AppOpenAdLifecycleObserver @Inject constructor(
             currentActivity = null
         }
     }
-} 
+}

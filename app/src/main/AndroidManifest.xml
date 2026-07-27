@@ -40,10 +40,10 @@
             android:value="true" />
 
         <!-- Consent Mode v2 default settings -->
-        <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="true" />
-        <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="true" />
-        <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="true" />
-        <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="true"/>
+        <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="false" />
+        <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="false" />
+        <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="false" />
+        <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="false"/>
 
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"

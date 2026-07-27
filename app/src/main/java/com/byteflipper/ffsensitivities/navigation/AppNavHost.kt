@@ -38,9 +38,6 @@ import com.byteflipper.ffsensitivities.AppViewModel
 import com.byteflipper.ffsensitivities.R
 import com.byteflipper.ffsensitivities.ads.components.AdBanner
 import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.core.AdReadyKey
-import com.byteflipper.ffsensitivities.ads.core.AdType
-import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
 import com.byteflipper.ffsensitivities.core.update.AppUpdateCoordinator
 import com.byteflipper.ffsensitivities.playcore.UpdateState
 import com.byteflipper.ffsensitivities.presentation.ui.AppStartupViewModel
@@ -97,8 +94,15 @@ fun AppNavHost(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         bottomBar = {
             if (shouldShowBottomBar) {
-                Column(modifier = Modifier.fillMaxWidth()) {
-                    AdBannerContainer(currentRoute = currentRoute)
+                Column {
+                    when {
+                        currentRoute == NavigationItem.Home.route -> {
+                            AdBanner(location = AdLocation.HOME_SCREEN)
+                        }
+                        currentRoute?.startsWith("devices/") == true -> {
+                            AdBanner(location = AdLocation.DEVICES_SCREEN)
+                        }
+                    }
                     BottomNavigationBar(navController = navController)
                 }
             }
@@ -164,7 +168,6 @@ fun AppNavHost(
 private fun OnboardingScreen(
     onFinishOnboarding: () -> Unit,
     rootNavController: NavHostController,
-    adViewModel: SimpleAdViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     var hasNotificationPermission by remember { mutableStateOf(hasNotificationPermission(context)) }
@@ -182,11 +185,6 @@ private fun OnboardingScreen(
         contract = ActivityResultContracts.RequestPermission()
     ) { granted ->
         hasNotificationPermission = granted
-    }
-
-    val consentState by adViewModel.consentState.collectAsStateWithLifecycle()
-    LaunchedEffect(consentState) {
-        Log.d("OnboardingScreen", "Consent State: $consentState")
     }
 
     val onboardingInfoTitle = stringResource(R.string.onboarding_info_title)
@@ -280,23 +278,3 @@ private fun hasNotificationPermission(context: android.content.Context): Boolean
     }
 }
 
-@Composable
-private fun AdBannerContainer(
-    currentRoute: String?,
-    adViewModel: SimpleAdViewModel = hiltViewModel()
-) {
-    val adLocation = when {
-        currentRoute == Route.HOME -> AdLocation.HOME_SCREEN
-        currentRoute?.startsWith("devices/") == true -> AdLocation.DEVICES_SCREEN
-        currentRoute?.startsWith("sensitivities/") == true -> AdLocation.SENSITIVITIES_SCREEN
-        currentRoute == Route.AD_TEST -> AdLocation.SETTINGS_SCREEN
-        else -> null
-    }
-
-    val adReadyState by adViewModel.adReadyState.collectAsStateWithLifecycle()
-    adLocation?.let { location ->
-        if (adReadyState[AdReadyKey(AdType.BANNER, location)] == true) {
-            AdBanner(location = location)
-        }
-    }
-}

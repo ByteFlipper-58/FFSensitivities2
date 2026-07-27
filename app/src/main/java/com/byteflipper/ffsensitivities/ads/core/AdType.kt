@@ -1,5 +1,7 @@
 package com.byteflipper.ffsensitivities.ads.core
 
+import com.byteflipper.ffsensitivities.BuildConfig
+
 /**
  * Типы рекламы в приложении
  */
@@ -43,12 +45,18 @@ data class AdConfig(
  * Упрощенная фабрика для создания конфигурации рекламы
  */
 object AdConfigFactory {
+    private object TestAdUnitIds {
+        const val BANNER = "ca-app-pub-3940256099942544/6300978111"
+        const val INTERSTITIAL = "ca-app-pub-3940256099942544/1033173712"
+        const val REWARDED = "ca-app-pub-3940256099942544/5224354917"
+        const val APP_OPEN = "ca-app-pub-3940256099942544/9257395921"
+    }
     
     /**
      * Создает конфигурацию для интерстициальной рекламы
      */
     fun createInterstitialConfig(location: AdLocation): AdConfig {
-        val adUnitId = when (location) {
+        val productionAdUnitId = when (location) {
             AdLocation.SENSITIVITIES_SCREEN -> com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.INTERSTITIAL_SECONDARY
             else -> com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.INTERSTITIAL_MAIN
         }
@@ -63,7 +71,7 @@ object AdConfigFactory {
         
         return AdConfig(
             adType = AdType.INTERSTITIAL,
-            adUnitId = adUnitId,
+            adUnitId = if (BuildConfig.DEBUG) TestAdUnitIds.INTERSTITIAL else productionAdUnitId,
             location = location,
             frequency = frequency
         )
@@ -75,7 +83,7 @@ object AdConfigFactory {
     fun createBannerConfig(location: AdLocation): AdConfig {
         return AdConfig(
             adType = AdType.BANNER,
-            adUnitId = com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.BANNER_MAIN,
+            adUnitId = if (BuildConfig.DEBUG) TestAdUnitIds.BANNER else com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.BANNER_MAIN,
             location = location
         )
     }
@@ -86,7 +94,7 @@ object AdConfigFactory {
     fun createRewardedConfig(location: AdLocation): AdConfig {
         return AdConfig(
             adType = AdType.REWARDED,
-            adUnitId = com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.REWARDED_TEST,
+            adUnitId = if (BuildConfig.DEBUG) TestAdUnitIds.REWARDED else com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.REWARDED_MAIN,
             location = location
         )
     }
@@ -97,8 +105,8 @@ object AdConfigFactory {
     fun createAppOpenConfig(): AdConfig {
         return AdConfig(
             adType = AdType.APP_OPEN,
-            adUnitId = com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.APP_OPEN_MAIN,
+            adUnitId = if (BuildConfig.DEBUG) TestAdUnitIds.APP_OPEN else com.byteflipper.ffsensitivities.utils.AdConstants.AdUnitIds.APP_OPEN_MAIN,
             location = AdLocation.APP_STARTUP
         )
     }
-} 
+}

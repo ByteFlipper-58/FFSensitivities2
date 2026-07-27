@@ -2,7 +2,6 @@ package com.byteflipper.ffsensitivities.presentation.settings
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.navigation.navigateToAdTest
@@ -15,8 +14,6 @@ fun SettingsScreenLayout(
     navController: NavHostController,
     privacyViewModel: PrivacyViewModel = hiltViewModel()
 ) {
-    val privacyOptionsRequired = privacyViewModel.privacyOptionsRequired.collectAsStateWithLifecycle()
-
     SettingsScreenScaffold(
         navController = navController
     ) {
@@ -25,7 +22,6 @@ fun SettingsScreenLayout(
             onOpenLanguageSettings = { navController.navigateToLanguageSettings() },
             onOpenPrivacySettings = { navController.navigateToPrivacySettings() },
             onOpenAdTest = { navController.navigateToAdTest() },
-            privacyOptionsRequired = privacyOptionsRequired.value,
             isDebugMode = BuildConfig.DEBUG
         )
     }

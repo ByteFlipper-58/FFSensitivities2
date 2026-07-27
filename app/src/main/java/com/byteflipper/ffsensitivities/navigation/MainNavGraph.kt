@@ -9,6 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.byteflipper.ffsensitivities.AppViewModel
+import com.byteflipper.ffsensitivities.BuildConfig
 import com.byteflipper.ffsensitivities.presentation.about.AboutScreen
 import com.byteflipper.ffsensitivities.presentation.adtest.AdTestScreen
 import com.byteflipper.ffsensitivities.presentation.bugreport.BugReportScreen
@@ -127,11 +128,13 @@ fun NavGraphBuilder.mainAppGraph(
         BugReportScreen(navController = navController)
     }
 
-    composable(
-        route = Screen.AdTest.route,
-        enterTransition = { EnterTransition.None },
-        exitTransition = { ExitTransition.None }
-    ) {
-        AdTestScreen(navController = navController)
+    if (BuildConfig.DEBUG) {
+        composable(
+            route = Screen.AdTest.route,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None }
+        ) {
+            AdTestScreen(navController = navController)
+        }
     }
 }

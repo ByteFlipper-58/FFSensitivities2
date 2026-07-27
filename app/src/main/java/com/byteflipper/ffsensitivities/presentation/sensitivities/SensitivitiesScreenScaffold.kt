@@ -22,6 +22,7 @@ import com.byteflipper.ffsensitivities.R
 fun SensitivitiesScreenScaffold(
     navController: NavController,
     title: String,
+    onNavigateBack: () -> Unit,
     content: @Composable () -> Unit
 ) {
     Scaffold(
@@ -29,7 +30,7 @@ fun SensitivitiesScreenScaffold(
             TopAppBar(
                 title = { Text(title) },
                 navigationIcon = {
-                    IconButton(onClick = { navController.popBackStack() }) {
+                    IconButton(onClick = onNavigateBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 }
@@ -44,4 +45,4 @@ fun SensitivitiesScreenScaffold(
             content()
         }
     }
-} 
+}

@@ -24,9 +24,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.byteflipper.ffsensitivities.R
-import com.byteflipper.ffsensitivities.ads.core.AdLocation
-import com.byteflipper.ffsensitivities.ads.viewmodel.SimpleAdViewModel
-import com.byteflipper.ffsensitivities.ads.components.getDynamicBottomPadding
 import com.byteflipper.ffsensitivities.domain.model.DeviceModel
 import com.byteflipper.ffsensitivities.presentation.ui.UiState
 import com.byteflipper.ffsensitivities.presentation.ui.components.SliderView
@@ -35,7 +32,9 @@ import com.byteflipper.ffsensitivities.presentation.sensitivities.components.Sen
 @Composable
 fun SensitivitiesScreenContent(
     deviceModelState: UiState<DeviceModel>,
-    adViewModel: SimpleAdViewModel
+    isDpiUnlocked: Boolean = false,
+    isUnlockingDpi: Boolean = false,
+    onUnlockDpi: () -> Unit = {}
 ) {
     when (deviceModelState) {
         is UiState.Loading -> {
@@ -78,10 +77,10 @@ fun SensitivitiesScreenContent(
                     .padding(
                         start = 16.dp,
                         end = 16.dp,
-                        bottom = getDynamicBottomPadding(AdLocation.SENSITIVITIES_SCREEN, adViewModel)
+                        bottom = 16.dp
                     )
             ) {
-                SensitivitiesCard(deviceModel = deviceModel)
+                SensitivitiesCard(deviceModel, isDpiUnlocked, isUnlockingDpi, onUnlockDpi)
             }
         }
     }
